@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
+    <a href="{{ url("competition_list") }}">{{ competition.name }}</a><br />
     {% for event in events %}
         {{ event.leftTeamName }} - {{ event.rightTeamName }}<br />
     {% endfor %}
