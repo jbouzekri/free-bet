@@ -1,0 +1,8 @@
+parameters:
+    betting_sas.event.manager.class: BettingSas\Bundle\EventBundle\Manager\EventManager
+
+services:
+    betting_sas.event.manager:
+        class: %betting_sas.event.manager.class%
+        arguments:
+            - @doctrine_mongodb

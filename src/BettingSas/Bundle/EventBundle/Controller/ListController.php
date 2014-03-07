@@ -13,6 +13,12 @@ class ListController extends Controller
 {
     public function listAction()
     {
-        return new \Symfony\Component\HttpFoundation\Response('test');
+        $events = $this->get('betting_sas.event.manager')
+            ->getRepository()
+            ->findAllOrderedByDate();
+
+        return $this->render('BettingSasEventBundle::list.html.twig', array(
+            'events' => $events
+        ));
     }
 }
