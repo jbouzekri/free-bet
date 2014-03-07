@@ -1,10 +1,13 @@
 parameters:
-    database_driver:   pdo_mysql
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     betting_sas
-    database_user:     root
-    database_password: ~
+#    database_driver:   pdo_mysql
+#    database_host:     127.0.0.1
+#    database_port:     ~
+#    database_name:     betting_sas
+#    database_user:     root
+#    database_password: ~
+
+    mongo_server: mongodb://localhost:27017
+    mongo_database: test_database
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1

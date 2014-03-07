@@ -1,0 +1,8 @@
+BettingSas\Bundle\EventBundle\Document\Event:
+    type: document
+    collection: events
+    fields:
+        id:
+            id:  true
+        name:
+            type: string

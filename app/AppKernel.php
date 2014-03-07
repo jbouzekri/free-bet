@@ -19,6 +19,8 @@ class AppKernel extends Kernel
         );
 
         $bettingSasBundles = array(
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new BettingSas\Bundle\EventBundle\BettingSasEventBundle(),
         );
 
