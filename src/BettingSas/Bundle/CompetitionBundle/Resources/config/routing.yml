@@ -1,0 +1,9 @@
+competition_detail:
+    path: /{slug}
+    defaults: { _controller: BettingSasCompetitionBundle:Competition:view }
+    methods:  [GET]
+
+competition_list:
+    path: /
+    defaults: { _controller: BettingSasCompetitionBundle:Competition:list }
+    methods:  [GET]

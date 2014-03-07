@@ -1,4 +1,0 @@
-event_list:
-    path: /
-    defaults: { _controller: BettingSasEventBundle:List:list }
-    methods:  [GET]

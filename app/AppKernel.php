@@ -19,9 +19,11 @@ class AppKernel extends Kernel
         );
 
         $bettingSasBundles = array(
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
-            new BettingSas\Bundle\EventBundle\BettingSasEventBundle(),
+            new BettingSas\Bundle\CompetitionBundle\BettingSasCompetitionBundle(),
+            new BettingSas\Bundle\SoccerWorldCupBundle\BettingSasSoccerWorldCupBundle(),
         );
 
         $bundles = array_merge($bundles, $bettingSasBundles);

@@ -1,15 +1,15 @@
 <?php
 
-namespace BettingSas\Bundle\EventBundle\Document\Repository;
+namespace BettingSas\Bundle\CompetitionBundle\Document\Repository;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 
 /**
- * Description of EventRepository
+ * Description of CompetitionRepository
  *
  * @author jobou
  */
-class EventRepository extends DocumentRepository
+class CompetitionRepository extends DocumentRepository
 {
     /**
      *

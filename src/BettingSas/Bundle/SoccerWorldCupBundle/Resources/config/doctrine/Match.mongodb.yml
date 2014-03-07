@@ -1,0 +1,53 @@
+BettingSas\Bundle\SoccerWorldCupBundle\Document\Match:
+    type: document
+    collection: events
+#    repositoryClass: BettingSas\Bundle\SoccerWorldCupBundle\Document\Repository\MatchRepository
+    fields:
+        id:
+            id:  true
+        sport:
+            type: string
+        phase_order:
+            type: int
+        phase:
+            type: string
+        group:
+            type: string
+        left_team_name:
+            type: string
+        right_team_name:
+            type: string
+        left_team_score:
+            type: int
+        right_team_score:
+            type: int
+        left_team_after_extended_time_score:
+            type: int
+        right_team_after_extended_time_score:
+            type: int
+        left_team_penalty_score:
+            type: int
+        right_team_penalty_score:
+            type: int
+        left_team_real_score:
+            type: int
+        right_team_real_score:
+            type: int
+        processed:
+            type: int
+        date:
+            type: timestamp
+        slug:
+            index: true
+            type: string
+            gedmo:
+                slug:
+                    separator: -
+                    style: lower
+                    fields:
+                        - phase
+                        - left_team_name
+                        - right_team_name
+    referenceOne:
+        competition:
+            targetDocument: BettingSas\Bundle\CompetitionBundle\Document\Competition

@@ -1,9 +1,0 @@
-BettingSas\Bundle\EventBundle\Document\Event:
-    type: document
-    collection: events
-    repositoryClass: BettingSas\Bundle\EventBundle\Document\Repository\EventRepository
-    fields:
-        id:
-            id:  true
-        name:
-            type: string

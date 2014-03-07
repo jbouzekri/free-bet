@@ -1,0 +1,16 @@
+parameters:
+    betting_sas.competition.manager.class: BettingSas\Bundle\CompetitionBundle\Manager\CompetitionManager
+
+services:
+    betting_sas.competition.manager:
+        class: %betting_sas.competition.manager.class%
+        arguments:
+            - @doctrine_mongodb
+            - %betting_sas.competition.event_mapping%
+            
+            
+    sensio_framework_extra.converter.doctrine.odm:
+        class: Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter
+        arguments: [@doctrine_mongodb]
+        tags:
+            - { name: request.param_converter }
