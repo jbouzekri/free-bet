@@ -1,0 +1,3 @@
+# Event routes
+event_routes:
+    resource: "@BettingSasEventBundle/Resources/config/routing.yml"
