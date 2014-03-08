@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
+            new BettingSas\Bundle\GambleBundle\BettingSasGambleBundle(),
             new BettingSas\Bundle\CompetitionBundle\BettingSasCompetitionBundle(),
             new BettingSas\Bundle\SoccerBundle\BettingSasSoccerBundle(),
             new BettingSas\Bundle\SoccerWorldCupBundle\BettingSasSoccerWorldCupBundle(),
