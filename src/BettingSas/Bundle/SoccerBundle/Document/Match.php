@@ -27,16 +27,6 @@ abstract class Match extends Event
     protected $rightTeamScore;
 
     /**
-     * @var int $leftTeamRealScore
-     */
-    protected $leftTeamRealScore;
-
-    /**
-     * @var int $rightTeamRealScore
-     */
-    protected $rightTeamRealScore;
-
-    /**
      * Set leftTeamScore
      *
      * @param int $leftTeamScore
@@ -78,49 +68,5 @@ abstract class Match extends Event
     public function getRightTeamScore()
     {
         return $this->rightTeamScore;
-    }
-
-    /**
-     * Set leftTeamRealScore
-     *
-     * @param int $leftTeamRealScore
-     * @return self
-     */
-    public function setLeftTeamRealScore($leftTeamRealScore)
-    {
-        $this->leftTeamRealScore = $leftTeamRealScore;
-        return $this;
-    }
-
-    /**
-     * Get leftTeamRealScore
-     *
-     * @return int $leftTeamRealScore
-     */
-    public function getLeftTeamRealScore()
-    {
-        return $this->leftTeamRealScore;
-    }
-
-    /**
-     * Set rightTeamRealScore
-     *
-     * @param int $rightTeamRealScore
-     * @return self
-     */
-    public function setRightTeamRealScore($rightTeamRealScore)
-    {
-        $this->rightTeamRealScore = $rightTeamRealScore;
-        return $this;
-    }
-
-    /**
-     * Get rightTeamRealScore
-     *
-     * @return int $rightTeamRealScore
-     */
-    public function getRightTeamRealScore()
-    {
-        return $this->rightTeamRealScore;
     }
 }

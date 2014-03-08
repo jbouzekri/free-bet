@@ -201,6 +201,34 @@ class Match extends BaseMatch
     }
 
     /**
+     * Get leftTeamRealScore
+     *
+     * @return int $leftTeamRealScore
+     */
+    public function getLeftTeamRealScore()
+    {
+        if (is_null($this->getLeftTeamScore())) {
+            return null;
+        }
+
+        return $this->getLeftTeamScore() + $this->getLeftTeamAfterExtendedTimeScore();
+    }
+
+    /**
+     * Get rightTeamRealScore
+     *
+     * @return int $rightTeamRealScore
+     */
+    public function getRightTeamRealScore()
+    {
+        if (is_null($this->getRightTeamScore())) {
+            return null;
+        }
+
+        return $this->getRightTeamScore() + $this->getRightTeamAfterExtendedTimeScore();
+    }
+
+    /**
      * @return mixed
      *
      * true : left team win

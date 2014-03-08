@@ -7,9 +7,3 @@ BettingSas\Bundle\SoccerBundle\Document\Match:
         rightTeamScore:
             type: int
             name: right_team_score
-        leftTeamRealScore:
-            type: int
-            name: left_team_real_score
-        rightTeamRealScore:
-            type: int
-            name: right_team_real_score
