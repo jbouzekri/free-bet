@@ -1,0 +1,2 @@
+soccer:
+    winner: BettingSas\Bundle\SoccerBundle\Gamble\WinnerGamble
