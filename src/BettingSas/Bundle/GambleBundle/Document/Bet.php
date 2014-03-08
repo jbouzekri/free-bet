@@ -20,9 +20,9 @@ class Bet
     protected $type;
 
     /**
-     * @var string $configuration
+     * @var string $choice
      */
-    protected $configuration;
+    protected $choice;
 
     /**
      * @var boolean $winner
@@ -69,28 +69,6 @@ class Bet
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * Set configuration
-     *
-     * @param string $configuration
-     * @return self
-     */
-    public function setConfiguration($configuration)
-    {
-        $this->configuration = $configuration;
-        return $this;
-    }
-
-    /**
-     * Get configuration
-     *
-     * @return string $configuration
-     */
-    public function getConfiguration()
-    {
-        return $this->configuration;
     }
 
     /**
@@ -157,5 +135,27 @@ class Bet
     public function getEvent()
     {
         return $this->event;
+    }
+
+    /**
+     * Set choice
+     *
+     * @param string $choice
+     * @return self
+     */
+    public function setChoice($choice)
+    {
+        $this->choice = $choice;
+        return $this;
+    }
+
+    /**
+     * Get choice
+     *
+     * @return string $choice
+     */
+    public function getChoice()
+    {
+        return $this->choice;
     }
 }

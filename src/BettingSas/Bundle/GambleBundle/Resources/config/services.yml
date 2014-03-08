@@ -1,6 +1,7 @@
 parameters:
     betting_sas.gamble.manager.class: BettingSas\Bundle\GambleBundle\Manager\GambleManager
     betting_sas.twig.gamble_extension.class: BettingSas\Bundle\GambleBundle\Twig\GambleExtension
+    betting_sas.gamble.cart.class: BettingSas\Bundle\GambleBundle\Manager\GambleCart
 
 services:
     betting_sas.gamble.manager:
@@ -15,3 +16,8 @@ services:
             - @betting_sas.gamble.manager
         tags:
             - { name: twig.extension }
+            
+    betting_sas.gamble.cart:
+        class: %betting_sas.gamble.cart.class%
+        arguments:
+            - @doctrine_mongodb

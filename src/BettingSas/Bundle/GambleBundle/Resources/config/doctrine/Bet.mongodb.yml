@@ -6,7 +6,7 @@ BettingSas\Bundle\GambleBundle\Document\Bet:
             id: true
         type:
             type: string
-        configuration:
+        choice:
             type: string
         winner:
             type: boolean

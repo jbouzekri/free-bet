@@ -2,8 +2,6 @@
 
 namespace BettingSas\Bundle\GambleBundle\Manager;
 
-use Twig_Environment as Environment;
-
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 
 /**
