@@ -1,0 +1,21 @@
+BettingSas\Bundle\CompetitionBundle\Document\Event:
+    type: mappedSuperclass
+    fields:
+        id:
+            id:  true
+        type:
+            type: string
+        left_name:
+            type: string
+        right_name:
+            type: string
+        processed:
+            type: int
+        date:
+            type: timestamp
+        slug:
+            index: true
+            type: string
+    referenceOne:
+        competition:
+            targetDocument: BettingSas\Bundle\CompetitionBundle\Document\Competition

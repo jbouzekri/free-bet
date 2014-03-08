@@ -24,25 +24,25 @@ class Tools
                 continue;
             }
 
-            if (!isset($result[$event->getLeftTeamName()])) {
-                $result[$event->getLeftTeamName()] = array('point'=>0,'diff'=>0);
+            if (!isset($result[$event->getLeftName()])) {
+                $result[$event->getLeftName()] = array('point'=>0,'diff'=>0);
             }
-            if (!isset($result[$event->getRightTeamName()])) {
-                $result[$event->getRightTeamName()] = array('point'=>0,'diff'=>0);
+            if (!isset($result[$event->getRightName()])) {
+                $result[$event->getRightName()] = array('point'=>0,'diff'=>0);
             }
 
-            $isLeftTeamWin = $event->isLeftTeamWin();
-            if ($isLeftTeamWin === true) {
-                $result[$event->getLeftTeamName()]['point'] += 3;
-                $result[$event->getLeftTeamName()]['diff'] += $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
-                $result[$event->getRightTeamName()]['diff'] += $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
-            } elseif ($isLeftTeamWin === false) {
-                $result[$event->getRightTeamName()]['point'] += 3;
-                $result[$event->getRightTeamName()]['diff'] += $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
-                $result[$event->getLeftTeamName()]['diff'] += $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
-            } elseif ($isLeftTeamWin === 0) {
-                $result[$event->getRightTeamName()]['point'] += 1;
-                $result[$event->getLeftTeamName()]['point'] += 1;
+            $isLeftWin = $event->isLeftTeamWin();
+            if ($isLeftWin === true) {
+                $result[$event->getLeftName()]['point'] += 3;
+                $result[$event->getLeftName()]['diff'] += $event->getLeftRealScore() - $event->getRightRealScore();
+                $result[$event->getRightName()]['diff'] += $event->getRightRealScore() - $event->getLeftRealScore();
+            } elseif ($isLeftWin === false) {
+                $result[$event->getRightName()]['point'] += 3;
+                $result[$event->getRightName()]['diff'] += $event->getRightRealScore() - $event->getLeftRealScore();
+                $result[$event->getLeftName()]['diff'] += $event->getLeftRealScore() - $event->getRightRealScore();
+            } elseif ($isLeftWin === 0) {
+                $result[$event->getRightName()]['point'] += 1;
+                $result[$event->getLeftName()]['point'] += 1;
             }
         }
 

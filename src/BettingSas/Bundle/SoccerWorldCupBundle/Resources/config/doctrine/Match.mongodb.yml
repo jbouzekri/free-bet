@@ -26,5 +26,5 @@ BettingSas\Bundle\SoccerWorldCupBundle\Document\Match:
                     style: lower
                     fields:
                         - phase
-                        - left_team_name
-                        - right_team_name
+                        - left_name
+                        - right_name
