@@ -69,4 +69,14 @@ abstract class Match extends Event
     {
         return $this->rightTeamScore;
     }
+
+    /**
+     * Check if result is known
+     *
+     * @return bool
+     */
+    public function isFinished()
+    {
+        return !is_null($this->getLeftTeamScore()) || !is_null($this->getRightTeamScore());
+    }
 }

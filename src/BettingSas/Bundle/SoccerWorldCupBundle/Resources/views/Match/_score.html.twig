@@ -1,0 +1,9 @@
+{% if match.isFinished %}
+    {{ match.getLeftTeamRealScore }}
+    {% if match.leftTeamPenaltyScore is not null %} (match.leftTeamPenaltyScore){% endif %}
+    - 
+    {% if match.rightTeamPenaltyScore is not null %}(match.rightTeamPenaltyScore) {% endif %}
+    {{ match.getRightTeamRealScore }}
+{% else %}
+ - 
+{% endif %}

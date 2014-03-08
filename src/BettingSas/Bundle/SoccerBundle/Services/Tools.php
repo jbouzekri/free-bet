@@ -34,24 +34,30 @@ class Tools
             $isLeftWin = $event->isLeftTeamWin();
             if ($isLeftWin === true) {
                 $result[$event->getLeftName()]['point'] += 3;
-                $result[$event->getLeftName()]['diff'] += $event->getLeftRealScore() - $event->getRightRealScore();
-                $result[$event->getRightName()]['diff'] += $event->getRightRealScore() - $event->getLeftRealScore();
+                $result[$event->getLeftName()]['diff'] += $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
+                $result[$event->getRightName()]['diff'] += $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
             } elseif ($isLeftWin === false) {
                 $result[$event->getRightName()]['point'] += 3;
-                $result[$event->getRightName()]['diff'] += $event->getRightRealScore() - $event->getLeftRealScore();
-                $result[$event->getLeftName()]['diff'] += $event->getLeftRealScore() - $event->getRightRealScore();
+                $result[$event->getRightName()]['diff'] += $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
+                $result[$event->getLeftName()]['diff'] += $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
             } elseif ($isLeftWin === 0) {
                 $result[$event->getRightName()]['point'] += 1;
                 $result[$event->getLeftName()]['point'] += 1;
             }
         }
 
-        // TODO : sort according to point, diff and direct match
+        // TODO : sort according to direct match result
         uasort($result, function ($team1, $team2) {
+            // sort according to point
             if ($team1['point'] == $team2['point']) {
-                return 0;
+
+                // if point equals, sort according to diff
+                if ($team1['diff'] == $team2['diff']) {
+                    return 0;
+                }
+                return ($team1['diff'] < $team2['diff']) ? 1 : -1;
             }
-            return ($team1['point'] < $team2['point']) ? -1 : 1;
+            return ($team1['point'] < $team2['point']) ? 1 : -1;
         });
 
         return $result;
