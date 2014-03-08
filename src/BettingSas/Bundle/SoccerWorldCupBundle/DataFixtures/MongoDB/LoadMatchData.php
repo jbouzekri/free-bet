@@ -5,6 +5,8 @@ namespace BettingSas\Bundle\SoccerWorldCupBundle\DataFixtures\MongoDB;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+
 use BettingSas\Bundle\SoccerWorldCupBundle\Document\Match;
 
 /**
@@ -12,7 +14,7 @@ use BettingSas\Bundle\SoccerWorldCupBundle\Document\Match;
  *
  * @author jobou
  */
-class LoadMatchData implements FixtureInterface, OrderedFixtureInterface
+class LoadMatchData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -439,15 +441,17 @@ class LoadMatchData implements FixtureInterface, OrderedFixtureInterface
             ),
         );
 
+        $worldCup2014 = $this->getReference('world-cup-2014');
+
         foreach ($matchs as $match) {
             $entity = new Match();
-            $entity->setSport('soccer');
             $entity->setPhaseOrder($match['phase_order']);
             $entity->setPhase($match['phase']);
             $entity->setGroup($match['group']);
             $entity->setLeftTeamName($match['left_team_name']);
             $entity->setRightTeamName($match['right_team_name']);
             $entity->setDate($match['date']);
+            $entity->setCompetition($worldCup2014);
 
             $manager->persist($entity);
         }

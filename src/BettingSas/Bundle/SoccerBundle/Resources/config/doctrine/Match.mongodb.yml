@@ -1,0 +1,28 @@
+BettingSas\Bundle\SoccerBundle\Document\Match:
+    type: mappedSuperclass
+#    collection: events
+#    repositoryClass: BettingSas\Bundle\SoccerWorldCupBundle\Document\Repository\MatchRepository
+    fields:
+        id:
+            id:  true
+        sport:
+            type: string
+        left_team_name:
+            type: string
+        right_team_name:
+            type: string
+        left_team_score:
+            type: int
+        right_team_score:
+            type: int
+        left_team_real_score:
+            type: int
+        right_team_real_score:
+            type: int
+        processed:
+            type: int
+        date:
+            type: timestamp
+    referenceOne:
+        competition:
+            targetDocument: BettingSas\Bundle\CompetitionBundle\Document\Competition

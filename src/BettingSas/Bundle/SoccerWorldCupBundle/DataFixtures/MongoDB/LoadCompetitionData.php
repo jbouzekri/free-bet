@@ -5,6 +5,8 @@ namespace BettingSas\Bundle\SoccerWorldCupBundle\DataFixtures\MongoDB;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+
 use BettingSas\Bundle\CompetitionBundle\Document\Competition;
 
 /**
@@ -12,7 +14,7 @@ use BettingSas\Bundle\CompetitionBundle\Document\Competition;
  *
  * @author jobou
  */
-class LoadCompetitionData implements FixtureInterface, OrderedFixtureInterface
+class LoadCompetitionData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -32,6 +34,8 @@ class LoadCompetitionData implements FixtureInterface, OrderedFixtureInterface
             $entity->setType($competition['type']);
 
             $manager->persist($entity);
+
+            $this->addReference('world-cup-2014', $entity);
         }
 
         $manager->flush();
