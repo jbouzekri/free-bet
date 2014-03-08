@@ -536,4 +536,27 @@ class Match
     {
         return $this->competition;
     }
+
+    /**
+     * @return mixed
+     *
+     * true : left team win
+     * 0 : match null
+     * false : right team win
+     * null  match not played
+     */
+    public function isLeftTeamWin()
+    {
+        if (is_null($this->getLeftTeamRealScore()) || is_null($this->getRightTeamRealScore())) {
+            return null;
+        } elseif ($this->getLeftTeamRealScore() > $this->getRightTeamRealScore()) {
+            return true;
+        } elseif ($this->getLeftTeamRealScore() < $this->getRightTeamRealScore()) {
+            return false;
+        } elseif ($this->getLeftTeamRealScore() == $this->getRightTeamRealScore()) {
+            return 0;
+        }
+
+        return null;
+    }
 }

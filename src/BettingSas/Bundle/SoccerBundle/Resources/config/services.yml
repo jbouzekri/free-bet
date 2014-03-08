@@ -1,0 +1,6 @@
+parameters:
+    betting_sas.soccer.tools.class: BettingSas\Bundle\SoccerBundle\Services\Tools
+
+services:
+    betting_sas.soccer.tools:
+        class: %betting_sas.soccer.tools.class%

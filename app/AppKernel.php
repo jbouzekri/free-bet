@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new BettingSas\Bundle\CompetitionBundle\BettingSasCompetitionBundle(),
+            new BettingSas\Bundle\SoccerBundle\BettingSasSoccerBundle(),
             new BettingSas\Bundle\SoccerWorldCupBundle\BettingSasSoccerWorldCupBundle(),
         );
 

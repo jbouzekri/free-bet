@@ -6,25 +6,24 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use BettingSas\Bundle\CompetitionBundle\Document\Competition;
 
 /**
- * Description of CompetitionManager
+ * Manager for competition
  *
  * @author jobou
  */
 class CompetitionManager
 {
     /**
-     *
      * @var \Doctrine\Common\Persistence\ManagerRegistry
      */
     protected $manager;
 
     /**
-     *
      * @var array
      */
     protected $eventMapping;
 
     /**
+     * Constructor
      *
      * @param \Doctrine\Common\Persistence\ManagerRegistry $manager
      */
@@ -36,6 +35,7 @@ class CompetitionManager
 
     /**
      * get repository for Competition
+     *
      * @return \BettingSas\Bundle\CompetitionBundle\Document\Repository\CompetitionRepository
      */
     public function getRepository()
@@ -43,6 +43,15 @@ class CompetitionManager
         return $this->manager->getManager()->getRepository('BettingSasCompetitionBundle:Competition');
     }
 
+    /**
+     * Get all event of a competition
+     *
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
+     *
+     * @return array
+     *
+     * @throws Exception\UnsupportedCompetitionType
+     */
     public function findAllEvents(Competition $competition)
     {
         if (!isset($this->eventMapping[$competition->getType()])) {
