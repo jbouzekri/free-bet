@@ -1,2 +1,3 @@
 soccer:
     winner: BettingSas\Bundle\SoccerBundle\Gamble\WinnerGamble
+    exact_score: BettingSas\Bundle\SoccerBundle\Gamble\ExactScoreGamble

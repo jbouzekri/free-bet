@@ -2,12 +2,14 @@
 
 namespace BettingSas\Bundle\SoccerBundle\Gamble;
 
+use BettingSas\Bundle\GambleBundle\Gamble\GambleInterface;
+
 /**
  * Description of WinnerGamble
  *
  * @author jobou
  */
-class WinnerGamble
+class WinnerGamble implements GambleInterface
 {
     /**
      * Choices available in gamble
