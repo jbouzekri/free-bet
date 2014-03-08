@@ -3,10 +3,15 @@
     <ul>
         {% for event in events %}
         <li>
+            {{ event.date|date('Y-m-d H:i:s') }} : 
+            {{ event.leftName }} {% include 'BettingSasSoccerWorldCupBundle:Match:_score.html.twig' with {match: event} %} {{ event.rightName }}
             <a href="{{ url('match_edit', {slugCompetition: event.competition.slug, slugMatch: event.slug}) }}">
-                {{ event.date|date('Y-m-d H:i:s') }} : 
-                {{ event.leftName }} {% include 'BettingSasSoccerWorldCupBundle:Match:_score.html.twig' with {match: event} %} {{ event.rightName }}
-            </a></li>
+                {{ 'set_result'|trans }}
+            </a>
+            <a href="{{ url('match_bet', {slugCompetition: event.competition.slug, slugMatch: event.slug}) }}">
+                {{ 'bet'|trans }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
 </div>

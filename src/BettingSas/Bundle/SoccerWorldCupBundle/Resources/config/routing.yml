@@ -2,3 +2,8 @@ match_edit:
     path: /{slugCompetition}/soccer/{slugMatch}/edit
     defaults: { _controller: BettingSasSoccerWorldCupBundle:Match:edit }
     methods:  [GET,POST]
+
+match_bet:
+    path: /{slugCompetition}/soccer/{slugMatch}/bet
+    defaults: { _controller: BettingSasSoccerWorldCupBundle:Match:bet }
+    methods:  [GET]
