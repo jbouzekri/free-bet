@@ -1,1 +1,8 @@
-1 / N /2
+<div id="gamble-{{ gamble.getName }}">
+    <h3>{{ ('gamble_'~gamble.getName)|trans }} </h3>
+    <ul>
+        {% for choice in gamble.getChoices %}
+            <li>{{ choice }}</li>
+        {% endfor %}
+    </ul>
+</div>
