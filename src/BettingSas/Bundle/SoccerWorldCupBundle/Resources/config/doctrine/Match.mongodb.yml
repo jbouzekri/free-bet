@@ -1,22 +1,26 @@
 BettingSas\Bundle\SoccerWorldCupBundle\Document\Match:
     type: document
     collection: events
-#    repositoryClass: BettingSas\Bundle\SoccerWorldCupBundle\Document\Repository\MatchRepository
     fields:
-        phase_order:
+        phaseOrder:
             type: int
+            name: phase_order
         phase:
             type: string
         group:
             type: string
-        left_team_after_extended_time_score:
+        leftTeamAfterExtendedTimeScore:
             type: int
-        right_team_after_extended_time_score:
+            name: left_team_after_extended_time_score
+        rightTeamAfterExtendedTimeScore:
             type: int
-        left_team_penalty_score:
+            name: right_team_after_extended_time_score
+        leftTeamPenaltyScore:
             type: int
-        right_team_penalty_score:
+            name: left_team_penalty_score
+        rightTeamPenaltyScore:
             type: int
+            name: right_team_penalty_score
         slug:
             index: true
             type: string
@@ -26,5 +30,8 @@ BettingSas\Bundle\SoccerWorldCupBundle\Document\Match:
                     style: lower
                     fields:
                         - phase
-                        - left_name
-                        - right_name
+                        - leftName
+                        - rightName
+    referenceOne:
+        competition:
+            targetDocument: BettingSas\Bundle\CompetitionBundle\Document\Competition

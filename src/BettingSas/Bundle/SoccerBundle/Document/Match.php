@@ -17,24 +17,24 @@ abstract class Match extends Event
     protected $type = "soccer";
 
     /**
-     * @var int $left_team_score
+     * @var int $leftTeamScore
      */
-    protected $left_team_score;
+    protected $leftTeamScore;
 
     /**
-     * @var int $right_team_score
+     * @var int $rightTeamScore
      */
-    protected $right_team_score;
+    protected $rightTeamScore;
 
     /**
-     * @var int $left_team_real_score
+     * @var int $leftTeamRealScore
      */
-    protected $left_team_real_score;
+    protected $leftTeamRealScore;
 
     /**
-     * @var int $right_team_real_score
+     * @var int $rightTeamRealScore
      */
-    protected $right_team_real_score;
+    protected $rightTeamRealScore;
 
     /**
      * Set leftTeamScore
@@ -44,7 +44,7 @@ abstract class Match extends Event
      */
     public function setLeftTeamScore($leftTeamScore)
     {
-        $this->left_team_score = $leftTeamScore;
+        $this->leftTeamScore = $leftTeamScore;
         return $this;
     }
 
@@ -55,7 +55,7 @@ abstract class Match extends Event
      */
     public function getLeftTeamScore()
     {
-        return $this->left_team_score;
+        return $this->leftTeamScore;
     }
 
     /**
@@ -66,7 +66,7 @@ abstract class Match extends Event
      */
     public function setRightTeamScore($rightTeamScore)
     {
-        $this->right_team_score = $rightTeamScore;
+        $this->rightTeamScore = $rightTeamScore;
         return $this;
     }
 
@@ -77,7 +77,7 @@ abstract class Match extends Event
      */
     public function getRightTeamScore()
     {
-        return $this->right_team_score;
+        return $this->rightTeamScore;
     }
 
     /**
@@ -88,7 +88,7 @@ abstract class Match extends Event
      */
     public function setLeftTeamRealScore($leftTeamRealScore)
     {
-        $this->left_team_real_score = $leftTeamRealScore;
+        $this->leftTeamRealScore = $leftTeamRealScore;
         return $this;
     }
 
@@ -99,7 +99,7 @@ abstract class Match extends Event
      */
     public function getLeftTeamRealScore()
     {
-        return $this->left_team_real_score;
+        return $this->leftTeamRealScore;
     }
 
     /**
@@ -110,7 +110,7 @@ abstract class Match extends Event
      */
     public function setRightTeamRealScore($rightTeamRealScore)
     {
-        $this->right_team_real_score = $rightTeamRealScore;
+        $this->rightTeamRealScore = $rightTeamRealScore;
         return $this;
     }
 
@@ -121,6 +121,6 @@ abstract class Match extends Event
      */
     public function getRightTeamRealScore()
     {
-        return $this->right_team_real_score;
+        return $this->rightTeamRealScore;
     }
 }

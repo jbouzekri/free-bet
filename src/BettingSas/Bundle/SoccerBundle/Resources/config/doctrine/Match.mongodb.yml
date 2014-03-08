@@ -1,11 +1,15 @@
 BettingSas\Bundle\SoccerBundle\Document\Match:
     type: mappedSuperclass
     fields:
-        left_team_score:
+        leftTeamScore:
             type: int
-        right_team_score:
+            name: left_team_score
+        rightTeamScore:
             type: int
-        left_team_real_score:
+            name: right_team_score
+        leftTeamRealScore:
             type: int
-        right_team_real_score:
+            name: left_team_real_score
+        rightTeamRealScore:
             type: int
+            name: right_team_real_score

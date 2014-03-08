@@ -1,3 +1,7 @@
 # Event routes
 event_routes:
     resource: "@BettingSasCompetitionBundle/Resources/config/routing.yml"
+    
+# Match routes
+match_routes:
+    resource: "@BettingSasSoccerWorldCupBundle/Resources/config/routing.yml"

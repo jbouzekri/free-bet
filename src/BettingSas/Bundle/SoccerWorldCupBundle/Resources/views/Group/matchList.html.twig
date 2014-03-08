@@ -2,7 +2,7 @@
     <h2>{{ 'soccer_group_name'|trans({'%group%': group}, "soccer")  }}</h2>
     <ul>
         {% for event in events %}
-        <li>{{ event.date|date('Y-m-d H:i:s') }} : {{ event.leftName }} - {{ event.rightName }}</li>
+        <li><a href="{{ url('match_edit', {slugCompetition: event.competition.slug, slugMatch: event.slug}) }}">{{ event.date|date('Y-m-d H:i:s') }} : {{ event.leftName }} - {{ event.rightName }}</a></li>
         {% endfor %}
     </ul>
 </div>

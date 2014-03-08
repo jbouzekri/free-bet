@@ -20,14 +20,14 @@ abstract class Event
     protected $type;
 
     /**
-     * @var string $left_name
+     * @var string $leftName
      */
-    protected $left_name;
+    protected $leftName;
 
     /**
-     * @var string $right_name
+     * @var string $rightName
      */
-    protected $right_name;
+    protected $rightName;
 
     /**
      * @var int $processed
@@ -89,7 +89,7 @@ abstract class Event
      */
     public function setLeftName($leftName)
     {
-        $this->left_name = $leftName;
+        $this->leftName = $leftName;
         return $this;
     }
 
@@ -100,7 +100,7 @@ abstract class Event
      */
     public function getLeftName()
     {
-        return $this->left_name;
+        return $this->leftName;
     }
 
     /**
@@ -111,7 +111,7 @@ abstract class Event
      */
     public function setRightName($rightName)
     {
-        $this->right_name = $rightName;
+        $this->rightName = $rightName;
         return $this;
     }
 
@@ -122,7 +122,7 @@ abstract class Event
      */
     public function getRightName()
     {
-        return $this->right_name;
+        return $this->rightName;
     }
 
     /**

@@ -1,0 +1,4 @@
+match_edit:
+    path: /{slugCompetition}/soccer/{slugMatch}/edit
+    defaults: { _controller: BettingSasSoccerWorldCupBundle:Match:edit }
+    methods:  [GET,POST]

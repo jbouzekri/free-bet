@@ -5,10 +5,12 @@ BettingSas\Bundle\CompetitionBundle\Document\Event:
             id:  true
         type:
             type: string
-        left_name:
+        leftName:
             type: string
-        right_name:
+            name: left_name
+        rightName:
             type: string
+            name: right_name
         processed:
             type: int
         date:

@@ -12,9 +12,9 @@ use BettingSas\Bundle\SoccerBundle\Document\Match as BaseMatch;
 class Match extends BaseMatch
 {
     /**
-     * @var int $phase_order
+     * @var int $phaseOrder
      */
-    protected $phase_order;
+    protected $phaseOrder;
 
     /**
      * @var string $phase
@@ -27,24 +27,24 @@ class Match extends BaseMatch
     protected $group;
 
     /**
-     * @var int $left_team_after_extended_time_score
+     * @var int $leftTeamAfterExtendedTimeScore
      */
-    protected $left_team_after_extended_time_score;
+    protected $leftTeamAfterExtendedTimeScore;
 
     /**
-     * @var int $right_team_after_extended_time_score
+     * @var int $rightTeamAfterExtendedTimeScore
      */
-    protected $right_team_after_extended_time_score;
+    protected $rightTeamAfterExtendedTimeScore;
 
     /**
-     * @var int $left_team_penalty_score
+     * @var int $leftTeamPenaltyScore
      */
-    protected $left_team_penalty_score;
+    protected $leftTeamPenaltyScore;
 
     /**
-     * @var int $right_team_penalty_score
+     * @var int $rightTeamPenaltyScore
      */
-    protected $right_team_penalty_score;
+    protected $rightTeamPenaltyScore;
 
     /**
      * Set phaseOrder
@@ -54,7 +54,7 @@ class Match extends BaseMatch
      */
     public function setPhaseOrder($phaseOrder)
     {
-        $this->phase_order = $phaseOrder;
+        $this->phaseOrder = $phaseOrder;
         return $this;
     }
 
@@ -65,7 +65,7 @@ class Match extends BaseMatch
      */
     public function getPhaseOrder()
     {
-        return $this->phase_order;
+        return $this->phaseOrder;
     }
 
     /**
@@ -120,7 +120,7 @@ class Match extends BaseMatch
      */
     public function setLeftTeamAfterExtendedTimeScore($leftTeamAfterExtendedTimeScore)
     {
-        $this->left_team_after_extended_time_score = $leftTeamAfterExtendedTimeScore;
+        $this->leftTeamAfterExtendedTimeScore = $leftTeamAfterExtendedTimeScore;
         return $this;
     }
 
@@ -131,7 +131,7 @@ class Match extends BaseMatch
      */
     public function getLeftTeamAfterExtendedTimeScore()
     {
-        return $this->left_team_after_extended_time_score;
+        return $this->leftTeamAfterExtendedTimeScore;
     }
 
     /**
@@ -142,7 +142,7 @@ class Match extends BaseMatch
      */
     public function setRightTeamAfterExtendedTimeScore($rightTeamAfterExtendedTimeScore)
     {
-        $this->right_team_after_extended_time_score = $rightTeamAfterExtendedTimeScore;
+        $this->rightTeamAfterExtendedTimeScore = $rightTeamAfterExtendedTimeScore;
         return $this;
     }
 
@@ -153,7 +153,7 @@ class Match extends BaseMatch
      */
     public function getRightTeamAfterExtendedTimeScore()
     {
-        return $this->right_team_after_extended_time_score;
+        return $this->rightTeamAfterExtendedTimeScore;
     }
 
     /**
@@ -164,7 +164,7 @@ class Match extends BaseMatch
      */
     public function setLeftTeamPenaltyScore($leftTeamPenaltyScore)
     {
-        $this->left_team_penalty_score = $leftTeamPenaltyScore;
+        $this->leftTeamPenaltyScore = $leftTeamPenaltyScore;
         return $this;
     }
 
@@ -175,7 +175,7 @@ class Match extends BaseMatch
      */
     public function getLeftTeamPenaltyScore()
     {
-        return $this->left_team_penalty_score;
+        return $this->leftTeamPenaltyScore;
     }
 
     /**
@@ -186,7 +186,7 @@ class Match extends BaseMatch
      */
     public function setRightTeamPenaltyScore($rightTeamPenaltyScore)
     {
-        $this->right_team_penalty_score = $rightTeamPenaltyScore;
+        $this->rightTeamPenaltyScore = $rightTeamPenaltyScore;
         return $this;
     }
 
@@ -197,7 +197,7 @@ class Match extends BaseMatch
      */
     public function getRightTeamPenaltyScore()
     {
-        return $this->right_team_penalty_score;
+        return $this->rightTeamPenaltyScore;
     }
 
     /**
