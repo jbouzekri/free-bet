@@ -31,7 +31,8 @@ class BettingSasGambleExtension extends Extension
         }
 
         $container->setParameter('betting_sas.gamble.configuration', $gambleConfig);
-        //$loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        //$loader->load('services.yml');
+
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
     }
 }

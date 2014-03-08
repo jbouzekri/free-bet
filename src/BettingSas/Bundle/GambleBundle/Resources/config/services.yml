@@ -1,0 +1,17 @@
+parameters:
+    betting_sas.gamble.manager.class: BettingSas\Bundle\GambleBundle\Manager\GambleManager
+    betting_sas.twig.gamble_extension.class: BettingSas\Bundle\GambleBundle\Twig\GambleExtension
+
+services:
+    betting_sas.gamble.manager:
+        class: %betting_sas.gamble.manager.class%
+        arguments:
+            - %betting_sas.gamble.configuration%
+
+    betting_sas.twig.gamble_extension:
+        class: %betting_sas.twig.gamble_extension.class%
+        arguments:
+            - @twig
+            - @betting_sas.gamble.manager
+        tags:
+            - { name: twig.extension }
