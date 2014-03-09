@@ -5,6 +5,8 @@ parameters:
 services:
     betting_sas.gamble.soccer.winner:
         class: %betting_sas.gamble.soccer.winner.class%
+        calls:
+             - [setTranslator, ["@translator"]]
         tags:
             -  { name: betting_sas.gamble, type: soccer, order: 1 }
 
