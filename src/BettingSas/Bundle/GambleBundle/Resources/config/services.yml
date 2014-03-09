@@ -1,19 +1,14 @@
 parameters:
-    betting_sas.gamble.manager.class: BettingSas\Bundle\GambleBundle\Manager\GambleManager
     betting_sas.twig.gamble_extension.class: BettingSas\Bundle\GambleBundle\Twig\GambleExtension
     betting_sas.gamble.cart.class: BettingSas\Bundle\GambleBundle\Manager\GambleCart
+    betting_sas.gamble_chain.class: BettingSas\Bundle\GambleBundle\Gamble\GambleChain
 
 services:
-    betting_sas.gamble.manager:
-        class: %betting_sas.gamble.manager.class%
-        arguments:
-            - %betting_sas.gamble.configuration%
-
     betting_sas.twig.gamble_extension:
         class: %betting_sas.twig.gamble_extension.class%
         arguments:
             - @twig
-            - @betting_sas.gamble.manager
+            - @betting_sas.gamble_chain
         tags:
             - { name: twig.extension }
             
@@ -21,3 +16,6 @@ services:
         class: %betting_sas.gamble.cart.class%
         arguments:
             - @doctrine_mongodb
+
+    betting_sas.gamble_chain:
+        class: "%betting_sas.gamble_chain.class%"

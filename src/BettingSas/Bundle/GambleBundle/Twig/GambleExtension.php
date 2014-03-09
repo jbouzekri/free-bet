@@ -5,14 +5,14 @@ namespace BettingSas\Bundle\GambleBundle\Twig;
 use Twig_Environment as Environment;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
-use BettingSas\Bundle\GambleBundle\Manager\GambleManager;
+use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
 
 class GambleExtension extends \Twig_Extension
 {
     /**
-     * @var \BettingSas\Bundle\GambleBundle\Manager\GambleManager
+     * @var \BettingSas\Bundle\GambleBundle\Gamble\GambleChain
      */
-    protected $manager;
+    protected $gambles;
 
     /**
      * @var \Twig_Environment
@@ -24,9 +24,9 @@ class GambleExtension extends \Twig_Extension
      *
      * @param \BettingSas\Bundle\GambleBundle\Manager\GambleManager $manager
      */
-    public function __construct(Environment $twig, GambleManager $manager)
+    public function __construct(Environment $twig, GambleChain $gambles)
     {
-        $this->manager = $manager;
+        $this->gambles = $gambles;
         $this->twig = $twig;
     }
 
@@ -52,7 +52,7 @@ class GambleExtension extends \Twig_Extension
     public function renderGamble(Event $event)
     {
         $html    = "";
-        $gambles = $this->manager->getGambleEntities($event);
+        $gambles = $this->gambles->getGamblesByType($event->getType());
 
         foreach ($gambles as $gamble) {
             $html .= $this->twig->render($gamble->getTemplate(), array(

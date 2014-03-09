@@ -33,9 +33,9 @@ class GambleCart
      *
      * @param \Doctrine\Common\Persistence\ManagerRegistry $manager
      */
-    public function __construct(ManagerRegistry $manager)
+    public function __construct(ManagerRegistry $manager, GambleCartValidator $validator)
     {
-        $this->manager = $manager;;
+        $this->manager = $manager;
     }
 
     /**
@@ -66,6 +66,34 @@ class GambleCart
     protected function getManager()
     {
         return $this->manager->getManager();
+    }
+
+    /**
+     * Get Gamble in cart
+     *
+     * @return array
+     */
+    public function getGambles()
+    {
+        return $this->gambles;
+    }
+
+    /**
+     * Check if there are errors
+     *
+     * @return boolean
+     */
+    public function hasErrors()
+    {
+        return count($this->errors) > 0 || count($this->globalErrors) > 0;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isValid()
+    {
+        return $this->hasErrors();
     }
 
     /**

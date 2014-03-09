@@ -3,6 +3,10 @@
 namespace BettingSas\Bundle\GambleBundle\Manager;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
+use BettingSas\Bundle\GambleBundle\Gamble\GambleInterface;
+use BettingSas\Bundle\GambleBundle\Exception\UnsupportedEventType;
+use BettingSas\Bundle\GambleBundle\Exception\GambleException;
+use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
 
 /**
  * Description of GambleManager
@@ -15,14 +19,14 @@ class GambleManager
      *
      * @var array
      */
-    protected $configuration = array();
+    protected $configuration;
 
     /**
      * Constructor
      *
      * @param array $configuration
      */
-    public function __construct(array $configuration)
+    public function __construct(GambleChain $configuration)
     {
         $this->configuration = $configuration;
     }
@@ -38,7 +42,7 @@ class GambleManager
     {
         $type = $event->getType();
         if (!isset($this->configuration[$type])) {
-            throw new Exception\UnsupportedEventType($type. ' not supported. Try '.implode(', ', array_keys($this->configuration)));
+            throw new UnsupportedEventType($type. ' not supported. Try '.implode(', ', array_keys($this->configuration)));
         }
 
         $gambles = array();
@@ -46,6 +50,9 @@ class GambleManager
         $gambleClasses = $this->configuration[$type];
         foreach ($gambleClasses as $key => $gambleClass) {
             $gamble = new $gambleClass();
+            if (!$gamble instanceof GambleInterface) {
+                throw new GambleException($gambleClass." is not an instance of GambleInterface");
+            }
             $gambles[] = $gamble;
         }
 
