@@ -1,1 +1,5 @@
+<h2>My cart</h2>
 {{ render_cart() }}
+<form action="{{ path('gamble_cart_transform') }}" method="post">
+    <input type="submit" value="Transform" />
+</form>

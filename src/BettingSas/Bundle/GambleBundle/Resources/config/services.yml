@@ -18,6 +18,7 @@ services:
         class: %betting_sas.gamble.cart.class%
         arguments:
             - @doctrine_mongodb
+            - @validator
             - @betting_sas.gamble.cart.persister
 
     betting_sas.gamble_chain:

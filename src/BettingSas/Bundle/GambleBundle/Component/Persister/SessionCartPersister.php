@@ -53,6 +53,20 @@ class SessionCartPersister implements CartPersisterInterface
     public function load(GambleCart $cart)
     {
         $gamble = $this->session->get('cart_gamble', new Gamble());
+
+        // Reload Event in order to authorize persist cascade later in code
+        // TODO : optimize with a single query
+        foreach ($gamble->getBets() as $bet) {
+            $event = $cart->getManager()
+                ->getRepository('BettingSas\Bundle\CompetitionBundle\Document\Event')
+                ->find($bet->getEvent()->getId());
+            if ($event) {
+                $bet->setEvent($event);
+            } else {
+                $gamble->removeBet($bet);
+            }
+        }
+
         $cart->setGamble($gamble);
     }
 }

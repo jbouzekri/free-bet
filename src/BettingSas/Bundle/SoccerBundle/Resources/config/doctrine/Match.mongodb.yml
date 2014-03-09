@@ -1,6 +1,8 @@
 BettingSas\Bundle\SoccerBundle\Document\Match:
     type: document
     fields:
+        id:
+            id: true
         leftTeamScore:
             type: int
             name: left_team_score

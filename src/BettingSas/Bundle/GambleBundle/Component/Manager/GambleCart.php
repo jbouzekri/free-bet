@@ -3,6 +3,7 @@
 namespace BettingSas\Bundle\GambleBundle\Component\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\ValidatorInterface;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Component\Persister\CartPersisterInterface;
@@ -22,6 +23,11 @@ class GambleCart
     protected $manager;
 
     /**
+     * @var \Symfony\Component\Validator\ValidatorInterface
+     */
+    protected $validator;
+
+    /**
      * @var \BettingSas\Bundle\GambleBundle\Component\Persister\CartPersisterInterface
      */
     protected $persister;
@@ -36,9 +42,10 @@ class GambleCart
      *
      * @param \Doctrine\Common\Persistence\ManagerRegistry $manager
      */
-    public function __construct(ManagerRegistry $manager, CartPersisterInterface $persister)
+    public function __construct(ManagerRegistry $manager, ValidatorInterface $validator, CartPersisterInterface $persister)
     {
         $this->manager = $manager;
+        $this->validator = $validator;
         $this->persister = $persister;
         $this->gamble = new Gamble();
     }
@@ -58,7 +65,7 @@ class GambleCart
      * Get Manager
      * @return \Doctrine\Common\Persistence\ManagerRegistry
      */
-    protected function getManager()
+    public function getManager()
     {
         return $this->manager->getManager();
     }
@@ -132,5 +139,31 @@ class GambleCart
                 $this->getGamble()->removeBet($bet);
             }
         }
+    }
+
+    /**
+     * Clear the current gamble
+     */
+    public function clear()
+    {
+        $this->gamble = new Gamble();
+        $this->persist();
+    }
+
+    /**
+     * Transform the gamble
+     * Save it to db
+     */
+    public function transform()
+    {
+        $validation = $this->validator->validate($this->getGamble());
+        if (count($validation)) {
+            throw new \Exception("there is validation error. TODO !!!");
+        }
+
+        $this->getManager()->persist($this->getGamble());
+        $this->getManager()->flush();
+
+        $this->clear();
     }
 }

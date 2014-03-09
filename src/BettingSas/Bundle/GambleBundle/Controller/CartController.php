@@ -58,6 +58,15 @@ class CartController extends Controller
         );
     }
 
+    public function transformAction(Request $request)
+    {
+        $cart = $this->get('betting_sas.gamble.cart');
+        $cart->load();
+        $cart->transform();
+
+        return $this->redirect($this->generateUrl('competition_list'));
+    }
+
     public function viewAction()
     {
         $cart = $this->get('betting_sas.gamble.cart');

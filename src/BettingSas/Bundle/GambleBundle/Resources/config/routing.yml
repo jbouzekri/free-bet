@@ -12,3 +12,8 @@ gamble_cart_view:
     path: /view
     defaults: { _controller: BettingSasGambleBundle:Cart:view }
     methods:  [GET]
+    
+gamble_cart_transform:
+    path: /transform
+    defaults: { _controller: BettingSasGambleBundle:Cart:transform }
+    methods:  [POST]

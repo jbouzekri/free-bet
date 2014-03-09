@@ -1,3 +1,10 @@
+BettingSas\Bundle\GambleBundle\Document\Gamble:
+    properties:
+        bets:
+            - Count:
+                min: 1
+                minMessage: "A gamble must have at least one bet."
+
 BettingSas\Bundle\GambleBundle\Document\Bet:
     properties:
         type:
