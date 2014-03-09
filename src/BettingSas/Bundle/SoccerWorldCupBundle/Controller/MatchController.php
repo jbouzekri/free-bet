@@ -13,47 +13,32 @@ use Symfony\Component\HttpFoundation\Request;
 class MatchController extends Controller
 {
     /**
-     * @var \BettingSas\Bundle\CompetitionBundle\Document\Competition
-     */
-    protected $competition;
-
-    /**
-     * @var \BettingSas\Bundle\SoccerWorldCupBundle\Document\Match
-     */
-    protected $match;
-
-    /**
      * Helper to load competition and match in action
      *
      * @param string $slugCompetition
      * @param string $slugMatch
      */
-    protected function loadCompetitionMatch($slugCompetition, $slugMatch)
+    public function betAction($slugCompetition, $slugMatch)
     {
-        $this->competition = $this->get('betting_sas.competition.manager')
+        $competition = $this->get('betting_sas.competition.manager')
             ->getRepository()
             ->findOneBySlug($slugCompetition);
 
-        $this->match = $this->get('betting_sas.competition.manager')
-            ->getEventRepository($this->competition)
-            ->findOneBy(array('slug'=>$slugMatch, 'competition.id'=>$this->competition->getId()));
+        $match = $this->get('betting_sas.competition.manager')
+            ->getEventRepository()
+            ->findOneBy(array('slug'=>$slugMatch, 'competition.id'=>$competition->getId()));
 
-        if (!$this->competition) {
+        if (!$competition) {
             return $this->createNotFoundException('Competition '.$slugCompetition.' does not exists');
         }
 
-        if (!$this->match) {
+        if (!$match) {
             return $this->createNotFoundException('Match '.$slugMatch.' does not exists');
         }
-    }
-
-    public function betAction($slugCompetition, $slugMatch)
-    {
-        $this->loadCompetitionMatch($slugCompetition, $slugMatch);
 
         return $this->render('BettingSasSoccerWorldCupBundle:Match:bet.html.twig', array(
-            'match' => $this->match,
-            'competition' => $this->competition
+            'match' => $match,
+            'competition' => $competition
         ));
     }
 }
