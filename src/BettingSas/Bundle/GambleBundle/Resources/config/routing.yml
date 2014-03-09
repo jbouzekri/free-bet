@@ -1,0 +1,9 @@
+gamble_cart_add_bet:
+    path: /add/{slug}/{eventId}
+    defaults: { _controller: BettingSasGambleBundle:Cart:addBet }
+    methods:  [POST]
+    
+gamble_cart_view:
+    path: /view
+    defaults: { _controller: BettingSasGambleBundle:Cart:view }
+    methods:  [GET]

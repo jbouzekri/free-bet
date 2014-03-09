@@ -1,5 +1,5 @@
-<form action="" method="post">
-    <input type="hidden" name="gamble_type" value="{{ gamble.getName() }}" />
-    <input type="hidden" name="gamble_choice" value="{{ choice }}" />
+<form action="{{ url("gamble_cart_add_bet", {slug: event.competition.slug, eventId: event.id}) }}" method="post">
+    <input type="hidden" name="bet[type]" value="{{ gamble.getName() }}" />
+    <input type="hidden" name="bet[choice]" value="{{ choice }}" />
     <input type="submit" value="{{ label }}" />
 </form>

@@ -1,10 +1,11 @@
 <?php
 
-namespace BettingSas\Bundle\GambleBundle\Manager;
+namespace BettingSas\Bundle\GambleBundle\Component\Manager;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
+use BettingSas\Bundle\GambleBundle\Component\Persister\CartPersisterInterface;
 
 /**
  * Description of GambleCart
@@ -14,14 +15,14 @@ use BettingSas\Bundle\CompetitionBundle\Document\Event;
 class GambleCart
 {
     /**
-     * @var \BettingSas\Bundle\CompetitionBundle\Document\Event
-     */
-    protected $event;
-
-    /**
      * @var \Doctrine\Common\Persistence\ManagerRegistry
      */
     protected $manager;
+
+    /**
+     * @var \BettingSas\Bundle\GambleBundle\Component\Persister\CartPersisterInterface
+     */
+    protected $persister;
 
     /**
      * @var array
@@ -33,19 +34,10 @@ class GambleCart
      *
      * @param \Doctrine\Common\Persistence\ManagerRegistry $manager
      */
-    public function __construct(ManagerRegistry $manager, GambleCartValidator $validator)
+    public function __construct(ManagerRegistry $manager, CartPersisterInterface $persister)
     {
         $this->manager = $manager;
-    }
-
-    /**
-     * Set the event
-     *
-     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
-     */
-    public function setEvent(Event $event)
-    {
-        $this->event = $event;
+        $this->persister = $persister;
     }
 
     /**
@@ -54,9 +46,9 @@ class GambleCart
      * @param type $type
      * @param type $choice
      */
-    public function addGamble($type, $choice)
+    public function addGamble(Event $event, $type, $choice)
     {
-        $this->gambles[$type] = $choice;
+        $this->gambles[$event->getCompetition()->getSlug()][$event->getId()][$type] = $choice;
     }
 
     /**
@@ -76,6 +68,16 @@ class GambleCart
     public function getGambles()
     {
         return $this->gambles;
+    }
+
+    /**
+     * Set gambles
+     *
+     * @param array $gambles
+     */
+    public function setGambles(array $gambles)
+    {
+        $this->gambles = $gambles;
     }
 
     /**

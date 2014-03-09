@@ -5,6 +5,7 @@
             <li>
                 {% include 'BettingSasGambleBundle::_gamble_choice.html.twig' with {
                     'gamble': gamble,
+                    'event': event,
                     'label': gamble.getChoiceLabel(event, choice),
                     'choice': choice
                 } %}

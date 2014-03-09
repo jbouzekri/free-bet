@@ -2,6 +2,8 @@
 
 namespace BettingSas\Bundle\GambleBundle\Manager;
 
+use BettingSas\Bundle\GambleBundle\Component\Manager\GambleCart;
+
 /**
  * Description of GambleCartValidator
  *
@@ -27,7 +29,7 @@ class GambleCartValidator
     /**
      * Validate a cart
      *
-     * @param \BettingSas\Bundle\GambleBundle\Manager\GambleCart $cart
+     * @param \BettingSas\Bundle\GambleBundle\Component\Manager\GambleCart $cart
      *
      * @return boolean
      */
