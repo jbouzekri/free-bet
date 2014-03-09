@@ -5,3 +5,8 @@ event_routes:
 # Match routes
 match_routes:
     resource: "@BettingSasSoccerWorldCupBundle/Resources/config/routing.yml"
+    
+# Cart routes
+cart_routes:
+    resource: "@BettingSasGambleBundle/Resources/config/routing.yml"
+    prefix: /cart
