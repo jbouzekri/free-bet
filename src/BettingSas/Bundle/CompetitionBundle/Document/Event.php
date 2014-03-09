@@ -212,4 +212,6 @@ abstract class Event
     {
         return $this->competition;
     }
+
+    public abstract function getFormTypeGuesserService();
 }

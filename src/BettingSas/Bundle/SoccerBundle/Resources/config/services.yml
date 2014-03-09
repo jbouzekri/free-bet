@@ -1,6 +1,10 @@
 parameters:
     betting_sas.soccer.tools.class: BettingSas\Bundle\SoccerBundle\Services\Tools
+    betting_sas.soccer.form_type_guesser.class: BettingSas\Bundle\SoccerBundle\Form\Guesser\FormTypeGuesser
 
 services:
     betting_sas.soccer.tools:
         class: %betting_sas.soccer.tools.class%
+
+    betting_sas.soccer.form_type_guesser:
+        class: %betting_sas.soccer.form_type_guesser.class%

@@ -1,6 +1,5 @@
 parameters:
     betting_sas.competition.manager.class: BettingSas\Bundle\CompetitionBundle\Manager\CompetitionManager
-    betting_sas.event_form_type_guesser_chain.class: BettingSas\Bundle\CompetitionBundle\Form\Guesser\EventFormTypeGuesser
 
 services:
     betting_sas.event_inheritance.listener:
@@ -15,9 +14,6 @@ services:
         arguments:
             - @doctrine_mongodb
             - %betting_sas.event_mapping%
-
-    betting_sas.event_form_type_guesser_chain:
-        class: "%betting_sas.event_form_type_guesser_chain.class%"
 
     sensio_framework_extra.converter.doctrine.odm:
         class: Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter

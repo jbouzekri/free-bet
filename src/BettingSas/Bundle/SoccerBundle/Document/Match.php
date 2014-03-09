@@ -319,4 +319,9 @@ class Match extends Event
     {
         return !is_null($this->getLeftTeamScore()) || !is_null($this->getRightTeamScore());
     }
+
+    public function getFormTypeGuesserService() {
+        return 'betting_sas.soccer.form_type_guesser';
+    }
+
 }

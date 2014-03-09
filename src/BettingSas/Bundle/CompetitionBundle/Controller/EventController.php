@@ -26,7 +26,7 @@ class EventController extends Controller
     public function editAction(Request $request, Event $event)
     {
         $form = $this->createForm(
-            $this->get('betting_sas.event_form_type_guesser_chain')->getFormType($event),
+            $this->get($event->getFormTypeGuesserService())->getFormType($event),
             $event
         );
 

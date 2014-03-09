@@ -14,9 +14,4 @@ use BettingSas\Bundle\CompetitionBundle\DependencyInjection\Compiler\EventFormTy
  */
 class BettingSasCompetitionBundle extends Bundle
 {
-    public function build(ContainerBuilder $container)
-    {
-        parent::build($container);
-        $container->addCompilerPass(new EventFormTypeGuesserCompilerPass());
-    }
 }
