@@ -11,6 +11,8 @@ interface GambleInterface
 {
     public function getTemplate();
 
+    public function getCartTemplate();
+
     public function getName();
 }
 

@@ -111,8 +111,26 @@ class GambleCart
         $this->persister->persist($this->getGamble());
     }
 
+    /**
+     * Load from source
+     */
     public function load()
     {
         $this->persister->load($this);
+    }
+
+    /**
+     * Remove bet
+     *
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
+     * @param string $type
+     */
+    public function removeBetByType(Event $event, $type = null)
+    {
+        foreach ($this->getGamble()->getBets() as $bet) {
+            if ($bet->getType() == $type) {
+                $this->getGamble()->removeBet($bet);
+            }
+        }
     }
 }

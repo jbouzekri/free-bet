@@ -3,6 +3,7 @@
 namespace BettingSas\Bundle\GambleBundle\Gamble;
 
 use BettingSas\Bundle\CompetitionBundle\Exception\UnsupportedEventType;
+use BettingSas\Bundle\GambleBundle\Exception\UnsupportedGambleType;
 
 class GambleChain
 {
@@ -34,6 +35,36 @@ class GambleChain
 
         return $this->gambles[$type];
     }
+
+    /**
+     * Get all gambles configured for a type
+     *
+     * @param string $competitionType
+     * @param string $gambleType
+     * @return array
+     * @throws UnsupportedEventType
+     */
+    public function getGambleByTypeAndEventType($eventType, $gambleType)
+    {
+        if (!isset($this->gambles[$eventType])) {
+            throw new UnsupportedEventType(
+                $eventType. ' not supported. Try '.implode(', ', array_keys($this->gambles))
+            );
+        }
+
+        $availableType = array();
+        foreach ($this->gambles[$eventType] as $gamble) {
+            $availableType[] = $gamble->getName();
+            if ($gamble->getName() == $gambleType) {
+                return $gamble;
+            }
+        }
+
+        throw new UnsupportedGambleType(
+            $gambleType. ' not supported for event '.$eventType.'. Try '.implode(', ', $availableType)
+        );
+    }
+
     /**
      * Get gambles
      *

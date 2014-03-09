@@ -6,6 +6,7 @@ use Twig_Environment as Environment;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
+use BettingSas\Bundle\GambleBundle\Component\Manager\GambleCart;
 
 class GambleExtension extends \Twig_Extension
 {
@@ -20,14 +21,20 @@ class GambleExtension extends \Twig_Extension
     protected $twig;
 
     /**
+     * @var \BettingSas\Bundle\GambleBundle\Component\Manager\GambleCart
+     */
+    protected $cart;
+
+    /**
      * Constructor
      *
      * @param \BettingSas\Bundle\GambleBundle\Manager\GambleManager $manager
      */
-    public function __construct(Environment $twig, GambleChain $gambles)
+    public function __construct(Environment $twig, GambleChain $gambles, GambleCart $cart)
     {
         $this->gambles = $gambles;
         $this->twig = $twig;
+        $this->cart = $cart;
     }
 
     /**
@@ -39,6 +46,7 @@ class GambleExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction('render_gamble', array($this, 'renderGamble'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('render_cart', array($this, 'renderCart'), array('is_safe' => array('html'))),
         );
     }
 
@@ -61,6 +69,24 @@ class GambleExtension extends \Twig_Extension
             ));
         }
 
+        return $html;
+    }
+
+    /**
+     * render_cart twig function
+     */
+    public function renderCart()
+    {
+        $html = "";
+
+        $bets = $this->cart->getGamble()->getBets();
+        foreach ($bets as $bet) {
+            $gamble = $this->gambles->getGambleByTypeAndEventType($bet->getEvent()->getType(), $bet->getType());
+            $html .= $this->twig->render($gamble->getCartTemplate(), array(
+                'bet' => $bet,
+                'gamble' => $gamble
+            ));
+        }
         return $html;
     }
 

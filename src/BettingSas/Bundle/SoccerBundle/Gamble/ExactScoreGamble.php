@@ -56,4 +56,10 @@ class ExactScoreGamble implements GambleInterface
     {
         return 'BettingSasSoccerBundle:Gamble:exact_score.html.twig';
     }
+
+    public function getCartTemplate()
+    {
+        return 'BettingSasSoccerBundle:Gamble:Cart/simple.html.twig';
+    }
+
 }

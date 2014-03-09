@@ -213,5 +213,20 @@ abstract class Event
         return $this->competition;
     }
 
+    /**
+     * Display the name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->getLeftName().' - '.$this->getRightName();
+    }
+
+    /**
+     * Return the id of a service used to guess the form type of the event
+     *
+     * @return string
+     */
     public abstract function getFormTypeGuesserService();
 }

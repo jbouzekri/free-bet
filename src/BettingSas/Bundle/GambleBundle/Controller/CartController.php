@@ -41,6 +41,23 @@ class CartController extends Controller
         }
     }
 
+    public function removeBetAction(Request $request, Event $event)
+    {
+        $cart = $this->get('betting_sas.gamble.cart');
+        $cart->load();
+        $cart->removeBetByType($event, $request->request->get('bet_type', null));
+        $cart->persist();
+
+        return $this->redirect(
+            $this->generateUrl(
+                'competition_detail',
+                array(
+                    'slug' => $event->getCompetition()->getSlug()
+                )
+            )
+        );
+    }
+
     public function viewAction()
     {
         $cart = $this->get('betting_sas.gamble.cart');

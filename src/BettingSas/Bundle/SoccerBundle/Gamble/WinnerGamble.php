@@ -81,4 +81,13 @@ class WinnerGamble implements GambleInterface
     {
         return 'winner';
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCartTemplate()
+    {
+        return 'BettingSasSoccerBundle:Gamble:Cart/winner.html.twig';
+    }
+
 }

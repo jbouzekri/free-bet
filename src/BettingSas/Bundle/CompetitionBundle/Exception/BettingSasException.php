@@ -1,11 +1,11 @@
 <?php
 
-namespace BettingSas\Bundle\GambleBundle\Exception;
+namespace BettingSas\Bundle\CompetitionBundle\Exception;
 
 /**
  * Description of UnsupportedCompetitionType
  *
  * @author jobou
  */
-class GambleException extends \Exception {
+class BettingSasException extends \Exception {
 }

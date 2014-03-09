@@ -10,6 +10,7 @@ services:
         arguments:
             - @twig
             - @betting_sas.gamble_chain
+            - @betting_sas.gamble.cart
         tags:
             - { name: twig.extension }
             
