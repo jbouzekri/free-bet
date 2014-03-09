@@ -1,17 +1,10 @@
 BettingSas\Bundle\GambleBundle\Document\Bet:
-    type: document
-    collection: bets
+    type: embeddedDocument
     fields:
-        id:
-            id: true
         type:
             type: string
         choice:
             type: string
-        winner:
-            type: boolean
-        point:
-            type: int
     referenceOne:
         event:
             targetDocument: BettingSas\Bundle\CompetitionBundle\Document\Event

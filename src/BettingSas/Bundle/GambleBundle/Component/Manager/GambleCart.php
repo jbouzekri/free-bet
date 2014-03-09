@@ -6,6 +6,8 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Component\Persister\CartPersisterInterface;
+use BettingSas\Bundle\GambleBundle\Document\Gamble;
+use BettingSas\Bundle\GambleBundle\Document\Bet;
 
 /**
  * Description of GambleCart
@@ -25,9 +27,9 @@ class GambleCart
     protected $persister;
 
     /**
-     * @var array
+     * @var \BettingSas\Bundle\GambleBundle\Document\Gamble
      */
-    protected $gambles = array();
+    protected $gamble;
 
     /**
      * Constructor
@@ -38,6 +40,7 @@ class GambleCart
     {
         $this->manager = $manager;
         $this->persister = $persister;
+        $this->gamble = new Gamble();
     }
 
     /**
@@ -46,9 +49,9 @@ class GambleCart
      * @param type $type
      * @param type $choice
      */
-    public function addGamble(Event $event, $type, $choice)
+    public function addBet(Bet $bet)
     {
-        $this->gambles[$event->getCompetition()->getSlug()][$event->getId()][$type] = $choice;
+        $this->gamble->addBet($bet);
     }
 
     /**
@@ -63,21 +66,21 @@ class GambleCart
     /**
      * Get Gamble in cart
      *
-     * @return array
+     * @return \BettingSas\Bundle\GambleBundle\Document\Gamble
      */
-    public function getGambles()
+    public function getGamble()
     {
-        return $this->gambles;
+        return $this->gamble;
     }
 
     /**
-     * Set gambles
+     * Set gamble (override)
      *
-     * @param array $gambles
+     * @param \BettingSas\Bundle\GambleBundle\Document\Gamble $gambles
      */
-    public function setGambles(array $gambles)
+    public function setGamble(Gamble $gamble)
     {
-        $this->gambles = $gambles;
+        $this->gamble = $gamble;
     }
 
     /**
@@ -105,23 +108,11 @@ class GambleCart
      */
     public function persist()
     {
-        if (count($this->gambles) == 0) {
-            return;
-        }
+        $this->persister->persist($this->getGamble());
+    }
 
-        $this->getManager()
-            ->getRepository('BettingSasGambleBundle:Bet')
-            ->removeBetOnEvent($this->event);
-
-        foreach ($this->gambles as $type => $choice) {
-            $bet = new \BettingSas\Bundle\GambleBundle\Document\Bet();
-            $bet->setType($type);
-            $bet->setChoice($choice);
-            $bet->setEvent($this->event);
-
-            $this->getManager()->persist($bet);
-        }
-
-        $this->getManager()->flush();
+    public function load()
+    {
+        $this->persister->load($this);
     }
 }

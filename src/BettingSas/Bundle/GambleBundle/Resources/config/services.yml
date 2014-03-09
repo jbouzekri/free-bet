@@ -2,6 +2,7 @@ parameters:
     betting_sas.twig.gamble_extension.class: BettingSas\Bundle\GambleBundle\Twig\GambleExtension
     betting_sas.gamble.cart.class: BettingSas\Bundle\GambleBundle\Component\Manager\GambleCart
     betting_sas.gamble_chain.class: BettingSas\Bundle\GambleBundle\Gamble\GambleChain
+    betting_sas.gamble.cart.persister.class: BettingSas\Bundle\GambleBundle\Component\Persister\SessionCartPersister
 
 services:
     betting_sas.twig.gamble_extension:
@@ -16,6 +17,12 @@ services:
         class: %betting_sas.gamble.cart.class%
         arguments:
             - @doctrine_mongodb
+            - @betting_sas.gamble.cart.persister
 
     betting_sas.gamble_chain:
         class: "%betting_sas.gamble_chain.class%"
+        
+    betting_sas.gamble.cart.persister:
+        class: %betting_sas.gamble.cart.persister.class%
+        arguments:
+            - @session

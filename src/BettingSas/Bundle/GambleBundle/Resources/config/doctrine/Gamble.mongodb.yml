@@ -1,0 +1,13 @@
+BettingSas\Bundle\GambleBundle\Document\Gamble:
+    type: document
+    collection: gambles
+    fields:
+        id:
+            id: true
+        winner:
+            type: boolean
+        point:
+            type: int
+    embedMany:
+        bets:
+            targetDocument: BettingSas\Bundle\GambleBundle\Document\Bet

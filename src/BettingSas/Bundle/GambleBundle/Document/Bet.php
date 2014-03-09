@@ -10,11 +10,6 @@ namespace BettingSas\Bundle\GambleBundle\Document;
 class Bet
 {
     /**
-     * @var MongoId $id
-     */
-    protected $id;
-
-    /**
      * @var string $type
      */
     protected $type;
@@ -25,29 +20,9 @@ class Bet
     protected $choice;
 
     /**
-     * @var boolean $winner
-     */
-    protected $winner;
-
-    /**
-     * @var int $point
-     */
-    protected $point;
-
-    /**
      * @var BettingSas\Bundle\CompetitionBundle\Document\Event
      */
     protected $event;
-
-    /**
-     * Get id
-     *
-     * @return id $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set type
@@ -72,47 +47,25 @@ class Bet
     }
 
     /**
-     * Set winner
+     * Set choice
      *
-     * @param boolean $winner
+     * @param string $choice
      * @return self
      */
-    public function setWinner($winner)
+    public function setChoice($choice)
     {
-        $this->winner = $winner;
+        $this->choice = $choice;
         return $this;
     }
 
     /**
-     * Get winner
+     * Get choice
      *
-     * @return boolean $winner
+     * @return string $choice
      */
-    public function getWinner()
+    public function getChoice()
     {
-        return $this->winner;
-    }
-
-    /**
-     * Set point
-     *
-     * @param int $point
-     * @return self
-     */
-    public function setPoint($point)
-    {
-        $this->point = $point;
-        return $this;
-    }
-
-    /**
-     * Get point
-     *
-     * @return int $point
-     */
-    public function getPoint()
-    {
-        return $this->point;
+        return $this->choice;
     }
 
     /**
@@ -135,27 +88,5 @@ class Bet
     public function getEvent()
     {
         return $this->event;
-    }
-
-    /**
-     * Set choice
-     *
-     * @param string $choice
-     * @return self
-     */
-    public function setChoice($choice)
-    {
-        $this->choice = $choice;
-        return $this;
-    }
-
-    /**
-     * Get choice
-     *
-     * @return string $choice
-     */
-    public function getChoice()
-    {
-        return $this->choice;
     }
 }

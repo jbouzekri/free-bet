@@ -4,6 +4,7 @@ namespace BettingSas\Bundle\GambleBundle\Component\Persister;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
+use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\GambleBundle\Component\Manager\GambleCart;
 
 /**
@@ -41,14 +42,17 @@ class SessionCartPersister implements CartPersisterInterface
     /**
      * {@inheritDoc}
      */
-    public function persist(GambleCart $cart)
+    public function persist(Gamble $gamble)
     {
-        $this->session->set('cart_gambles', $cart->getGambles());
+        $this->session->set('cart_gamble', $gamble);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function load(GambleCart $cart)
     {
-        $gambles = $this->session->get('cart_gambles', array());
-        $cart->setGambles($gambles);
+        $gamble = $this->session->get('cart_gamble', new Gamble());
+        $cart->setGamble($gamble);
     }
 }

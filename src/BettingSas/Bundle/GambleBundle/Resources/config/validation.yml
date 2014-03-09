@@ -1,0 +1,8 @@
+BettingSas\Bundle\GambleBundle\Document\Bet:
+    properties:
+        type:
+            - NotBlank: ~
+        choice:
+            - NotBlank: ~
+        event:
+            - NotBlank: ~

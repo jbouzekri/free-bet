@@ -1,5 +1,5 @@
 gamble_cart_add_bet:
-    path: /add/{slug}/{eventId}
+    path: /add/{id}
     defaults: { _controller: BettingSasGambleBundle:Cart:addBet }
     methods:  [POST]
     
