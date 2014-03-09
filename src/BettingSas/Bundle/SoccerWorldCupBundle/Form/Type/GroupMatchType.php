@@ -21,7 +21,7 @@ class GroupMatchType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BettingSas\Bundle\SoccerWorldCupBundle\Document\Match',
+            'data_class' => 'BettingSas\Bundle\SoccerBundle\Document\Match',
         ));
     }
 

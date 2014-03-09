@@ -2,13 +2,19 @@ parameters:
     betting_sas.competition.manager.class: BettingSas\Bundle\CompetitionBundle\Manager\CompetitionManager
 
 services:
+    betting_sas.event_inheritance.listener:
+        class: BettingSas\Bundle\CompetitionBundle\Document\EventListener\EventInheritanceListener
+        arguments:
+            - %betting_sas.event_mapping%
+        tags:
+            - { name: doctrine_mongodb.odm.event_listener, event: loadClassMetadata }
+
     betting_sas.competition.manager:
         class: %betting_sas.competition.manager.class%
         arguments:
             - @doctrine_mongodb
-            - %betting_sas.competition.event_mapping%
-            
-            
+            - %betting_sas.event_mapping%
+
     sensio_framework_extra.converter.doctrine.odm:
         class: Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter
         arguments: [@doctrine_mongodb]

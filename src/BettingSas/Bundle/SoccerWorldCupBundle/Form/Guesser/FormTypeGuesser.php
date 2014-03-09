@@ -4,7 +4,7 @@ namespace BettingSas\Bundle\SoccerWorldCupBundle\Form\Guesser;
 
 use BettingSas\Bundle\SoccerWorldCupBundle\Form\Type\GroupMatchType;
 use BettingSas\Bundle\SoccerWorldCupBundle\Form\Type\FinalMatchType;
-use BettingSas\Bundle\SoccerWorldCupBundle\Document\Match;
+use BettingSas\Bundle\SoccerBundle\Document\Match;
 
 /**
  * Description of FormTypeGuesser

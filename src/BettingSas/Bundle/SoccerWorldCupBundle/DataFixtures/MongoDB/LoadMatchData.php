@@ -7,7 +7,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 
-use BettingSas\Bundle\SoccerWorldCupBundle\Document\Match;
+use BettingSas\Bundle\SoccerBundle\Document\Match;
 
 /**
  * Description of LoadMatchData

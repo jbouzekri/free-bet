@@ -54,20 +54,6 @@ class CompetitionManager
     }
 
     /**
-     * Get all event of a competition
-     *
-     * @param \BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
-     *
-     * @return array
-     */
-    public function findAllEvents(Competition $competition)
-    {
-        return $this
-            ->getEventRepository($competition)
-            ->findAll();
-    }
-
-    /**
      * Get the repository for the event
      *
      * @param \BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
@@ -76,15 +62,11 @@ class CompetitionManager
      *
      * @throws Exception\UnsupportedCompetitionType
      */
-    public function getEventRepository(Competition $competition)
+    public function getEventRepository()
     {
-        if (!isset($this->eventMapping[$competition->getType()])) {
-            throw new Exception\UnsupportedCompetitionType($competition->getType(). ' not supported. Try '.implode(', ', array_keys($this->eventMapping)));
-        }
-
         return $this
             ->manager
             ->getManager()
-            ->getRepository($this->eventMapping[$competition->getType()]);
+            ->getRepository('BettingSas\Bundle\CompetitionBundle\Document\Event');
     }
 }

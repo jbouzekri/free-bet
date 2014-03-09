@@ -27,7 +27,9 @@ class CompetitionController extends Controller
     {
         $type = \Doctrine\Common\Util\Inflector::classify($competition->getType());
 
-        $events = $this->get('betting_sas.competition.manager')->findAllEvents($competition);
+        $events = $this->get('betting_sas.competition.manager')
+            ->getEventRepository()
+            ->findBy(array('competition.id'=>$competition->getId()));
 
         return $this->render('BettingSas'.$type.'Bundle::view.html.twig', array(
             'competition' => $competition,

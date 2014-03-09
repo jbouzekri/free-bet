@@ -1,5 +1,5 @@
 BettingSas\Bundle\SoccerBundle\Document\Match:
-    type: mappedSuperclass
+    type: document
     fields:
         leftTeamScore:
             type: int
@@ -7,3 +7,36 @@ BettingSas\Bundle\SoccerBundle\Document\Match:
         rightTeamScore:
             type: int
             name: right_team_score
+        phaseOrder:
+            type: int
+            name: phase_order
+        phase:
+            type: string
+        group:
+            type: string
+        leftTeamAfterExtendedTimeScore:
+            type: int
+            name: left_team_after_extended_time_score
+        rightTeamAfterExtendedTimeScore:
+            type: int
+            name: right_team_after_extended_time_score
+        leftTeamPenaltyScore:
+            type: int
+            name: left_team_penalty_score
+        rightTeamPenaltyScore:
+            type: int
+            name: right_team_penalty_score
+        slug:
+            index: true
+            type: string
+            gedmo:
+                slug:
+                    separator: -
+                    style: lower
+                    fields:
+                        - phase
+                        - leftName
+                        - rightName
+    referenceOne:
+        competition:
+            targetDocument: BettingSas\Bundle\CompetitionBundle\Document\Competition

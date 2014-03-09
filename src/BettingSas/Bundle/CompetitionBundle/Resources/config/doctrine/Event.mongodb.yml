@@ -1,10 +1,11 @@
 BettingSas\Bundle\CompetitionBundle\Document\Event:
-    type: mappedSuperclass
+    type: document
+    collection: events
+    inheritanceType: SINGLE_COLLECTION
+    discriminatorField: type
     fields:
         id:
             id:  true
-        type:
-            type: string
         leftName:
             type: string
             name: left_name

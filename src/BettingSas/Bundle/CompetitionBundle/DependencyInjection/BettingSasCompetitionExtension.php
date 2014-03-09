@@ -28,11 +28,6 @@ class BettingSasCompetitionExtension extends Extension
 
     public function loadConfiguration(array $configs, ContainerBuilder $container)
     {
-        $competitionsEventTypes = array();
-        foreach ($configs['competitions'] as $competition) {
-            $competitionsEventTypes[$competition['type']] = $competition['event'];
-        }
-
-        $container->setParameter('betting_sas.competition.event_mapping', $competitionsEventTypes);
+        $container->setParameter('betting_sas.event_mapping', $configs['mapping_events']);
     }
 }

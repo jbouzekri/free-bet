@@ -19,13 +19,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->arrayNode('competitions')
-                    ->useAttributeAsKey('service')
-                    ->prototype('array')
-                        ->children()
-                            ->scalarNode('type')->isRequired()->end()
-                            ->scalarNode('event')->isRequired()->end()
-                        ->end()
+                ->arrayNode('mapping_events')
+                    ->useAttributeAsKey('name')
+                    ->prototype('scalar')
                     ->end()
                 ->end()
             ->end()

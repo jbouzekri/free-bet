@@ -84,7 +84,5 @@ swiftmailer:
     spool:     { type: memory }
 
 betting_sas_competition:
-    competitions:
-        world_soccer_cup:
-            type: soccer-world-cup
-            event: BettingSas\Bundle\SoccerWorldCupBundle\Document\Match
+    mapping_events:
+        soccer: BettingSas\Bundle\SoccerBundle\Document\Match
