@@ -1,4 +1,13 @@
 <div id="gamble-{{ gamble.getName }}">
-    <h3>{{ ('gamble_'~gamble.getName)|trans }} </h3>
-    
+    <h3>{{ ('gamble_'~gamble.getName)|trans({},'gamble') }} </h3>
+    {% for choice in gamble.getChoices %}
+        <li>
+            {% include 'BettingSasGambleBundle::_gamble_choice.html.twig' with {
+                'gamble': gamble,
+                'event': event,
+                'label': choice,
+                'choice': choice
+            } %}
+        </li>
+    {% endfor %}
 </div>

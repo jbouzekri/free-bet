@@ -18,7 +18,7 @@ class CompetitionController extends Controller
             ->getRepository()
             ->findAllOrderedByDate();
 
-        return $this->render('BettingSasCompetitionBundle::list.html.twig', array(
+        return $this->render('BettingSasCompetitionBundle:Competition:list.html.twig', array(
             'competitions' => $competitions
         ));
     }

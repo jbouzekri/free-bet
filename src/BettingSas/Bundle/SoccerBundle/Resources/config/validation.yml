@@ -1,4 +1,4 @@
-BettingSas\Bundle\SoccerWorldCupBundle\Document\Match:
+BettingSas\Bundle\SoccerBundle\Document\Match:
     properties:
         leftTeamScore:
             - Range:

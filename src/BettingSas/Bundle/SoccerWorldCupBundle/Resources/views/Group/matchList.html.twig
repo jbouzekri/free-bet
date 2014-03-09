@@ -5,7 +5,7 @@
         <li>
             {{ event.date|date('Y-m-d H:i:s') }} : 
             {{ event.leftName }} {% include 'BettingSasSoccerWorldCupBundle:Match:_score.html.twig' with {match: event} %} {{ event.rightName }}
-            <a href="{{ url('match_edit', {slugCompetition: event.competition.slug, slugMatch: event.slug}) }}">
+            <a href="{{ url('event_set_result', {id: event.id}) }}">
                 {{ 'set_result'|trans }}
             </a>
             <a href="{{ url('match_bet', {slugCompetition: event.competition.slug, slugMatch: event.slug}) }}">

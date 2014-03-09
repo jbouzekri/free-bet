@@ -59,8 +59,6 @@ class CompetitionManager
      * @param \BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
      *
      * @return \Doctrine\Common\Persistence\ObjectRepository
-     *
-     * @throws Exception\UnsupportedCompetitionType
      */
     public function getEventRepository()
     {

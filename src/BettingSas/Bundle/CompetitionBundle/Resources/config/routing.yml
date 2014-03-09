@@ -7,3 +7,8 @@ competition_list:
     path: /
     defaults: { _controller: BettingSasCompetitionBundle:Competition:list }
     methods:  [GET]
+
+event_set_result:
+    path: /event/{id}/edit
+    defaults: { _controller: BettingSasCompetitionBundle:Event:edit }
+    methods:  [GET,POST]
