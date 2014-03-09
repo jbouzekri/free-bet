@@ -2,7 +2,7 @@
 
 namespace BettingSas\Bundle\GambleBundle\Gamble;
 
-use BettingSas\Bundle\GambleBundle\Exception\UnsupportedEventType;
+use BettingSas\Bundle\CompetitionBundle\Exception\UnsupportedEventType;
 
 class GambleChain
 {

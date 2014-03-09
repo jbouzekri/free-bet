@@ -1,6 +1,0 @@
-parameters:
-    betting_sas.soccer.match.form_type.guesser.class: BettingSas\Bundle\SoccerWorldCupBundle\Form\Guesser\FormTypeGuesser
-
-services:
-    betting_sas.soccer.match.form_type.guesser:
-        class: %betting_sas.soccer.match.form_type.guesser.class%

@@ -1,0 +1,10 @@
+parameters:
+    betting_sas.gamble.soccer.winner.class: BettingSas\Bundle\SoccerBundle\Gamble\WinnerGamble
+    betting_sas.gamble.soccer.exact_score.class: BettingSas\Bundle\SoccerBundle\Gamble\ExactScoreGamble
+    betting_sas.soccer.event_form_type_guesser_chain.class: BettingSas\Bundle\SoccerBundle\Form\Guesser\FormTypeGuesser
+
+services:
+    betting_sas.soccer.event_form_type_guesser_chain:
+        class: %betting_sas.soccer.event_form_type_guesser_chain.class%
+        tags:
+            -  { name: betting_sas.event_form_type_guesser, type: soccer }

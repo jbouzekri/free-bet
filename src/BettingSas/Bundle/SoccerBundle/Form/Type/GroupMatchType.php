@@ -1,6 +1,6 @@
 <?php
 
-namespace BettingSas\Bundle\SoccerWorldCupBundle\Form\Type;
+namespace BettingSas\Bundle\SoccerBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

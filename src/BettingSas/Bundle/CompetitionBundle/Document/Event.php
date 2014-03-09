@@ -7,7 +7,7 @@ namespace BettingSas\Bundle\CompetitionBundle\Document;
  *
  * @author jobou
  */
-class Event
+abstract class Event
 {
     /**
      * @var MongoId $id

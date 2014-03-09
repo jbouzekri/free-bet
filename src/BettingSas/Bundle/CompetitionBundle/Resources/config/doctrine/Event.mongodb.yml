@@ -1,5 +1,5 @@
 BettingSas\Bundle\CompetitionBundle\Document\Event:
-    type: document
+    type: mappedSuperClass
     collection: events
     inheritanceType: SINGLE_COLLECTION
     discriminatorField: type
