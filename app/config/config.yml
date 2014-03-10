@@ -74,6 +74,7 @@ stof_doctrine_extensions:
     mongodb:
         default: 
             sluggable: true
+            timestampable: true
 
 # Swiftmailer Configuration
 swiftmailer:
