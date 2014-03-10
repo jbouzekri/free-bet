@@ -8,6 +8,18 @@ BettingSas\Bundle\GambleBundle\Document\Gamble:
             type: boolean
         point:
             type: int
+        processedDate:
+            type: date
+        created:
+            type: date
+            gedmo:
+              timestampable:
+                on: create
+        updated:
+            type: date
+            gedmo:
+              timestampable:
+                on: update
     embedMany:
         bets:
             targetDocument: BettingSas\Bundle\GambleBundle\Document\Bet

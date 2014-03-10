@@ -19,6 +19,16 @@ BettingSas\Bundle\CompetitionBundle\Document\Event:
         slug:
             index: true
             type: string
+        created:
+            type: date
+            gedmo:
+              timestampable:
+                on: create
+        updated:
+            type: date
+            gedmo:
+              timestampable:
+                on: update
     referenceOne:
         competition:
             targetDocument: BettingSas\Bundle\CompetitionBundle\Document\Competition

@@ -140,6 +140,7 @@ class ProcessGambleCommand extends ContainerAwareCommand
 
                 // TODO : wining gamble processing
                 $gamble->setWinner(false);
+                $gamble->setProcessedDate(new \DateTime());
 
                 $this->getContainer()->get('doctrine_mongodb')->getManager()->persist($gamble);
                 $this->getContainer()->get('doctrine_mongodb')->getManager()->flush();

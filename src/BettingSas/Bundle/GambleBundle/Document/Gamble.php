@@ -157,4 +157,85 @@ class Gamble
 
         return true;
     }
+    /**
+     * @var date $processedDate
+     */
+    protected $processedDate;
+
+    /**
+     * @var date $created
+     */
+    protected $created;
+
+    /**
+     * @var date $updated
+     */
+    protected $updated;
+
+
+    /**
+     * Set processedDate
+     *
+     * @param date $processedDate
+     * @return self
+     */
+    public function setProcessedDate($processedDate)
+    {
+        $this->processedDate = $processedDate;
+        return $this;
+    }
+
+    /**
+     * Get processedDate
+     *
+     * @return date $processedDate
+     */
+    public function getProcessedDate()
+    {
+        return $this->processedDate;
+    }
+
+    /**
+     * Set created
+     *
+     * @param date $created
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return date $created
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param date $updated
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return date $updated
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
 }

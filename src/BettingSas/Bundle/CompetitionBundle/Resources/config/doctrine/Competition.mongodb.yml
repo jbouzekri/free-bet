@@ -19,3 +19,13 @@ BettingSas\Bundle\CompetitionBundle\Document\Competition:
                     style: lower
                     fields:
                         - name
+        created:
+            type: date
+            gedmo:
+              timestampable:
+                on: create
+        updated:
+            type: date
+            gedmo:
+              timestampable:
+                on: update
