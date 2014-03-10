@@ -120,4 +120,17 @@ class Gamble
     {
         return $this->bets;
     }
+
+    public function findBetsWithEvent(\BettingSas\Bundle\CompetitionBundle\Document\Event $event)
+    {
+        $betsWithEvent = new \Doctrine\Common\Collections\ArrayCollection();
+
+        foreach ($this->getBets() as $bet) {
+            if ($bet->getEvent()->getId() == $event->getId()) {
+                $betsWithEvent->add($bet);
+            }
+        }
+
+        return $betsWithEvent;
+    }
 }

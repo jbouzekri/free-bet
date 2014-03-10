@@ -3,6 +3,7 @@ parameters:
     betting_sas.gamble.cart.class: BettingSas\Bundle\GambleBundle\Component\Manager\GambleCart
     betting_sas.gamble_chain.class: BettingSas\Bundle\GambleBundle\Gamble\GambleChain
     betting_sas.gamble.cart.persister.class: BettingSas\Bundle\GambleBundle\Component\Persister\SessionCartPersister
+    betting_sas.gamble.processor.class: BettingSas\Bundle\GambleBundle\Component\Processor\GambleProcessor
 
 services:
     betting_sas.twig.gamble_extension:
@@ -28,3 +29,6 @@ services:
         class: %betting_sas.gamble.cart.persister.class%
         arguments:
             - @session
+            
+    betting_sas.gamble.processor:
+        class: %betting_sas.gamble.processor.class%

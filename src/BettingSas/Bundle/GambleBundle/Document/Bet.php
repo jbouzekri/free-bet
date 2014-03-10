@@ -89,4 +89,31 @@ class Bet
     {
         return $this->event;
     }
+    /**
+     * @var boolean $winner
+     */
+    protected $winner;
+
+
+    /**
+     * Set winner
+     *
+     * @param boolean $winner
+     * @return self
+     */
+    public function setWinner($winner)
+    {
+        $this->winner = $winner;
+        return $this;
+    }
+
+    /**
+     * Get winner
+     *
+     * @return boolean $winner
+     */
+    public function getWinner()
+    {
+        return $this->winner;
+    }
 }

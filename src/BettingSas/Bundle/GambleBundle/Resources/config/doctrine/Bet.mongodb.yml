@@ -5,6 +5,8 @@ BettingSas\Bundle\GambleBundle\Document\Bet:
             type: string
         choice:
             type: string
+        winner:
+            type: boolean
     referenceOne:
         event:
             targetDocument: BettingSas\Bundle\CompetitionBundle\Document\Event
