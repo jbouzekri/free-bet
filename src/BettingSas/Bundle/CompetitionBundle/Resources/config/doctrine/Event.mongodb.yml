@@ -13,9 +13,9 @@ BettingSas\Bundle\CompetitionBundle\Document\Event:
             type: string
             name: right_name
         processed:
-            type: int
+            type: boolean
         date:
-            type: timestamp
+            type: date
         slug:
             index: true
             type: string
