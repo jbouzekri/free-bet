@@ -4,6 +4,7 @@ namespace BettingSas\Bundle\SoccerBundle\Gamble;
 
 use BettingSas\Bundle\GambleBundle\Gamble\GambleInterface;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
+use BettingSas\Bundle\GambleBundle\Document\Bet;
 
 /**
  * Description of WinnerGamble
@@ -90,4 +91,8 @@ class WinnerGamble implements GambleInterface
         return 'BettingSasSoccerBundle:Gamble:Cart/winner.html.twig';
     }
 
+    public function processBet(Bet $bet)
+    {
+        return false;
+    }
 }

@@ -121,6 +121,13 @@ class Gamble
         return $this->bets;
     }
 
+    /**
+     * Find all bets having an event
+     *
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
     public function findBetsWithEvent(\BettingSas\Bundle\CompetitionBundle\Document\Event $event)
     {
         $betsWithEvent = new \Doctrine\Common\Collections\ArrayCollection();
@@ -132,5 +139,22 @@ class Gamble
         }
 
         return $betsWithEvent;
+    }
+
+    /**
+     * Check if the gamble has ended
+     * All bets have been processed
+     *
+     * @return boolean
+     */
+    public function hasEnded()
+    {
+        foreach ($this->getBets() as $bet) {
+            if (is_null($bet->getWinner())) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

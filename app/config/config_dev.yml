@@ -20,6 +20,9 @@ monolog:
         console:
             type:   console
             bubble: false
+            verbosity_levels:
+                VERBOSITY_NORMAL: INFO
+            channels: gamble_process
         # uncomment to get logging in your browser
         # you may have to allow bigger header sizes in your Web server configuration
         #firephp:

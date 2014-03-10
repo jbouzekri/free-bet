@@ -2,6 +2,8 @@
 
 namespace BettingSas\Bundle\GambleBundle\Gamble;
 
+use BettingSas\Bundle\GambleBundle\Document\Bet;
+
 /**
  * Description of GambleInterface
  *
@@ -14,5 +16,7 @@ interface GambleInterface
     public function getCartTemplate();
 
     public function getName();
+
+    public function processBet(Bet $bet);
 }
 

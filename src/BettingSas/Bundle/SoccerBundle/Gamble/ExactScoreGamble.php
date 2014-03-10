@@ -3,6 +3,7 @@
 namespace BettingSas\Bundle\SoccerBundle\Gamble;
 
 use BettingSas\Bundle\GambleBundle\Gamble\GambleInterface;
+use BettingSas\Bundle\GambleBundle\Document\Bet;
 
 /**
  * Description of ExactScoreGamble
@@ -62,4 +63,8 @@ class ExactScoreGamble implements GambleInterface
         return 'BettingSasSoccerBundle:Gamble:Cart/simple.html.twig';
     }
 
+    public function processBet(Bet $bet)
+    {
+        return false;
+    }
 }
