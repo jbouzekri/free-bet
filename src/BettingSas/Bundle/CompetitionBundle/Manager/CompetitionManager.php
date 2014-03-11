@@ -2,7 +2,7 @@
 
 namespace BettingSas\Bundle\CompetitionBundle\Manager;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Common\Persistence\ObjectManager;
 use BettingSas\Bundle\CompetitionBundle\Document\Competition;
 
 /**
@@ -13,9 +13,9 @@ use BettingSas\Bundle\CompetitionBundle\Document\Competition;
 class CompetitionManager
 {
     /**
-     * @var \Doctrine\Common\Persistence\ManagerRegistry
+     * @var \Doctrine\Common\Persistence\ObjectManager
      */
-    protected $manager;
+    protected $om;
 
     /**
      * @var array
@@ -25,12 +25,11 @@ class CompetitionManager
     /**
      * Constructor
      *
-     * @param \Doctrine\Common\Persistence\ManagerRegistry $manager
+     * @param \Doctrine\Common\Persistence\ObjectManager $om
      */
-    public function __construct(ManagerRegistry $manager, array $eventMapping)
+    public function __construct(ObjectManager $om)
     {
-        $this->manager = $manager;
-        $this->eventMapping = $eventMapping;
+        $this->om = $om;
     }
 
     /**
@@ -40,31 +39,26 @@ class CompetitionManager
      */
     public function getRepository()
     {
-        return $this->manager->getManager()->getRepository('BettingSasCompetitionBundle:Competition');
+        return $this->om->getRepository('BettingSasCompetitionBundle:Competition');
     }
 
     /**
      * Get manager
      *
-     * @return \Doctrine\Common\Persistence\ManagerRegistry
+     * @return \Doctrine\Common\Persistence\ObjectManager
      */
     public function getManager()
     {
-        return $this->manager->getManager();
+        return $this->om;
     }
 
     /**
      * Get the repository for the event
      *
-     * @param \BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
-     *
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
     public function getEventRepository()
     {
-        return $this
-            ->manager
-            ->getManager()
-            ->getRepository('BettingSas\Bundle\CompetitionBundle\Document\Event');
+        return $this->om->getRepository('BettingSas\Bundle\CompetitionBundle\Document\Event');
     }
 }

@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Psr\Log\LoggerInterface;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
+use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * Description of ProcessGambleCommand
@@ -17,6 +18,11 @@ use BettingSas\Bundle\CompetitionBundle\Document\Event;
 class ProcessGambleCommand extends ContainerAwareCommand
 {
     /**
+     * @var \Doctrine\Common\Persistence\ObjectManager
+     */
+    protected $om;
+
+    /**
      * @var \Psr\Log\LoggerInterface
      */
     protected $logger;
@@ -24,10 +30,12 @@ class ProcessGambleCommand extends ContainerAwareCommand
     /**
      * Constructor
      *
+     * @param \Doctrine\Common\Persistence\ObjectManager $om
      * @param \Psr\Log\LoggerInterface $logger
      */
-    public function __construct(LoggerInterface $logger)
+    public function __construct(ObjectManager $om, LoggerInterface $logger)
     {
+        $this->om = $om;
         $this->logger = $logger;
         parent::__construct();
     }
@@ -54,9 +62,7 @@ class ProcessGambleCommand extends ContainerAwareCommand
         $this->getLogger()->info("Start gamble:process command");
 
         // select all events which has ended and has not already been processed
-        $events = $this->getContainer()
-            ->get('doctrine_mongodb')
-            ->getManager()
+        $events = $this->om
             ->getRepository('BettingSasCompetitionBundle:Event')
             ->createQueryBuilder()
             ->field('date')->lt(new \DateTime())
@@ -69,14 +75,15 @@ class ProcessGambleCommand extends ContainerAwareCommand
             // Process all gamble with this event
             $this->processGambleWithBetsOnEvent($event);
 
-            $this->getContainer()->get('doctrine_mongodb')->getManager()->clear('BettingSasGambleBundle:Gamble');
+            // Clear all gamble loaded in doctrine
+            $this->om->clear('BettingSasGambleBundle:Gamble');
 
             // Flag the event has processed
             $event->setProcessed(true);
 
             // TODO mass flush
-            $this->getContainer()->get('doctrine_mongodb')->getManager()->persist($event);
-            $this->getContainer()->get('doctrine_mongodb')->getManager()->flush();
+            $this->om->persist($event);
+            $this->om->flush();
         }
 
         // Process all gambles with at least one wining bet
@@ -97,8 +104,7 @@ class ProcessGambleCommand extends ContainerAwareCommand
         // TODO : remove $id in field
         // use field('bets.event')->equals(\MongoDBRef::create("event", new \MongoId('4e63611cbc347053a2000001'),'database_name')) to ensure index use
         // Select all gambles having the event in its bets
-        $gambles = $this->getContainer()
-            ->get('doctrine_mongodb')
+        $gambles = $this->om
             ->getRepository('BettingSasGambleBundle:Gamble')
             ->createQueryBuilder()
             ->field('bets.event.$id')->equals(new \MongoId($event->getId()))
@@ -106,12 +112,12 @@ class ProcessGambleCommand extends ContainerAwareCommand
             ->execute();
 
         foreach ($gambles as $gamble) {
-            // Foreach gamble, check if the bets are winners
+            // Check if the bets are winners in the processed gamble
             $this->getContainer()->get('betting_sas.gamble.processor')->processGambleWithEvent($gamble, $event);
 
             // TODO mass flush
-            $this->getContainer()->get('doctrine_mongodb')->getManager()->persist($gamble);
-            $this->getContainer()->get('doctrine_mongodb')->getManager()->flush();
+            $this->om->persist($gamble);
+            $this->om->flush();
 
             $this->getLogger()->info("Gamble #".$gamble->getId()." had bet on this event");
         }
@@ -126,8 +132,7 @@ class ProcessGambleCommand extends ContainerAwareCommand
     {
         $this->getLogger()->info("Start process gamble with winning bet");
 
-        $gambles = $this->getContainer()
-            ->get('doctrine_mongodb')
+        $gambles = $this->om
             ->getRepository('BettingSasGambleBundle:Gamble')
             ->createQueryBuilder()
             ->field('winner')->exists(false)

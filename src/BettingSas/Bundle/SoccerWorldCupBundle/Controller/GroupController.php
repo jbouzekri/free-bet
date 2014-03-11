@@ -17,7 +17,7 @@ class GroupController extends Controller
      * @param array $events
      * @param string $group
      *
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function matchListAction(array $events, $group)
     {

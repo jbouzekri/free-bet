@@ -38,6 +38,7 @@ services:
     betting_sas.gamble_process.command:
         class: BettingSas\Bundle\GambleBundle\Command\ProcessGambleCommand
         arguments:
+            - @doctrine_mongodb.odm.default_document_manager
             - @logger
         tags:
             - { name: console.command }
