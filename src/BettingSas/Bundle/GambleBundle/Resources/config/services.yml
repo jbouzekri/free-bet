@@ -18,7 +18,7 @@ services:
     betting_sas.gamble.cart:
         class: %betting_sas.gamble.cart.class%
         arguments:
-            - @doctrine_mongodb
+            - @doctrine_mongodb.odm.default_document_manager
             - @validator
             - @betting_sas.gamble.cart.persister
 

@@ -64,11 +64,7 @@ class ProcessGambleCommand extends ContainerAwareCommand
         // select all events which has ended and has not already been processed
         $events = $this->om
             ->getRepository('BettingSasCompetitionBundle:Event')
-            ->createQueryBuilder()
-            ->field('date')->lt(new \DateTime())
-            ->field('processed')->equals(false)
-            ->getQuery()
-            ->execute();
+            ->findAllEndedAndNotProcessedEvent();
 
         foreach ($events as $event) {
 
@@ -101,15 +97,10 @@ class ProcessGambleCommand extends ContainerAwareCommand
     {
         $this->getLogger()->info("Start process event ".$event->getId());
 
-        // TODO : remove $id in field
-        // use field('bets.event')->equals(\MongoDBRef::create("event", new \MongoId('4e63611cbc347053a2000001'),'database_name')) to ensure index use
         // Select all gambles having the event in its bets
         $gambles = $this->om
             ->getRepository('BettingSasGambleBundle:Gamble')
-            ->createQueryBuilder()
-            ->field('bets.event.$id')->equals(new \MongoId($event->getId()))
-            ->getQuery()
-            ->execute();
+            ->findAllGambleHavingBetsOnEvent($event);
 
         foreach ($gambles as $gamble) {
             // Check if the bets are winners in the processed gamble
@@ -134,11 +125,7 @@ class ProcessGambleCommand extends ContainerAwareCommand
 
         $gambles = $this->om
             ->getRepository('BettingSasGambleBundle:Gamble')
-            ->createQueryBuilder()
-            ->field('winner')->exists(false)
-            ->field('bets.winner')->exists(true)
-            ->getQuery()
-            ->execute();
+            ->findAllGambleWithProcessedBets();
 
         foreach ($gambles as $gamble) {
             if ($gamble->hasEnded()) {
@@ -147,8 +134,8 @@ class ProcessGambleCommand extends ContainerAwareCommand
                 $gamble->setWinner(false);
                 $gamble->setProcessedDate(new \DateTime());
 
-                $this->getContainer()->get('doctrine_mongodb')->getManager()->persist($gamble);
-                $this->getContainer()->get('doctrine_mongodb')->getManager()->flush();
+                $this->om->persist($gamble);
+                $this->om->flush();
 
                 $this->getLogger()->info("Gamble #".$gamble->getId()." has been processed");
             }

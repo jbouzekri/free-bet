@@ -13,16 +13,4 @@ use BettingSas\Bundle\CompetitionBundle\Document\Event;
  */
 class BetRepository extends DocumentRepository
 {
-    /**
-     * @return type
-     */
-    public function removeBetOnEvent(Event $event)
-    {
-        return $this->createQueryBuilder()
-            ->createQueryBuilder()
-            ->remove()
-            ->field('event')->equals($event)
-            ->getQuery()
-            ->execute();
-    }
 }

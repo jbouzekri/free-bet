@@ -1,6 +1,7 @@
 BettingSas\Bundle\CompetitionBundle\Document\Event:
-    type: mappedSuperClass
+    type: mappedSuperclass
     collection: events
+    repositoryClass: BettingSas\Bundle\CompetitionBundle\Document\Repository\EventRepository
     inheritanceType: SINGLE_COLLECTION
     discriminatorField: type
     fields:

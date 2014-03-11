@@ -1,6 +1,7 @@
 BettingSas\Bundle\GambleBundle\Document\Gamble:
     type: document
     collection: gambles
+    repositoryClass: BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepository
     fields:
         id:
             id: true

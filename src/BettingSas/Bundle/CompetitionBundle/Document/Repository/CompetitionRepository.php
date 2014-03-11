@@ -12,8 +12,7 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
 class CompetitionRepository extends DocumentRepository
 {
     /**
-     *
-     * @return type
+     * @return array
      */
     public function findAllOrderedByDate()
     {

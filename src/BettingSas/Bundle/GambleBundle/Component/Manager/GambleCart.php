@@ -2,7 +2,7 @@
 
 namespace BettingSas\Bundle\GambleBundle\Component\Manager;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Validator\ValidatorInterface;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
@@ -18,9 +18,9 @@ use BettingSas\Bundle\GambleBundle\Document\Bet;
 class GambleCart
 {
     /**
-     * @var \Doctrine\Common\Persistence\ManagerRegistry
+     * @var \Doctrine\Common\Persistence\ObjectManager
      */
-    protected $manager;
+    protected $om;
 
     /**
      * @var \Symfony\Component\Validator\ValidatorInterface
@@ -40,11 +40,11 @@ class GambleCart
     /**
      * Constructor
      *
-     * @param \Doctrine\Common\Persistence\ManagerRegistry $manager
+     * @param \Doctrine\Common\Persistence\ObjectManager $om
      */
-    public function __construct(ManagerRegistry $manager, ValidatorInterface $validator, CartPersisterInterface $persister)
+    public function __construct(ObjectManager $om, ValidatorInterface $validator, CartPersisterInterface $persister)
     {
-        $this->manager = $manager;
+        $this->om = $om;
         $this->validator = $validator;
         $this->persister = $persister;
         $this->gamble = new Gamble();
@@ -63,11 +63,12 @@ class GambleCart
 
     /**
      * Get Manager
-     * @return \Doctrine\Common\Persistence\ManagerRegistry
+     *
+     * @return \Doctrine\Common\Persistence\ObjectManager
      */
     public function getManager()
     {
-        return $this->manager->getManager();
+        return $this->om;
     }
 
     /**
