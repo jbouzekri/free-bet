@@ -33,7 +33,7 @@ class CompetitionController extends Controller
      *
      * @param \BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
      *
-     * @return \
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function viewAction(Competition $competition)
     {
@@ -48,6 +48,29 @@ class CompetitionController extends Controller
             ->findBy(array('competition.id'=>$competition->getId()));
 
         return $this->render('BettingSas'.$type.'Bundle::view.html.twig', array(
+            'competition' => $competition,
+            'events' => $events
+        ));
+    }
+
+    /**
+     * View the next events in list format
+     *
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listNextEventAction(Competition $competition)
+    {
+        // TODO : remove hack to change view template according to competition type.
+        // TODO : implements a template guesser service
+        $type = \Doctrine\Common\Util\Inflector::classify($competition->getType());
+
+        $events = $this->get('betting_sas.competition.manager')
+            ->getEventRepository()
+            ->findNextEvents();
+
+        return $this->render('BettingSas'.$type.'Bundle::nextEvents.html.twig', array(
             'competition' => $competition,
             'events' => $events
         ));

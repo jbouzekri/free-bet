@@ -49,6 +49,16 @@ abstract class Event
      */
     protected $competition;
 
+        /**
+     * @var date $created
+     */
+    protected $created;
+
+    /**
+     * @var date $updated
+     */
+    protected $updated;
+
     /**
      * Get id
      *
@@ -224,23 +234,6 @@ abstract class Event
     }
 
     /**
-     * Return the id of a service used to guess the form type of the event
-     *
-     * @return string
-     */
-    public abstract function getFormTypeGuesserService();
-    /**
-     * @var date $created
-     */
-    protected $created;
-
-    /**
-     * @var date $updated
-     */
-    protected $updated;
-
-
-    /**
      * Set created
      *
      * @param date $created
@@ -282,5 +275,25 @@ abstract class Event
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+
+    /**
+     * Return the id of a service used to guess the form type of the event
+     *
+     * @return string
+     */
+    public abstract function getFormTypeGuesserService();
+
+    /**
+     * Check if there is at least enough information to display a bet link
+     *
+     * @return bool
+     */
+    public function canBet()
+    {
+        return !$this->getProcessed()
+            && !empty($this->getLeftName())
+            && !empty($this->getRightName());
     }
 }

@@ -14,4 +14,10 @@ interface EventRepositoryInterface
      * have not been processed yet)
      */
     public function findAllEndedAndNotProcessedEvent();
+
+    /**
+     * Return the next events of a competition
+     * Ordered by date and not yet processed
+     */
+    public function findNextEvents();
 }
