@@ -11,5 +11,7 @@
             {% set lastDate = event.date|date('Y-m-d') %}
         {% endif %}
         {{ event.date|date('H:i') }} - {{ event.leftName }} {% include 'BettingSasSoccerWorldCupBundle:Match:_score.html.twig' with {match: event} %} {{ event.rightName }}<br />
+    {% else %}
+        {{ 'no_more_event'|trans }}
     {% endfor %}
 {% endblock %}

@@ -48,23 +48,44 @@ class ExactScoreGamble implements GambleInterface
         return $this->choices;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return 'exact_score';
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getTemplate()
     {
         return 'BettingSasSoccerBundle:Gamble:exact_score.html.twig';
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getCartTemplate()
     {
         return 'BettingSasSoccerBundle:Gamble:Cart/simple.html.twig';
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function processBet(Bet $bet)
     {
         return false;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function validate(Bet $bet)
+    {
+        return $this->getName() == $bet->getType() && in_array($bet->getChoice(), $this->getChoices());
+    }
+
 }

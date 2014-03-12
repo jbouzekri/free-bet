@@ -1,6 +1,6 @@
 <?php
 
-namespace BettingSas\Bundle\GambleBundle\Component\Processor;
+namespace BettingSas\Bundle\GambleBundle\Gamble;
 
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
@@ -38,7 +38,7 @@ class GambleProcessor
     {
         $bets = $gamble->findBetsWithEvent($event);
         foreach ($bets as $bet) {
-            $gambleClass = $this->gambleChain->getGambleByTypeAndEventType($event->getType(), $bet->getType());
+            $gambleClass = $this->gambleChain->getGambleByEventTypeAndType($event->getType(), $bet->getType());
             $result = $gambleClass->processBet($bet);
             if (is_bool($result)) {
                 $bet->setWinner($result);

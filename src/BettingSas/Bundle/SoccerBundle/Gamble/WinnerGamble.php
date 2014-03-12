@@ -91,8 +91,19 @@ class WinnerGamble implements GambleInterface
         return 'BettingSasSoccerBundle:Gamble:Cart/winner.html.twig';
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function processBet(Bet $bet)
     {
         return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function validate(Bet $bet)
+    {
+        return $this->getName() == $bet->getType() && in_array($bet->getChoice(), $this->getChoices());
     }
 }

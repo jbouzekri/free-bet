@@ -1,12 +1,11 @@
 <?php
 
-namespace BettingSas\Bundle\GambleBundle\Component\Manager;
+namespace BettingSas\Bundle\GambleBundle\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Validator\ValidatorInterface;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
-use BettingSas\Bundle\GambleBundle\Component\Persister\CartPersisterInterface;
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
 
@@ -28,7 +27,7 @@ class GambleCart
     protected $validator;
 
     /**
-     * @var \BettingSas\Bundle\GambleBundle\Component\Persister\CartPersisterInterface
+     * @var \BettingSas\Bundle\GambleBundle\Manager\CartPersisterInterface
      */
     protected $persister;
 

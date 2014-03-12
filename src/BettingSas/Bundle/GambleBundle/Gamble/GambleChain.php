@@ -27,7 +27,7 @@ class GambleChain
      * @return array
      * @throws UnsupportedEventType
      */
-    public function getGamblesByType($type)
+    public function getGamblesByEventType($type)
     {
         if (!isset($this->gambles[$type])) {
             throw new UnsupportedEventType($type. ' not supported. Try '.implode(', ', array_keys($this->gambles)));
@@ -44,7 +44,7 @@ class GambleChain
      * @return array
      * @throws UnsupportedEventType
      */
-    public function getGambleByTypeAndEventType($eventType, $gambleType)
+    public function getGambleByEventTypeAndType($eventType, $gambleType)
     {
         if (!isset($this->gambles[$eventType])) {
             throw new UnsupportedEventType(

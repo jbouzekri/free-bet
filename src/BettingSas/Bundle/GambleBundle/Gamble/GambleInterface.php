@@ -18,5 +18,7 @@ interface GambleInterface
     public function getName();
 
     public function processBet(Bet $bet);
+
+    public function validate(Bet $bet);
 }
 
