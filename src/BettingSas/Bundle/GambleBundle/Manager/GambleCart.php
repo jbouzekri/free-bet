@@ -3,11 +3,11 @@
 namespace BettingSas\Bundle\GambleBundle\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Validator\ValidatorInterface;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
+use BettingSas\Bundle\GambleBundle\Gamble\GambleValidatorInterface;
 
 /**
  * Description of GambleCart
@@ -22,7 +22,7 @@ class GambleCart
     protected $om;
 
     /**
-     * @var \Symfony\Component\Validator\ValidatorInterface
+     * @var \BettingSas\Bundle\GambleBundle\Gamble\GambleValidatorInterface
      */
     protected $validator;
 
@@ -37,11 +37,16 @@ class GambleCart
     protected $gamble;
 
     /**
+     * @var array|\Symfony\Component\Validator\ConstraintViolationList
+     */
+    protected $errors = array();
+
+    /**
      * Constructor
      *
      * @param \Doctrine\Common\Persistence\ObjectManager $om
      */
-    public function __construct(ObjectManager $om, ValidatorInterface $validator, CartPersisterInterface $persister)
+    public function __construct(ObjectManager $om, GambleValidatorInterface $validator, CartPersisterInterface $persister)
     {
         $this->om = $om;
         $this->validator = $validator;
@@ -91,21 +96,24 @@ class GambleCart
     }
 
     /**
-     * Check if there are errors
+     * Check if gamble is valid
+     * WARNING : call validate() before
      *
-     * @return boolean
-     */
-    public function hasErrors()
-    {
-        return count($this->errors) > 0 || count($this->globalErrors) > 0;
-    }
-
-    /**
      * @return boolean
      */
     public function isValid()
     {
-        return $this->hasErrors();
+        return count($this->errors) == 0;
+    }
+
+    /**
+     * Get error
+     *
+     * @return array|\Symfony\Component\Validator\ConstraintViolationList
+     */
+    public function getErrors()
+    {
+        return $this->errors;
     }
 
     /**
@@ -124,6 +132,18 @@ class GambleCart
     public function load()
     {
         $this->persister->load($this);
+    }
+
+    /**
+     * Validate the gamble loaded in the cart
+     *
+     * @return type
+     */
+    public function validate()
+    {
+        $this->errors = $this->validator->validate($this->getGamble());
+
+        return $this->errors;
     }
 
     /**
@@ -156,8 +176,8 @@ class GambleCart
      */
     public function transform()
     {
-        $validation = $this->validator->validate($this->getGamble());
-        if (count($validation)) {
+        $this->validate();
+        if (!$this->isValid()) {
             throw new \Exception("there is validation error. TODO !!!");
         }
 

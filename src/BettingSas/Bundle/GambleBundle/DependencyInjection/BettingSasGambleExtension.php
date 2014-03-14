@@ -7,6 +7,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Definition\Processor;
 
 /**
  * BettingSasCompetitionBundleExtension.
@@ -17,6 +18,10 @@ class BettingSasGambleExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
+        $processor = new Processor();
+        $config = $processor->processConfiguration(new Configuration(), $configs);
+        $container->setParameter('betting_sas.validation_group', $config['validation_group']);
+
         $gambleConfig = array();
 
         foreach ($container->getParameter('kernel.bundles') as $bundle) {

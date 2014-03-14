@@ -4,7 +4,7 @@ BettingSas\Bundle\GambleBundle\Document\Gamble:
             - Count:
                 min: 1
                 minMessage: "A gamble must have at least one bet."
-            - BettingSas\Bundle\GambleBundle\Validator\Constraints\GambleUniqueTypeOnEventAccrossBet: ~
+            - BettingSas\Bundle\GambleBundle\Validator\Constraints\GambleUniqueTypeOnEventAccrossBet: { groups: [betting_sas] }
 
 BettingSas\Bundle\GambleBundle\Document\Bet:
     properties:
@@ -15,4 +15,4 @@ BettingSas\Bundle\GambleBundle\Document\Bet:
         event:
             - NotBlank: ~
     constraints:
-        - BettingSas\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCouple: { groups: [betting_sas] }
+        - BettingSas\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCouple: ~

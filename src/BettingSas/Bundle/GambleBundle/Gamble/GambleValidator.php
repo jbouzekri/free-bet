@@ -3,102 +3,44 @@
 namespace BettingSas\Bundle\GambleBundle\Gamble;
 
 use Symfony\Component\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Constraint;
 
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
-use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
 
 /**
- * Description of GambleValidator
+ * Validator for Gamble Entity
  *
  * @author jobou
  */
-class GambleValidator
+class GambleValidator implements GambleValidatorInterface
 {
-    /**
-     * @var \BettingSas\Bundle\GambleBundle\Gamble\GambleChain
-     */
-    protected $gambleChain;
-
     /**
      * @var \Symfony\Component\Validator\ValidatorInterface
      */
     protected $sfValidator;
 
     /**
-     * @var \Symfony\Component\Validator\ConstraintViolationList
+     * @var string
      */
-    protected $errors;
+    protected $validationGroup;
 
     /**
      * Constructor
      *
      * @param \BettingSas\Bundle\GambleBundle\Gamble\GambleChain $gambleChain
-     * @param \Symfony\Component\Validator\ValidatorInterface $sfValidator
+     * @param string $validationGroup
      */
-    public function __construct(GambleChain $gambleChain, ValidatorInterface $sfValidator)
+    public function __construct(ValidatorInterface $sfValidator, $validationGroup)
     {
-        $this->gambleChain = $gambleChain;
         $this->sfValidator = $sfValidator;
+        $this->validationGroup = $validationGroup;
     }
 
     /**
-     * Validate a Gamble entity
-     *
-     * @param \BettingSas\Bundle\GambleBundle\Document\Gamble $gamble
-     *
-     * @return boolean
+     * {@inheritDoc}
      */
     public function validate(Gamble $gamble)
     {
-        // First : use the symfony validator to validate the entity herself
-        $this->errors = $this->sfValidator->validate($gamble);
-
-        $this->validateBets($gamble);
-
-        return true;
-    }
-
-    /**
-     *
-     * @param \BettingSas\Bundle\GambleBundle\Document\Gamble $gamble
-     */
-    protected function validateBets(Gamble $gamble)
-    {
-        foreach ($gamble->getBets() as $key => $bet) {
-            $gambleClass = $this
-                ->gambleChain
-                ->getGambleByEventTypeAndType($bet->getEvent()->getType(), $bet->getType());
-
-            $isValid = $gambleClass->validate($bet);
-            if (!$isValid) {
-                $violiationConstraint = new \Symfony\Component\Validator\ConstraintViolation(
-                    'Invalid Type and Choice in Bet',
-                    'Invalid Type and Choice in Bet',
-                    array(),
-                    $gamble,
-                    'bets.'.$key,
-                    array()
-                );
-                $this->errors->add($violiationConstraint);
-            }
-
-        }
-    }
-    protected function applyGlobalValidators(Gamble $gamble)
-    {
-        $this->applyValidators($gamble, $this->getGlobalValidators());
-    }
-
-    protected function getGlobalValidators()
-    {
-        return $this->globalValidators;
-    }
-
-    protected function applyValidators(Gamble $gamble, $validators)
-    {
-        foreach ($this->globalValidators as $validator)
-        {
-            $validator->validate($gamble);
-        }
+        return $this->sfValidator->validate($gamble, array(Constraint::DEFAULT_GROUP, $this->validationGroup));
     }
 }
