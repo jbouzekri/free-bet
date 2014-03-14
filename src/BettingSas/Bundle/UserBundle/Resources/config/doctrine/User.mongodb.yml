@@ -1,0 +1,29 @@
+BettingSas\Bundle\UserBundle\Document\User:
+    type: document
+    collection: users
+    fields:
+        id:
+            id: true
+        name:
+            type: string
+        email:
+            type: string
+        active:
+            type: boolean
+        group:
+            type: string
+        password:
+            type: string
+        salt:
+            type: string
+        profil:
+            type: string
+        slug:
+            index: true
+            type: string
+            gedmo:
+                slug:
+                    separator: -
+                    style: lower
+                    fields:
+                        - name

@@ -1,6 +1,7 @@
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        BettingSas\Bundle\UserBundle\Document\User: plaintext
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
