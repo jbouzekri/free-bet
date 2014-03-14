@@ -1,0 +1,10 @@
+parameters: 
+    betting_sas.gamble.validator.bet_type_choice.class: BettingSas\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCoupleValidator
+
+services:
+    betting_sas.gamble.validator.bet_type_choice:
+        class: %betting_sas.gamble.validator.bet_type_choice.class%
+        arguments:
+            - @betting_sas.gamble_chain
+        tags:
+            - { name: validator.constraint_validator, alias: bet_type_choice }

@@ -13,3 +13,5 @@ BettingSas\Bundle\GambleBundle\Document\Bet:
             - NotBlank: ~
         event:
             - NotBlank: ~
+    constraints:
+        - BettingSas\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCouple: ~
