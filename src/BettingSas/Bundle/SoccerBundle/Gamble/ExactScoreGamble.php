@@ -12,6 +12,11 @@ use BettingSas\Bundle\GambleBundle\Document\Bet;
  */
 class ExactScoreGamble implements GambleInterface
 {
+    /**
+     * Choices available in gamble
+     *
+     * @var array
+     */
     protected $choices = array(
         "1-0",
         "2-0",
@@ -43,6 +48,11 @@ class ExactScoreGamble implements GambleInterface
         "3-4",
     );
 
+    /**
+     * Get choices available in gamble
+     *
+     * @return array
+     */
     public function getChoices()
     {
         return $this->choices;
@@ -77,6 +87,13 @@ class ExactScoreGamble implements GambleInterface
      */
     public function processBet(Bet $bet)
     {
+        $event = $bet->getEvent();
+
+        $score = $event->getLeftTeamRealScore().'-'.$event->getRightTeamRealScore();
+        if ($bet->getChoice() === $score) {
+            return true;
+        }
+
         return false;
     }
 
@@ -86,6 +103,14 @@ class ExactScoreGamble implements GambleInterface
     public function validate(Bet $bet)
     {
         return $this->getName() == $bet->getType() && in_array($bet->getChoice(), $this->getChoices());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDifficulty()
+    {
+        return 15;
     }
 
 }

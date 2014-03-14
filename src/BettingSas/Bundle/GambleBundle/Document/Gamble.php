@@ -25,6 +25,21 @@ class Gamble
     protected $point;
 
     /**
+     * @var date $processedDate
+     */
+    protected $processedDate;
+
+    /**
+     * @var date $created
+     */
+    protected $created;
+
+    /**
+     * @var date $updated
+     */
+    protected $updated;
+
+    /**
      * @var BettingSas\Bundle\GambleBundle\Document\Bet
      */
     protected $bets = array();
@@ -122,58 +137,6 @@ class Gamble
     }
 
     /**
-     * Find all bets having an event
-     *
-     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function findBetsWithEvent(\BettingSas\Bundle\CompetitionBundle\Document\Event $event)
-    {
-        $betsWithEvent = new \Doctrine\Common\Collections\ArrayCollection();
-
-        foreach ($this->getBets() as $bet) {
-            if ($bet->getEvent()->getId() == $event->getId()) {
-                $betsWithEvent->add($bet);
-            }
-        }
-
-        return $betsWithEvent;
-    }
-
-    /**
-     * Check if the gamble has ended
-     * All bets have been processed
-     *
-     * @return boolean
-     */
-    public function hasEnded()
-    {
-        foreach ($this->getBets() as $bet) {
-            if (is_null($bet->getWinner())) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-    /**
-     * @var date $processedDate
-     */
-    protected $processedDate;
-
-    /**
-     * @var date $created
-     */
-    protected $created;
-
-    /**
-     * @var date $updated
-     */
-    protected $updated;
-
-
-    /**
      * Set processedDate
      *
      * @param date $processedDate
@@ -237,5 +200,60 @@ class Gamble
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Find all bets having an event
+     *
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function findBetsWithEvent(\BettingSas\Bundle\CompetitionBundle\Document\Event $event)
+    {
+        $betsWithEvent = new \Doctrine\Common\Collections\ArrayCollection();
+
+        foreach ($this->getBets() as $bet) {
+            if ($bet->getEvent()->getId() == $event->getId()) {
+                $betsWithEvent->add($bet);
+            }
+        }
+
+        return $betsWithEvent;
+    }
+
+    /**
+     * Check if the gamble has ended
+     * All bets have been processed
+     *
+     * @return boolean
+     */
+    public function hasEnded()
+    {
+        foreach ($this->getBets() as $bet) {
+            if (is_null($bet->getWinner())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Fill the winner field in the gamble according to the one in the bets
+     *
+     * @return \BettingSas\Bundle\GambleBundle\Document\Gamble
+     */
+    public function fillWinner()
+    {
+        $this->setWinner(true);
+        foreach ($this->getBets() as $bet) {
+            if ($bet->getWinner() === false) {
+                $this->setWinner(false);
+                break;
+            }
+        }
+
+        return $this;
     }
 }

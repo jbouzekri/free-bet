@@ -295,16 +295,17 @@ class Match extends Event
      * false : right team win
      * null  match not played
      */
-    public function isLeftTeamWin()
+    public function getWinner()
     {
-        if (is_null($this->getLeftTeamRealScore()) || is_null($this->getRightTeamRealScore())) {
-            return null;
-        } elseif ($this->getLeftTeamRealScore() > $this->getRightTeamRealScore()) {
-            return true;
+        if ($this->getLeftTeamRealScore() > $this->getRightTeamRealScore()) {
+            return Event::LEFT_TEAM_WIN;
         } elseif ($this->getLeftTeamRealScore() < $this->getRightTeamRealScore()) {
-            return false;
-        } elseif ($this->getLeftTeamRealScore() == $this->getRightTeamRealScore()) {
-            return 0;
+            return Event::RIGHT_TEAM_WIN;
+        } elseif ($this->getLeftTeamRealScore() == $this->getRightTeamRealScore()
+            && !is_null($this->getLeftTeamRealScore())
+            && !is_null($this->getRightTeamRealScore())
+        ) {
+            return Event::BOTH_EQUALS;
         }
 
         return null;
@@ -320,8 +321,20 @@ class Match extends Event
         return !is_null($this->getLeftTeamScore()) || !is_null($this->getRightTeamScore());
     }
 
-    public function getFormTypeGuesserService() {
+    /**
+     * {@inheritDoc}
+     */
+    public function getFormTypeGuesserService()
+    {
         return 'betting_sas.soccer.form_type_guesser';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function hasResult()
+    {
+        return $this->getLeftTeamRealScore() !== null && $this->getRightTeamRealScore() !== null;
     }
 
 }

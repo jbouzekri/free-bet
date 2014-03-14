@@ -450,8 +450,8 @@ class LoadMatchData extends AbstractFixture implements FixtureInterface, Ordered
             $entity->setGroup($match['group']);
             $entity->setLeftName($match['left_name']);
             $entity->setRightName($match['right_name']);
-            $entity->setDate($match['date']);
-            //$entity->setDate(time()-1000);
+            //$entity->setDate($match['date']);
+            $entity->setDate(time()-1000);
             $entity->setCompetition($worldCup2014);
             $entity->setProcessed(false);
 

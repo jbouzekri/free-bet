@@ -10,6 +10,13 @@ namespace BettingSas\Bundle\CompetitionBundle\Document;
 abstract class Event
 {
     /**
+     * Constants used to determine who won the bet
+     */
+    const LEFT_TEAM_WIN = 0;
+    const RIGHT_TEAM_WIN = 1;
+    const BOTH_EQUALS = 2;
+
+    /**
      * @var MongoId $id
      */
     protected $id;
@@ -284,6 +291,24 @@ abstract class Event
      * @return string
      */
     public abstract function getFormTypeGuesserService();
+
+    /**
+     * Check if the result is known to process bets
+     *
+     * @return string
+     */
+    public abstract function hasResult();
+
+    /**
+     * WHen the score is known, check which team won
+     * Return :
+     *  Event::LEFT_TEAM_WIN if left team won
+     *  Event::RIGHT_TEAM_WIN if right team won
+     *  EVENT::BOTH_EQUALS if same score
+     *
+     * @return int
+     */
+    public abstract function getWinner();
 
     /**
      * Check if there is at least enough information to display a bet link

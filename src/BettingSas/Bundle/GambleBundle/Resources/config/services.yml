@@ -5,6 +5,7 @@ parameters:
     betting_sas.gamble.cart.persister.class: BettingSas\Bundle\GambleBundle\Manager\Persister\SessionCartPersister
     betting_sas.gamble.processor.class: BettingSas\Bundle\GambleBundle\Gamble\GambleProcessor
     betting_sas.gamble.validator.class: BettingSas\Bundle\GambleBundle\Gamble\GambleValidator
+    betting_sas.gamble.calculator.simple.class: BettingSas\Bundle\GambleBundle\Gamble\SimpleScoreCalculator
 
 services:
     betting_sas.twig.gamble_extension:
@@ -33,6 +34,12 @@ services:
             
     betting_sas.gamble.processor:
         class: %betting_sas.gamble.processor.class%
+        arguments:
+            - @betting_sas.gamble_chain
+            - @betting_sas.gamble.calculator.simple
+
+    betting_sas.gamble.calculator.simple:
+        class: %betting_sas.gamble.calculator.simple.class%
         arguments:
             - @betting_sas.gamble_chain
 

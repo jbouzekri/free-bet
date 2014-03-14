@@ -67,6 +67,10 @@ class ProcessGambleCommand extends ContainerAwareCommand
             ->findAllEndedAndNotProcessedEvent();
 
         foreach ($events as $event) {
+            if (!$event->hasResult()) {
+                $this->getLogger()->info('Event '.$event->getId().' has ended but has no result yet.');
+                continue;
+            }
 
             // Process all gamble with this event
             $this->processGambleWithBetsOnEvent($event);
@@ -130,8 +134,7 @@ class ProcessGambleCommand extends ContainerAwareCommand
         foreach ($gambles as $gamble) {
             if ($gamble->hasEnded()) {
 
-                // TODO : wining gamble processing
-                $gamble->setWinner(false);
+                $this->getContainer()->get('betting_sas.gamble.processor')->calculateResult($gamble);
                 $gamble->setProcessedDate(new \DateTime());
 
                 $this->om->persist($gamble);

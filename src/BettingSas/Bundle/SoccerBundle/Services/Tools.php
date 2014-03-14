@@ -2,6 +2,8 @@
 
 namespace BettingSas\Bundle\SoccerBundle\Services;
 
+use BettingSas\Bundle\CompetitionBundle\Document\Event;
+
 /**
  * Description of Tools
  *
@@ -31,16 +33,16 @@ class Tools
                 $result[$event->getRightName()] = array('point'=>0,'diff'=>0);
             }
 
-            $isLeftWin = $event->isLeftTeamWin();
-            if ($isLeftWin === true) {
+            $winner = $event->getWinner();
+            if ($winner === Event::LEFT_TEAM_WIN) {
                 $result[$event->getLeftName()]['point'] += 3;
                 $result[$event->getLeftName()]['diff'] += $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
                 $result[$event->getRightName()]['diff'] += $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
-            } elseif ($isLeftWin === false) {
+            } elseif ($winner === Event::RIGHT_TEAM_WIN) {
                 $result[$event->getRightName()]['point'] += 3;
                 $result[$event->getRightName()]['diff'] += $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
                 $result[$event->getLeftName()]['diff'] += $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
-            } elseif ($isLeftWin === 0) {
+            } elseif ($winner === Event::BOTH_EQUALS) {
                 $result[$event->getRightName()]['point'] += 1;
                 $result[$event->getLeftName()]['point'] += 1;
             }

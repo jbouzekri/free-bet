@@ -5,6 +5,7 @@ namespace BettingSas\Bundle\SoccerBundle\Gamble;
 use BettingSas\Bundle\GambleBundle\Gamble\GambleInterface;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
+use BettingSas\Bundle\GambleBundle\Exception\ProcessingBetOnEventWithoutResultException;
 
 /**
  * Description of WinnerGamble
@@ -16,14 +17,21 @@ class WinnerGamble implements GambleInterface
     use \BettingSas\Bundle\GambleBundle\Gamble\Tools\TranslatorTool;
 
     /**
+     * Constants used in winner gamble
+     */
+    const LEFT_TEAM_WIN = '1';
+    const RIGHT_TEAM_WIN = '2';
+    const BOTH_EQUALS = 'N';
+
+    /**
      * Choices available in gamble
      *
      * @var array
      */
     protected $choices = array(
-        '1',
-        'N',
-        '2'
+        self::LEFT_TEAM_WIN,
+        self::BOTH_EQUALS,
+        self::RIGHT_TEAM_WIN
     );
 
     /**
@@ -37,15 +45,15 @@ class WinnerGamble implements GambleInterface
     {
         $label = $choice;
         switch ($choice) {
-            case '1':
+            case self::LEFT_TEAM_WIN:
                 $label = $event->getLeftName();
                 break;
 
-            case 'N':
+            case self::BOTH_EQUALS:
                 $label = $this->getTranslator()->trans('gamble_'.$this->getName().'_N', array(), 'gamble');
                 break;
 
-            case '2':
+            case self::RIGHT_TEAM_WIN:
                 $label = $event->getRightName();
                 break;
         }
@@ -74,9 +82,7 @@ class WinnerGamble implements GambleInterface
     }
 
     /**
-     * Get name of gamble
-     *
-     * @return string
+     * {@inheritDoc}
      */
     public function getName()
     {
@@ -96,6 +102,16 @@ class WinnerGamble implements GambleInterface
      */
     public function processBet(Bet $bet)
     {
+        $choice = $bet->getChoice();
+        $winner = $bet->getEvent()->getWinner();
+        if ($winner === Event::LEFT_TEAM_WIN && $choice == self::LEFT_TEAM_WIN) {
+            return true;
+        } elseif ($winner === Event::RIGHT_TEAM_WIN && $choice == self::RIGHT_TEAM_WIN) {
+            return true;
+        } elseif ($winner === Event::BOTH_EQUALS && $choice == self::BOTH_EQUALS) {
+            return true;
+        }
+
         return false;
     }
 
@@ -105,5 +121,13 @@ class WinnerGamble implements GambleInterface
     public function validate(Bet $bet)
     {
         return $this->getName() == $bet->getType() && in_array($bet->getChoice(), $this->getChoices());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDifficulty()
+    {
+        return 1;
     }
 }
