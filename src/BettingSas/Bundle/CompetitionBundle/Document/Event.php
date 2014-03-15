@@ -37,12 +37,12 @@ abstract class Event
     protected $rightName;
 
     /**
-     * @var int $processed
+     * @var boolean $processed
      */
     protected $processed;
 
     /**
-     * @var timestamp $date
+     * @var \DateTime $date
      */
     protected $date;
 
@@ -145,7 +145,7 @@ abstract class Event
     /**
      * Set processed
      *
-     * @param int $processed
+     * @param boolean $processed
      * @return self
      */
     public function setProcessed($processed)
@@ -157,7 +157,7 @@ abstract class Event
     /**
      * Get processed
      *
-     * @return int $processed
+     * @return boolean $processed
      */
     public function getProcessed()
     {
@@ -167,10 +167,10 @@ abstract class Event
     /**
      * Set date
      *
-     * @param timestamp $date
+     * @param \DateTime $date
      * @return self
      */
-    public function setDate($date)
+    public function setDate(\DateTime $date)
     {
         $this->date = $date;
         return $this;
@@ -179,7 +179,7 @@ abstract class Event
     /**
      * Get date
      *
-     * @return timestamp $date
+     * @return \DateTime
      */
     public function getDate()
     {
