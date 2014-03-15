@@ -5,6 +5,8 @@ namespace BettingSas\Bundle\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use BettingSas\Bundle\UserBundle\Form\Type\RegisterType;
+use BettingSas\Bundle\UserBundle\Document\User;
 
 /**
  * Description of SecurityController
@@ -45,20 +47,32 @@ class SecurityController extends Controller
     }
 
     /**
-     * Display the classement in a group
+     * Display register form
      *
-     * @param array $events
-     * @param string $group
+     * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function resultAction(array $events, $group)
+    public function registerAction(Request $request)
     {
-        $results = $this->get('betting_sas.soccer.tools')->getResultInGroup($events, $group);
+        $form = $this->createForm(new RegisterType(), new User());
 
-        return $this->render('BettingSasSoccerWorldCupBundle:Group:result.html.twig', array(
-            'results' => $results,
-            'group' => $group
-        ));
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $registration = $form->getData();
+
+                // TODO : first registration in a group give manager role
+                $registration->setProfil('ROLE_USER');
+
+                $dm = $this->get('doctrine_mongodb')->getManager();
+                $dm->persist($registration);
+                $dm->flush();
+
+                return $this->redirect($this->generateUrl('login'));
+            }
+        }
+
+        return $this->render('BettingSasUserBundle:Security:register.html.twig', array('form' => $form->createView()));
     }
 }

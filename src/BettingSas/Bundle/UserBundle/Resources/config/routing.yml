@@ -1,3 +1,7 @@
+register:
+    path:     /register
+    defaults: { _controller: BettingSasUserBundle:Security:register }
+
 login:
     path:     /login
     defaults: { _controller: BettingSasUserBundle:Security:login }

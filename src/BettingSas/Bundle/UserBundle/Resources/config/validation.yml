@@ -1,0 +1,9 @@
+BettingSas\Bundle\UserBundle\Document\User:
+    constraints:
+        - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique: email
+        - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique: name
+    properties:
+        email:
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+                checkMX: true

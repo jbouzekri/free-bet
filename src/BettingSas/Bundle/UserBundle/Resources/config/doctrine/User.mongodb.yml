@@ -6,8 +6,10 @@ BettingSas\Bundle\UserBundle\Document\User:
             id: true
         name:
             type: string
+            unique: true
         email:
             type: string
+            unique: true
         active:
             type: boolean
         group:
