@@ -2,6 +2,7 @@ Betting SAS
 ===========
 
 [![Build Status](https://travis-ci.org/jbouzekri/betting-sas.png?branch=master)](https://travis-ci.org/jbouzekri/betting-sas)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jbouzekri/betting-sas/badges/quality-score.png?s=393b326f907abf00bedf30f3c4bc6dac071b3e98)](https://scrutinizer-ci.com/g/jbouzekri/betting-sas/)
 
 A simple PHP application to provide a betting system for sports events.
 You can easily install it in your company to have fun and see who is the best forecaster.
