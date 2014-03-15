@@ -2,9 +2,15 @@ language: php
 
 php:
   - 5.3.3
-  - 5.3
   - 5.4
+  - 5.5
 
-before_script: composer install -n
+before_script: 
+  - phpenv config-add travisconfig.ini
+  - pear install pear/PHP_CodeSniffer
+  - composer install -n
+  - phpenv rehash
 
-script: phpunit -c app
+script: 
+  - phpunit -c app
+  - phpcs --standard=PSR2 --extensions=php src
