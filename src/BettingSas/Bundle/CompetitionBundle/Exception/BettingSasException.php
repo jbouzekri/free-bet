@@ -7,5 +7,6 @@ namespace BettingSas\Bundle\CompetitionBundle\Exception;
  *
  * @author jobou
  */
-class BettingSasException extends \Exception {
+class BettingSasException extends \Exception
+{
 }

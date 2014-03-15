@@ -16,7 +16,10 @@ use BettingSas\Bundle\UserBundle\Document\User;
  *
  * @author jobou
  */
-class LoadMatchData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
+class LoadMatchData extends AbstractFixture implements
+    FixtureInterface,
+    OrderedFixtureInterface,
+    ContainerAwareInterface
 {
     /**
      * @var ContainerInterface

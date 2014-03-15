@@ -112,5 +112,4 @@ class ExactScoreGamble implements GambleInterface
     {
         return 15;
     }
-
 }

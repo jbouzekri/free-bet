@@ -46,8 +46,11 @@ class GambleCart
      *
      * @param \Doctrine\Common\Persistence\ObjectManager $om
      */
-    public function __construct(ObjectManager $om, GambleValidatorInterface $validator, CartPersisterInterface $persister)
-    {
+    public function __construct(
+        ObjectManager $om,
+        GambleValidatorInterface $validator,
+        CartPersisterInterface $persister
+    ) {
         $this->om = $om;
         $this->validator = $validator;
         $this->persister = $persister;

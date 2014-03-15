@@ -9,5 +9,6 @@ use BettingSas\Bundle\CompetitionBundle\Exception\BettingSasException;
  *
  * @author jobou
  */
-class UnsupportedGambleType extends BettingSasException {
+class UnsupportedGambleType extends BettingSasException
+{
 }

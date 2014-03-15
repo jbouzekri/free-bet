@@ -14,7 +14,10 @@ use BettingSas\Bundle\CompetitionBundle\Document\Event;
 class GambleRepository extends DocumentRepository implements GambleRepositoryInterface
 {
     // TODO : remove $id in field
-    // use field('bets.event')->equals(\MongoDBRef::create("event", new \MongoId('4e63611cbc347053a2000001'),'database_name')) to ensure index use
+    // use
+    // field('bets.event')
+    //  ->equals(\MongoDBRef::create("event", new \MongoId('4e63611cbc347053a2000001'),'database_name'))
+    // to ensure index use
     /**
      * {@inheritDoc}
      */

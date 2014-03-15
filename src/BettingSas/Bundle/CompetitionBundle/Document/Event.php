@@ -290,14 +290,14 @@ abstract class Event
      *
      * @return string
      */
-    public abstract function getFormTypeGuesserService();
+    abstract public function getFormTypeGuesserService();
 
     /**
      * Check if the result is known to process bets
      *
      * @return string
      */
-    public abstract function hasResult();
+    abstract public function hasResult();
 
     /**
      * WHen the score is known, check which team won
@@ -308,7 +308,7 @@ abstract class Event
      *
      * @return int
      */
-    public abstract function getWinner();
+    abstract public function getWinner();
 
     /**
      * Check if there is at least enough information to display a bet link

@@ -35,5 +35,4 @@ class EventRepository extends DocumentRepository implements EventRepositoryInter
 
         return $qb->getQuery()->execute();
     }
-
 }

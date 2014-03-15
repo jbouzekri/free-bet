@@ -37,7 +37,14 @@ class EventController extends Controller
             $om->persist($event);
             $om->flush();
 
-            return $this->redirect($this->generateUrl("competition_detail", array("slug"=>$event->getCompetition()->getSlug())));
+            return $this->redirect(
+                $this->generateUrl(
+                    "competition_detail",
+                    array(
+                        "slug" => $event->getCompetition()->getSlug()
+                    )
+                )
+            );
         }
 
         return $this->render('BettingSasCompetitionBundle:Event:edit.html.twig', array(

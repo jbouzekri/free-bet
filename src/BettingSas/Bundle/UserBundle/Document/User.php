@@ -213,5 +213,4 @@ class User extends AbstractUser implements UserInterface
     {
         return $this->getName();
     }
-
 }

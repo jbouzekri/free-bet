@@ -14,8 +14,8 @@ class Tools
     /**
      * Get the team result in a group ordered by score
      *
-     * @param array $collections list of matches
-     * @param string $group the group name
+     * @param array  $collections list of matches
+     * @param string $group       the group name
      */
     public function getResultInGroup(array $events, $group)
     {
@@ -36,12 +36,16 @@ class Tools
             $winner = $event->getWinner();
             if ($winner === Event::LEFT_TEAM_WIN) {
                 $result[$event->getLeftName()]['point'] += 3;
-                $result[$event->getLeftName()]['diff'] += $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
-                $result[$event->getRightName()]['diff'] += $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
+                $result[$event->getLeftName()]['diff'] +=
+                    $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
+                $result[$event->getRightName()]['diff'] +=
+                    $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
             } elseif ($winner === Event::RIGHT_TEAM_WIN) {
                 $result[$event->getRightName()]['point'] += 3;
-                $result[$event->getRightName()]['diff'] += $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
-                $result[$event->getLeftName()]['diff'] += $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
+                $result[$event->getRightName()]['diff'] +=
+                    $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
+                $result[$event->getLeftName()]['diff'] +=
+                    $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
             } elseif ($winner === Event::BOTH_EQUALS) {
                 $result[$event->getRightName()]['point'] += 1;
                 $result[$event->getLeftName()]['point'] += 1;
@@ -57,8 +61,10 @@ class Tools
                 if ($team1['diff'] == $team2['diff']) {
                     return 0;
                 }
+
                 return ($team1['diff'] < $team2['diff']) ? 1 : -1;
             }
+
             return ($team1['point'] < $team2['point']) ? 1 : -1;
         });
 
@@ -68,7 +74,7 @@ class Tools
     /**
      * Get ordered match in a specific group
      *
-     * @param array $events
+     * @param array  $events
      * @param string $group
      *
      * @return array
@@ -88,6 +94,7 @@ class Tools
             if ($event1->getDate() == $event2->getDate()) {
                 return 0;
             }
+
             return ($event1->getDate() < $event2->getDate()) ? -1 : 1;
         });
 

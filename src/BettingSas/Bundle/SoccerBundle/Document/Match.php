@@ -336,5 +336,4 @@ class Match extends Event
     {
         return $this->getLeftTeamRealScore() !== null && $this->getRightTeamRealScore() !== null;
     }
-
 }

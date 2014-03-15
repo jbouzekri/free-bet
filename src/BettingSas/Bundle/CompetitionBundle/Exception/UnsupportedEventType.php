@@ -7,5 +7,6 @@ namespace BettingSas\Bundle\CompetitionBundle\Exception;
  *
  * @author jobou
  */
-class UnsupportedEventType extends BettingSasException {
+class UnsupportedEventType extends BettingSasException
+{
 }

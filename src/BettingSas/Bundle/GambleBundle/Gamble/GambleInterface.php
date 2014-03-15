@@ -66,4 +66,3 @@ interface GambleInterface
      */
     public function getDifficulty();
 }
-
