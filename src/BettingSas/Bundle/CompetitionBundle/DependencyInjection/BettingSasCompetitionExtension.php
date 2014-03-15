@@ -17,8 +17,7 @@ class BettingSasCompetitionExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), $configs);
+        $config = $this->processConfiguration(new Configuration(), $configs);
 
         $this->loadConfiguration($config, $container);
 

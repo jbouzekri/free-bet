@@ -89,7 +89,7 @@ class GambleChain
         }
 
         if (is_int($order)) {
-            $this->gambles[$type][] = $gamble;
+            $this->gambles[$type][$order] = $gamble;
         } else {
             array_push($this->gambles[$type], $gamble);
         }
@@ -102,7 +102,7 @@ class GambleChain
      */
     public function sort()
     {
-        foreach ($this->gambles as $type => $gamblesList) {
+        foreach (array_keys($this->gambles) as $type) {
             ksort($this->gambles[$type]);
         }
     }

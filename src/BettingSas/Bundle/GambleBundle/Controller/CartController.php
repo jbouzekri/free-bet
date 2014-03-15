@@ -58,7 +58,7 @@ class CartController extends Controller
         );
     }
 
-    public function transformAction(Request $request)
+    public function transformAction()
     {
         $cart = $this->get('betting_sas.gamble.cart');
         $cart->load();

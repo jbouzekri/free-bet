@@ -42,7 +42,7 @@ class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
             );
         }
 
-        foreach ($betsCollection as $key => $bet) {
+        foreach ($betsCollection as $bet) {
             $count = $this->om
                 ->getRepository('BettingSasGambleBundle:Gamble')
                 ->countAllGambleHavingBetsOnEventWithType($bet->getEvent(), $bet->getType());

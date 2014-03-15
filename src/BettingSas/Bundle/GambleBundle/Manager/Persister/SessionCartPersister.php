@@ -61,11 +61,12 @@ class SessionCartPersister implements CartPersisterInterface
             $event = $cart->getManager()
                 ->getRepository('BettingSas\Bundle\CompetitionBundle\Document\Event')
                 ->find($bet->getEvent()->getId());
-            if ($event) {
-                $bet->setEvent($event);
-            } else {
+            if (!$event) {
                 $gamble->removeBet($bet);
+                continue;
             }
+
+            $bet->setEvent($event);
         }
 
         $cart->setGamble($gamble);
