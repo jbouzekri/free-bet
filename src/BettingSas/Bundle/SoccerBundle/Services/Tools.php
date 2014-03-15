@@ -14,8 +14,10 @@ class Tools
     /**
      * Get the team result in a group ordered by score
      *
-     * @param array  $collections list of matches
-     * @param string $group       the group name
+     * @param array  $events list of matches
+     * @param string $group  the group name
+     *
+     * @return array
      */
     public function getResultInGroup(array $events, $group)
     {

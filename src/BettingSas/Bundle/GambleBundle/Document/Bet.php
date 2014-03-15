@@ -71,7 +71,7 @@ class Bet
     /**
      * Set event
      *
-     * @param BettingSas\Bundle\CompetitionBundle\Document\Event $event
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
      * @return self
      */
     public function setEvent(\BettingSas\Bundle\CompetitionBundle\Document\Event $event)

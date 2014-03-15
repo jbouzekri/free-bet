@@ -109,7 +109,7 @@ class Gamble
     /**
      * Add bet
      *
-     * @param BettingSas\Bundle\GambleBundle\Document\Bet $bet
+     * @param \BettingSas\Bundle\GambleBundle\Document\Bet $bet
      */
     public function addBet(\BettingSas\Bundle\GambleBundle\Document\Bet $bet)
     {
@@ -119,7 +119,7 @@ class Gamble
     /**
      * Remove bet
      *
-     * @param BettingSas\Bundle\GambleBundle\Document\Bet $bet
+     * @param \BettingSas\Bundle\GambleBundle\Document\Bet $bet
      */
     public function removeBet(\BettingSas\Bundle\GambleBundle\Document\Bet $bet)
     {

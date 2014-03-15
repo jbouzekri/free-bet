@@ -4,7 +4,6 @@ namespace BettingSas\Bundle\GambleBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
 use BettingSas\Bundle\GambleBundle\DependencyInjection\Compiler\GambleCompilerPass;
 
 /**

@@ -3,7 +3,6 @@
 namespace BettingSas\Bundle\UserBundle\Document;
 
 use Symfony\Component\Security\Core\User\UserInterface;
-
 use BettingSas\Bundle\UserBundle\Component\AbstractUser;
 
 /**

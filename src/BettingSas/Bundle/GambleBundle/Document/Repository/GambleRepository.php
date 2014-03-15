@@ -3,7 +3,6 @@
 namespace BettingSas\Bundle\GambleBundle\Document\Repository;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
-
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 
 /**

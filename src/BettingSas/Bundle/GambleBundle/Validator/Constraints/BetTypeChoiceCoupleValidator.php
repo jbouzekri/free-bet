@@ -5,7 +5,6 @@ namespace BettingSas\Bundle\GambleBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
-
 use BettingSas\Bundle\GambleBundle\Document\Bet;
 use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
 

@@ -3,7 +3,6 @@
 namespace BettingSas\Bundle\GambleBundle\Manager\Persister;
 
 use Symfony\Component\HttpFoundation\Session\Session;
-
 use BettingSas\Bundle\GambleBundle\Manager\CartPersisterInterface;
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\GambleBundle\Manager\GambleCart;

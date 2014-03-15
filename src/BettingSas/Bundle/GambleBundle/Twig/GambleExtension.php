@@ -3,7 +3,6 @@
 namespace BettingSas\Bundle\GambleBundle\Twig;
 
 use Twig_Environment as Environment;
-
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
 use BettingSas\Bundle\GambleBundle\Manager\GambleCart;
@@ -28,7 +27,9 @@ class GambleExtension extends \Twig_Extension
     /**
      * Constructor
      *
-     * @param \BettingSas\Bundle\GambleBundle\Manager\GambleManager $manager
+     * @param \Twig_Environment $twig
+     * @param \BettingSas\Bundle\GambleBundle\Gamble\GambleChain $gambles
+     * @param \BettingSas\Bundle\GambleBundle\Manager\GambleCart $cart
      */
     public function __construct(Environment $twig, GambleChain $gambles, GambleCart $cart)
     {
@@ -40,7 +41,7 @@ class GambleExtension extends \Twig_Extension
     /**
      * Register twig functions
      *
-     * @return array
+     * @return \Twig_SimpleFunction[]
      */
     public function getFunctions()
     {

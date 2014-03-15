@@ -3,7 +3,6 @@
 namespace BettingSas\Bundle\GambleBundle\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
@@ -60,12 +59,14 @@ class GambleCart
     /**
      * Add a gamble
      *
-     * @param type $type
-     * @param type $choice
+     * @param \BettingSas\Bundle\GambleBundle\Document\Bet $bet
+     * @return self
      */
     public function addBet(Bet $bet)
     {
         $this->gamble->addBet($bet);
+
+        return $this;
     }
 
     /**
@@ -91,7 +92,7 @@ class GambleCart
     /**
      * Set gamble (override)
      *
-     * @param \BettingSas\Bundle\GambleBundle\Document\Gamble $gambles
+     * @param \BettingSas\Bundle\GambleBundle\Document\Gamble $gamble
      */
     public function setGamble(Gamble $gamble)
     {
@@ -140,7 +141,7 @@ class GambleCart
     /**
      * Validate the gamble loaded in the cart
      *
-     * @return type
+     * @return \Symfony\Component\Validator\ConstraintViolationList
      */
     public function validate()
     {

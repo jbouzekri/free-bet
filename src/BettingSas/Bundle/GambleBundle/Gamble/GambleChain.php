@@ -41,7 +41,7 @@ class GambleChain
     /**
      * Get all gambles configured for a type
      *
-     * @param string $competitionType
+     * @param string $eventType
      * @param string $gambleType
      *
      * @return \BettingSas\Bundle\GambleBundle\Gamble\GambleInterface

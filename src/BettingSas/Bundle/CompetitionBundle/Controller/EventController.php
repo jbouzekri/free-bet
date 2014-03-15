@@ -4,7 +4,6 @@ namespace BettingSas\Bundle\CompetitionBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 
 /**
@@ -18,10 +17,9 @@ class EventController extends Controller
      * Edit a match to set results
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param string $slugCompetition
-     * @param string $slugMatch
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
      *
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Event $event)
     {

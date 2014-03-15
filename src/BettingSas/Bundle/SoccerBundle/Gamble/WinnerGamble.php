@@ -5,7 +5,6 @@ namespace BettingSas\Bundle\SoccerBundle\Gamble;
 use BettingSas\Bundle\GambleBundle\Gamble\GambleInterface;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
-use BettingSas\Bundle\GambleBundle\Exception\ProcessingBetOnEventWithoutResultException;
 
 /**
  * Description of WinnerGamble

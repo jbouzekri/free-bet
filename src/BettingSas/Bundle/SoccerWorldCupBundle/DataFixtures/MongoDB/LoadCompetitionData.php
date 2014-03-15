@@ -6,7 +6,6 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
-
 use BettingSas\Bundle\CompetitionBundle\Document\Competition;
 
 /**

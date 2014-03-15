@@ -211,7 +211,8 @@ abstract class Event
     /**
      * Set competition
      *
-     * @param BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Competition $competition
+     *
      * @return self
      */
     public function setCompetition(\BettingSas\Bundle\CompetitionBundle\Document\Competition $competition)

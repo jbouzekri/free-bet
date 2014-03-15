@@ -4,7 +4,6 @@ namespace BettingSas\Bundle\GambleBundle\Gamble;
 
 use Symfony\Component\Validator\ValidatorInterface;
 use Symfony\Component\Validator\Constraint;
-
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 
 /**
@@ -27,7 +26,7 @@ class GambleValidator implements GambleValidatorInterface
     /**
      * Constructor
      *
-     * @param \BettingSas\Bundle\GambleBundle\Gamble\GambleChain $gambleChain
+     * @param \Symfony\Component\Validator\ValidatorInterface $sfValidator
      * @param string $validationGroup
      */
     public function __construct(ValidatorInterface $sfValidator, $validationGroup)

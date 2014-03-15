@@ -9,5 +9,8 @@ namespace BettingSas\Bundle\CompetitionBundle\Form\Guesser;
  */
 interface EventFormTypeGuesserInterface
 {
+    /**
+     * @return \Symfony\Component\Form\AbstractType
+     */
     public function getFormType($event);
 }
