@@ -1,0 +1,6 @@
+login:
+    path:     /login
+    defaults: { _controller: BettingSasUserBundle:Security:login }
+
+login_check:
+    path: /login_check

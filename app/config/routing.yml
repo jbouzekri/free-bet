@@ -1,3 +1,7 @@
+# User routes
+user_routes:
+    resource: "@BettingSasUserBundle/Resources/config/routing.yml"
+
 # Event routes
 event_routes:
     resource: "@BettingSasCompetitionBundle/Resources/config/routing.yml"

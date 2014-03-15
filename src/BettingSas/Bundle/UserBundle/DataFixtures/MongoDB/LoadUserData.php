@@ -44,7 +44,7 @@ class LoadMatchData extends AbstractFixture implements
                 'email' => 'jobou@smile.fr',
                 'group' => 'BU Helios',
                 'password' => 'azerty',
-                'profil' => 'ADMIN'
+                'profil' => 'ROLE_ADMIN'
             )
         );
 
