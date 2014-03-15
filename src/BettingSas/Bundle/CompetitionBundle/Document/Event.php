@@ -318,7 +318,7 @@ abstract class Event
     public function canBet()
     {
         return !$this->getProcessed()
-            && !empty($this->getLeftName())
-            && !empty($this->getRightName());
+            && !empty($this->leftName)
+            && !empty($this->rightName);
     }
 }
