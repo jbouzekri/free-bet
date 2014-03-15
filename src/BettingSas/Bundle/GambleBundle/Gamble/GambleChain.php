@@ -24,7 +24,9 @@ class GambleChain
      * Get all gambles configured for a type
      *
      * @param string $type
+     *
      * @return array
+     *
      * @throws UnsupportedEventType
      */
     public function getGamblesByEventType($type)
@@ -41,7 +43,9 @@ class GambleChain
      *
      * @param string $competitionType
      * @param string $gambleType
-     * @return array
+     *
+     * @return \BettingSas\Bundle\GambleBundle\Gamble\GambleInterface
+     *
      * @throws UnsupportedEventType
      */
     public function getGambleByEventTypeAndType($eventType, $gambleType)
