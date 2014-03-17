@@ -49,28 +49,46 @@ class SecurityController extends Controller
     /**
      * Display register form
      *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function registerAction()
+    {
+        $form = $this->createForm(new RegisterType(), new User());
+
+        return $this->render('BettingSasUserBundle:Security:register.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * Manage register form post
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function registerAction(Request $request)
+    public function registerProcessAction(Request $request)
     {
         $form = $this->createForm(new RegisterType(), new User());
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $registration = $form->getData();
+        $form->handleRequest($request);
 
-                // TODO : first registration in a group give manager role
-                $registration->setProfil('ROLE_USER');
+        if ($form->isValid()) {
+            $user = $form->getData();
 
-                $dm = $this->get('doctrine_mongodb')->getManager();
-                $dm->persist($registration);
-                $dm->flush();
+            // TODO : first registration in a group give manager role
+            $user->setProfil('ROLE_USER');
 
-                return $this->redirect($this->generateUrl('login'));
-            }
+            // Password encoding
+            $user->setSalt(md5(time()));
+            $encoder = $this->get('security.encoder_factory')->getEncoder($user);
+            $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+            $user->setPassword($password);
+
+            // Persist
+            $dm = $this->get('doctrine_mongodb')->getManager();
+            $dm->persist($user);
+            $dm->flush();
+
+            return $this->redirect($this->generateUrl('login'));
         }
 
         return $this->render('BettingSasUserBundle:Security:register.html.twig', array('form' => $form->createView()));

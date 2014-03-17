@@ -1,6 +1,12 @@
 register:
     path:     /register
     defaults: { _controller: BettingSasUserBundle:Security:register }
+    methods:  [GET]
+
+register_process:
+    path:     /register
+    defaults: { _controller: BettingSasUserBundle:Security:registerProcess }
+    methods:  [POST]
 
 login:
     path:     /login
