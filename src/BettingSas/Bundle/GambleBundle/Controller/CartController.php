@@ -15,6 +15,14 @@ use BettingSas\Bundle\GambleBundle\Form\Type\BetType;
  */
 class CartController extends Controller
 {
+    /**
+     * Add a bet to the gamble in the cart
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function addBetAction(Request $request, Event $event)
     {
         $bet = new Bet();
@@ -40,6 +48,14 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * Remove a bet from the gamble in the cart
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function removeBetAction(Request $request, Event $event)
     {
         $cart = $this->get('betting_sas.gamble.cart');
@@ -57,15 +73,25 @@ class CartController extends Controller
         );
     }
 
+    /**
+     * Transform the cart (persist it)
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function transformAction()
     {
         $cart = $this->get('betting_sas.gamble.cart');
         $cart->load();
-        $cart->transform();
+        $cart->transform($this->getUser());
 
         return $this->redirect($this->generateUrl('competition_list'));
     }
 
+    /**
+     * Controller used to render the cart directly in the template
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function viewAction()
     {
         $cart = $this->get('betting_sas.gamble.cart');

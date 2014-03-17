@@ -7,6 +7,7 @@ use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
 use BettingSas\Bundle\GambleBundle\Gamble\GambleValidatorInterface;
+use BettingSas\Bundle\UserBundle\Document\User;
 
 /**
  * Description of GambleCart
@@ -177,9 +178,15 @@ class GambleCart
     /**
      * Transform the gamble
      * Save it to db
+     *
+     * @param \BettingSas\Bundle\UserBundle\Document\User $user
+     *
+     * @return void
      */
-    public function transform()
+    public function transform(User $user)
     {
+        $this->getGamble()->setUser($user);
+
         $this->validate();
         if (!$this->isValid()) {
             throw new \Exception("there is validation error. TODO !!!");

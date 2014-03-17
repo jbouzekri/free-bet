@@ -40,6 +40,11 @@ class Gamble
     protected $updated;
 
     /**
+     * @var BettingSas\Bundle\UserBundle\Document\User
+     */
+    protected $user;
+
+    /**
      * @var BettingSas\Bundle\GambleBundle\Document\Bet
      */
     protected $bets = array();
@@ -220,6 +225,28 @@ class Gamble
         }
 
         return $betsWithEvent;
+    }
+
+    /**
+     * Set user
+     *
+     * @param BettingSas\Bundle\UserBundle\Document\User $user
+     * @return self
+     */
+    public function setUser(\BettingSas\Bundle\UserBundle\Document\User $user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return BettingSas\Bundle\UserBundle\Document\User $user
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**

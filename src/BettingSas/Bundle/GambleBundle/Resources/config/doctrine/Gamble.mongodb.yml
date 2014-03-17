@@ -21,6 +21,9 @@ BettingSas\Bundle\GambleBundle\Document\Gamble:
             gedmo:
               timestampable:
                 on: update
+    referenceOne:
+        user:
+            targetDocument: BettingSas\Bundle\UserBundle\Document\User
     embedMany:
         bets:
             targetDocument: BettingSas\Bundle\GambleBundle\Document\Bet

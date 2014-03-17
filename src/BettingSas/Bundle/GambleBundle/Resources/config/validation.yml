@@ -1,5 +1,7 @@
 BettingSas\Bundle\GambleBundle\Document\Gamble:
     properties:
+        user:
+            - NotBlank: ~
         bets:
             - Count:
                 min: 1
