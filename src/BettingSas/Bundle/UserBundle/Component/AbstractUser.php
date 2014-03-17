@@ -12,7 +12,7 @@ abstract class AbstractUser
     /**
      * @var string
      */
-    protected $name;
+    protected $pseudo;
 
     /**
      * @var string
@@ -20,25 +20,25 @@ abstract class AbstractUser
     protected $group;
 
     /**
-     * Set name
+     * Set pseudo
      *
-     * @param string $name
+     * @param string $pseudo
      * @return self
      */
-    public function setName($name)
+    public function setPseudo($pseudo)
     {
-        $this->name = $name;
+        $this->pseudo = $pseudo;
         return $this;
     }
 
     /**
-     * Get name
+     * Get pseudo
      *
-     * @return string $name
+     * @return string $pseudo
      */
-    public function getName()
+    public function getPseudo()
     {
-        return $this->name;
+        return $this->pseudo;
     }
 
     /**

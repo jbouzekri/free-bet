@@ -13,7 +13,8 @@ security:
         main:
             mongodb:
                 class: BettingSas\Bundle\UserBundle\Document\User
-                property: name
+                property: email
+
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

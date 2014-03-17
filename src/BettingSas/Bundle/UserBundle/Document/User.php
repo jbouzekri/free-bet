@@ -210,6 +210,6 @@ class User extends AbstractUser implements UserInterface
      */
     public function getUsername()
     {
-        return $this->getName();
+        return $this->getEmail();
     }
 }

@@ -1,7 +1,7 @@
 BettingSas\Bundle\UserBundle\Document\User:
     constraints:
         - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique: email
-        - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique: name
+        - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique: pseudo
     properties:
         email:
             - Email:

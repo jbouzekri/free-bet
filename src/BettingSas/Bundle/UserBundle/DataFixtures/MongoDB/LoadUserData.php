@@ -40,7 +40,7 @@ class LoadMatchData extends AbstractFixture implements
     {
         $users = array(
             array(
-                'name' => 'jobou',
+                'pseudo' => 'jobou',
                 'email' => 'jobou@smile.fr',
                 'group' => 'BU Helios',
                 'password' => 'azerty',
@@ -50,7 +50,7 @@ class LoadMatchData extends AbstractFixture implements
 
         foreach ($users as $user) {
             $entity = new User();
-            $entity->setName($user['name']);
+            $entity->setPseudo($user['pseudo']);
             $entity->setEmail($user['email']);
             $entity->setGroup($user['group']);
             $entity->setProfil($user['profil']);

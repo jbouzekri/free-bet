@@ -4,7 +4,7 @@ BettingSas\Bundle\UserBundle\Document\User:
     fields:
         id:
             id: true
-        name:
+        pseudo:
             type: string
             unique: true
         email:
@@ -28,4 +28,4 @@ BettingSas\Bundle\UserBundle\Document\User:
                     separator: -
                     style: lower
                     fields:
-                        - name
+                        - pseudo
