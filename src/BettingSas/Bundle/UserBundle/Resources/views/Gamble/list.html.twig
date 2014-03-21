@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div>
+
+{% for gamble in pagination %}
+{{ dump(gamble) }}
+{% endfor %}
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+{% endblock %}

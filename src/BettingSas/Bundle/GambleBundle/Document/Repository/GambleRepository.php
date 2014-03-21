@@ -4,6 +4,7 @@ namespace BettingSas\Bundle\GambleBundle\Document\Repository;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
+use BettingSas\Bundle\UserBundle\Document\User;
 
 /**
  * Description of GambleRepository
@@ -62,6 +63,21 @@ class GambleRepository extends DocumentRepository implements GambleRepositoryInt
     {
         $qb = $this->createQueryBuilder()
             ->field('bets.event.$id')->equals(new \MongoId($event->getId()));
+
+        return $qb;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAllGambleForUserQb(User $user, $onlyWinner = null)
+    {
+        $qb = $this->createQueryBuilder()
+            ->field('user.id')->equals($user->getId());
+
+        if ($onlyWinner !== null) {
+            $qb->field('winner')->equals($onlyWinner);
+        }
 
         return $qb;
     }

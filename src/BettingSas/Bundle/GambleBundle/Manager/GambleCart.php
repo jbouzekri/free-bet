@@ -81,6 +81,16 @@ class GambleCart
     }
 
     /**
+     * Get Gamble Repository
+     *
+     * @return \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface
+     */
+    public function getGambleRepository()
+    {
+        return $this->getManager()->getRepository('BettingSas\Bundle\GambleBundle\Document\Gamble');
+    }
+
+    /**
      * Get Gamble in cart
      *
      * @return \BettingSas\Bundle\GambleBundle\Document\Gamble

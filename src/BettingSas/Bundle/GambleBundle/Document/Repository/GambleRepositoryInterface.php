@@ -3,6 +3,7 @@
 namespace BettingSas\Bundle\GambleBundle\Document\Repository;
 
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
+use BettingSas\Bundle\UserBundle\Document\User;
 
 /**
  *
@@ -35,4 +36,14 @@ interface GambleRepositoryInterface
      * @return array
      */
     public function findAllGambleWithProcessedBets();
+
+    /**
+     * Get all gamble of a specific user
+     *
+     * @param \BettingSas\Bundle\UserBundle\Document\User $user
+     * @param bool $onlyWinner
+     *
+     * @return \Doctrine\ODM\MongoDB\Query\Builder
+     */
+    public function getAllGambleForUserQb(User $user, $onlyWinner = null);
 }
