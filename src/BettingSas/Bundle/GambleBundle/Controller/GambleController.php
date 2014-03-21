@@ -11,8 +11,4 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class GambleController extends Controller
 {
-    public function lastSubmittedAction()
-    {
-        return new \Symfony\Component\HttpFoundation\Response('test');
-    }
 }
