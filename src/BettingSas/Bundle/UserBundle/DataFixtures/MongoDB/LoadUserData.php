@@ -15,7 +15,7 @@ use BettingSas\Bundle\UserBundle\Document\User;
  *
  * @author jobou
  */
-class LoadMatchData extends AbstractFixture implements
+class LoadUserData extends AbstractFixture implements
     FixtureInterface,
     OrderedFixtureInterface,
     ContainerAwareInterface
@@ -43,7 +43,8 @@ class LoadMatchData extends AbstractFixture implements
                 'username' => 'jobou',
                 'email' => 'jobou@smile.fr',
                 'password' => 'azerty',
-                'profil' => 'ROLE_ADMIN'
+                'profil' => 'ROLE_ADMIN',
+                'organization' => 'bu-helios'
             )
         );
 
@@ -53,6 +54,10 @@ class LoadMatchData extends AbstractFixture implements
             $entity->setEmail($user['email']);
             $entity->setProfil($user['profil']);
             $entity->setEnabled(true);
+
+            if (isset($user['organization'])) {
+                $entity->setOrganization($this->getReference('organization-'.$user['organization']));
+            }
 
             $encoder = $this->container
                 ->get('security.encoder_factory')
@@ -73,6 +78,6 @@ class LoadMatchData extends AbstractFixture implements
      */
     public function getOrder()
     {
-        return 1;
+        return 20;
     }
 }

@@ -32,7 +32,7 @@ class User extends BaseUser
     /**
      * Get id
      *
-     * @return id $id
+     * @return \MongoId $id
      */
     public function getId()
     {

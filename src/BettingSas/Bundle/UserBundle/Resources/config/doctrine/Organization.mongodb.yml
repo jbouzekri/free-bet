@@ -1,10 +1,10 @@
-BettingSas\Bundle\UserBundle\Document\User:
+BettingSas\Bundle\UserBundle\Document\Organization:
     type: document
-    collection: users
+    collection: organizations
     fields:
         id:
             id: true
-        profil:
+        name:
             type: string
         slug:
             index: true
@@ -14,7 +14,4 @@ BettingSas\Bundle\UserBundle\Document\User:
                     separator: -
                     style: lower
                     fields:
-                        - username
-    referenceOne:
-        organization:
-            targetDocument: BettingSas\Bundle\UserBundle\Document\Organization
+                        - name

@@ -17,6 +17,11 @@ abstract class User extends BaseUser
     protected $profil;
 
     /**
+     * @var Organization $organization
+     */
+    protected $organization;
+
+    /**
      * Set profil
      *
      * @param string $profil
@@ -36,6 +41,28 @@ abstract class User extends BaseUser
     public function getProfil()
     {
         return $this->profil;
+    }
+
+    /**
+     * Set Organization
+     *
+     * @param Organization $organization
+     * @return self
+     */
+    public function setOrganization(Organization $organization)
+    {
+        $this->organization = $organization;
+        return $this;
+    }
+
+    /**
+     * Get Organization
+     *
+     * @return Organization $organization
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
     }
 
     /**
