@@ -11,4 +11,14 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class BettingSasUserBundle extends Bundle
 {
+    /**
+     * {@inheritDoc}
+     * Define FOSUserBundle as parent in order to override templates
+     *
+     * @return string
+     */
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
 }
