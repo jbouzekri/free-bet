@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div>
+
+<form action="{{ path('user_account_select_group_process') }}" method="post">
+    {{ form_errors(form) }}
+
+    {{ form_row(form.organization) }}
+{{ form_end(form) }}
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+{% endblock %}

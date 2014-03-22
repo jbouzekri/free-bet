@@ -45,6 +45,11 @@ class LoadUserData extends AbstractFixture implements
                 'password' => 'azerty',
                 'profil' => 'ROLE_ADMIN',
                 'organization' => 'bu-helios'
+            ),
+            array(
+                'username' => 'jobou2',
+                'email' => 'jobou2@smile.fr',
+                'password' => 'azerty'
             )
         );
 
@@ -52,8 +57,11 @@ class LoadUserData extends AbstractFixture implements
             $entity = new User();
             $entity->setUsername($user['username']);
             $entity->setEmail($user['email']);
-            $entity->setRoles(array($user['profil']));
             $entity->setEnabled(true);
+
+            if (isset($user['profil'])) {
+                $entity->setRoles(array($user['profil']));
+            }
 
             if (isset($user['organization'])) {
                 $entity->setOrganization($this->getReference('organization-'.$user['organization']));
@@ -67,7 +75,7 @@ class LoadUserData extends AbstractFixture implements
 
             $manager->persist($entity);
 
-            $this->addReference('user-'.$entity->getSlug(), $entity);
+            $this->addReference('user-'.$entity->getUsername(), $entity);
         }
 
         $manager->flush();

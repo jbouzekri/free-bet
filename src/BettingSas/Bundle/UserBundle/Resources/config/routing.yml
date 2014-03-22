@@ -1,3 +1,12 @@
+user_account_select_group:
+    path: /user/organization/select
+    defaults: { _controller: BettingSasUserBundle:Organization:select }
+
+user_account_select_group_process:
+    path: /user/organization/select/process
+    defaults: { _controller: BettingSasUserBundle:Organization:selectProcess }
+    methods:  [POST]
+
 user_account_gambles_list:
-    path: /account/gambles/list
+    path: /user/gambles/list
     defaults: { _controller: BettingSasUserBundle:Gamble:listGamble }

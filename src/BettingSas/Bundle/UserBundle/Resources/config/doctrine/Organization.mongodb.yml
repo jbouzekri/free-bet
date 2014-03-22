@@ -1,6 +1,7 @@
 BettingSas\Bundle\UserBundle\Document\Organization:
     type: document
     collection: organizations
+    repositoryClass: BettingSas\Bundle\UserBundle\Document\Repository\OrganizationRepository
     fields:
         id:
             id: true
