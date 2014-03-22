@@ -52,7 +52,7 @@ class LoadUserData extends AbstractFixture implements
             $entity = new User();
             $entity->setUsername($user['username']);
             $entity->setEmail($user['email']);
-            $entity->setProfil($user['profil']);
+            $entity->setRoles(array($user['profil']));
             $entity->setEnabled(true);
 
             if (isset($user['organization'])) {

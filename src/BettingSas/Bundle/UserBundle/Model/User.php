@@ -12,36 +12,9 @@ use FOS\UserBundle\Document\User as BaseUser;
 abstract class User extends BaseUser
 {
     /**
-     * @var string $profil
-     */
-    protected $profil;
-
-    /**
      * @var Organization $organization
      */
     protected $organization;
-
-    /**
-     * Set profil
-     *
-     * @param string $profil
-     * @return self
-     */
-    public function setProfil($profil)
-    {
-        $this->profil = $profil;
-        return $this;
-    }
-
-    /**
-     * Get profil
-     *
-     * @return string $profil
-     */
-    public function getProfil()
-    {
-        return $this->profil;
-    }
 
     /**
      * Set Organization
@@ -63,15 +36,5 @@ abstract class User extends BaseUser
     public function getOrganization()
     {
         return $this->organization;
-    }
-
-    /**
-     * Get the roles
-     *
-     * @return array
-     */
-    public function getRoles()
-    {
-        return array_unique(array(static::ROLE_DEFAULT, $this->getProfil()));
     }
 }
