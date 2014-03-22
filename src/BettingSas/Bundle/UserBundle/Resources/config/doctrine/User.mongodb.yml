@@ -4,20 +4,6 @@ BettingSas\Bundle\UserBundle\Document\User:
     fields:
         id:
             id: true
-        pseudo:
-            type: string
-            unique: true
-        email:
-            type: string
-            unique: true
-        active:
-            type: boolean
-        group:
-            type: string
-        password:
-            type: string
-        salt:
-            type: string
         profil:
             type: string
         slug:
@@ -28,4 +14,4 @@ BettingSas\Bundle\UserBundle\Document\User:
                     separator: -
                     style: lower
                     fields:
-                        - pseudo
+                        - username

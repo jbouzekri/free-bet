@@ -40,9 +40,8 @@ class LoadMatchData extends AbstractFixture implements
     {
         $users = array(
             array(
-                'pseudo' => 'jobou',
+                'username' => 'jobou',
                 'email' => 'jobou@smile.fr',
-                'group' => 'BU Helios',
                 'password' => 'azerty',
                 'profil' => 'ROLE_ADMIN'
             )
@@ -50,11 +49,10 @@ class LoadMatchData extends AbstractFixture implements
 
         foreach ($users as $user) {
             $entity = new User();
-            $entity->setPseudo($user['pseudo']);
+            $entity->setUsername($user['username']);
             $entity->setEmail($user['email']);
-            $entity->setGroup($user['group']);
             $entity->setProfil($user['profil']);
-            $entity->setSalt(md5(uniqid()));
+            $entity->setEnabled(true);
 
             $encoder = $this->container
                 ->get('security.encoder_factory')

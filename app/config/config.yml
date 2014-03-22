@@ -84,6 +84,11 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+fos_user:
+    db_driver: mongodb
+    firewall_name: main
+    user_class: BettingSas\Bundle\UserBundle\Document\User
+
 betting_sas_competition:
     mapping_events:
         soccer: BettingSas\Bundle\SoccerBundle\Document\Match

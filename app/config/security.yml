@@ -1,9 +1,6 @@
 security:
     encoders:
-        BettingSas\Bundle\UserBundle\Document\User:
-            algorithm:   sha1
-            iterations: 1
-            encode_as_base64: false
+        BettingSas\Bundle\UserBundle\Document\User: sha512
 
     role_hierarchy:
         ROLE_ADMIN:   [ROLE_USER, ROLE_MANAGER]
@@ -11,9 +8,7 @@ security:
 
     providers:
         main:
-            mongodb:
-                class: BettingSas\Bundle\UserBundle\Document\User
-                property: email
+            id: fos_user.user_provider.username_email
 
     firewalls:
         dev:
@@ -25,13 +20,12 @@ security:
             anonymous: ~
             logout: ~
             form_login:
-                login_path: login
-                check_path: login_check
                 csrf_provider: form.csrf_provider
 
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/group, roles: ROLE_MANAGER }
+        - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/, roles: ROLE_USER }
