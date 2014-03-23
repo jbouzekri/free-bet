@@ -33,9 +33,14 @@ class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
 
     /**
      * Validate the gamble bet collection
+     *
+     * @param \BettingSas\Bundle\GambleBundle\Document\Gamble $gamble
+     * @param \Symfony\Component\Validator\Constraint $constraint
      */
-    public function validate($betsCollection, Constraint $constraint)
+    public function validate($gamble, Constraint $constraint)
     {
+        $betsCollection = $gamble->getBets();
+
         if (!$betsCollection instanceof ArrayCollection) {
             throw new InvalidArgumentException(
                 'Invalid value type. Doctrine\Common\Collections\ArrayCollection expected'
@@ -45,7 +50,7 @@ class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
         foreach ($betsCollection as $bet) {
             $count = $this->om
                 ->getRepository('BettingSasGambleBundle:Gamble')
-                ->countAllGambleHavingBetsOnEventWithType($bet->getEvent(), $bet->getType());
+                ->countAllGambleHavingBetsOnEventWithType($gamble->getUser(), $bet->getEvent(), $bet->getType());
             if ($count > 0) {
                 $this->context->addViolationAt(
                     '0',

@@ -20,6 +20,14 @@ class GambleUniqueTypeOnEventAccrossBet extends Constraint
     public $message = 'You already used the gamble %type% in another bet on the same event.';
 
     /**
+     * {@inhericDoc}
+     */
+    public function getTargets()
+    {
+        return self::CLASS_CONSTRAINT;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function validatedBy()

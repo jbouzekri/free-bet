@@ -6,7 +6,8 @@ BettingSas\Bundle\GambleBundle\Document\Gamble:
             - Count:
                 min: 1
                 minMessage: "A gamble must have at least one bet."
-            - BettingSas\Bundle\GambleBundle\Validator\Constraints\GambleUniqueTypeOnEventAccrossBet: { groups: [betting_sas] }
+    constraints:
+        - BettingSas\Bundle\GambleBundle\Validator\Constraints\GambleUniqueTypeOnEventAccrossBet: { groups: [betting_sas] }
 
 BettingSas\Bundle\GambleBundle\Document\Bet:
     properties:

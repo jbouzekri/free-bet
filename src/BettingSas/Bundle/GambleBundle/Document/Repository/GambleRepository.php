@@ -31,10 +31,11 @@ class GambleRepository extends DocumentRepository implements GambleRepositoryInt
     /**
      * {@inheritDoc}
      */
-    public function countAllGambleHavingBetsOnEventWithType(Event $event, $betType)
+    public function countAllGambleHavingBetsOnEventWithType(User $user, Event $event, $betType)
     {
         $qb = $this->getAllGambleHavingBetsOnEventQb($event);
         $qb->count()
+            ->field('user.id')->equals($user->getId())
             ->field('bets.type')->equals($betType);
 
         return $qb->getQuery()->execute();
