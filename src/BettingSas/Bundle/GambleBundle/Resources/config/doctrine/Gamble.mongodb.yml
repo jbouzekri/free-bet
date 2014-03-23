@@ -24,6 +24,8 @@ BettingSas\Bundle\GambleBundle\Document\Gamble:
     referenceOne:
         user:
             targetDocument: BettingSas\Bundle\UserBundle\Document\User
+        organization:
+            targetDocument: BettingSas\Bundle\UserBundle\Document\Organization
     embedMany:
         bets:
             targetDocument: BettingSas\Bundle\GambleBundle\Document\Bet

@@ -196,6 +196,9 @@ class GambleCart
     public function transform(User $user)
     {
         $this->getGamble()->setUser($user);
+        if (null !== $user->getOrganization()) {
+            $this->getGamble()->setOrganization($user->getOrganization());
+        }
 
         $this->validate();
         if (!$this->isValid()) {

@@ -40,9 +40,14 @@ class Gamble
     protected $updated;
 
     /**
-     * @var BettingSas\Bundle\UserBundle\Document\User
+     * @var \BettingSas\Bundle\UserBundle\Document\User
      */
     protected $user;
+
+    /**
+     * @var \BettingSas\Bundle\UserBundle\Document\Organization
+     */
+    protected $organization;
 
     /**
      * @var BettingSas\Bundle\GambleBundle\Document\Bet
@@ -164,6 +169,52 @@ class Gamble
     }
 
     /**
+     * Set user
+     *
+     * @param \BettingSas\Bundle\UserBundle\Document\User $user
+     * @return self
+     */
+    public function setUser(\BettingSas\Bundle\UserBundle\Document\User $user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \BettingSas\Bundle\UserBundle\Document\User $user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set organization
+     *
+     * @param \BettingSas\Bundle\UserBundle\Document\Organization $organization
+     * @return self
+     */
+    public function setOrganization(\BettingSas\Bundle\UserBundle\Document\Organization $organization)
+    {
+        $this->organization = $organization;
+        return $this;
+    }
+
+    /**
+     * Get organization
+     *
+     * @return \BettingSas\Bundle\UserBundle\Document\Organization $organization
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
+
+
+    /**
      * Set created
      *
      * @param date $created
@@ -225,28 +276,6 @@ class Gamble
         }
 
         return $betsWithEvent;
-    }
-
-    /**
-     * Set user
-     *
-     * @param BettingSas\Bundle\UserBundle\Document\User $user
-     * @return self
-     */
-    public function setUser(\BettingSas\Bundle\UserBundle\Document\User $user)
-    {
-        $this->user = $user;
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return BettingSas\Bundle\UserBundle\Document\User $user
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**
