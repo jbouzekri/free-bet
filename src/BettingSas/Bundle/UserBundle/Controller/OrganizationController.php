@@ -24,7 +24,7 @@ class OrganizationController extends Controller
     {
         $organizationQb = $this->get('doctrine_mongodb.odm.default_document_manager')
             ->getRepository('BettingSas\Bundle\UserBundle\Document\Organization')
-            ->getAllSortedByNameQb($request->query->get('slug', null));
+            ->findAllFilteredQb($request->query->get('slug', null));
 
         $pagination = $this->get('knp_paginator')->paginate(
             $organizationQb,

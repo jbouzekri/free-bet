@@ -1,14 +1,54 @@
 {% extends '::base.html.twig' %}
 
+{% form_theme form _self %}
+
+{% block _select_organization_organization_row %}
+{% spaceless %}
+    {{ form_errors(form) }}
+    {% set label = form.vars.label %}
+    {% if label is empty %}
+        {% set label = form.vars.name|humanize %}
+    {% endif %}
+    <table>
+        <tr>
+            <th></th>
+            <th {% if pagination.isSorted('slug') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, label|trans({}, form.vars.translation_domain), 'slug') }}</th>
+        </tr>
+        {{ form_widget(form) }}
+    </table>
+{% endspaceless %}
+{% endblock %}
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    {% for child in form %}
+        <tr>
+            <td>
+                {{ form_widget(child) }}
+            </td>
+            <td>
+                {{ form_errors(child) }}
+                {{ form_label(child) }}
+            </td>
+        </tr>
+    {% endfor %}
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
 {% block body %}
 <div class="count">
-    {{ pagination.getTotalItemCount }}
+    {{ 'organization.item.count'|transchoice(pagination.getTotalItemCount, {}, 'organization') }}
 </div>
+
+<form action="" method="get">
+    <input type="text" name="slug" />
+    <input type="submit" value="{{ 'filter'|trans }}" />
+</form>
 
 <form action="{{ path('user_account_select_group_process') }}" method="post">
     {{ form_errors(form) }}
 
-    {{ form_row(form.organization) }}
+    {{ form_row(form.organization, {'pagination':pagination}) }}
 {{ form_end(form) }}
 
 <div class="navigation">

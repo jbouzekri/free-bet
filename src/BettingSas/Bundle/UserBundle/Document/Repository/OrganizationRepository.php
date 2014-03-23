@@ -18,7 +18,7 @@ class OrganizationRepository extends DocumentRepository
      * @param string $slug
      * @return \Doctrine\ODM\MongoDB\Query\Builder
      */
-    public function getAllSortedByNameQb($slug = null)
+    public function findAllFilteredQb($slug = null)
     {
         $qb = $this->createQueryBuilder()
             ->sort('slug');
