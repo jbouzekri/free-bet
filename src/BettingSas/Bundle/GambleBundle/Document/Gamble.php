@@ -50,9 +50,9 @@ class Gamble
     protected $organization;
 
     /**
-     * @var BettingSas\Bundle\GambleBundle\Document\Bet
+     * @var \Doctrine\Common\Collections\ArrayCollection
      */
-    protected $bets = array();
+    protected $bets;
 
     /**
      * Constructor
