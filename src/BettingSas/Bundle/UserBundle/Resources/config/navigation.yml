@@ -16,3 +16,7 @@ main:
                     label: Edit profile
                     route: "fos_user_profile_edit"
                     order: 30
+                gamble_list:
+                    label: Gamble list
+                    route: "user_account_gambles_list"
+                    order: 40
