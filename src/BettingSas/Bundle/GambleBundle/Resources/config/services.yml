@@ -1,7 +1,7 @@
 parameters:
     betting_sas.twig.gamble_extension.class: BettingSas\Bundle\GambleBundle\Twig\GambleExtension
     betting_sas.gamble.cart.class: BettingSas\Bundle\GambleBundle\Manager\GambleCart
-    betting_sas.gamble_chain.class: BettingSas\Bundle\GambleBundle\Gamble\GambleChain
+    betting_sas.bet_type_chain.class: BettingSas\Bundle\GambleBundle\BetType\BetTypeChain
     betting_sas.gamble.cart.persister.class: BettingSas\Bundle\GambleBundle\Manager\Persister\SessionCartPersister
     betting_sas.gamble.processor.class: BettingSas\Bundle\GambleBundle\Gamble\GambleProcessor
     betting_sas.gamble.validator.class: BettingSas\Bundle\GambleBundle\Gamble\GambleValidator
@@ -12,7 +12,7 @@ services:
         class: %betting_sas.twig.gamble_extension.class%
         arguments:
             - @twig
-            - @betting_sas.gamble_chain
+            - @betting_sas.bet_type_chain
             - @betting_sas.gamble.cart
         tags:
             - { name: twig.extension }
@@ -24,8 +24,8 @@ services:
             - @betting_sas.gamble.validator
             - @betting_sas.gamble.cart.persister
 
-    betting_sas.gamble_chain:
-        class: "%betting_sas.gamble_chain.class%"
+    betting_sas.bet_type_chain:
+        class: "%betting_sas.bet_type_chain.class%"
 
     betting_sas.gamble.cart.persister:
         class: %betting_sas.gamble.cart.persister.class%
@@ -35,13 +35,13 @@ services:
     betting_sas.gamble.processor:
         class: %betting_sas.gamble.processor.class%
         arguments:
-            - @betting_sas.gamble_chain
+            - @betting_sas.bet_type_chain
             - @betting_sas.gamble.calculator.simple
 
     betting_sas.gamble.calculator.simple:
         class: %betting_sas.gamble.calculator.simple.class%
         arguments:
-            - @betting_sas.gamble_chain
+            - @betting_sas.bet_type_chain
 
     betting_sas.gamble.validator:
         class: %betting_sas.gamble.validator.class%

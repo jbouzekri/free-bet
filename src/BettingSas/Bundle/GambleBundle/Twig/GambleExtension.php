@@ -4,15 +4,15 @@ namespace BettingSas\Bundle\GambleBundle\Twig;
 
 use Twig_Environment as Environment;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
-use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
+use BettingSas\Bundle\GambleBundle\BetType\BetTypeChain;
 use BettingSas\Bundle\GambleBundle\Manager\GambleCart;
 
 class GambleExtension extends \Twig_Extension
 {
     /**
-     * @var \BettingSas\Bundle\GambleBundle\Gamble\GambleChain
+     * @var \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain
      */
-    protected $gambles;
+    protected $betTypeChain;
 
     /**
      * @var \Twig_Environment
@@ -28,12 +28,12 @@ class GambleExtension extends \Twig_Extension
      * Constructor
      *
      * @param \Twig_Environment $twig
-     * @param \BettingSas\Bundle\GambleBundle\Gamble\GambleChain $gambles
+     * @param \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain $betTypeChain
      * @param \BettingSas\Bundle\GambleBundle\Manager\GambleCart $cart
      */
-    public function __construct(Environment $twig, GambleChain $gambles, GambleCart $cart)
+    public function __construct(Environment $twig, BetTypeChain $betTypeChain, GambleCart $cart)
     {
-        $this->gambles = $gambles;
+        $this->betTypeChain = $betTypeChain;
         $this->twig = $twig;
         $this->cart = $cart;
     }
@@ -61,12 +61,12 @@ class GambleExtension extends \Twig_Extension
     public function renderGamble(Event $event)
     {
         $html    = "";
-        $gambles = $this->gambles->getGamblesByEventType($event->getType());
+        $betTypes = $this->betTypeChain->findByEventType($event->getType());
 
-        foreach ($gambles as $gamble) {
-            $html .= $this->twig->render($gamble->getTemplate(), array(
+        foreach ($betTypes as $betType) {
+            $html .= $this->twig->render($betType->getTemplate(), array(
                 'event' => $event,
-                'gamble' => $gamble
+                'betType' => $betType
             ));
         }
 
@@ -82,10 +82,10 @@ class GambleExtension extends \Twig_Extension
 
         $bets = $this->cart->getGamble()->getBets();
         foreach ($bets as $bet) {
-            $gamble = $this->gambles->getGambleByEventTypeAndType($bet->getEvent()->getType(), $bet->getType());
-            $html .= $this->twig->render($gamble->getCartTemplate(), array(
+            $betTypeEntity = $this->betTypeChain->findByEventTypeAndType($bet->getEvent()->getType(), $bet->getType());
+            $html .= $this->twig->render($betTypeEntity->getCartTemplate(), array(
                 'bet' => $bet,
-                'gamble' => $gamble
+                'betType' => $betTypeEntity
             ));
         }
         return $html;

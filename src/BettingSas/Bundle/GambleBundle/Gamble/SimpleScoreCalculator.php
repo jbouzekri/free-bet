@@ -4,6 +4,7 @@ namespace BettingSas\Bundle\GambleBundle\Gamble;
 
 use BettingSas\Bundle\GambleBundle\Document\Bet;
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
+use BettingSas\Bundle\GambleBundle\BetType\BetTypeChain;
 
 /**
  * Description of SimpleScoreCalculator
@@ -13,18 +14,18 @@ use BettingSas\Bundle\GambleBundle\Document\Gamble;
 class SimpleScoreCalculator implements ScoreCalculatorInterface
 {
     /**
-     * @var \BettingSas\Bundle\GambleBundle\Gamble\GambleChain
+     * @var \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain
      */
-    protected $gambleChain;
+    protected $betTypeChain;
 
     /**
      * Constructor
      *
-     * @param \BettingSas\Bundle\GambleBundle\Gamble\GambleChain $gambleChain
+     * @param \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain $betTypeChain
      */
-    public function __construct(GambleChain $gambleChain)
+    public function __construct(BetTypeChain $betTypeChain)
     {
-        $this->gambleChain = $gambleChain;
+        $this->betTypeChain = $betTypeChain;
     }
 
     /**
@@ -46,9 +47,9 @@ class SimpleScoreCalculator implements ScoreCalculatorInterface
      */
     public function calculateSingleBet(Bet $bet)
     {
-        $gambleClass = $this->gambleChain->getGambleByEventTypeAndType($bet->getEvent()->getType(), $bet->getType());
+        $betTypeEntity = $this->betTypeChain->findByEventTypeAndType($bet->getEvent()->getType(), $bet->getType());
 
-        return $gambleClass->getDifficulty();
+        return $betTypeEntity->getDifficulty();
     }
 
     /**

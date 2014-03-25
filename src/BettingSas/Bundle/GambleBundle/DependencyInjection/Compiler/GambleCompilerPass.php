@@ -10,16 +10,16 @@ class GambleCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('betting_sas.gamble_chain')) {
+        if (!$container->hasDefinition('betting_sas.bet_type_chain')) {
             return;
         }
 
         $definition = $container->getDefinition(
-            'betting_sas.gamble_chain'
+            'betting_sas.bet_type_chain'
         );
 
         $taggedServices = $container->findTaggedServiceIds(
-            'betting_sas.gamble'
+            'betting_sas.bet_type'
         );
         foreach ($taggedServices as $id => $tagAttributes) {
             foreach ($tagAttributes as $attributes) {
@@ -30,7 +30,7 @@ class GambleCompilerPass implements CompilerPassInterface
                 }
 
                 $definition->addMethodCall(
-                    'addGamble',
+                    'addBetType',
                     array(new Reference($id), $attributes['type'], $order)
                 );
             }

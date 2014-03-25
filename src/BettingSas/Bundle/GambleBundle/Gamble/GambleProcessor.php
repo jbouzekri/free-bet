@@ -4,7 +4,7 @@ namespace BettingSas\Bundle\GambleBundle\Gamble;
 
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
-use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
+use BettingSas\Bundle\GambleBundle\BetType\BetTypeChain;
 
 /**
  * Description of GambleProcessor
@@ -14,9 +14,9 @@ use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
 class GambleProcessor
 {
     /**
-     * @var \BettingSas\Bundle\GambleBundle\Gamble\GambleChain
+     * @var \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain
      */
-    protected $gambleChain;
+    protected $betTypesChain;
 
     /**
      * @var \BettingSas\Bundle\GambleBundle\Gamble\ScoreCalculatorInterface
@@ -26,12 +26,12 @@ class GambleProcessor
     /**
      * Constructor
      *
-     * @param \BettingSas\Bundle\GambleBundle\Gamble\GambleChain $gambleChain
+     * @param \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain $betTypeChain
      * @param \BettingSas\Bundle\GambleBundle\Gamble\ScoreCalculatorInterface $calculator
      */
-    public function __construct(GambleChain $gambleChain, ScoreCalculatorInterface $calculator)
+    public function __construct(BetTypeChain $betTypeChain, ScoreCalculatorInterface $calculator)
     {
-        $this->gambleChain = $gambleChain;
+        $this->betTypeChain = $betTypeChain;
         $this->calculator = $calculator;
     }
 
@@ -74,8 +74,8 @@ class GambleProcessor
         $bets = $gamble->findBetsWithEvent($event);
         foreach ($bets as $bet) {
             // Update the winner field in each bet
-            $gambleClass = $this->gambleChain->getGambleByEventTypeAndType($event->getType(), $bet->getType());
-            $result = $gambleClass->processBet($bet);
+            $betTypeEntity = $this->betTypeChain->findByEventTypeAndType($event->getType(), $bet->getType());
+            $result = $betTypeEntity->processBet($bet);
             if (is_bool($result)) {
                 $bet->setWinner($result);
             }

@@ -1,6 +1,6 @@
 parameters:
-    betting_sas.gamble.soccer.winner.class: BettingSas\Bundle\SoccerBundle\Gamble\WinnerGamble
-    betting_sas.gamble.soccer.exact_score.class: BettingSas\Bundle\SoccerBundle\Gamble\ExactScoreGamble
+    betting_sas.gamble.soccer.winner.class: BettingSas\Bundle\SoccerBundle\BetType\WinnerGamble
+    betting_sas.gamble.soccer.exact_score.class: BettingSas\Bundle\SoccerBundle\BetType\ExactScoreGamble
 
 services:
     betting_sas.gamble.soccer.winner:
@@ -8,9 +8,9 @@ services:
         calls:
              - [setTranslator, ["@translator"]]
         tags:
-            -  { name: betting_sas.gamble, type: soccer, order: 1 }
+            -  { name: betting_sas.bet_type, type: soccer, order: 1 }
 
     betting_sas.gamble.soccer.exact_score:
         class: %betting_sas.gamble.soccer.exact_score.class%
         tags:
-            -  { name: betting_sas.gamble, type: soccer, order: 10 }
+            -  { name: betting_sas.bet_type, type: soccer, order: 10 }

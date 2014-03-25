@@ -6,7 +6,7 @@ services:
     betting_sas.gamble.validator.bet_type_choice:
         class: %betting_sas.gamble.validator.bet_type_choice.class%
         arguments:
-            - @betting_sas.gamble_chain
+            - @betting_sas.bet_type_chain
         tags:
             - { name: validator.constraint_validator, alias: bet_type_choice }
 

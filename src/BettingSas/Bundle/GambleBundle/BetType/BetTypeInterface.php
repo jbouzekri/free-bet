@@ -1,16 +1,16 @@
 <?php
 
-namespace BettingSas\Bundle\GambleBundle\Gamble;
+namespace BettingSas\Bundle\GambleBundle\BetType;
 
 use BettingSas\Bundle\GambleBundle\Document\Bet;
 
 /**
- * GambleInterface
- * An interface for all the gamble types
+ * BetTypeInterface
+ * An interface for all the bet types
  *
  * @author jobou
  */
-interface GambleInterface
+interface BetTypeInterface
 {
     /**
      * Get the default template to render the choices of the gamble in the detail page

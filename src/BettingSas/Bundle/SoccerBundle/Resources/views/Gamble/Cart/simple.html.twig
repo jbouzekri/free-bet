@@ -1,5 +1,5 @@
 {{ bet.event.getName }}<br />
-{{ ('gamble_'~gamble.getName)|trans({},'gamble') }} {{ bet.getChoice() }}
+{{ ('gamble_'~betType.getName)|trans({},'gamble') }} {{ bet.getChoice() }}
 <form action="{{ path('gamble_cart_remove_bet',{id:bet.event.id}) }}" method="post">
     <input type="hidden" name="bet_type" value="{{ bet.type }}" />
     <input type="submit" value="Delete" />

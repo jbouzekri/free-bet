@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
-use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
+use BettingSas\Bundle\GambleBundle\BetType\BetTypeChain;
 
 /**
  * Validator for constraint bet_type_choice
@@ -15,18 +15,18 @@ use BettingSas\Bundle\GambleBundle\Gamble\GambleChain;
 class BetTypeChoiceCoupleValidator extends ConstraintValidator
 {
     /**
-     * @var \BettingSas\Bundle\GambleBundle\Gamble\GambleChain
+     * @var \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain
      */
-    protected $gambleChain;
+    protected $betTypeChain;
 
     /**
      * Constructor
      *
-     * @param \BettingSas\Bundle\GambleBundle\Gamble\GambleChain $gambleChain
+     * @param \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain $betTypeChain
      */
-    public function __construct(GambleChain $gambleChain)
+    public function __construct(BetTypeChain $betTypeChain)
     {
-        $this->gambleChain = $gambleChain;
+        $this->betTypeChain = $betTypeChain;
     }
 
     /**
@@ -46,8 +46,8 @@ class BetTypeChoiceCoupleValidator extends ConstraintValidator
         }
 
         $event = $bet->getEvent();
-        $gambleClass = $this->gambleChain->getGambleByEventTypeAndType($event->getType(), $bet->getType());
-        if (!$gambleClass->validate($bet)) {
+        $betTypeEntity = $this->betTypeChain->findByEventTypeAndType($event->getType(), $bet->getType());
+        if (!$betTypeEntity->validate($bet)) {
             $this->context->addViolation(
                 $constraint->message,
                 array(

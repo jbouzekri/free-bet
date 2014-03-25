@@ -12,6 +12,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class GambleController extends Controller
 {
+    /**
+     * Paginated list of the authenticated user's gamble
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function listGambleAction(Request $request)
     {
         $gamblesQb = $this->get('betting_sas.gamble.cart')

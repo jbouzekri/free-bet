@@ -1,8 +1,8 @@
 <?php
 
-namespace BettingSas\Bundle\SoccerBundle\Gamble;
+namespace BettingSas\Bundle\SoccerBundle\BetType;
 
-use BettingSas\Bundle\GambleBundle\Gamble\GambleInterface;
+use BettingSas\Bundle\GambleBundle\BetType\BetTypeInterface;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
 
@@ -11,9 +11,9 @@ use BettingSas\Bundle\GambleBundle\Document\Bet;
  *
  * @author jobou
  */
-class WinnerGamble implements GambleInterface
+class WinnerGamble implements BetTypeInterface
 {
-    use \BettingSas\Bundle\GambleBundle\Gamble\Tools\TranslatorTool;
+    use \BettingSas\Bundle\GambleBundle\BetType\Tools\TranslatorTool;
 
     /**
      * Constants used in winner gamble

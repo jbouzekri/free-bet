@@ -5,10 +5,10 @@ namespace BettingSas\Bundle\GambleBundle\Exception;
 use BettingSas\Bundle\CompetitionBundle\Exception\BettingSasException;
 
 /**
- * Description of UnsupportedGambleType
+ * Description of UnsupportedBetType
  *
  * @author jobou
  */
-class UnsupportedGambleType extends BettingSasException
+class UnsupportedBetType extends BettingSasException
 {
 }

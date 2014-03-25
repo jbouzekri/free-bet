@@ -1,8 +1,8 @@
 <?php
 
-namespace BettingSas\Bundle\SoccerBundle\Gamble;
+namespace BettingSas\Bundle\SoccerBundle\BetType;
 
-use BettingSas\Bundle\GambleBundle\Gamble\GambleInterface;
+use BettingSas\Bundle\GambleBundle\BetType\BetTypeInterface;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
 
 /**
@@ -10,7 +10,7 @@ use BettingSas\Bundle\GambleBundle\Document\Bet;
  *
  * @author jobou
  */
-class ExactScoreGamble implements GambleInterface
+class ExactScoreGamble implements BetTypeInterface
 {
     /**
      * Choices available in gamble

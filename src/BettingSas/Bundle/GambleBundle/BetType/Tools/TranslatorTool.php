@@ -1,6 +1,6 @@
 <?php
 
-namespace BettingSas\Bundle\GambleBundle\Gamble\Tools;
+namespace BettingSas\Bundle\GambleBundle\BetType\Tools;
 
 use Symfony\Component\Translation\Translator;
 
