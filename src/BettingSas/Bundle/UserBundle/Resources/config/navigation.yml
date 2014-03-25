@@ -2,7 +2,17 @@ main:
     tree:
         account_item:
             label: Account
+            route: "fos_user_profile_show"
             children:
                 select_group:
                     label: Select group
                     route: "user_account_select_group"
+                    order: 10
+                change_password:
+                    label: Change password
+                    route: "fos_user_change_password"
+                    order: 20
+                edit_profile:
+                    label: Edit profile
+                    route: "fos_user_profile_edit"
+                    order: 30
