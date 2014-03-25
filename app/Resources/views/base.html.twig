@@ -11,6 +11,7 @@
             <a href="{{ path('fos_user_security_logout') }}">Logout</a>
             <a href="{{ path('user_account_select_group') }}">Select group</a>
             {{ render(controller('BettingSasGambleBundle:Cart:view')) }}
+            {{ knp_menu_render('main') }}
         {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

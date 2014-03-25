@@ -1,0 +1,8 @@
+main:
+    tree:
+        account_item:
+            label: Account
+            children:
+                select_group:
+                    label: Select group
+                    route: "user_account_select_group"

@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Maestro\Bundle\NavigationBundle\MaestroNavigationBundle(),
             new BettingSas\Bundle\UserBundle\BettingSasUserBundle(),
             new BettingSas\Bundle\GambleBundle\BettingSasGambleBundle(),
             new BettingSas\Bundle\CompetitionBundle\BettingSasCompetitionBundle(),

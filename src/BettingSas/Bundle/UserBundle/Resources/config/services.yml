@@ -1,0 +1,11 @@
+services:
+    betting_sas.menu.main:
+        class: Knp\Menu\MenuItem
+        factory_service: maestro.menu.builder
+        factory_method: createMenu
+        arguments: 
+          - "@request"
+          - "main"
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }
