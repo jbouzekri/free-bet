@@ -34,17 +34,8 @@ class OrganizationController extends Controller
 
         $form = $this->createForm(new SelectOrganizationType(), null, array('choices'=>$pagination->getItems()));
 
-        return $this->render('BettingSasUserBundle:Organization:select.html.twig', array(
-            'pagination' => $pagination,
-            'form' => $form->createView()
-        ));
-    }
-
-    public function selectProcessAction(Request $request)
-    {
-        $form = $this->createForm(new SelectOrganizationType());
-
         $form->handleRequest($request);
+
         if ($form->isValid()) {
             $data = $form->getData();
 
@@ -54,8 +45,13 @@ class OrganizationController extends Controller
             $om = $this->get('doctrine_mongodb.odm.default_document_manager');
             $om->persist($user);
             $om->flush();
+
+            return $this->redirect($this->generateUrl('competition_list'));
         }
 
-        return $this->redirect($this->generateUrl('competition_list'));
+        return $this->render('BettingSasUserBundle:Organization:select.html.twig', array(
+            'pagination' => $pagination,
+            'form' => $form->createView()
+        ));
     }
 }

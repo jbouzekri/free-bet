@@ -45,7 +45,7 @@
     <input type="submit" value="{{ 'filter'|trans }}" />
 </form>
 
-<form action="{{ path('user_account_select_group_process') }}" method="post">
+<form action="{{ path('user_account_select_group') }}" method="post">
     {{ form_errors(form) }}
 
     {{ form_row(form.organization, {'pagination':pagination}) }}
