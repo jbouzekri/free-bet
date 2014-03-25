@@ -22,7 +22,7 @@ class LoadOrganizationData extends AbstractFixture implements
      */
     public function load(ObjectManager $manager)
     {
-        for ($i=1;$i<=100;$i++) {
+        for ($i=1; $i<=100; $i++) {
             $entity = new Organization();
             $entity->setName("Organization ".$i);
 
