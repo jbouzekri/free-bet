@@ -46,19 +46,19 @@ class GambleExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('render_gamble', array($this, 'renderGamble'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('render_all_bet_types', array($this, 'renderAllBetTypes'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('render_cart', array($this, 'renderCart'), array('is_safe' => array('html'))),
         );
     }
 
     /**
-     * render_gamble twig function
+     * render_all_bet_types twig function
      *
      * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
      *
      * @return string
      */
-    public function renderGamble(Event $event)
+    public function renderAllBetTypes(Event $event)
     {
         $html    = "";
         $betTypes = $this->betTypeChain->findByEventType($event->getType());
