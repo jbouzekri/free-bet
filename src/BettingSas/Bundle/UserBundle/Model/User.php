@@ -19,7 +19,7 @@ abstract class User extends BaseUser
     /**
      * Set Organization
      *
-     * @param Organization $organization
+     * @param \BettingSas\Bundle\UserBundle\Model\Organization $organization
      * @return self
      */
     public function setOrganization(Organization $organization)
@@ -31,7 +31,7 @@ abstract class User extends BaseUser
     /**
      * Get Organization
      *
-     * @return Organization $organization
+     * @return \BettingSas\Bundle\UserBundle\Model\Organization $organization
      */
     public function getOrganization()
     {

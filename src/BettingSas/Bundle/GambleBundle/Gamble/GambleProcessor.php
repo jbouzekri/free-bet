@@ -16,7 +16,7 @@ class GambleProcessor
     /**
      * @var \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain
      */
-    protected $betTypesChain;
+    protected $betTypeChain;
 
     /**
      * @var \BettingSas\Bundle\GambleBundle\Gamble\ScoreCalculatorInterface

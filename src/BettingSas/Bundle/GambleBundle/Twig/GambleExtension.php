@@ -6,6 +6,7 @@ use Twig_Environment as Environment;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\BetType\BetTypeChain;
 use BettingSas\Bundle\GambleBundle\Manager\GambleCart;
+use BettingSas\Bundle\GambleBundle\Document\Gamble;
 
 class GambleExtension extends \Twig_Extension
 {
@@ -88,6 +89,7 @@ class GambleExtension extends \Twig_Extension
                 'betType' => $betTypeEntity
             ));
         }
+
         return $html;
     }
 
