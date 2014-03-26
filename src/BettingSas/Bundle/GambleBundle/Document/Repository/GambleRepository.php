@@ -74,7 +74,8 @@ class GambleRepository extends DocumentRepository implements GambleRepositoryInt
     public function getAllGambleForUserQb(User $user, $onlyWinner = null)
     {
         $qb = $this->createQueryBuilder()
-            ->field('user.id')->equals($user->getId());
+            ->field('user.id')->equals($user->getId())
+            ->sort('created', 'DESC');
 
         if ($onlyWinner !== null) {
             $qb->field('winner')->equals($onlyWinner);
