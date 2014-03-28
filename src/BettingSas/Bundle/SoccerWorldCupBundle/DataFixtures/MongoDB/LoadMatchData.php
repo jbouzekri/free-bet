@@ -438,6 +438,122 @@ class LoadMatchData extends AbstractFixture implements FixtureInterface, Ordered
                 'right_name' => 'Russia',
                 'date' => '1403812800'
             ),
+
+            /***********************/
+            // Sixteen
+            /***********************/
+            array(
+                'phase_order' => 2,
+                'phase' => 'sixteen',
+                'group' => '1',
+                'date' => '1403971200'
+            ),
+            array(
+                'phase_order' => 2,
+                'phase' => 'sixteen',
+                'group' => '2',
+                'date' => '1403985600'
+            ),
+            array(
+                'phase_order' => 2,
+                'phase' => 'sixteen',
+                'group' => '3',
+                'date' => '1404057600'
+            ),
+            array(
+                'phase_order' => 2,
+                'phase' => 'sixteen',
+                'group' => '4',
+                'date' => '1404072000'
+            ),
+            array(
+                'phase_order' => 2,
+                'phase' => 'sixteen',
+                'group' => '5',
+                'date' => '1404144000'
+            ),
+            array(
+                'phase_order' => 2,
+                'phase' => 'sixteen',
+                'group' => '6',
+                'date' => '1404158400'
+            ),
+            array(
+                'phase_order' => 2,
+                'phase' => 'sixteen',
+                'group' => '7',
+                'date' => '1404230400'
+            ),
+            array(
+                'phase_order' => 2,
+                'phase' => 'sixteen',
+                'group' => '8',
+                'date' => '1404244800'
+            ),
+
+            /***********************/
+            // Quarter
+            /***********************/
+            array(
+                'phase_order' => 3,
+                'phase' => 'quarter',
+                'group' => '1',
+                'date' => '1404489600'
+            ),
+            array(
+                'phase_order' => 3,
+                'phase' => 'quarter',
+                'group' => '2',
+                'date' => '1404504000'
+            ),
+            array(
+                'phase_order' => 3,
+                'phase' => 'quarter',
+                'group' => '3',
+                'date' => '1404576000'
+            ),
+            array(
+                'phase_order' => 3,
+                'phase' => 'quarter',
+                'group' => '4',
+                'date' => '1404590400'
+            ),
+
+            /***********************/
+            // semi
+            /***********************/
+            array(
+                'phase_order' => 4,
+                'phase' => 'semi',
+                'group' => '1',
+                'date' => '1404849600'
+            ),
+            array(
+                'phase_order' => 4,
+                'phase' => 'semi',
+                'group' => '2',
+                'date' => '1404936000'
+            ),
+
+            /***********************/
+            // playoff
+            /***********************/
+            array(
+                'phase_order' => 5,
+                'phase' => 'playoff',
+                'group' => '1',
+                'date' => '1405195200'
+            ),
+
+            /***********************/
+            // final
+            /***********************/
+            array(
+                'phase_order' => 6,
+                'phase' => 'final',
+                'group' => '1',
+                'date' => '1405278000'
+            ),
         );
 
         $worldCup2014 = $this->getReference('world-cup-2014');
@@ -447,8 +563,12 @@ class LoadMatchData extends AbstractFixture implements FixtureInterface, Ordered
             $entity->setPhaseOrder($match['phase_order']);
             $entity->setPhase($match['phase']);
             $entity->setGroup($match['group']);
-            $entity->setLeftName($match['left_name']);
-            $entity->setRightName($match['right_name']);
+            if (isset($match['left_name'])) {
+                $entity->setLeftName($match['left_name']);
+            }
+            if (isset($match['right_name'])) {
+                $entity->setRightName($match['right_name']);
+            }
             $entity->setDate(\DateTime::createFromFormat('U', $match['date']));
             $entity->setDate(new \DateTime('-1000 seconds'));
             $entity->setCompetition($worldCup2014);
