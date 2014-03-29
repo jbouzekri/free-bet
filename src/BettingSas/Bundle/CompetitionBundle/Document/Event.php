@@ -287,11 +287,11 @@ abstract class Event
 
 
     /**
-     * Return the id of a service used to guess the form type of the event
+     * Return the name of the form to use when editing the event
      *
      * @return string
      */
-    abstract public function getFormTypeGuesserService();
+    abstract public function getFormType();
 
     /**
      * Check if the result is known to process bets

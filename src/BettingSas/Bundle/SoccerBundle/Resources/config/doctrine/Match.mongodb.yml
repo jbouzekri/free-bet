@@ -16,6 +16,12 @@ BettingSas\Bundle\SoccerBundle\Document\Match:
             type: string
         group:
             type: string
+        leftTeamHalfTimeScore:
+            type: int
+            name: left_team_half_time_score
+        rightTeamHalfTimeScore:
+            type: int
+            name: right_team_half_time_score
         leftTeamAfterExtendedTimeScore:
             type: int
             name: left_team_after_extended_time_score

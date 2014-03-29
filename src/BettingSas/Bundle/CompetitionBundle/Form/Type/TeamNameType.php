@@ -1,32 +1,43 @@
 <?php
 
-namespace BettingSas\Bundle\SoccerBundle\Form\Type;
+namespace BettingSas\Bundle\CompetitionBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class GroupMatchType extends AbstractType
+/**
+ * Description of TeamNameType
+ *
+ * @author jobou
+ */
+class TeamNameType extends AbstractType
 {
+    /**
+     * {@inheritDoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('leftTeamScore', 'integer', array(
-            'required'=>false
-        ));
-        $builder->add('rightTeamScore', 'integer', array(
-            'required'=>false
-        ));
+        $builder
+            ->add('leftName', 'text')
+            ->add('rightName', 'text');
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BettingSas\Bundle\SoccerBundle\Document\Match',
+            'inherit_data' => true
         ));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
-        return 'soccer_group_match';
+        return 'team_name';
     }
 }

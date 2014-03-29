@@ -24,7 +24,7 @@ class EventController extends Controller
     public function editAction(Request $request, Event $event)
     {
         $form = $this->createForm(
-            $this->get($event->getFormTypeGuesserService())->getFormType($event),
+            $event->getFormType(),
             $event
         );
 

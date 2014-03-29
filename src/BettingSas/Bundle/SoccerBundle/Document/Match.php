@@ -42,6 +42,16 @@ class Match extends Event
     protected $group;
 
     /**
+     * @var int $leftTeamHalfTimeScore
+     */
+    protected $leftTeamHalfTimeScore;
+
+    /**
+     * @var int $rightTeamHalfTimeScore
+     */
+    protected $rightTeamHalfTimeScore;
+
+    /**
      * @var int $leftTeamAfterExtendedTimeScore
      */
     protected $leftTeamAfterExtendedTimeScore;
@@ -169,6 +179,50 @@ class Match extends Event
     public function getRightTeamScore()
     {
         return $this->rightTeamScore;
+    }
+
+    /**
+     * Set leftTeamHalfTimeScore
+     *
+     * @param int $leftTeamHalfTimeScore
+     * @return self
+     */
+    public function setLeftTeamHalfTimeScore($leftTeamHalfTimeScore)
+    {
+        $this->leftTeamHalfTimeScore = $leftTeamHalfTimeScore;
+        return $this;
+    }
+
+    /**
+     * Get leftTeamHalfTimeScore
+     *
+     * @return int $leftTeamHalfTimeScore
+     */
+    public function getLeftTeamHalfTimeScore()
+    {
+        return $this->leftTeamHalfTimeScore;
+    }
+
+    /**
+     * Set rightTeamHalfTimeScore
+     *
+     * @param int $rightTeamHalfTimeScore
+     * @return self
+     */
+    public function setRightTeamHalfTimeScore($rightTeamHalfTimeScore)
+    {
+        $this->rightTeamHalfTimeScore = $rightTeamHalfTimeScore;
+        return $this;
+    }
+
+    /**
+     * Get rightTeamHalfTimeScore
+     *
+     * @return int $rightTeamHalfTimeScore
+     */
+    public function getRightTeamHalfTimeScore()
+    {
+        return $this->rightTeamHalfTimeScore;
     }
 
     /**
@@ -324,9 +378,9 @@ class Match extends Event
     /**
      * {@inheritDoc}
      */
-    public function getFormTypeGuesserService()
+    public function getFormType()
     {
-        return 'betting_sas.soccer.form_type_guesser';
+        return \BettingSas\Bundle\SoccerBundle\Form\Type\MatchType::MATCH_FORM_NAME;
     }
 
     /**
