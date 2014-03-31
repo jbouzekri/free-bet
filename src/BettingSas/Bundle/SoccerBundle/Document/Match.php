@@ -380,7 +380,7 @@ class Match extends Event
      */
     public function getFormType()
     {
-        return \BettingSas\Bundle\SoccerBundle\Form\Type\MatchType::MATCH_FORM_NAME;
+        return 'match';
     }
 
     /**

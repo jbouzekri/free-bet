@@ -9,8 +9,6 @@ use BettingSas\Bundle\CompetitionBundle\Form\Type\TeamNameType;
 
 class MatchType extends AbstractType
 {
-    const MATCH_FORM_NAME = 'match';
-
     /**
      * {@inheritDoc}
      */
@@ -59,6 +57,6 @@ class MatchType extends AbstractType
      */
     public function getName()
     {
-        return self::MATCH_FORM_NAME;
+        return 'match';
     }
 }
