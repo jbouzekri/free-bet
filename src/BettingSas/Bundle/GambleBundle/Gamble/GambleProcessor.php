@@ -11,7 +11,7 @@ use BettingSas\Bundle\GambleBundle\BetType\BetTypeChain;
  *
  * @author jobou
  */
-class GambleProcessor
+class GambleProcessor implements GambleProcessorInterface
 {
     /**
      * @var \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain

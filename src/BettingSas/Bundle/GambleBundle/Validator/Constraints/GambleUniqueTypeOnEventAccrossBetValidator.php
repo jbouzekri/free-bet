@@ -5,7 +5,7 @@ namespace BettingSas\Bundle\GambleBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
-use Doctrine\Common\Persistence\ObjectManager;
+use BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -15,20 +15,21 @@ use Doctrine\Common\Collections\ArrayCollection;
 class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
 {
     /**
-     * Object Manager
+     * Gamble Repository
      *
-     * @var \Doctrine\Common\Persistence\ObjectManager
+     * @var \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface
      */
-    protected $om;
+    protected $gambleRepository;
 
     /**
      * Constructor
      *
-     * @param \Doctrine\Common\Persistence\ObjectManager $om
+     * @param \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface $om
      */
-    public function __construct(ObjectManager $om)
-    {
-        $this->om = $om;
+    public function __construct(
+        \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface $gambleRepository
+    ) {
+        $this->gambleRepository = $gambleRepository;
     }
 
     /**
@@ -48,8 +49,8 @@ class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
         }
 
         foreach ($betsCollection as $bet) {
-            $count = $this->om
-                ->getRepository('BettingSasGambleBundle:Gamble')
+            $count = $this
+                ->gambleRepository
                 ->countAllGambleHavingBetsOnEventWithType($gamble->getUser(), $bet->getEvent(), $bet->getType());
             if ($count > 0) {
                 $this->context->addViolationAt(

@@ -2,24 +2,41 @@
 
 namespace BettingSas\Bundle\GambleBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Psr\Log\LoggerInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use BettingSas\Bundle\CompetitionBundle\Document\Repository\EventRepositoryInterface;
+use BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
+use BettingSas\Bundle\GambleBundle\Gamble\GambleProcessorInterface;
 
 /**
  * Description of ProcessGambleCommand
  *
  * @author jobou
  */
-class ProcessGambleCommand extends ContainerAwareCommand
+class ProcessGambleCommand extends Command
 {
     /**
      * @var \Doctrine\Common\Persistence\ObjectManager
      */
     protected $om;
+
+    /**
+     * @var \BettingSas\Bundle\CompetitionBundle\Document\Repository\EventRepositoryInterface
+     */
+    protected $eventRepository;
+
+    /**
+     * @var \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface
+     */
+    protected $gambleRepository;
+
+    /**
+     * @var \BettingSas\Bundle\GambleBundle\Gamble\GambleProcessorInterface
+     */
+    protected $processor;
 
     /**
      * @var \Psr\Log\LoggerInterface
@@ -30,12 +47,24 @@ class ProcessGambleCommand extends ContainerAwareCommand
      * Constructor
      *
      * @param \Doctrine\Common\Persistence\ObjectManager $om
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Repository\EventRepositoryInterface $eventRepository
+     * @param \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface $gambleRepository
+     * @param \BettingSas\Bundle\GambleBundle\Gamble\GambleProcessorInterface $processor
      * @param \Psr\Log\LoggerInterface $logger
      */
-    public function __construct(ObjectManager $om, LoggerInterface $logger)
-    {
+    public function __construct(
+        \Doctrine\Common\Persistence\ObjectManager $om,
+        EventRepositoryInterface $eventRepository,
+        GambleRepositoryInterface $gambleRepository,
+        \BettingSas\Bundle\GambleBundle\Gamble\GambleProcessorInterface $processor,
+        LoggerInterface $logger
+    ) {
         $this->om = $om;
+        $this->eventRepository = $eventRepository;
+        $this->gambleRepository = $gambleRepository;
+        $this->processor = $processor;
         $this->logger = $logger;
+
         parent::__construct();
     }
 
@@ -61,9 +90,7 @@ class ProcessGambleCommand extends ContainerAwareCommand
         $this->getLogger()->info("Start gamble:process command");
 
         // select all events which has ended and has not already been processed
-        $events = $this->om
-            ->getRepository('BettingSasCompetitionBundle:Event')
-            ->findAllEndedAndNotProcessedEvent();
+        $events = $this->eventRepository->findAllEndedAndNotProcessedEvent();
 
         foreach ($events as $event) {
             if (!$event->hasResult()) {
@@ -101,13 +128,11 @@ class ProcessGambleCommand extends ContainerAwareCommand
         $this->getLogger()->info("Start process event ".$event->getId());
 
         // Select all gambles having the event in its bets
-        $gambles = $this->om
-            ->getRepository('BettingSasGambleBundle:Gamble')
-            ->findAllGambleHavingBetsOnEvent($event);
+        $gambles = $this->gambleRepository->findAllGambleHavingBetsOnEvent($event);
 
         foreach ($gambles as $gamble) {
             // Check if the bets are winners in the processed gamble
-            $this->getContainer()->get('betting_sas.gamble.processor')->processGambleWithEvent($gamble, $event);
+            $this->processor->processGambleWithEvent($gamble, $event);
 
             // TODO mass flush
             $this->om->persist($gamble);
@@ -126,14 +151,12 @@ class ProcessGambleCommand extends ContainerAwareCommand
     {
         $this->getLogger()->info("Start process gamble with winning bet");
 
-        $gambles = $this->om
-            ->getRepository('BettingSasGambleBundle:Gamble')
-            ->findAllGambleWithProcessedBets();
+        $gambles = $this->gambleRepository->findAllGambleWithProcessedBets();
 
         foreach ($gambles as $gamble) {
             if ($gamble->hasEnded()) {
 
-                $this->getContainer()->get('betting_sas.gamble.processor')->calculateResult($gamble);
+                $this->processor->calculateResult($gamble);
                 $gamble->setProcessedDate(new \DateTime());
 
                 $this->om->persist($gamble);

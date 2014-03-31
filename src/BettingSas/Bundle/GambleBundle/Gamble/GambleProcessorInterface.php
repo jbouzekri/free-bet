@@ -20,4 +20,11 @@ interface GambleProcessorInterface
      * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
      */
     public function processGambleWithEvent(Gamble $gamble, Event $event);
+
+    /**
+     * Update a gamble with the score
+     *
+     * @param \BettingSas\Bundle\GambleBundle\Document\Gamble $gamble
+     */
+    public function calculateResult(Gamble $gamble);
 }

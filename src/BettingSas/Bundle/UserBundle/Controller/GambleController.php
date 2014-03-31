@@ -21,9 +21,7 @@ class GambleController extends Controller
      */
     public function listGambleAction(Request $request)
     {
-        $gamblesQb = $this->get('betting_sas.gamble.cart')
-            ->getGambleRepository()
-            ->getAllGambleForUserQb($this->getUser());
+        $gamblesQb = $this->get('betting_sas.gamble.repository')->getAllGambleForUserQb($this->getUser());
 
         $pagination = $this->get('knp_paginator')->paginate(
             $gamblesQb,

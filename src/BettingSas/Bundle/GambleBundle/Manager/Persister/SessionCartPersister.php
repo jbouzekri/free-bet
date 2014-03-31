@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use BettingSas\Bundle\GambleBundle\Manager\CartPersisterInterface;
 use BettingSas\Bundle\GambleBundle\Document\Gamble;
 use BettingSas\Bundle\GambleBundle\Manager\GambleCart;
+use BettingSas\Bundle\CompetitionBundle\Document\Repository\EventRepositoryInterface;
 
 /**
  * Description of SessionCartPersister
@@ -20,13 +21,20 @@ class SessionCartPersister implements CartPersisterInterface
     private $session;
 
     /**
+     * @var \BettingSas\Bundle\CompetitionBundle\Document\Repository\EventRepositoryInterface
+     */
+    private $eventRepository;
+
+    /**
      * Constructor
      *
      * @param \Symfony\Component\HttpFoundation\Session\Session $session
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Repository\EventRepositoryInterface $eventRepository
      */
-    public function __construct(Session $session)
+    public function __construct(Session $session, EventRepositoryInterface $eventRepository)
     {
         $this->session = $session;
+        $this->eventRepository = $eventRepository;
     }
 
     /**
@@ -57,9 +65,7 @@ class SessionCartPersister implements CartPersisterInterface
         // Reload Event in order to authorize persist cascade later in code
         // TODO : optimize with a single query
         foreach ($gamble->getBets() as $bet) {
-            $event = $cart->getManager()
-                ->getRepository('BettingSas\Bundle\CompetitionBundle\Document\Event')
-                ->find($bet->getEvent()->getId());
+            $event = $this->eventRepository->find($bet->getEvent()->getId());
             if (!$event) {
                 $gamble->removeBet($bet);
                 continue;

@@ -1,4 +1,4 @@
-parameters: 
+parameters:
     betting_sas.gamble.validator.bet_type_choice.class: BettingSas\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCoupleValidator
     betting_sas.gamble.validator.gamble_unique_type_on_event_accross_bet.class: BettingSas\Bundle\GambleBundle\Validator\Constraints\GambleUniqueTypeOnEventAccrossBetValidator
 
@@ -13,6 +13,6 @@ services:
     betting_sas.gamble.validator.gamble_unique_type_on_event_accross_bet:
         class: %betting_sas.gamble.validator.gamble_unique_type_on_event_accross_bet.class%
         arguments:
-            - @doctrine_mongodb.odm.default_document_manager
+            - @betting_sas.gamble.repository
         tags:
             - { name: validator.constraint_validator, alias: gamble_unique_type_on_event_accross_bet }

@@ -6,6 +6,8 @@ parameters:
     betting_sas.gamble.processor.class: BettingSas\Bundle\GambleBundle\Gamble\GambleProcessor
     betting_sas.gamble.validator.class: BettingSas\Bundle\GambleBundle\Gamble\GambleValidator
     betting_sas.gamble.calculator.simple.class: BettingSas\Bundle\GambleBundle\Gamble\SimpleScoreCalculator
+    betting_sas.gamble.repository.class: BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepository
+    betting_sas.gamble.repository.namespace: BettingSasGambleBundle:Gamble
 
 services:
     betting_sas.twig.gamble_extension:
@@ -16,7 +18,7 @@ services:
             - @betting_sas.gamble.cart
         tags:
             - { name: twig.extension }
-            
+
     betting_sas.gamble.cart:
         class: %betting_sas.gamble.cart.class%
         arguments:
@@ -31,7 +33,8 @@ services:
         class: %betting_sas.gamble.cart.persister.class%
         arguments:
             - @session
-            
+            - @betting_sas.event.repository
+
     betting_sas.gamble.processor:
         class: %betting_sas.gamble.processor.class%
         arguments:
@@ -53,7 +56,17 @@ services:
         class: BettingSas\Bundle\GambleBundle\Command\ProcessGambleCommand
         arguments:
             - @doctrine_mongodb.odm.default_document_manager
+            - @betting_sas.event.repository
+            - @betting_sas.gamble.repository
+            - @betting_sas.gamble.processor
             - @logger
         tags:
             - { name: console.command }
             - { name: monolog.logger, channel: gamble_process }
+
+    betting_sas.gamble.repository:
+        class: %betting_sas.gamble.repository.class%
+        arguments:
+          - %betting_sas.gamble.repository.namespace%
+        factory_service: doctrine_mongodb.odm.default_document_manager
+        factory_method: getRepository
