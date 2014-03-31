@@ -31,7 +31,7 @@ class EventController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $om = $this->get('betting_sas.competition.manager')->getManager();
+            $om = $this->get('doctrine_mongodb.odm.default_document_manager');
             $om->persist($event);
             $om->flush();
 

@@ -19,8 +19,7 @@ class CompetitionController extends Controller
      */
     public function listAction()
     {
-        $competitions = $this->get('betting_sas.competition.repository')
-            ->findAllOrderedByDate();
+        $competitions = $this->get('betting_sas.competition.repository')->findAllOrderedByDate();
 
         return $this->render('BettingSasCompetitionBundle:Competition:list.html.twig', array(
             'competitions' => $competitions
@@ -42,9 +41,7 @@ class CompetitionController extends Controller
 
         // Load all events of the competition
         // We suppose that the number of event is always small so it does not cost much to manage all at once
-        $events = $this->get('betting_sas.competition.manager')
-            ->getEventRepository()
-            ->findBy(array('competition.id'=>$competition->getId()));
+        $events = $this->get('betting_sas.event.repository')->findBy(array('competition.id'=>$competition->getId()));
 
         return $this->render('BettingSas'.$type.'Bundle::view.html.twig', array(
             'competition' => $competition,
@@ -65,9 +62,7 @@ class CompetitionController extends Controller
         // TODO : implements a template guesser service
         $type = \Doctrine\Common\Util\Inflector::classify($competition->getType());
 
-        $events = $this->get('betting_sas.competition.manager')
-            ->getEventRepository()
-            ->findNextEvents();
+        $events = $this->get('betting_sas.event.repository')->findNextEvents();
 
         return $this->render('BettingSas'.$type.'Bundle::nextEvents.html.twig', array(
             'competition' => $competition,

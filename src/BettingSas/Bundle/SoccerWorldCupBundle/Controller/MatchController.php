@@ -23,17 +23,15 @@ class MatchController extends Controller
     public function betAction($slugCompetition, $slugMatch)
     {
         // Find the competition
-        $competition = $this->get('betting_sas.competition.manager')
-            ->getRepository()
-            ->findOneBySlug($slugCompetition);
+        $competition = $this->get('betting_sas.competition.repository')->findOneBySlug($slugCompetition);
 
         if (!$competition) {
             return $this->createNotFoundException('Competition '.$slugCompetition.' does not exists');
         }
 
         // Find the match in the competition
-        $match = $this->get('betting_sas.competition.manager')
-            ->getEventRepository()
+        $match = $this
+            ->get('betting_sas.event.repository')
             ->findOneBy(array('slug'=>$slugMatch, 'competition.id'=>$competition->getId()));
 
         if (!$match) {
