@@ -1,5 +1,7 @@
 parameters:
     betting_sas.competition.manager.class: BettingSas\Bundle\CompetitionBundle\Manager\CompetitionManager
+    betting_sas.competition.repository.class: BettingSas\Bundle\CompetitionBundle\Document\Repository\CompetitionRepository
+    betting_sas.competition.repository.namespace: BettingSasCompetitionBundle:Competition
 
 services:
     betting_sas.event_inheritance.listener:
@@ -13,6 +15,13 @@ services:
         class: %betting_sas.competition.manager.class%
         arguments:
             - @doctrine_mongodb.odm.default_document_manager
+
+    betting_sas.competition.repository:
+        class: %betting_sas.competition.repository.class%
+        arguments: 
+          - %betting_sas.competition.repository.namespace%
+        factory_service: doctrine_mongodb.odm.default_document_manager
+        factory_method: getRepository
 
     sensio_framework_extra.converter.doctrine.odm:
         class: Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter

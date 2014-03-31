@@ -19,8 +19,7 @@ class CompetitionController extends Controller
      */
     public function listAction()
     {
-        $competitions = $this->get('betting_sas.competition.manager')
-            ->getRepository()
+        $competitions = $this->get('betting_sas.competition.repository')
             ->findAllOrderedByDate();
 
         return $this->render('BettingSasCompetitionBundle:Competition:list.html.twig', array(

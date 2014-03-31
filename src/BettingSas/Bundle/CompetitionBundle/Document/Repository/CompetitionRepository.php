@@ -9,7 +9,7 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
  *
  * @author jobou
  */
-class CompetitionRepository extends DocumentRepository
+class CompetitionRepository extends DocumentRepository implements CompetitionRepositoryInterface
 {
     /**
      * @return array
