@@ -22,8 +22,8 @@ class OrganizationController extends Controller
      */
     public function selectAction(Request $request)
     {
-        $organizationQb = $this->get('doctrine_mongodb.odm.default_document_manager')
-            ->getRepository('BettingSas\Bundle\UserBundle\Document\Organization')
+        $organizationQb = $this
+            ->get('betting_sas.organization.repository')
             ->findAllFilteredQb($request->query->get('slug', null));
 
         $pagination = $this->get('knp_paginator')->paginate(
@@ -52,6 +52,32 @@ class OrganizationController extends Controller
         return $this->render('BettingSasUserBundle:Organization:select.html.twig', array(
             'pagination' => $pagination,
             'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * View the detail of an organization
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function manageAction(Request $request)
+    {
+        $group = $this->getUser()->getOrganization();
+
+        $userQb = $this
+            ->get('betting_sas.user.repository')
+            ->findAllInOrganizationQb($group);
+
+        $pagination = $this->get('knp_paginator')->paginate(
+            $userQb,
+            $request->query->get('page', 1),
+            10
+        );
+
+        return $this->render('BettingSasUserBundle:Organization:manage.html.twig', array(
+            'pagination' => $pagination
         ));
     }
 }

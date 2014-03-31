@@ -6,3 +6,7 @@ user_account_select_group:
 user_account_gambles_list:
     path: /user/gambles/list
     defaults: { _controller: BettingSasUserBundle:Gamble:listGamble }
+
+user_organization_manage:
+    path: /group
+    defaults: { _controller: BettingSasUserBundle:Organization:manage }

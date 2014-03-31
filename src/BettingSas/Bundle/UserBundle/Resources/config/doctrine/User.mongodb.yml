@@ -1,6 +1,7 @@
 BettingSas\Bundle\UserBundle\Document\User:
     type: document
     collection: users
+    repositoryClass: BettingSas\Bundle\UserBundle\Document\Repository\UserRepository
     fields:
         id:
             id: true

@@ -3,6 +3,7 @@ main:
         account_item:
             label: Account
             route: "fos_user_profile_show"
+            order: 10
             children:
                 select_group:
                     label: Select group
@@ -20,3 +21,7 @@ main:
                     label: Gamble list
                     route: "user_account_gambles_list"
                     order: 40
+        organization_item:
+            label: Organization
+            route: "user_organization_manage"
+            order: 20

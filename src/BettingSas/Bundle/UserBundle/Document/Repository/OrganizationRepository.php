@@ -9,14 +9,10 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
  *
  * @author jobou
  */
-class OrganizationRepository extends DocumentRepository
+class OrganizationRepository extends DocumentRepository implements OrganizationRepositoryInterface
 {
     /**
-     * Find all sorted By name
-     * You can filter by slug
-     *
-     * @param string $slug
-     * @return \Doctrine\ODM\MongoDB\Query\Builder
+     * {@inheritDoc}
      */
     public function findAllFilteredQb($slug = null)
     {
