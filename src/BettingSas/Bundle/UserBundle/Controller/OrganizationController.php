@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use BettingSas\Bundle\UserBundle\Form\Type\SelectOrganizationType;
+use BettingSas\Bundle\UserBundle\Form\Type\OrganizationType;
+use BettingSas\Bundle\UserBundle\Document\Organization;
 
 /**
  * Description of OrganizationController
@@ -85,6 +87,39 @@ class OrganizationController extends Controller
 
         return $this->render('BettingSasUserBundle:Organization:manage.html.twig', array(
             'pagination' => $pagination
+        ));
+    }
+
+    /**
+     * Create a new organization
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newAction(Request $request)
+    {
+        $organization = new Organization();
+        $form = $this->createForm(new OrganizationType(), $organization);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $user = $this->getUser();
+            $user->addRole('ROLE_MANAGER');
+            $user->setOrganization($organization);
+
+            $om = $this->get('doctrine_mongodb.odm.default_document_manager');
+            $om->persist($organization);
+            $om->persist($user);
+            $om->flush();
+
+            return $this->redirect($this->generateUrl('fos_user_profile_show'));
+        }
+
+        return $this->render('BettingSasUserBundle:Organization:new.html.twig', array(
+            'form' => $form->createView()
         ));
     }
 }

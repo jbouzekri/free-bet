@@ -1,3 +1,6 @@
 BettingSas\Bundle\UserBundle\Document\Organization:
+    properties:
+        name:
+            - NotBlank: ~
     constraints:
         - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique: name
