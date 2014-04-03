@@ -9,6 +9,7 @@
     <tr>
         <th>{{ knp_pagination_sortable(pagination, 'Username', 'username') }}</th>
         <th>{{ knp_pagination_sortable(pagination, 'lastLogin', 'lastLogin') }}</th>
+        <th>{{ 'action'|trans }}</th>
     </tr>
     {% for user in pagination %}
         <tr>

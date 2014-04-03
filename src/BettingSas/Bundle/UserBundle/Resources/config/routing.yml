@@ -15,3 +15,13 @@ user_account_gambles_list:
 user_organization_manage:
     path: /group
     defaults: { _controller: BettingSasUserBundle:Organization:manage }
+
+user_organization_manage_remove_user:
+    path: /group/user/{id}/remove
+    defaults: { _controller: BettingSasUserBundle:User:removeFromOrganization }
+    methods:  [POST]
+
+user_organization_manage_remove_user:
+    path: /group/user/{id}/role/{role}
+    defaults: { _controller: BettingSasUserBundle:User:changeRole }
+    methods:  [POST]

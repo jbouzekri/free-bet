@@ -5,8 +5,6 @@ BettingSas\Bundle\UserBundle\Document\User:
     fields:
         id:
             id: true
-        profil:
-            type: string
         slug:
             index: true
             type: string

@@ -65,7 +65,8 @@ class OrganizationController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @throw \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function manageAction(Request $request)
     {
@@ -74,6 +75,9 @@ class OrganizationController extends Controller
         }
 
         $group = $this->getUser()->getOrganization();
+        if (!$group) {
+            throw $this->createNotFoundException('You are not part of any group');
+        }
 
         $userQb = $this
             ->get('betting_sas.user.repository')

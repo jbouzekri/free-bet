@@ -22,7 +22,7 @@ abstract class User extends BaseUser
      * @param \BettingSas\Bundle\UserBundle\Model\Organization $organization
      * @return self
      */
-    public function setOrganization(Organization $organization)
+    public function setOrganization(Organization $organization = null)
     {
         $this->organization = $organization;
         return $this;
