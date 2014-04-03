@@ -4,6 +4,7 @@ namespace BettingSas\Bundle\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use BettingSas\Bundle\UserBundle\Form\Type\SelectOrganizationType;
 
 /**
@@ -61,9 +62,15 @@ class OrganizationController extends Controller
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throw \Symfony\Component\Security\Core\Exception\AccessDeniedException
      */
     public function manageAction(Request $request)
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_MANAGER')) {
+            throw new AccessDeniedException();
+        }
+
         $group = $this->getUser()->getOrganization();
 
         $userQb = $this

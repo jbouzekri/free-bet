@@ -50,7 +50,14 @@ class LoadUserData extends AbstractFixture implements
                 'username' => 'jobou2',
                 'email' => 'jobou2@smile.fr',
                 'password' => 'azerty'
-            )
+            ),
+            array(
+                'username' => 'manager',
+                'email' => 'manager@smile.fr',
+                'password' => 'azerty',
+                'profil' => 'ROLE_MANAGER',
+                'organization' => 'bu-helios'
+            ),
         );
 
         foreach ($users as $user) {
