@@ -12,6 +12,11 @@ use FOS\UserBundle\Document\User as BaseUser;
 abstract class User extends BaseUser
 {
     /**
+     * @var array
+     */
+    protected $widgets = array();
+
+    /**
      * @var Organization $organization
      */
     protected $organization;
@@ -36,5 +41,43 @@ abstract class User extends BaseUser
     public function getOrganization()
     {
         return $this->organization;
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return array
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
+    }
+
+    /**
+     * Set widgets
+     *
+     * @param array $widgets
+     *
+     * @return \BettingSas\Bundle\UserBundle\Model\User
+     */
+    public function setWidgets($widgets)
+    {
+        $this->widgets = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Add a widget
+     *
+     * @param mixed $widget
+     *
+     * @return \BettingSas\Bundle\UserBundle\Model\User
+     */
+    public function addWidget($widget)
+    {
+        $this->widgets[] = $widget;
+
+        return $this;
     }
 }

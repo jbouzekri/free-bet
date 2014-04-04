@@ -1,0 +1,5 @@
+BettingSas\Bundle\StatisticBundle\Document\Widget:
+  type: embeddedDocument
+  fields:
+        name:
+            type: string

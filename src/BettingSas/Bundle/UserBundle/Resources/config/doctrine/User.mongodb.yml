@@ -17,3 +17,6 @@ BettingSas\Bundle\UserBundle\Document\User:
     referenceOne:
         organization:
             targetDocument: BettingSas\Bundle\UserBundle\Document\Organization
+    embedMany:
+        widgets:
+            targetDocument: BettingSas\Bundle\StatisticBundle\Document\Widget
