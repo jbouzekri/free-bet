@@ -196,7 +196,7 @@ class Gamble
      * @param \BettingSas\Bundle\UserBundle\Document\Organization $organization
      * @return self
      */
-    public function setOrganization(\BettingSas\Bundle\UserBundle\Document\Organization $organization)
+    public function setOrganization(\BettingSas\Bundle\UserBundle\Document\Organization $organization = null)
     {
         $this->organization = $organization;
         return $this;
