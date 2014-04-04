@@ -139,7 +139,7 @@ class Gamble
     /**
      * Get bets
      *
-     * @return Doctrine\Common\Collections\Collection $bets
+     * @return \Doctrine\Common\Collections\Collection $bets
      */
     public function getBets()
     {

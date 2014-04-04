@@ -24,11 +24,10 @@ class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
     /**
      * Constructor
      *
-     * @param \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface $om
+     * @param \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface $gambleRepository
      */
-    public function __construct(
-        \BettingSas\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface $gambleRepository
-    ) {
+    public function __construct(GambleRepositoryInterface $gambleRepository)
+    {
         $this->gambleRepository = $gambleRepository;
     }
 

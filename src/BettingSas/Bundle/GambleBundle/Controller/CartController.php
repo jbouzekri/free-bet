@@ -21,7 +21,7 @@ class CartController extends Controller
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|null
      */
     public function addBetAction(Request $request, Event $event)
     {

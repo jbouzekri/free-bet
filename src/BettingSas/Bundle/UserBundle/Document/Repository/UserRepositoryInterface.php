@@ -13,7 +13,7 @@ interface UserRepositoryInterface
     /**
      * Find all sorted By name being in a specific organization
      *
-     * @param \BettingSas\Bundle\UserBundle\Model\Organization $slug
+     * @param \BettingSas\Bundle\UserBundle\Model\Organization $organization
      *
      * @return \Doctrine\ODM\MongoDB\Query\Builder
      */
