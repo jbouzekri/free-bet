@@ -19,13 +19,31 @@ class GroupController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function matchListAction(array $events, $group)
+    public function matchListInGroupAction(array $events, $group)
     {
         $events = $this->get('betting_sas.soccer.tools')->getOrderedMatchInGroup($events, $group);
 
-        return $this->render('BettingSasSoccerWorldCupBundle:Group:matchList.html.twig', array(
+        return $this->render('BettingSasSoccerWorldCupBundle:Group:matchListInGroup.html.twig', array(
             'events' => $events,
             'group' => $group
+        ));
+    }
+
+    /**
+     * Display the list of match in a specific phase
+     *
+     * @param array $events
+     * @param string $phase
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function matchListInPhaseAction(array $events, $phase)
+    {
+        $events = $this->get('betting_sas.soccer.tools')->getOrderedMatchInPhase($events, $phase);
+
+        return $this->render('BettingSasSoccerWorldCupBundle:Group:matchListInPhase.html.twig', array(
+            'events' => $events,
+            'phase' => $phase
         ));
     }
 

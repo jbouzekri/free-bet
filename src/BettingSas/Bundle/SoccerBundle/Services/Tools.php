@@ -92,6 +92,44 @@ class Tools
             $result[] = $event;
         }
 
+        $result = $this->sortByDate($result);
+
+        return $result;
+    }
+
+    /**
+     * Get ordered match in a specific phase
+     *
+     * @param array  $events
+     * @param string $phase
+     *
+     * @return array
+     */
+    public function getOrderedMatchInPhase(array $events, $phase)
+    {
+        $result = array();
+
+        foreach ($events as $event) {
+            if ($event->getPhase() != $phase) {
+                continue;
+            }
+            $result[] = $event;
+        }
+
+        $result = $this->sortByDate($result);
+
+        return $result;
+    }
+
+    /**
+     * Sort an array of event by date
+     *
+     * @param array $result
+     *
+     * @return array
+     */
+    protected function sortByDate($result)
+    {
         usort($result, function ($event1, $event2) {
             if ($event1->getDate() == $event2->getDate()) {
                 return 0;

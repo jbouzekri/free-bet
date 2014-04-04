@@ -7,14 +7,22 @@
 
     {% set groupList = range('A', 'H') %}
     {% for group in groupList %}
-        {{ render(controller('BettingSasSoccerWorldCupBundle:Group:matchList', {
-                events: events, 
+        {{ render(controller('BettingSasSoccerWorldCupBundle:Group:matchListInGroup', {
+                events: events,
                 group: group
         })) }}
-    
+
         {{ render(controller('BettingSasSoccerWorldCupBundle:Group:result', {
-                events: events, 
+                events: events,
                 group: group
+        })) }}
+    {% endfor %}
+
+    {% set phaseList = ['sixteen','quarter','semi','playoff','final'] %}
+    {% for phase in phaseList %}
+        {{ render(controller('BettingSasSoccerWorldCupBundle:Group:matchListInPhase', {
+                events: events,
+                phase: phase
         })) }}
     {% endfor %}
 {% endblock %}
