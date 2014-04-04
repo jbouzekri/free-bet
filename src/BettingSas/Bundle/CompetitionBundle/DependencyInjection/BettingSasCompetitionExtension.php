@@ -24,6 +24,12 @@ class BettingSasCompetitionExtension extends Extension
         $loader->load('services.yml');
     }
 
+    /**
+     * Load custom configuration in container
+     *
+     * @param array $configs
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
     public function loadConfiguration(array $configs, ContainerBuilder $container)
     {
         $container->setParameter('betting_sas.event_mapping', $configs['mapping_events']);

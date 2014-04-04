@@ -23,9 +23,14 @@ class BettingSasStatisticExtension extends Extension
         $this->loadConfiguration($config, $container);
     }
 
+    /**
+     * Load custom configuration in container
+     *
+     * @param array $configs
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
     public function loadConfiguration(array $configs, ContainerBuilder $container)
     {
-        var_dump($configs);
         $container->setParameter('betting_sas.default_widgets', $configs['default_widgets']);
     }
 }
