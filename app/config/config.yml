@@ -72,7 +72,7 @@ doctrine_mongodb:
 
 stof_doctrine_extensions:
     mongodb:
-        default: 
+        default:
             sluggable: true
             timestampable: true
 

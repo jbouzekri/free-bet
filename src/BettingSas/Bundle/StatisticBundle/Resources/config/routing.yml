@@ -1,0 +1,9 @@
+dashboard:
+    path: /
+    defaults: { _controller: BettingSasStatisticBundle:Dashboard:display }
+    methods:  [GET]
+
+widget_display:
+    path: /widget/{widget}
+    defaults: { _controller: BettingSasStatisticBundle:Widget:display }
+    methods:  [GET]

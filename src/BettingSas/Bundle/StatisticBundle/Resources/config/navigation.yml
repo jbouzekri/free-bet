@@ -1,0 +1,6 @@
+main:
+    tree:
+        dashboard_item:
+            label: Dashboard
+            route: "dashboard"
+            order: 1

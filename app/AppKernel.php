@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new BettingSas\Bundle\UserBundle\BettingSasUserBundle(),
             new BettingSas\Bundle\GambleBundle\BettingSasGambleBundle(),
             new BettingSas\Bundle\CompetitionBundle\BettingSasCompetitionBundle(),
+            new BettingSas\Bundle\StatisticBundle\BettingSasStatisticBundle(),
             new BettingSas\Bundle\SoccerBundle\BettingSasSoccerBundle(),
             new BettingSas\Bundle\SoccerWorldCupBundle\BettingSasSoccerWorldCupBundle(),
         );
