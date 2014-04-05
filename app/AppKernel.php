@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Maestro\Bundle\NavigationBundle\MaestroNavigationBundle(),
+            new BettingSas\Bundle\UIBundle\BettingSasUIBundle(),
             new BettingSas\Bundle\UserBundle\BettingSasUserBundle(),
             new BettingSas\Bundle\GambleBundle\BettingSasGambleBundle(),
             new BettingSas\Bundle\CompetitionBundle\BettingSasCompetitionBundle(),

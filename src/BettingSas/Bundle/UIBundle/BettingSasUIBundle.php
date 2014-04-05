@@ -1,14 +1,14 @@
 <?php
 
-namespace BettingSas\Bundle\CompetitionBundle;
+namespace BettingSas\Bundle\UIBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * BettingSas Competition Bundle
+ * BettingSas UI Bundle
  *
  * @author jobou
  */
-class BettingSasCompetitionBundle extends Bundle
+class BettingSasUIBundle extends Bundle
 {
 }
