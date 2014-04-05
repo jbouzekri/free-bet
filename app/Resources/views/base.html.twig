@@ -8,12 +8,10 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body class="{% block bodyclass %}skin-black{% endblock %}">
-        {% block header %}
-            {#<a href="{{ path('fos_user_security_logout') }}">Logout</a>
-            {{ render(controller('BettingSasGambleBundle:Cart:view')) }}
-            {{ knp_menu_render('main') }}#}
-        {% endblock %}
+        {% block header %}{% endblock %}
+
         {% block body %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -8,6 +8,8 @@ login:
     forgot_password: I forgot my password
     back: Back to sign in
 
+logout: Logout
+
 registration:
     title: Register New Membership
     submit: Sign me up
