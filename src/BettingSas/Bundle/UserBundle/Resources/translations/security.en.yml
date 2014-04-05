@@ -27,3 +27,6 @@ resetting:
         invalid_username: The username or email address "%username%" does not exist.
         username: "Login or email address"
         submit: Reset password
+
+fos_user_registration_confirmed.title: Register New Membership
+fos_user_resetting_send_email.title: Resetting password

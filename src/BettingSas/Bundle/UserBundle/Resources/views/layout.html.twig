@@ -5,18 +5,17 @@
 
 {% block content %}
 <div class="form-box" id="login-box">
-    <div class="header">{{ 'resetting.title'|trans({}, 'security') }}</div>
-        <form>
-            <div class="body bg-gray">
-                <div class="form-group">
-                    {% block fos_user_content %}
-                    {% endblock fos_user_content %}
-                </div>
+    <div class="header">{{ (app.request.get('_route')~'.title')|trans({}, 'security') }}</div>
+    <form>
+        <div class="body bg-gray">
+            <div class="form-group">
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
             </div>
-            <div class="footer">
-                <a href="{{ path('fos_user_security_login') }}" class="text-center">{{ 'login.back'|trans({}, 'security') }}</a>
-            </div>
-        </form>
-    </div>
+        </div>
+        <div class="footer">
+            <a href="{{ path('fos_user_security_login') }}" class="text-center">{{ 'login.back'|trans({}, 'security') }}</a>
+        </div>
+    </form>
 </div>
 {% endblock %}
