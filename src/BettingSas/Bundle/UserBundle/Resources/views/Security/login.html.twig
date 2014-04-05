@@ -31,7 +31,7 @@
                 {{ 'login.submit'|trans({}, 'security') }}
             </button>
 
-            <p><a href="#">{{ 'login.forgot_password'|trans({}, 'security') }}</a></p>
+            <p><a href="{{ path('fos_user_resetting_request') }}">{{ 'login.forgot_password'|trans({}, 'security') }}</a></p>
 
             <a href="{{ path('fos_user_registration_register') }}" class="text-center">{{ 'login.register'|trans({}, 'security') }}</a>
         </div>

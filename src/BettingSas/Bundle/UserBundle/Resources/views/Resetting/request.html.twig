@@ -1,0 +1,30 @@
+{% extends "BettingSasUIBundle::layout.html.twig" %}
+
+{% block htmlclass %} class="bg-black"{% endblock %}
+{% block bodyclass %}bg-black{% endblock %}
+
+{% block title %}{{ 'resetting.title'|trans({}, 'security') }}{% endblock %}
+
+{% block content %}
+<div class="form-box" id="login-box">
+    <div class="header">{{ 'resetting.title'|trans({}, 'security') }}</div>
+        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST">
+            <div class="body bg-gray">
+                {% if invalid_username is defined %}
+                    <div class="alert flat-alert alert-danger">
+                        <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'security') }}</p>
+                    </div>
+                {% endif %}
+                <div class="form-group">
+                    <input type="text" id="username" name="username" class="form-control" required="required" placeholder="{{ 'resetting.request.username'|trans({}, 'security') }}" />
+                </div>
+            </div>
+            <div class="footer">
+                <button type="submit" value="{{ 'resetting.request.submit'|trans({}, 'security') }}" class="btn bg-olive btn-block">
+                    {{ 'resetting.request.submit'|trans({}, 'security') }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

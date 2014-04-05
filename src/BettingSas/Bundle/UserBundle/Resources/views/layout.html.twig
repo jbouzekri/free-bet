@@ -1,0 +1,22 @@
+{% extends "BettingSasUIBundle::layout.html.twig" %}
+
+{% block htmlclass %} class="bg-black"{% endblock %}
+{% block bodyclass %}bg-black{% endblock %}
+
+{% block content %}
+<div class="form-box" id="login-box">
+    <div class="header">{{ 'resetting.title'|trans({}, 'security') }}</div>
+        <form>
+            <div class="body bg-gray">
+                <div class="form-group">
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+            </div>
+            <div class="footer">
+                <a href="{{ path('fos_user_security_login') }}" class="text-center">{{ 'login.back'|trans({}, 'security') }}</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

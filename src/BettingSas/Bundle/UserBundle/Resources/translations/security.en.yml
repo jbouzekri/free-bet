@@ -6,6 +6,7 @@ login:
     submit: Sign me in
     register: Register a new membership
     forgot_password: I forgot my password
+    back: Back to sign in
 
 registration:
     title: Register New Membership
@@ -19,3 +20,10 @@ form:
     email: "Email"
     password: "Password"
     password_confirmation: "Retype password"
+
+resetting:
+    title: Resetting password
+    request:
+        invalid_username: The username or email address "%username%" does not exist.
+        username: "Login or email address"
+        submit: Reset password
