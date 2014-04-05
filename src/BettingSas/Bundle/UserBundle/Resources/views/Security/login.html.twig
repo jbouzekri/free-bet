@@ -3,9 +3,11 @@
 {% block htmlclass %} class="bg-black"{% endblock %}
 {% block bodyclass %}bg-black{% endblock %}
 
+{% block title %}{{ 'login.title'|trans({}, 'security') }}{% endblock %}
+
 {% block content %}
 <div class="form-box" id="login-box">
-    <div class="header">{{ 'security.login.title'|trans({}, 'security') }}</div>
+    <div class="header">{{ 'login.title'|trans({}, 'security') }}</div>
     <form action="{{ path("fos_user_security_check") }}" method="post">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
         <div class="body bg-gray">
@@ -15,23 +17,23 @@
                 </div>
             {% endif %}
             <div class="form-group">
-                <input type="text" name="_username" class="form-control" placeholder="{{ 'security.login.username'|trans({}, 'security') }}"/>
+                <input type="text" name="_username" class="form-control" placeholder="{{ 'login.username'|trans({}, 'security') }}"/>
             </div>
             <div class="form-group">
-                <input type="password" name="_password" class="form-control" placeholder="{{ 'security.login.password'|trans({}, 'security') }}"/>
+                <input type="password" name="_password" class="form-control" placeholder="{{ 'login.password'|trans({}, 'security') }}"/>
             </div>
             <div class="form-group">
-                <input type="checkbox" name="_remember_me"/> {{ 'security.login.remember_me'|trans({}, 'security') }}
+                <input type="checkbox" name="_remember_me"/> {{ 'login.remember_me'|trans({}, 'security') }}
             </div>
         </div>
         <div class="footer">
-            <button type="submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'security') }}" class="btn bg-olive btn-block">
-                {{ 'security.login.submit'|trans({}, 'security') }}
+            <button type="submit" name="_submit" value="{{ 'login.submit'|trans({}, 'security') }}" class="btn bg-olive btn-block">
+                {{ 'login.submit'|trans({}, 'security') }}
             </button>
 
-            <p><a href="#">{{ 'security.login.forgot_password'|trans({}, 'security') }}</a></p>
+            <p><a href="#">{{ 'login.forgot_password'|trans({}, 'security') }}</a></p>
 
-            <a href="{{ path('fos_user_registration_register') }}" class="text-center">{{ 'security.login.register'|trans({}, 'security') }}</a>
+            <a href="{{ path('fos_user_registration_register') }}" class="text-center">{{ 'login.register'|trans({}, 'security') }}</a>
         </div>
     </form>
 </div>

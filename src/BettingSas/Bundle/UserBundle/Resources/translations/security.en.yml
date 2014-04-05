@@ -1,0 +1,21 @@
+login:
+    title: Sign In
+    username: Login
+    password: Password
+    remember_me: Remember me
+    submit: Sign me in
+    register: Register a new membership
+    forgot_password: I forgot my password
+
+registration:
+    title: Register New Membership
+    submit: Sign me up
+    has_account: I already have a membership
+
+"Bad credentials": Invalid login or password
+
+form:
+    username: "Login"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Retype password"
