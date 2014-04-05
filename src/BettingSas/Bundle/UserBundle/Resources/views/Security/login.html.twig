@@ -5,7 +5,7 @@
 
 {% block title %}{{ 'login.title'|trans({}, 'security') }}{% endblock %}
 
-{% block content %}
+{% block body %}
 <div class="form-box" id="login-box">
     <div class="header">{{ 'login.title'|trans({}, 'security') }}</div>
     <form action="{{ path("fos_user_security_check") }}" method="post">
@@ -37,4 +37,4 @@
         </div>
     </form>
 </div>
-{% endblock content %}
+{% endblock %}

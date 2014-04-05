@@ -14,7 +14,9 @@
 
 {% block root %}
 {% set listAttributes = item.childrenAttributes %}
-{{ block('list') -}}
+    <ul class="sidebar-menu">
+        {{ block('children') -}}
+    </ul>
 {% endblock %}
 
 {% block list %}

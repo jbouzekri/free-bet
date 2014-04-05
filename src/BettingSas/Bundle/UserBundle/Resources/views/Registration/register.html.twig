@@ -40,7 +40,7 @@
 {% endspaceless %}
 {% endblock form_errors %}
 
-{% block content %}
+{% block body %}
 <div class="form-box" id="login-box">
     <div class="header">{{ 'registration.title'|trans({}, 'security') }}</div>
     <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="post">
@@ -53,4 +53,4 @@
         </div>
     </form>
 </div>
-{% endblock content %}
+{% endblock %}

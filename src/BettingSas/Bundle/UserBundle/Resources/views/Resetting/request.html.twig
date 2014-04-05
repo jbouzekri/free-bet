@@ -5,7 +5,7 @@
 
 {% block title %}{{ 'resetting.title'|trans({}, 'security') }}{% endblock %}
 
-{% block content %}
+{% block body %}
 <div class="form-box" id="login-box">
     <div class="header">{{ 'resetting.title'|trans({}, 'security') }}</div>
         <form action="{{ path('fos_user_resetting_send_email') }}" method="POST">
@@ -23,8 +23,9 @@
                 <button type="submit" value="{{ 'resetting.request.submit'|trans({}, 'security') }}" class="btn bg-olive btn-block">
                     {{ 'resetting.request.submit'|trans({}, 'security') }}
                 </button>
+                <a href="{{ path('fos_user_security_login') }}" class="text-center">{{ 'login.back'|trans({}, 'security') }}</a>
             </div>
         </form>
     </div>
 </div>
-{% endblock content %}
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends "BettingSasUIBundle::layout.html.twig" %}
 
 {% form_theme form _self %}
 
@@ -35,7 +35,7 @@
 {% endspaceless %}
 {% endblock choice_widget_expanded %}
 
-{% block body %}
+{% block content %}
 <div class="count">
     {{ 'organization.item.count'|transchoice(pagination.getTotalItemCount, {}, 'organization') }}
 </div>

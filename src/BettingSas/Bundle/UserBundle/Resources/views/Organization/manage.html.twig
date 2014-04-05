@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends "BettingSasUIBundle::layout.html.twig" %}
 
-{% block body %}
+{% block content %}
 <div class="count">
     {{ 'user.item.count'|transchoice(pagination.getTotalItemCount, {}, 'user') }}
 </div>
