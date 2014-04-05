@@ -93,6 +93,10 @@ fos_user:
     firewall_name: main
     user_class: BettingSas\Bundle\UserBundle\Document\User
 
+knp_menu:
+    twig:
+        template: BettingSasUIBundle:Layout:_menu.html.twig
+
 betting_sas_competition:
     mapping_events:
         soccer: BettingSas\Bundle\SoccerBundle\Document\Match

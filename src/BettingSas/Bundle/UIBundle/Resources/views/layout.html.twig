@@ -22,9 +22,18 @@
 {% endblock %}
 
 {% block body %}
-    {{ parent() }}
-    {% block content %}
-    {% endblock %}
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="left-side sidebar-offcanvas">
+        {% block menu %}
+            {{ knp_menu_render('main') }}
+        {% endblock %}
+    </aside>
+    <aside class="right-side">
+        {% block content %}
+        {% endblock %}
+    </aside>
+</div>
 {% endblock %}
 
 {% block javascripts %}
