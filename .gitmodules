@@ -1,0 +1,3 @@
+[submodule "almasaeed2010/AdminLTE"]
+	path = src/BettingSas/Bundle/UIBundle/Resources/public/adminlte
+	url = https://github.com/almasaeed2010/AdminLTE.git
