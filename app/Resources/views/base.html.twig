@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html{% block htmlclass %}{% endblock %}>
     <head>
         <meta charset="UTF-8" />
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body class="{% block bodyclass %}skin-black{% endblock %}">
         {% block header %}
-            <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+            {#<a href="{{ path('fos_user_security_logout') }}">Logout</a>
             {{ render(controller('BettingSasGambleBundle:Cart:view')) }}
-            {{ knp_menu_render('main') }}
+            {{ knp_menu_render('main') }}#}
         {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

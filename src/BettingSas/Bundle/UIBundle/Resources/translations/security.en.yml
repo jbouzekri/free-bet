@@ -1,0 +1,11 @@
+security:
+    login:
+        title: Sign In
+        username: Login
+        password: Password
+        remember_me: Remember me
+        submit: Sign me in
+        register: Register a new membership
+        forgot_password: I forgot my password
+
+"Bad credentials": Invalid login or password
