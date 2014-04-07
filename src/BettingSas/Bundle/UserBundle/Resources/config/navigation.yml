@@ -4,6 +4,13 @@ main:
             label: Account
             route: "fos_user_profile_show"
             order: 10
+            attributes:
+                class: dropdown
+            linkAttributes:
+                class: dropdown-toggle
+                data-toggle: dropdown
+            childrenAttributes:
+                class: dropdown-menu
             children:
                 select_group:
                     label: Select group

@@ -1,0 +1,26 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% macro attributes(attributes) %}
+{% for name, value in attributes %}
+    {%- if value is not none and value is not sameas(false) -%}
+        {{- ' %s="%s"'|format(name, value is sameas(true) ? name|e : value|e)|raw -}}
+    {%- endif -%}
+{%- endfor -%}
+{% endmacro %}
+
+{% block root %}
+    {% set listAttributes = item.childrenAttributes %}
+    <ul class="nav navbar-nav">
+        {{ block('children') -}}
+    </ul>
+{% endblock %}
+
+{% block list %}
+{% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
+    <ul{{ _self.attributes(listAttributes) }}>
+        {{ block('children') }}
+    </ul>
+{% endif %}
+{% endblock %}
+
+{% block linkElement %}<a href="{{ item.uri }}"{{ _self.attributes(item.linkAttributes) }}>{{ block('label') }} {% if item.children|length %}<b class="caret"></b>{%endif %}</a>{% endblock %}
