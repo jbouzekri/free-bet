@@ -1563,12 +1563,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/maestro-platform/MaestroNavigationBundle.git",
-                "reference": "5bf937095065baaab7146ac1a0378c2a5af2d60a"
+                "reference": "66582a080ede748a2a61f39c17f73fea7bcdc73c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maestro-platform/MaestroNavigationBundle/zipball/5bf937095065baaab7146ac1a0378c2a5af2d60a",
-                "reference": "5bf937095065baaab7146ac1a0378c2a5af2d60a",
+                "url": "https://api.github.com/repos/maestro-platform/MaestroNavigationBundle/zipball/66582a080ede748a2a61f39c17f73fea7bcdc73c",
+                "reference": "66582a080ede748a2a61f39c17f73fea7bcdc73c",
                 "shasum": ""
             },
             "require": {
@@ -1595,7 +1595,7 @@
                 "ui",
                 "user interface"
             ],
-            "time": "2014-04-06 14:06:29"
+            "time": "2014-04-07 20:27:27"
         },
         {
             "name": "monolog/monolog",
