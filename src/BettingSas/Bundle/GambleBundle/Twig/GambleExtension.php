@@ -5,7 +5,7 @@ namespace BettingSas\Bundle\GambleBundle\Twig;
 use Twig_Environment as Environment;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\BetType\BetTypeChain;
-use BettingSas\Bundle\GambleBundle\Manager\GambleCart;
+use BettingSas\Bundle\GambleBundle\Document\Bet;
 
 class GambleExtension extends \Twig_Extension
 {
@@ -44,7 +44,7 @@ class GambleExtension extends \Twig_Extension
                 array( $this, 'renderAllBetTypes' ),
                 array('is_safe' => array('html'))
             ),
-            new \Twig_SimpleFunction('render_cart', array($this, 'renderCart'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('render_cart_bet', array($this, 'renderCartBet'), array('is_safe' => array('html'))),
         );
     }
 
@@ -71,22 +71,20 @@ class GambleExtension extends \Twig_Extension
     }
 
     /**
-     * render_cart twig function
+     * render_cart_bet twig function
+     *
+     * @param \BettingSas\Bundle\GambleBundle\Document\Bet $bet
+     *
+     * @return string
      */
-    public function renderCart(GambleCart $cart)
+    public function renderCartBet(Bet $bet)
     {
-        $html = "";
+        $betTypeEntity = $this->betTypeChain->findByEventTypeAndType($bet->getEvent()->getType(), $bet->getType());
 
-        $bets = $cart->getGamble()->getBets();
-        foreach ($bets as $bet) {
-            $betTypeEntity = $this->betTypeChain->findByEventTypeAndType($bet->getEvent()->getType(), $bet->getType());
-            $html .= $this->twig->render($betTypeEntity->getCartTemplate(), array(
-                'bet' => $bet,
-                'betType' => $betTypeEntity
-            ));
-        }
-
-        return $html;
+        return $this->twig->render($betTypeEntity->getCartTemplate(), array(
+            'bet' => $bet,
+            'betType' => $betTypeEntity
+        ));
     }
 
     /**

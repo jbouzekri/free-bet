@@ -63,28 +63,41 @@ class CartController extends Controller
         $cart->removeBetByType($event, $request->request->get('bet_type', null));
         $cart->persist();
 
-        return $this->redirect(
-            $this->generateUrl(
-                'competition_detail',
-                array(
-                    'slug' => $event->getCompetition()->getSlug()
-                )
-            )
+        $this->get('session')->getFlashBag()->add(
+            'cart-success',
+            $this->get('translator')->trans('cart.notice.remove', array(), 'cart')
         );
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->viewAction();
+        }
+
+        return $this->redirect($this->generateUrl('event_next_list'));
     }
 
     /**
      * Transform the cart (persist it)
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function transformAction()
+    public function transformAction(Request $request)
     {
         $cart = $this->get('betting_sas.gamble.cart');
         $cart->load();
         $cart->transform($this->getUser());
 
-        return $this->redirect($this->generateUrl('competition_list'));
+        $this->get('session')->getFlashBag()->add(
+            'cart-success',
+            $this->get('translator')->trans('cart.notice.transform', array(), 'cart')
+        );
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->viewAction();
+        }
+
+        return $this->redirect($this->generateUrl('event_next_list'));
     }
 
     /**
