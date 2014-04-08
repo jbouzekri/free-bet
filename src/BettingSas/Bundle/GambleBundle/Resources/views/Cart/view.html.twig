@@ -1,5 +1,7 @@
-<h2>My cart</h2>
-{{ render_cart() }}
-<form action="{{ path('gamble_cart_transform') }}" method="post">
-    <input type="submit" value="Transform" />
-</form>
+<div id="cart">
+    <h2>{{ 'cart.block.title'|trans({},'cart') }}</h2>
+    {{ render_cart(cart) }}
+    <form action="{{ path('gamble_cart_transform') }}" method="post">
+        <button type="submit" class="btn btn-primary btn-block">{{ 'cart.block.transform'|trans({},'cart') }}</button>
+    </form>
+</div>

@@ -1,7 +1,10 @@
-{{ bet.event.getName }}<br />
-{{ ('gamble_'~betType.getName)|trans({},'gamble') }} {{ betType.getChoiceLabel(bet.event,bet.choice) }}
-<form action="{{ path('gamble_cart_remove_bet',{id:bet.event.id}) }}" method="post">
-    <input type="hidden" name="bet_type" value="{{ bet.type }}" />
-    <input type="submit" value="Delete" />
-</form>
-<br />
+<div class="bet-item">
+    <div class="pull-right">
+        {% include 'BettingSasGambleBundle:Cart:_delete.html.twig' with {bet: bet} %}
+    </div>
+    {% include 'BettingSasGambleBundle:Cart:_bet_name.html.twig' with {
+        bet: bet,
+        betType: betType,
+        choice: betType.getChoiceLabel(bet.event,bet.choice)
+    } %}
+</div>

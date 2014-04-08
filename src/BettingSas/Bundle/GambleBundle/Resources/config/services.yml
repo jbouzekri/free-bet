@@ -15,7 +15,6 @@ services:
         arguments:
             - @twig
             - @betting_sas.bet_type_chain
-            - @betting_sas.gamble.cart
         tags:
             - { name: twig.extension }
 

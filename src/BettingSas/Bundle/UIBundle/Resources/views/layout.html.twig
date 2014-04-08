@@ -27,7 +27,7 @@
     <aside class="left-side sidebar-offcanvas">
         <section class="sidebar">
             {% block menu %}
-                {{ knp_menu_render('main') }}
+                {% render(controller('BettingSasGambleBundle:Cart:view')) %}
             {% endblock %}
         </section>
     </aside>

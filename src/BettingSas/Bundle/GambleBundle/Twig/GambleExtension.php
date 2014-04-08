@@ -20,22 +20,15 @@ class GambleExtension extends \Twig_Extension
     protected $twig;
 
     /**
-     * @var \BettingSas\Bundle\GambleBundle\Manager\GambleCart
-     */
-    protected $cart;
-
-    /**
      * Constructor
      *
      * @param \Twig_Environment $twig
      * @param \BettingSas\Bundle\GambleBundle\BetType\BetTypeChain $betTypeChain
-     * @param \BettingSas\Bundle\GambleBundle\Manager\GambleCart $cart
      */
-    public function __construct(Environment $twig, BetTypeChain $betTypeChain, GambleCart $cart)
+    public function __construct(Environment $twig, BetTypeChain $betTypeChain)
     {
         $this->betTypeChain = $betTypeChain;
         $this->twig = $twig;
-        $this->cart = $cart;
     }
 
     /**
@@ -80,11 +73,11 @@ class GambleExtension extends \Twig_Extension
     /**
      * render_cart twig function
      */
-    public function renderCart()
+    public function renderCart(GambleCart $cart)
     {
         $html = "";
 
-        $bets = $this->cart->getGamble()->getBets();
+        $bets = $cart->getGamble()->getBets();
         foreach ($bets as $bet) {
             $betTypeEntity = $this->betTypeChain->findByEventTypeAndType($bet->getEvent()->getType(), $bet->getType());
             $html .= $this->twig->render($betTypeEntity->getCartTemplate(), array(
