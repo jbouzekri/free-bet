@@ -1,5 +1,5 @@
 dashboard:
-    path: /
+    path: /dashboard
     defaults: { _controller: BettingSasStatisticBundle:Dashboard:display }
     methods:  [GET]
 

@@ -50,4 +50,14 @@ class EventController extends Controller
             'match' => $event
         ));
     }
+
+    /**
+     * List the following events
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listNextAction()
+    {
+        return $this->render('BettingSasCompetitionBundle:Event:listNext.html.twig', array());
+    }
 }

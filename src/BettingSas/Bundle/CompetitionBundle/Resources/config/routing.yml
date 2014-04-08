@@ -1,3 +1,8 @@
+event_next_list:
+    path: /
+    defaults: { _controller: BettingSasCompetitionBundle:Event:listNext }
+    methods:  [GET]
+
 competition_list:
     path: /competitions
     defaults: { _controller: BettingSasCompetitionBundle:Competition:list }

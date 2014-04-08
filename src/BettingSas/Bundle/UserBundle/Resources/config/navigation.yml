@@ -3,7 +3,7 @@ main:
         account_item:
             label: Account
             route: "fos_user_profile_show"
-            order: 10
+            order: 30
             attributes:
                 class: dropdown
             linkAttributes:
@@ -31,4 +31,4 @@ main:
         organization_item:
             label: Organization
             route: "user_organization_manage"
-            order: 20
+            order: 40

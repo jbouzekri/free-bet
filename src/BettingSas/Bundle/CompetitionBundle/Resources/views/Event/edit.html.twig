@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends "BettingSasUIBundle::layout.html.twig" %}
 
-{% block body %}
+{% block content %}
     <h1>{{ match.leftName }} - {{ match.rightName }}</h1>
     <form action="" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}

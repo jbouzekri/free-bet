@@ -3,4 +3,4 @@ main:
         dashboard_item:
             label: Dashboard
             route: "dashboard"
-            order: 1
+            order: 20
