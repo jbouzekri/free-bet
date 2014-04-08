@@ -44,7 +44,11 @@ class GambleExtension extends \Twig_Extension
                 array( $this, 'renderAllBetTypes' ),
                 array('is_safe' => array('html'))
             ),
-            new \Twig_SimpleFunction('render_cart_bet', array($this, 'renderCartBet'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction(
+                'render_cart_bet',
+                array($this, 'renderCartBet'),
+                array('is_safe' => array('html'))
+            ),
         );
     }
 
