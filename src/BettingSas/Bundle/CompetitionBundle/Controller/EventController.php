@@ -58,6 +58,43 @@ class EventController extends Controller
      */
     public function listNextAction()
     {
-        return $this->render('BettingSasCompetitionBundle:Event:listNext.html.twig', array());
+        $events = $this->get('betting_sas.event.repository')->findNextEvents();
+
+        return $this->render('BettingSasCompetitionBundle:Event:listNext.html.twig', array(
+            'events' => $events
+        ));
+    }
+
+    /**
+     * List all gambles available for the event
+     * Load all with slug to provide friendly url
+     *
+     * @param string $slugCompetition
+     * @param string $slugEvent
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function betAction($slugCompetition, $slugEvent)
+    {
+        // Find the competition
+        $competition = $this->get('betting_sas.competition.repository')->findOneBySlug($slugCompetition);
+
+        if (!$competition) {
+            return $this->createNotFoundException('Competition '.$slugCompetition.' does not exists');
+        }
+
+        // Find the event in the competition
+        $event = $this
+            ->get('betting_sas.event.repository')
+            ->findOneBy(array('slug'=>$slugEvent, 'competition.id'=>$competition->getId()));
+
+        if (!$event) {
+            return $this->createNotFoundException('Match '.$slugEvent.' does not exists');
+        }
+
+        return $this->render('BettingSasCompetitionBundle:Event:bet.html.twig', array(
+            'event' => $event,
+            'competition' => $competition
+        ));
     }
 }

@@ -570,7 +570,7 @@ class LoadMatchData extends AbstractFixture implements FixtureInterface, Ordered
                 $entity->setRightName($match['right_name']);
             }
             $entity->setDate(\DateTime::createFromFormat('U', $match['date']));
-            $entity->setDate(new \DateTime('-1000 seconds'));
+            //$entity->setDate(new \DateTime('-1000 seconds'));
             $entity->setCompetition($worldCup2014);
             $entity->setProcessed(false);
 

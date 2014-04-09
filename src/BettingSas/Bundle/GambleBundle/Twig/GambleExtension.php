@@ -40,6 +40,11 @@ class GambleExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction(
+                'render_main_bet_type',
+                array( $this, 'renderMainBetTypes' ),
+                array('is_safe' => array('html'))
+            ),
+            new \Twig_SimpleFunction(
                 'render_all_bet_types',
                 array( $this, 'renderAllBetTypes' ),
                 array('is_safe' => array('html'))
@@ -50,6 +55,28 @@ class GambleExtension extends \Twig_Extension
                 array('is_safe' => array('html'))
             ),
         );
+    }
+
+    /**
+     * render_main_bet_type twig function
+     *
+     * @param \BettingSas\Bundle\CompetitionBundle\Document\Event $event
+     *
+     * @return string
+     */
+    public function renderMainBetTypes(Event $event)
+    {
+        $betTypes = $this->betTypeChain->findByEventType($event->getType());
+
+        if (count($betTypes) == 0) {
+            return '';
+        }
+
+        $betType = reset($betTypes);
+        return $this->twig->render($betType->getTemplate(), array(
+            'event' => $event,
+            'betType' => $betType
+        ));
     }
 
     /**

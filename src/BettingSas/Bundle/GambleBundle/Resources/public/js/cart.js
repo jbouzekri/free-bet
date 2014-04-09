@@ -12,4 +12,11 @@ if (typeof jQuery === "undefined") { throw new Error("Cart requires jQuery") }
         return false;
     });
 
+    $('.bet-type form button').click(function(){
+        form = $(this).parent('form');
+        $.post(form.attr('action'), form.serialize(), function( data ) {
+            $cart.html(data);
+        });
+        return false;
+    });
 }(jQuery);

@@ -8,7 +8,7 @@
             <a href="{{ url('event_set_result', {id: event.id}) }}">
                 {{ 'set_result'|trans }}
             </a>
-            <a href="{{ url('match_bet', {slugCompetition: event.competition.slug, slugMatch: event.slug}) }}">
+            <a href="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}">
                 {{ 'bet'|trans }}
             </a>
         </li>

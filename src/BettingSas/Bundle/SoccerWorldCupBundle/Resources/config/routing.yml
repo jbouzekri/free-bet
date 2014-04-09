@@ -1,4 +1,0 @@
-match_bet:
-    path: /{slugCompetition}/{slugMatch}/bet
-    defaults: { _controller: BettingSasSoccerWorldCupBundle:Match:bet }
-    methods:  [GET]

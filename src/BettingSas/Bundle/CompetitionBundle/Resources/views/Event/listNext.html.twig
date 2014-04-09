@@ -1,5 +1,37 @@
 {% extends "BettingSasUIBundle::layout.html.twig" %}
 
+{% block title %}{{ 'event.list.title'|trans }}{% endblock %}
+
 {% block content %}
-Next events list
+<div id="next-event-list">
+    <h1>{{ 'event.list.title'|trans }}</h1>
+
+    <table class="table">
+        {% set lastProcessedDay = false %}
+        {% for event in events %}
+            {% if lastProcessedDay != event.date|date('Y-m-d') %}
+                </table>
+                {% set lastProcessedDay = event.date|date('Y-m-d') %}
+                <table class="table">
+                    <tr class="header">
+                        <th colspan="4"><span class="glyphicon glyphicon-chevron-down btn-sm"></span> {{ event.date|date('Y-m-d') }}</th>
+                    </tr>
+            {% endif %}
+            <tr>
+                <td><span class="sport sport-{{ event.type }}"></span></td>
+                <td>{{ event.date|date('H:i') }}</td>
+                <td>
+                    <span class="event event-{{ event.leftName|slugify }}"></span>
+                    <a href="{{ path('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}">{{ event.name }}</a>
+                    <span class="event event-{{ event.rightName|slugify }}"></span>
+                </td>
+                <td>{{ render_main_bet_type(event) }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>{{ 'event.list.empty'|trans }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

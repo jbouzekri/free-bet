@@ -26,12 +26,13 @@ class EventRepository extends DocumentRepository implements EventRepositoryInter
     /**
      * {@inheritDoc}
      */
-    public function findNextEvents()
+    public function findNextEvents($limit = 30)
     {
         $qb = $this->createQueryBuilder()
             ->field('date')->gte(new \DateTime())
             ->field('processed')->equals(false)
-            ->sort('date', 'asc');
+            ->sort('date', 'asc')
+            ->limit($limit);
 
         return $qb->getQuery()->execute();
     }

@@ -1,6 +1,6 @@
 main:
     tree:
         next_event_item:
-            label: next_event_item
+            label: event.list.next_menu
             route: "event_next_list"
             order: 10

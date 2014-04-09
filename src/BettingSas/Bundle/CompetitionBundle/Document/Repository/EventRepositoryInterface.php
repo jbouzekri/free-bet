@@ -18,6 +18,8 @@ interface EventRepositoryInterface
     /**
      * Return the next events of a competition
      * Ordered by date and not yet processed
+     *
+     * @param int $limit
      */
-    public function findNextEvents();
+    public function findNextEvents($limit);
 }

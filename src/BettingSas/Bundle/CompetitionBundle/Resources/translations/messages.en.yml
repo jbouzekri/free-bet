@@ -1,1 +1,5 @@
-next_event_item: Next events
+event:
+    list:
+        next_menu: Next events
+        title: Next events list
+        empty: No event scheduled

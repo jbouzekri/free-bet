@@ -22,3 +22,8 @@ event_set_result:
     path: /event/{id}/edit
     defaults: { _controller: BettingSasCompetitionBundle:Event:edit }
     methods:  [GET,POST]
+
+event_bet:
+    path: /{slugCompetition}/{slugEvent}/bet
+    defaults: { _controller: BettingSasCompetitionBundle:Event:bet }
+    methods:  [GET]

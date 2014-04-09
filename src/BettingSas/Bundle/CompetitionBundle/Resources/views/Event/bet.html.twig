@@ -1,0 +1,6 @@
+{% extends "BettingSasUIBundle::layout.html.twig" %}
+
+{% block content %}
+    <h1>{{ event.name }}</h1>
+    {{ render_all_bet_types(event) }}
+{% endblock %}

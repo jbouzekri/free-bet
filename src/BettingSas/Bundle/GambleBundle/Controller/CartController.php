@@ -25,6 +25,9 @@ class CartController extends Controller
      */
     public function addBetAction(Request $request, Event $event)
     {
+        $cart = $this->get('betting_sas.gamble.cart');
+        $cart->load();
+
         $bet = new Bet();
         $bet->setEvent($event);
 
@@ -32,20 +35,22 @@ class CartController extends Controller
 
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $cart = $this->get('betting_sas.gamble.cart');
-            $cart->load();
             $cart->addBet($bet);
             $cart->persist();
-
-            return $this->redirect(
-                $this->generateUrl(
-                    'competition_detail',
-                    array(
-                        'slug' => $event->getCompetition()->getSlug()
-                    )
-                )
-            );
         }
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->viewAction();
+        }
+
+        return $this->redirect(
+            $this->generateUrl(
+                'competition_detail',
+                array(
+                    'slug' => $event->getCompetition()->getSlug()
+                )
+            )
+        );
     }
 
     /**
