@@ -27,8 +27,8 @@ class GambleExtension extends \Twig_Extension
      */
     public function __construct(Environment $twig, BetTypeChain $betTypeChain)
     {
-        $this->betTypeChain = $betTypeChain;
         $this->twig = $twig;
+        $this->betTypeChain = $betTypeChain;
     }
 
     /**

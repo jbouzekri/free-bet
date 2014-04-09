@@ -1,5 +1,4 @@
 parameters:
-    betting_sas.twig.event_extension.class: BettingSas\Bundle\CompetitionBundle\Twig\EventExtension
     betting_sas.twig.string_extension.class: BettingSas\Bundle\CompetitionBundle\Twig\StringExtension
     betting_sas.competition.repository.class: BettingSas\Bundle\CompetitionBundle\Document\Repository\CompetitionRepository
     betting_sas.competition.repository.namespace: BettingSasCompetitionBundle:Competition
@@ -33,13 +32,6 @@ services:
         arguments: [@doctrine_mongodb]
         tags:
             - { name: request.param_converter }
-
-    betting_sas.twig.event_extension:
-        class: %betting_sas.twig.event_extension.class%
-        arguments:
-            - @twig
-        tags:
-            - { name: twig.extension }
 
     betting_sas.twig.string_extension:
         class: %betting_sas.twig.string_extension.class%
