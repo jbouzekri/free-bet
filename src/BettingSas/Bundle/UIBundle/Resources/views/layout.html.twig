@@ -28,7 +28,9 @@
     <aside class="left-side sidebar-offcanvas">
         <section class="sidebar">
             {% block menu %}
-                {% render(controller('BettingSasGambleBundle:Cart:view')) %}
+                <div id="cart">
+                    {% render(controller('BettingSasGambleBundle:Cart:view')) %}
+                </div>
             {% endblock %}
         </section>
     </aside>

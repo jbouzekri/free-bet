@@ -1,18 +1,44 @@
 @import "alerts.less";
 @import "cart.less";
+@import "../adminlte/less/mixins.less";
 
 body > .header .navbar {
     margin-left: 0px;
 }
 
+/*
+Cart
+*/
+#cart {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid white;
+    .border-radius(4px);
+}
+#cart h2 {
+    margin-top: 5px;
+    font-size: 2em;
+}
+#cart .bet-item {
+    margin-bottom: 5px;
+}
+#cart .alert {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
 /***
 ** Next events list
 ***/
+#next-event-list {
+    padding: 0 10%;
+}
 #next-event-list h1 {
     text-align:center;
 }
 #next-event-list table {
-    margin: 0 10% 30px;
+    margin-bottom: 30px;
 }
 #next-event-list table tr > td:first-child {
     width:10%;

@@ -1,17 +1,15 @@
-<div id="cart">
-    <h2>{{ 'cart.block.title'|trans({},'cart') }}</h2>
-    {% for flashMessage in app.session.flashbag.get('cart-success') %}
-        <div class="alert flat-alert alert-success">{{ flashMessage }}</div>
-    {% endfor %}
-    {% for flashMessage in app.session.flashbag.get('cart-error') %}
-        <div class="alert flat-alert alert-error">{{ flashMessage }}</div>
-    {% endfor %}
-    {% for bet in cart.gamble.bets %}
-        {{ render_cart_bet(bet) }}
-    {% else %}
-        <p>{{ 'cart.block.empty'|trans({},'cart') }}</p>
-    {% endfor %}
-    <form action="{{ path('gamble_cart_transform') }}" method="post">
-        <button type="submit" class="btn btn-primary btn-block">{{ 'cart.block.transform'|trans({},'cart') }}</button>
-    </form>
-</div>
+<h2>{{ 'cart.block.title'|trans({},'cart') }}</h2>
+{% for flashMessage in app.session.flashbag.get('cart-success') %}
+    <div class="alert flat-alert alert-success">{{ flashMessage }}</div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('cart-error') %}
+    <div class="alert flat-alert alert-error">{{ flashMessage }}</div>
+{% endfor %}
+{% for bet in cart.gamble.bets %}
+    {{ render_cart_bet(bet) }}
+{% else %}
+    <p>{{ 'cart.block.empty'|trans({},'cart') }}</p>
+{% endfor %}
+<form action="{{ path('gamble_cart_transform') }}" method="post">
+    <button type="submit" class="btn btn-primary btn-block">{{ 'cart.block.transform'|trans({},'cart') }}</button>
+</form>
