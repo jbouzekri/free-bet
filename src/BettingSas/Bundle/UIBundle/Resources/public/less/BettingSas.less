@@ -4,18 +4,37 @@
 
 @primary: #3d9970;
 
+
+/**********************/
+/* Bootstrap override */
+/**********************/
 body > .header .navbar {
     margin-left: 0px;
 }
-
 .btn.btn-primary {
     background-color: @primary;
     border-color: @primary;
 }
 
-/*
-Cart
-*/
+/**********/
+/* Layout */
+/**********/
+.container h1 {
+    text-align:center;
+}
+.right-side {
+    padding: 0% 5%;
+}
+.content {
+    padding-top: 0px;
+}
+.content h1 {
+    margin-bottom: 40px;
+}
+
+/********/
+/* Cart */
+/********/
 #cart {
     margin: 5px;
     padding: 5px;
@@ -35,15 +54,9 @@ Cart
     margin-bottom: 10px;
 }
 
-/***
-** Next events list
-***/
-#next-event-list {
-    padding: 0 5%;
-}
-#next-event-list h1 {
-    text-align:center;
-}
+/********************/
+/* Next events list */
+/********************/
 #next-event-list table.table {
     margin-bottom: 30px;
 }
@@ -72,4 +85,17 @@ Cart
 }
 #next-event-list table li {
     display: inline-block;
+}
+
+/***********/
+/* Profile */
+/***********/
+#profile h2 {
+    margin-top: 0px;
+}
+#profile .img-thumbnail {
+    margin-right: 15px;
+}
+#profile .info {
+    margin-top: 20px;
 }

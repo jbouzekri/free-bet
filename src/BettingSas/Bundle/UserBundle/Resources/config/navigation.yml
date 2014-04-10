@@ -1,33 +1,5 @@
 main:
     tree:
-        account_item:
-            label: Account
-            route: "fos_user_profile_show"
-            order: 30
-            attributes:
-                class: dropdown
-            linkAttributes:
-                class: dropdown-toggle
-                data-toggle: dropdown
-            childrenAttributes:
-                class: dropdown-menu
-            children:
-                select_group:
-                    label: Select group
-                    route: "user_account_select_group"
-                    order: 10
-                change_password:
-                    label: Change password
-                    route: "fos_user_change_password"
-                    order: 20
-                edit_profile:
-                    label: Edit profile
-                    route: "fos_user_profile_edit"
-                    order: 30
-                gamble_list:
-                    label: Gamble list
-                    route: "user_account_gambles_list"
-                    order: 40
         organization_item:
             label: Organization
             route: "user_organization_manage"

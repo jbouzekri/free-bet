@@ -1,0 +1,6 @@
+main:
+    tree:
+        gambles_list_item:
+            label: menu.main.gambles_list
+            route: "user_account_gambles_list"
+            order: 30

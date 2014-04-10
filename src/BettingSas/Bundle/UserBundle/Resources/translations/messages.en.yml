@@ -1,0 +1,8 @@
+account:
+    title: My profile
+    info: Account
+    member_since: Member since
+    password:
+        modify: Change password
+    profile:
+        edit: Edit profile
