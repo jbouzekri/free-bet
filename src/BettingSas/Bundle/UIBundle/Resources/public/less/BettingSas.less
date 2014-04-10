@@ -2,8 +2,15 @@
 @import "cart.less";
 @import "../adminlte/less/mixins.less";
 
+@primary: #3d9970;
+
 body > .header .navbar {
     margin-left: 0px;
+}
+
+.btn.btn-primary {
+    background-color: @primary;
+    border-color: @primary;
 }
 
 /*
@@ -32,19 +39,33 @@ Cart
 ** Next events list
 ***/
 #next-event-list {
-    padding: 0 10%;
+    padding: 0 5%;
 }
 #next-event-list h1 {
     text-align:center;
 }
-#next-event-list table {
+#next-event-list table.table {
     margin-bottom: 30px;
+}
+#next-event-list table thead tr th {
+    .border-radius(4px, 4px, 0px, 0px);
+    cursor: pointer;
+}
+#next-event-list table thead tr {
+    background-color: @primary;
+    color: white;
+}
+#next-event-list table thead th span.glyphicon {
+    margin-right: 15px;
 }
 #next-event-list table tr > td:first-child {
     width:10%;
 }
 #next-event-list table tr > td:nth-child(2) {
     width: 10%;
+}
+#next-event-list table tr > td:nth-child(3) {
+    width: 40%;
 }
 #next-event-list table h3 {
     display:none;
