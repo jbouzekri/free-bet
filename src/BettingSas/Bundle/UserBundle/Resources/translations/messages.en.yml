@@ -19,6 +19,7 @@ account_edit:
     title: Change profile
 
 organization:
+    is_manager: Is manager
     new:
         title: Create a group
         create: Create
@@ -28,3 +29,7 @@ organization:
         count: "{0} No member|{1} One Member|]1,Inf] %count% members"
     manage:
         title: Manage %name%
+    user:
+        remove: Remove
+        downgrade: Remove as manager
+        upgrade: Set as manager

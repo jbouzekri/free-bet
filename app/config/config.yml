@@ -100,6 +100,7 @@ knp_menu:
 knp_paginator:
     template:
         pagination: BettingSasUIBundle:Layout:_paginator.html.twig
+        sortable: BettingSasUIBundle:Layout:_sortable_link.html.twig
 
 betting_sas_competition:
     mapping_events:

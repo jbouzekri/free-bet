@@ -21,7 +21,7 @@ user_organization_manage_remove_user:
     defaults: { _controller: BettingSasUserBundle:User:removeFromOrganization }
     methods:  [POST]
 
-user_organization_manage_remove_user:
+user_organization_manage_change_role:
     path: /group/user/{id}/role/{role}
     defaults: { _controller: BettingSasUserBundle:User:changeRole }
     methods:  [POST]

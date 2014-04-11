@@ -1,0 +1,5 @@
+{% spaceless %}
+<a{% for attr, value in options %} {{ attr }}="{{ value }}"{% endfor %}>
+    {{ title }} {% if sorted %}<span class="glyphicon {% if direction == 'desc' %}glyphicon-chevron-down{% else %}glyphicon-chevron-up{% endif %}"></span>{% endif %}
+</a>
+{% endspaceless %}
