@@ -61,9 +61,22 @@ class UserController extends Controller
 
         $user->setOrganization(null);
 
-        $om = $this->get('doctrine_mongodb.odm.default_document_manager');
-        $om->persist($user);
-        $om->flush();
+        try {
+            $om = $this->get('doctrine_mongodb.odm.default_document_manager');
+            $om->persist($user);
+            $om->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'organization-success',
+                $this->get('translator')->trans('organization.manage.remove_user_success')
+            );
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            $this->get('session')->getFlashBag()->add(
+                'organization-error',
+                $this->get('translator')->trans('organization.manage.remove_user_error')
+            );
+        }
 
         return $this->redirect($this->generateUrl('user_organization_manage'));
     }
@@ -80,6 +93,11 @@ class UserController extends Controller
     public function changeRoleAction($id, $role = 'ROLE_USER')
     {
         $user = $this->checkSecurity($id);
+
+        // Security against admin role assignation
+        if (!in_array($role, array('ROLE_USER', 'ROLE_MANAGER')) && !$this->getUser()->hasRole('ROLE_ADMIN')) {
+            throw new AccessDeniedException('You cannot set this role to the user');
+        }
 
         $user->setRoles(array($role));
         $errors = $this->get('validator')->validate($user);

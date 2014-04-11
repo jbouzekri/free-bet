@@ -29,6 +29,8 @@ organization:
         count: "{0} No member|{1} One Member|]1,Inf] %count% members"
     manage:
         title: Manage %name%
+        remove_user_success: User remove from group successfully.
+        remove_user_error: Error when trying to remove user from group. Try again or contact an administrator.
     user:
         remove: Remove
         downgrade: Remove as manager
