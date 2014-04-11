@@ -23,7 +23,6 @@ class OrganizationType extends AbstractType
         $builder->add('name', 'text', array(
             'required' => false
         ));
-        $builder->add('save', 'submit');
     }
 
     /**
