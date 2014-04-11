@@ -6,7 +6,7 @@
 <div class="content" id="profile">
     <h1>{{ 'account.title'|trans }}</h1>
 
-    <div class="well well-lg" id="">
+    <div class="well well-lg">
         <div class="pull-right">
             <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary">{{ 'account.password.modify'|trans }}</a>
             <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">{{ 'account.profile.edit'|trans }}</a>
@@ -22,6 +22,25 @@
                 <p><label>{{ 'account.member_since'|trans({}) }}:</label> {{ user.email }}</p>
             </div>
         </div>
+    </div>
+
+    <div class="well well-lg">
+        <div class="pull-right">
+            <a href="{{ path('user_account_select_group') }}" class="btn btn-primary">{{ 'account.organization.select'|trans }}</a>
+            <a href="{{ path('user_account_create_group') }}" class="btn btn-danger">{{ 'account.organization.create'|trans }}</a>
+            {% if user.isManager %}
+                <a href="{{ path('user_organization_manage') }}" class="btn btn-danger">{{ 'account.organization.manage'|trans }}</a>
+            {% endif %}
+        </div>
+        <h2>{{ 'account.organization.info'|trans }}</h2>
+        {% if user.organization %}
+            <div class="info">
+                <p><label>{{ 'account.organization.name'|trans }}:</label> {{ user.organization.name }}</p>
+            </div>
+            <p>{{ 'account.organization.join_date'|trans }}</p>
+        {% else %}
+            <p>{{ 'account.organization.none'|trans }}</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

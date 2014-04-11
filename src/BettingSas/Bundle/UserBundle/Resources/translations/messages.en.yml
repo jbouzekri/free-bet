@@ -6,3 +6,11 @@ account:
         modify: Change password
     profile:
         edit: Edit profile
+    organization:
+        info: Your group
+        join_date: You joined on %date%
+        name: Name
+        none: You are not a member of any group. Join one to add your victory to the ones of your friend.
+        manage: Manage your group
+        select: Choose a new group
+        create: Create a new group

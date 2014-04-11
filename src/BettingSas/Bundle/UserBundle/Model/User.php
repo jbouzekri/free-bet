@@ -80,4 +80,14 @@ abstract class User extends BaseUser
 
         return $this;
     }
+
+    /**
+     * Check if a user is the manager of its organization
+     *
+     * @return true
+     */
+    public function isManager()
+    {
+        return $this->hasRole('ROLE_MANAGER') && $this->getOrganization();
+    }
 }
