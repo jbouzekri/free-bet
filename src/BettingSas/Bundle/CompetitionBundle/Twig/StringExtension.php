@@ -21,7 +21,7 @@ class StringExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return array('slugify' => new \Twig_SimpleFilter($this, array($this, 'slugify')));
+        return array('slugify' => new \Twig_SimpleFilter('slugify', array($this, 'slugify')));
     }
 
     /**
