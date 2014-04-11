@@ -31,6 +31,9 @@ organization:
         title: Manage %name%
         remove_user_success: User remove from group successfully.
         remove_user_error: Error when trying to remove user from group. Try again or contact an administrator.
+        change_role_success: the role of the selected user has changed successfully.
+        change_role_validation_error: User not complete. Unable to change its role.
+        change_role_error: Error when trying to change the role of the user. Try again or contact an administrator.
     user:
         remove: Remove
         downgrade: Remove as manager

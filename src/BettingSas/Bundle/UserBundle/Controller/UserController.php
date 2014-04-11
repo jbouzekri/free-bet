@@ -4,7 +4,7 @@ namespace BettingSas\Bundle\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Routing\Exception\InvalidParameterException;
+use Symfony\Component\Validator\Exception\ValidatorException;
 
 /**
  * Description of UserController
@@ -99,15 +99,33 @@ class UserController extends Controller
             throw new AccessDeniedException('You cannot set this role to the user');
         }
 
-        $user->setRoles(array($role));
-        $errors = $this->get('validator')->validate($user);
-        if (count($errors) > 0) {
-            throw new InvalidParameterException('The role '.$role.' is not a valid one');
-        }
+        try {
+            $user->setRoles(array($role));
+            $errors = $this->get('validator')->validate($user);
+            if (count($errors) > 0) {
+                throw new ValidatorException('The role '.$role.' is not a valid one');
+            }
 
-        $om = $this->get('doctrine_mongodb.odm.default_document_manager');
-        $om->persist($user);
-        $om->flush();
+            $om = $this->get('doctrine_mongodb.odm.default_document_manager');
+            $om->persist($user);
+            $om->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'organization-success',
+                $this->get('translator')->trans('organization.manage.change_role_success')
+            );
+        } catch (ValidatorException $e) {
+            $this->get('session')->getFlashBag()->add(
+                'organization-error',
+                $this->get('translator')->trans('organization.manage.change_role_validation_error')
+            );
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            $this->get('session')->getFlashBag()->add(
+                'organization-error',
+                $this->get('translator')->trans('organization.manage.change_role_error')
+            );
+        }
 
         return $this->redirect($this->generateUrl('user_organization_manage'));
     }
