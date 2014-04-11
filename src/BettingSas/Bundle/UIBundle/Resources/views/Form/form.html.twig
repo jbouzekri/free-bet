@@ -1,0 +1,38 @@
+{% block form_row %}
+{% spaceless %}
+    <div class="form-group {%if form.vars.errors|length > 0 %}has-error{% endif %}">
+        {{ form_errors(form) }}
+        {{ form_label(form) }}
+        {{ form_widget(form, {attr: {class: "form-control"}}) }}
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+        <div class="alert flat-alert alert-danger">
+            {% for error in errors %}
+                {{ error.message }}{% if not loop.last %}<br />{% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}
+
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{%if form.vars.errors|length > 0 %}<i class="fa fa-times-circle-o"></i> {% endif %}{{ label|trans({}, translation_domain) }}</label>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}
