@@ -24,3 +24,7 @@ organization:
         create: Create
         has_organization_warning: You are about to create a new group. You will not be a member of your current group anymore but you will be the manager of the new one
         new_organization_info: You are about to create a new group. you will automatically be its first member and the only manager.
+    item:
+        count: "{0} No member|{1} One Member|]1,Inf] %count% members"
+    manage:
+        title: Manage %name%

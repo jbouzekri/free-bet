@@ -97,6 +97,10 @@ knp_menu:
     twig:
         template: BettingSasUIBundle:Layout:_menu.html.twig
 
+knp_paginator:
+    template:
+        pagination: BettingSasUIBundle:Layout:_paginator.html.twig
+
 betting_sas_competition:
     mapping_events:
         soccer: BettingSas\Bundle\SoccerBundle\Document\Match

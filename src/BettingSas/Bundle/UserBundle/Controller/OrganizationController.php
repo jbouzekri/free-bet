@@ -90,7 +90,8 @@ class OrganizationController extends Controller
         );
 
         return $this->render('BettingSasUserBundle:Organization:manage.html.twig', array(
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'organization' => $group
         ));
     }
 
