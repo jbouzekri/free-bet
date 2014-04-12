@@ -120,6 +120,8 @@ class OrganizationController extends Controller
             $om->persist($user);
             $om->flush();
 
+            $this->get('security.context')->getToken()->setAuthenticated(false);
+
             return $this->redirect($this->generateUrl('fos_user_profile_show'));
         }
 
