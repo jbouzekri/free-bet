@@ -1,3 +1,5 @@
+filter: Filter
+
 account:
     title: My profile
     info: Account
@@ -18,6 +20,14 @@ account:
 account_edit:
     title: Change profile
 
+profile:
+    flash:
+        updated: Profile updated successfully
+
+change_password:
+    flash:
+        success: Password updated successfully
+
 organization:
     is_manager: Is manager
     new:
@@ -25,8 +35,11 @@ organization:
         create: Create
         has_organization_warning: You are about to create a new group. You will not be a member of your current group anymore but you will be the manager of the new one
         new_organization_info: You are about to create a new group. you will automatically be its first member and the only manager.
+        success: The new group was created successfully. You are its manager.
     item:
-        count: "{0} No member|{1} One Member|]1,Inf] %count% members"
+        count: "{0} No member|{1} One member|]1,Inf] %count% members"
+    list:
+        count: "{0} No group|{1} One group|]1,Inf] %count% groups"
     manage:
         title: Manage %name%
         remove_user_success: User remove from group successfully.
@@ -38,3 +51,13 @@ organization:
         remove: Remove
         downgrade: Remove as manager
         upgrade: Set as manager
+    choose:
+        title: Select a group
+        has_organization_warning: >
+          You are about to enter a new group.
+          You will not be a member of your current group anymore.
+          All your current bet will still be assigned to your current group.
+        change_group_success: You have change your group successfully
+        change_group_error: Error when trying to change your group. Try again or contact an administrator.
+        slug_filter: Enter name
+        slug: name

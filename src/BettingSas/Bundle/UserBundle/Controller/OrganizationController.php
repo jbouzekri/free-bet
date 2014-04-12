@@ -25,9 +25,11 @@ class OrganizationController extends Controller
      */
     public function selectAction(Request $request)
     {
+        $slug = $request->query->get('slug', null);
+
         $organizationQb = $this
             ->get('betting_sas.organization.repository')
-            ->findAllFilteredQb($request->query->get('slug', null));
+            ->findAllFilteredQb($slug);
 
         $pagination = $this->get('knp_paginator')->paginate(
             $organizationQb,
@@ -49,12 +51,18 @@ class OrganizationController extends Controller
             $om->persist($user);
             $om->flush();
 
-            return $this->redirect($this->generateUrl('competition_list'));
+            $this->get('session')->getFlashBag()->add(
+                'user-success',
+                $this->get('translator')->trans('organization.choose.change_group_success')
+            );
+
+            return $this->redirect($this->generateUrl('fos_user_profile_show'));
         }
 
         return $this->render('BettingSasUserBundle:Organization:select.html.twig', array(
             'pagination' => $pagination,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'slug' =>$slug
         ));
     }
 
@@ -120,7 +128,13 @@ class OrganizationController extends Controller
             $om->persist($user);
             $om->flush();
 
+            // Force reload of user in security context
             $this->get('security.context')->getToken()->setAuthenticated(false);
+
+            $this->get('session')->getFlashBag()->add(
+                'user-success',
+                $this->get('translator')->trans('organization.new.success')
+            );
 
             return $this->redirect($this->generateUrl('fos_user_profile_show'));
         }

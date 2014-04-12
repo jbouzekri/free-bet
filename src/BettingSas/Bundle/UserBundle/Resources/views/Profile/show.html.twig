@@ -6,6 +6,16 @@
 <div class="content" id="profile">
     <h1>{{ 'account.title'|trans }}</h1>
 
+    {% for flashMessage in app.session.flashbag.get('user-success') %}
+        <div class="alert flat-alert alert-success">{{ flashMessage }}</div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('fos_user_success') %}
+        <div class="alert flat-alert alert-success">{{ flashMessage|trans }}</div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('user-error') %}
+        <div class="alert flat-alert alert-danger">{{ flashMessage }}</div>
+    {% endfor %}
+
     <div class="well well-lg">
         <div class="pull-right">
             <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary">{{ 'account.password.modify'|trans }}</a>

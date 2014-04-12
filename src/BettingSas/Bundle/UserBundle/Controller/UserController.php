@@ -61,22 +61,14 @@ class UserController extends Controller
 
         $user->setOrganization(null);
 
-        try {
-            $om = $this->get('doctrine_mongodb.odm.default_document_manager');
-            $om->persist($user);
-            $om->flush();
+        $om = $this->get('doctrine_mongodb.odm.default_document_manager');
+        $om->persist($user);
+        $om->flush();
 
-            $this->get('session')->getFlashBag()->add(
-                'organization-success',
-                $this->get('translator')->trans('organization.manage.remove_user_success')
-            );
-        } catch (\Exception $e) {
-            error_log($e->getMessage());
-            $this->get('session')->getFlashBag()->add(
-                'organization-error',
-                $this->get('translator')->trans('organization.manage.remove_user_error')
-            );
-        }
+        $this->get('session')->getFlashBag()->add(
+            'organization-success',
+            $this->get('translator')->trans('organization.manage.remove_user_success')
+        );
 
         return $this->redirect($this->generateUrl('user_organization_manage'));
     }
@@ -118,12 +110,6 @@ class UserController extends Controller
             $this->get('session')->getFlashBag()->add(
                 'organization-error',
                 $this->get('translator')->trans('organization.manage.change_role_validation_error')
-            );
-        } catch (\Exception $e) {
-            error_log($e->getMessage());
-            $this->get('session')->getFlashBag()->add(
-                'organization-error',
-                $this->get('translator')->trans('organization.manage.change_role_error')
             );
         }
 
