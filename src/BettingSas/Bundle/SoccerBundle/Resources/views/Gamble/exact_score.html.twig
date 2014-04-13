@@ -1,4 +1,4 @@
-<div id="gamble-{{ betType.getName }}">
+<div class="bet-type" id="gamble-{{ betType.getName }}">
     <h3>{{ ('gamble_'~betType.getName)|trans({},'gamble') }} </h3>
     {% for choice in betType.getChoices %}
         <li>
