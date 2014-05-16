@@ -48,18 +48,18 @@ class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
         }
 
         $betTypes = array();
-        foreach ($betsCollection as $bet) {
-            $eventType = $bet->getEvent()->getType();
-            if (!isset($betTypes[$eventType])) {
-                $betTypes[$eventType] = array();
+        foreach ($betsCollection as $position => $bet) {
+            $eventId = $bet->getEvent()->getId();
+            if (!isset($betTypes[$eventId])) {
+                $betTypes[$eventId] = array();
             }
 
             $count = $this
                 ->gambleRepository
                 ->countAllGambleHavingBetsOnEventWithType($gamble->getUser(), $bet->getEvent(), $bet->getType());
-            if ($count > 0 || in_array($bet->getType(), $betTypes[$eventType])) {
+            if ($count > 0 || in_array($bet->getType(), $betTypes[$eventId])) {
                 $this->context->addViolationAt(
-                    '0',
+                    'bets.'.$position,
                     $constraint->message,
                     array(
                         '%type%' => $bet->getType()
@@ -68,7 +68,7 @@ class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
                 );
             }
 
-            $betTypes[$eventType] = $bet->getType();
+            $betTypes[$eventId][] = $bet->getType();
         }
     }
 }

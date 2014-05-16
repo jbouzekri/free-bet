@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use BettingSas\Bundle\CompetitionBundle\Document\Event;
 use BettingSas\Bundle\GambleBundle\Document\Bet;
 use BettingSas\Bundle\GambleBundle\Form\Type\BetType;
+use BettingSas\Bundle\GambleBundle\Manager\GambleCart;
 
 /**
  * Description of CartController
@@ -91,15 +92,18 @@ class CartController extends Controller
     {
         $cart = $this->get('betting_sas.gamble.cart');
         $cart->load();
-        $cart->transform($this->getUser());
 
-        $this->get('session')->getFlashBag()->add(
-            'cart-success',
-            $this->get('translator')->trans('cart.notice.transform', array(), 'cart')
-        );
+        $success = $cart->transform($this->getUser());
+
+        if ($success) {
+            $this->get('session')->getFlashBag()->add(
+                'cart-success',
+                $this->get('translator')->trans('cart.notice.transform', array(), 'cart')
+            );
+        }
 
         if ($request->isXmlHttpRequest()) {
-            return $this->viewAction();
+            return $this->viewAction($cart);
         }
 
         return $this->redirect($this->generateUrl('event_next_list'));
@@ -108,12 +112,16 @@ class CartController extends Controller
     /**
      * Controller used to render the cart directly in the template
      *
+     * @param \BettingSas\Bundle\GambleBundle\Manager\GambleCart $cart
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function viewAction()
+    public function viewAction(GambleCart $cart = null)
     {
-        $cart = $this->get('betting_sas.gamble.cart');
-        $cart->load();
+        if ($cart === null) {
+            $cart = $this->get('betting_sas.gamble.cart');
+            $cart->load();
+        }
 
         return $this->render('BettingSasGambleBundle:Cart:view.html.twig', array(
             'cart' => $cart

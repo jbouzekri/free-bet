@@ -3,9 +3,15 @@
     <div class="alert flat-alert alert-success">{{ flashMessage }}</div>
 {% endfor %}
 {% for flashMessage in app.session.flashbag.get('cart-error') %}
-    <div class="alert flat-alert alert-error">{{ flashMessage }}</div>
+    <div class="alert flat-alert alert-danger">{{ flashMessage }}</div>
+{% endfor %}
+{% for error in cart.getGlobalErrors %}
+    <div class="alert flat-alert alert-danger">{{ error.message }}</div>
 {% endfor %}
 {% for bet in cart.gamble.bets %}
+    {% for error in cart.getBetErrors(bet) %}
+        <div class="alert flat-alert alert-danger">{{ error.message }}</div>
+    {% endfor %}
     {{ render_cart_bet(bet) }}
 {% else %}
     <p>{{ 'cart.block.empty'|trans({},'cart') }}</p>

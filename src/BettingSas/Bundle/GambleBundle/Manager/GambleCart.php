@@ -122,6 +122,33 @@ class GambleCart
     }
 
     /**
+     * Get errors on cart and/or gamble entity
+     *
+     * @return array
+     */
+    public function getGlobalErrors()
+    {
+        $globalErrors = array();
+        foreach ($this->getErrors() as $error) {
+            if (strpos($error->getPropertyPath(), 'bets.') === false) {
+                $globalErrors[] = $error;
+            }
+        }
+        return $globalErrors;
+    }
+
+    public function getBetErrors(Bet $bet)
+    {
+        $betErrors = array();
+        foreach ($this->getErrors() as $error) {
+            if ($error->getInvalidValue() == $bet) {
+                $betErrors[] = $error;
+            }
+        }
+        return $betErrors;
+    }
+
+    /**
      * Persit Gamble
      *
      * @return null
@@ -181,7 +208,7 @@ class GambleCart
      *
      * @param \BettingSas\Bundle\UserBundle\Document\User $user
      *
-     * @return void
+     * @return boolean
      */
     public function transform(User $user)
     {
@@ -191,13 +218,15 @@ class GambleCart
         }
 
         $this->validate();
-        if (!$this->isValid()) {
-            throw new \Exception("there is validation error. TODO !!!");
+        if ($this->isValid()) {
+            $this->getManager()->persist($this->getGamble());
+            $this->getManager()->flush();
+
+            $this->clear();
+
+            return true;
         }
 
-        $this->getManager()->persist($this->getGamble());
-        $this->getManager()->flush();
-
-        $this->clear();
+        return false;
     }
 }
