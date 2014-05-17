@@ -1,6 +1,6 @@
-main:
-    tree:
-        organization_item:
-            label: Organization
-            route: "user_organization_manage"
-            order: 40
+#main:
+#    tree:
+#        organization_item:
+#            label: Organization
+#            route: "user_organization_manage"
+#            order: 40
