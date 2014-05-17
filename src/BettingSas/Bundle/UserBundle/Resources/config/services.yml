@@ -7,7 +7,7 @@ parameters:
 services:
     betting_sas.menu.main:
         class: Knp\Menu\MenuItem
-        factory_service: maestro.menu.builder
+        factory_service: jb_config.menu.builder
         factory_method: createMenu
         arguments:
           - "@request"

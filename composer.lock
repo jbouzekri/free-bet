@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "03d771f80eb775d84e15603042a98cb5",
+    "hash": "38c62b7b6b9161d11741538eb0b6401a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -666,16 +666,16 @@
         },
         {
             "name": "doctrine/mongodb",
-            "version": "1.1.5",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb.git",
-                "reference": "1a9b001a97256208e0fc4970305cd48208d5b78c"
+                "reference": "4eafa3e719bfe14422f4c1d928771331edd26b39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/1a9b001a97256208e0fc4970305cd48208d5b78c",
-                "reference": "1a9b001a97256208e0fc4970305cd48208d5b78c",
+                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/4eafa3e719bfe14422f4c1d928771331edd26b39",
+                "reference": "4eafa3e719bfe14422f4c1d928771331edd26b39",
                 "shasum": ""
             },
             "require": {
@@ -690,11 +690,6 @@
                 "jmikola/geojson": "Support GeoJSON geometry objects in 2dsphere queries"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\MongoDB": "lib/"
@@ -734,7 +729,7 @@
                 "mongodb",
                 "persistence"
             ],
-            "time": "2014-03-28 19:22:22"
+            "time": "2014-04-29 21:14:37"
         },
         {
             "name": "doctrine/mongodb-odm",
@@ -742,12 +737,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "88231384d051630b9b280a8513e3070961c8eed7"
+                "reference": "dc4730329a028c0c5e5034db61fa432868e8b3df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/88231384d051630b9b280a8513e3070961c8eed7",
-                "reference": "88231384d051630b9b280a8513e3070961c8eed7",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/dc4730329a028c0c5e5034db61fa432868e8b3df",
+                "reference": "dc4730329a028c0c5e5034db61fa432868e8b3df",
                 "shasum": ""
             },
             "require": {
@@ -812,7 +807,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2014-04-02 15:18:54"
+            "time": "2014-05-16 15:45:24"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -821,16 +816,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMongoDBBundle.git",
-                "reference": "ba17a288ae0f2f2cb4ef1bac667710a5f3b7151e"
+                "reference": "e022b83d429ecabd0ddd9d0efd7784b611a7420d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/ba17a288ae0f2f2cb4ef1bac667710a5f3b7151e",
-                "reference": "ba17a288ae0f2f2cb4ef1bac667710a5f3b7151e",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/e022b83d429ecabd0ddd9d0efd7784b611a7420d",
+                "reference": "e022b83d429ecabd0ddd9d0efd7784b611a7420d",
                 "shasum": ""
             },
             "require": {
-                "doctrine/mongodb-odm": "~1.0.0-beta5@dev",
+                "doctrine/mongodb-odm": "~1.0.0-beta10@dev",
                 "php": ">=5.3.2",
                 "symfony/doctrine-bridge": "~2.1",
                 "symfony/framework-bundle": "~2.1",
@@ -883,7 +878,7 @@
                 "persistence",
                 "symfony"
             ],
-            "time": "2014-04-03 20:22:59"
+            "time": "2014-05-16 14:56:48"
         },
         {
             "name": "doctrine/orm",
@@ -1160,6 +1155,47 @@
                 "parameters management"
             ],
             "time": "2013-12-07 10:10:39"
+        },
+        {
+            "name": "jbouzekri/config-knp-menu-bundle",
+            "version": "dev-master",
+            "target-dir": "Jb/Bundle/ConfigKnpMenuBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jbouzekri/ConfigKnpMenuBundle.git",
+                "reference": "aadff998a1781c8b544e72fe993279ba0e2c362f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jbouzekri/ConfigKnpMenuBundle/zipball/aadff998a1781c8b544e72fe993279ba0e2c362f",
+                "reference": "aadff998a1781c8b544e72fe993279ba0e2c362f",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-menu-bundle": "1.1.2",
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Jb\\Bundle\\ConfigKnpMenuBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Configure your knp menus with yaml files accross your project bundles",
+            "homepage": "https://github.com/jbouzekri/ConfigKnpMenuBundle",
+            "keywords": [
+                "knp",
+                "menu",
+                "navigation",
+                "symfony",
+                "ui",
+                "user interface"
+            ],
+            "time": "2014-05-17 13:00:32"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1521,12 +1557,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/lessphp.git",
-                "reference": "b7cd5c79e82666bcd2dfadb304342311209fb527"
+                "reference": "011afcca8e6f1000a6e789921ba805fa578271a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/lessphp/zipball/b7cd5c79e82666bcd2dfadb304342311209fb527",
-                "reference": "b7cd5c79e82666bcd2dfadb304342311209fb527",
+                "url": "https://api.github.com/repos/leafo/lessphp/zipball/011afcca8e6f1000a6e789921ba805fa578271a3",
+                "reference": "011afcca8e6f1000a6e789921ba805fa578271a3",
                 "shasum": ""
             },
             "type": "library",
@@ -1554,61 +1590,20 @@
             ],
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
-            "time": "2014-02-05 19:36:35"
-        },
-        {
-            "name": "maestro/navigation-bundle",
-            "version": "dev-master",
-            "target-dir": "Maestro/Bundle/NavigationBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maestro-platform/MaestroNavigationBundle.git",
-                "reference": "66582a080ede748a2a61f39c17f73fea7bcdc73c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maestro-platform/MaestroNavigationBundle/zipball/66582a080ede748a2a61f39c17f73fea7bcdc73c",
-                "reference": "66582a080ede748a2a61f39c17f73fea7bcdc73c",
-                "shasum": ""
-            },
-            "require": {
-                "knplabs/knp-menu-bundle": "1.1.2",
-                "symfony/event-dispatcher": "~2.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Maestro\\Bundle\\NavigationBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Maestro Menu Navigation Bundle",
-            "homepage": "https://github.com/maestro-platform/MaestroNavigationBundle",
-            "keywords": [
-                "Maestro",
-                "menu",
-                "navigation",
-                "symfony",
-                "ui",
-                "user interface"
-            ],
-            "time": "2014-04-07 20:27:27"
+            "time": "2014-04-27 02:56:30"
         },
         {
             "name": "monolog/monolog",
-            "version": "1.8.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "392ef35fd470638e08d0160d6b1cbab63cb23174"
+                "reference": "65026b610f8c19e61d7242f600530677b0466aac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/392ef35fd470638e08d0160d6b1cbab63cb23174",
-                "reference": "392ef35fd470638e08d0160d6b1cbab63cb23174",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/65026b610f8c19e61d7242f600530677b0466aac",
+                "reference": "65026b610f8c19e61d7242f600530677b0466aac",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1631,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8.x-dev"
+                    "dev-master": "1.9.x-dev"
                 }
             },
             "autoload": {
@@ -1663,7 +1658,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-03-23 19:50:26"
+            "time": "2014-04-24 13:29:03"
         },
         {
             "name": "psr/log",
@@ -1859,12 +1854,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
-                "reference": "f1c7993863f83f22f187f11d2a8eb462b836701e"
+                "reference": "7370d18f511653d39c33d75c2190caaafdebb492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/f1c7993863f83f22f187f11d2a8eb462b836701e",
-                "reference": "f1c7993863f83f22f187f11d2a8eb462b836701e",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/7370d18f511653d39c33d75c2190caaafdebb492",
+                "reference": "7370d18f511653d39c33d75c2190caaafdebb492",
                 "shasum": ""
             },
             "require": {
@@ -1912,29 +1907,32 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2014-04-09 14:29:58"
+            "time": "2014-05-14 08:12:32"
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.1.0",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "748c01c1144713ac0118396935d10b6ceec91b68"
+                "reference": "043e336b871f17a117f76ef8e190eddfc04c8d48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/748c01c1144713ac0118396935d10b6ceec91b68",
-                "reference": "748c01c1144713ac0118396935d10b6ceec91b68",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/043e336b871f17a117f76ef8e190eddfc04c8d48",
+                "reference": "043e336b871f17a117f76ef8e190eddfc04c8d48",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.1-dev"
+                    "dev-master": "5.2-dev"
                 }
             },
             "autoload": {
@@ -1963,7 +1961,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-03-18 09:03:27"
+            "time": "2014-05-08 08:11:19"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -2197,16 +2195,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "3199b2e0d194f71fe2e13c95768b2ef22206682b"
+                "reference": "4697c33cdfb520dcf83fd6e4f7864fa26ddaebea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/3199b2e0d194f71fe2e13c95768b2ef22206682b",
-                "reference": "3199b2e0d194f71fe2e13c95768b2ef22206682b",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/4697c33cdfb520dcf83fd6e4f7864fa26ddaebea",
+                "reference": "4697c33cdfb520dcf83fd6e4f7864fa26ddaebea",
                 "shasum": ""
             },
             "require": {
@@ -2308,7 +2306,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-04-04 10:27:02"
+            "time": "2014-04-27 13:39:18"
         },
         {
             "name": "twig/extensions",
@@ -2426,7 +2424,7 @@
         "doctrine/mongodb-odm": 20,
         "doctrine/mongodb-odm-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
-        "maestro/navigation-bundle": 20,
+        "jbouzekri/config-knp-menu-bundle": 20,
         "leafo/lessphp": 20
     },
     "platform": {
