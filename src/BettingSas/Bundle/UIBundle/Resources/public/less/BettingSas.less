@@ -83,11 +83,50 @@ td.small {
 #next-event-list table tr > td:nth-child(3) {
     width: 40%;
 }
-#next-event-list table h3 {
+#next-event-list .bet-header{
     display:none;
 }
 #next-event-list table li {
     display: inline-block;
+}
+
+/********************/
+/* Bet event detail */
+/********************/
+#event-bet h1 {
+    margin-bottom: 40px;
+}
+.bet-header {
+    .border-radius(4px, 4px, 0px, 0px);
+    cursor: pointer;
+    background-color: @primary;
+    color: white;
+}
+.bet-header span.glyphicon {
+    margin-right: 15px;
+}
+.bet-header h2 {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+}
+.bet-body {
+    padding-left: 0px;
+}
+#event-bet .bet-body li {
+    list-style-type: none;
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#see-more {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+#event-bet .bet-body > ul {
+    margin-bottom: 0px;
 }
 
 /***********/

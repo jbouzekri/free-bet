@@ -1,13 +1,46 @@
-<div class="bet-type" id="gamble-{{ betType.getName }}">
-    <h3>{{ ('gamble_'~betType.getName)|trans({},'gamble') }} </h3>
+<div class="bet-type bet-header" id="gamble-{{ betType.getName }}">
+    <h2>
+        <span class="glyphicon glyphicon-chevron-down btn-sm"></span>
+        {{ ('gamble_'~betType.getName)|trans({},'gamble') }}
+    </h2>
+</div>
+<div class="bet-type bet-body">
+    <ul>
     {% for choice in betType.getChoices %}
-        <li>
-            {% include 'BettingSasGambleBundle::_bet_type_choice.html.twig' with {
-                'betType': betType,
-                'event': event,
-                'label': choice,
-                'choice': choice
-            } %}
-        </li>
+        {% if loop.index0 <= 17 %}
+            <li {% if loop.index0 > 17 %}style="display: none;"{% endif %}>
+                {% include 'BettingSasGambleBundle::_bet_type_choice.html.twig' with {
+                    'betType': betType,
+                    'event': event,
+                    'label': choice|replace({'-': " - "}),
+                    'choice': choice
+                } %}
+            </li>
+        {% endif %}
     {% endfor %}
+    </ul>
+    <div class="more-choices" style="display: none;">
+        <ul>
+            {% for choice in betType.getChoices %}
+                {% if loop.index0 > 17 %}
+                    <li>
+                        {% include 'BettingSasGambleBundle::_bet_type_choice.html.twig' with {
+                            'betType': betType,
+                            'event': event,
+                            'label': choice|replace({'-': " - "}),
+                            'choice': choice
+                        } %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="see-more" class="toggle" data-toggle="more-choices">
+        <span class="more-choices">
+            <a href="#gamble-{{ betType.getName }}">{{ "gamble.winner.show_more"|trans({},"gamble") }}</a>
+        </span>
+        <span class="more-choices" style="display: none;">
+            <a href="#gamble-{{ betType.getName }}">{{ "gamble.winner.show_less"|trans({},"gamble") }}</a>
+        </span>
+    </div>
 </div>

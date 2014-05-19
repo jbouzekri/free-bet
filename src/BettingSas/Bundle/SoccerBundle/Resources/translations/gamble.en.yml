@@ -2,3 +2,8 @@ gamble_winner: 1N2
 gamble_winner_N: "null"
 
 gamble_exact_score: Exact Score
+
+gamble:
+    winner:
+        show_more: See more choices
+        show_less: See less choices

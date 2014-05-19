@@ -1,5 +1,7 @@
-<form action="{{ url("gamble_cart_add_bet", {id: event.id}) }}" method="post">
-    <input type="hidden" name="bet[type]" value="{{ betType.getName() }}" />
-    <input type="hidden" name="bet[choice]" value="{{ choice }}" />
-    <button type="submit" class="btn btn-default btn-xs">{{ label }}</button>
-</form>
+{% if choice != null %}
+    <form action="{{ url("gamble_cart_add_bet", {id: event.id}) }}" method="post">
+        <input type="hidden" name="bet[type]" value="{{ betType.getName() }}" />
+        <input type="hidden" name="bet[choice]" value="{{ choice }}" />
+        <button type="submit" class="btn btn-default btn-xs">{{ label }}</button>
+    </form>
+{% endif %}
