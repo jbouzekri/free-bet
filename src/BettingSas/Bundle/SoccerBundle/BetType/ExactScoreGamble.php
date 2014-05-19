@@ -21,7 +21,7 @@ class ExactScoreGamble implements BetTypeInterface
     {
         $choices = array();
         $choicesNumber = max(count($this->leftChoices)-1, count($this->nullChoices)-1, count($this->rightChoices)-1);
-        for ($i = 0;$i < $choicesNumber;$i++) {
+        for ($i = 0; $i < $choicesNumber; $i++) {
             $choices[] = $this->leftChoices[$i];
             $choices[] = (isset($this->nullChoices[$i])) ? $this->nullChoices[$i] : null;
             $choices[] = $this->rightChoices[$i];
