@@ -34,6 +34,13 @@ body > .header .navbar {
 td.small {
     width: 20px;
 }
+.navigation {
+    text-align: center;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus {
+    background-color: @primary;
+    border-color: @primary;
+}
 
 /********/
 /* Cart */
@@ -127,6 +134,28 @@ td.small {
 }
 #event-bet .bet-body > ul {
     margin-bottom: 0px;
+}
+
+/******************/
+/* Gambles detail */
+/******************/
+.bet-result .glyphicon-remove {
+    color: red;
+}
+.bet-result .glyphicon-ok {
+    color: @primary;
+}
+.bet-result th, .bet-result td {
+   text-align: center;
+}
+.bet-result tr td {
+   cursor: pointer;
+}
+.grouped-list .count {
+    margin-bottom: 20px;
+}
+.grouped-list h1 {
+    margin-bottom: 40px;
 }
 
 /***********/

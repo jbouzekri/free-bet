@@ -1,27 +1,62 @@
 {% extends "BettingSasUIBundle::layout.html.twig" %}
 
+{% block title %}{{ 'my_gamble.title'|trans }}{% endblock %}
+
 {% block content %}
-<div class="count">
-    {{ pagination.getTotalItemCount }}
-</div>
+<div class="grouped-list">
+    <h1>{{ 'my_gamble.title'|trans }}</h1>
 
-<ul>
-    {% for gamble in pagination %}
-        <li>
-            {% for bet in gamble.bets %}
-                {{ bet.event.name }}
-                {% if not loop.last %}, {% endif %}
+    <div class="well well-sm">
+        <form class="form-inline" role="form" method="get">
+            <div class="form-group">
+                <label class="sr-only" for="filter">Filter</label>
+                <select class="form-control" name="filter" id="filter">
+                    <option value="">---</option>
+                    <option value="winner">Winner</option>
+                    <option value="loser">Loser</option>
+                </select>
+            </div>
+            <button type="submit" name="submit" class="btn btn-primary">{{ 'filter'|trans }}</button>
+        </form>
+    </div>
+
+    <div class="count">
+        {{ 'my_gamble.item.count'|transchoice(pagination.getTotalItemCount, {'%count%': pagination.getTotalItemCount}) }}
+    </div>
+
+    <table class="bet-result table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>{{ 'my_gamble.header.day'|trans }}</th>
+                <th>{{ 'my_gamble.header.hour'|trans }}</th>
+                <th>{{ 'my_gamble.header.event'|trans }}</th>
+                <th>{{ 'my_gamble.header.type'|trans }}</th>
+                <th>{{ 'my_gamble.header.result'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gamble in pagination %}
+                <tr class="{% if gamble.processedDate %}{% if gamble.winnger %}success{% else %}danger{% endif %}{% endif %}">
+                    <td>{{ gamble.created|date('Y-m-d') }}</td>
+                    <td>{{ gamble.created|date('H:i') }}</td>
+                    <td>{% for bet in gamble.bets %}{{ bet.event.name }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
+                    <td>{{ 'my_gamble.item.type'|transchoice(gamble.bets|length) }}</td>
+                    <td>
+                        {% if gamble.processedDate %}
+                            {% if gamble.winnger %}
+                                <span class="glyphicon glyphicon-ok"></span>
+                            {% else %}
+                                <span class="glyphicon glyphicon-remove"></span>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
             {% endfor %}
-            <ul>
-                {% for bet in gamble.bets %}
-                    <li>{{ bet.event.type }}, {{ bet.event.name }}, {{ gamble.created|date('Y-m-d H:i:s') }}, {{ bet.type }}</li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
+        </tbody>
+    </table>
 
-<div class="navigation">
-    {{ knp_pagination_render(pagination) }}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 </div>
 {% endblock %}

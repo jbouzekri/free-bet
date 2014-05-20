@@ -61,3 +61,16 @@ organization:
         change_group_error: Error when trying to change your group. Try again or contact an administrator.
         slug_filter: Enter name
         slug: name
+
+my_gamble:
+    title: My Gambles
+    submit_date: Submitted on %date%
+    item:
+        count: "{0} No gamble|{1} One gamble|]1,Inf] %count% gambles"
+        type: "{1} Simple|{2} Double|{3} Triple|{4} Quatro|]4,Inf] Multiple"
+    header:
+        day: Date
+        hour: Hour
+        event: Event
+        type: Type
+        result: Result
