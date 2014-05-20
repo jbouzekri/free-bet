@@ -114,7 +114,7 @@ class LoadMatchData extends AbstractFixture implements FixtureInterface, Ordered
                 'group' => 'B',
                 'left_name' => 'Australia',
                 'right_name' => 'Spain',
-                'date' => '1403107200'
+                'date' => '1403539200'
             ),
             array(
                 'phase_order' => 1,
@@ -122,7 +122,7 @@ class LoadMatchData extends AbstractFixture implements FixtureInterface, Ordered
                 'group' => 'B',
                 'left_name' => 'Netherlands',
                 'right_name' => 'Chile',
-                'date' => '1403107200'
+                'date' => '1403539200'
             ),
 
             /***********************/
