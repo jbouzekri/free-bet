@@ -1,0 +1,18 @@
+parameters:
+    free_bet.gamble.validator.bet_type_choice.class: FreeBet\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCoupleValidator
+    free_bet.gamble.validator.gamble_unique_type_on_event_accross_bet.class: FreeBet\Bundle\GambleBundle\Validator\Constraints\GambleUniqueTypeOnEventAccrossBetValidator
+
+services:
+    free_bet.gamble.validator.bet_type_choice:
+        class: %free_bet.gamble.validator.bet_type_choice.class%
+        arguments:
+            - @free_bet.bet_type_chain
+        tags:
+            - { name: validator.constraint_validator, alias: bet_type_choice }
+
+    free_bet.gamble.validator.gamble_unique_type_on_event_accross_bet:
+        class: %free_bet.gamble.validator.gamble_unique_type_on_event_accross_bet.class%
+        arguments:
+            - @free_bet.gamble.repository
+        tags:
+            - { name: validator.constraint_validator, alias: gamble_unique_type_on_event_accross_bet }

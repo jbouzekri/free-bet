@@ -1,0 +1,9 @@
+dashboard:
+    path: /dashboard
+    defaults: { _controller: FreeBetStatisticBundle:Dashboard:display }
+    methods:  [GET]
+
+widget_display:
+    path: /widget/{widget}
+    defaults: { _controller: FreeBetStatisticBundle:Widget:display }
+    methods:  [GET]

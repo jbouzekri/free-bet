@@ -1,0 +1,31 @@
+FreeBet\Bundle\GambleBundle\Document\Gamble:
+    type: document
+    collection: gambles
+    repositoryClass: FreeBet\Bundle\GambleBundle\Document\Repository\GambleRepository
+    fields:
+        id:
+            id: true
+        winner:
+            type: boolean
+        point:
+            type: int
+        processedDate:
+            type: date
+        created:
+            type: date
+            gedmo:
+              timestampable:
+                on: create
+        updated:
+            type: date
+            gedmo:
+              timestampable:
+                on: update
+    referenceOne:
+        user:
+            targetDocument: FreeBet\Bundle\UserBundle\Document\User
+        organization:
+            targetDocument: FreeBet\Bundle\UserBundle\Document\Organization
+    embedMany:
+        bets:
+            targetDocument: FreeBet\Bundle\GambleBundle\Document\Bet

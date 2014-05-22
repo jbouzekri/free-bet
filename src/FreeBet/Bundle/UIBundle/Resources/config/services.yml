@@ -1,0 +1,10 @@
+parameters:
+    free_bet.menu_configuration.listener.class: FreeBet\Bundle\UIBundle\Menu\ConfigurationListener
+
+services:
+    free_bet.menu_configuration.listener:
+        class: %free_bet.menu_configuration.listener.class%
+        arguments:
+            - @security.context
+        tags:
+            - { name: kernel.event_listener, event: maestro.navigation.menu_configure, method: configureMenu }

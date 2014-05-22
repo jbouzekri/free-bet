@@ -1,0 +1,16 @@
+parameters:
+    free_bet.gamble.soccer.winner.class: FreeBet\Bundle\SoccerBundle\BetType\WinnerGamble
+    free_bet.gamble.soccer.exact_score.class: FreeBet\Bundle\SoccerBundle\BetType\ExactScoreGamble
+
+services:
+    free_bet.gamble.soccer.winner:
+        class: %free_bet.gamble.soccer.winner.class%
+        calls:
+             - [setTranslator, ["@translator"]]
+        tags:
+            -  { name: free_bet.bet_type, type: soccer, order: 1 }
+
+    free_bet.gamble.soccer.exact_score:
+        class: %free_bet.gamble.soccer.exact_score.class%
+        tags:
+            -  { name: free_bet.bet_type, type: soccer, order: 10 }

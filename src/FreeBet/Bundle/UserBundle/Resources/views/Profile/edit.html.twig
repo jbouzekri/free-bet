@@ -1,0 +1,25 @@
+{% extends "FreeBetUIBundle::layout.html.twig" %}
+
+{% form_theme form 'FreeBetUIBundle:Form:form.html.twig' %}
+
+{% block title %}{{ 'account_edit.title'|trans }}{% endblock %}
+
+{% block content %}
+<div class="content" id="profile">
+    <h1>{{ 'account_edit.title'|trans }}</h1>
+
+    <div class="box box-success">
+        <!-- form start -->
+        <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" role="form">
+            <div class="box-body">
+                {{ form_widget(form) }}
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</button>
+                <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default">{{ 'general.back'|trans }}</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

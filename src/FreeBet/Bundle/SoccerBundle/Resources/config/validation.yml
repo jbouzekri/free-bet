@@ -1,0 +1,20 @@
+FreeBet\Bundle\SoccerBundle\Document\Match:
+    properties:
+        leftTeamScore:
+            - Range:
+                min: 0
+                minMessage: The minimum score is 0 goal
+            - NotBlank: ~
+        rightTeamScore:
+            - Range:
+                min: 0
+                minMessage: The minimum score is 0 goal
+            - NotBlank: ~
+        leftTeamAfterExtendedTimeScore:
+            - Range:
+                min: 0
+                minMessage: The minimum score is 0 goal
+        rightTeamAfterExtendedTimeScore:
+            - Range:
+                min: 0
+                minMessage: The minimum score is 0 goal

@@ -1,0 +1,14 @@
+FreeBet\Bundle\UserBundle\Document\Organization:
+    properties:
+        name:
+            - NotBlank: ~
+    constraints:
+        - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique: name
+
+FreeBet\Bundle\UserBundle\Document\User:
+    properties:
+        roles:
+            - Choice:
+                choices:  [ROLE_USER, ROLE_MANAGER, ROLE_ADMIN]
+                message:  Choose a valid role.
+                multiple: true

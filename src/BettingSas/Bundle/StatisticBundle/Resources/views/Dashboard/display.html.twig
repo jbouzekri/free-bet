@@ -1,7 +1,0 @@
-{% extends "BettingSasUIBundle::layout.html.twig" %}
-
-{% block content %}
-{% for widget in widgets %}
-    {% include 'BettingSasStatisticBundle:Dashboard:_widget.html.twig' with {widget: widget} %}
-{% endfor %}
-{% endblock %}

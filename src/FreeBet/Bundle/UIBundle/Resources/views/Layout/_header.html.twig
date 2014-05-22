@@ -1,0 +1,33 @@
+<header class="header">
+    <nav class="navbar navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="user user-menu">
+                        <a href="{{ path('fos_user_profile_show') }}">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span>{{ app.user.username }} </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            <span class="glyphicon glyphicon-off"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-right -->
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a href="{{ path('event_next_list') }}" class="logo">
+                    FreeBet
+                </a>
+            </div><!-- /.navbar-header -->
+
+            <!-- Main nav links -->
+            <div class="collapse navbar-collapse">
+                {{ knp_menu_render('main', {'template': 'FreeBetUIBundle:Menu:main.html.twig'}) }}
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+</header>

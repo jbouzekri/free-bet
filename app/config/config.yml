@@ -91,17 +91,17 @@ swiftmailer:
 fos_user:
     db_driver: mongodb
     firewall_name: main
-    user_class: BettingSas\Bundle\UserBundle\Document\User
+    user_class: FreeBet\Bundle\UserBundle\Document\User
 
 knp_menu:
     twig:
-        template: BettingSasUIBundle:Layout:_menu.html.twig
+        template: FreeBetUIBundle:Layout:_menu.html.twig
 
 knp_paginator:
     template:
-        pagination: BettingSasUIBundle:Layout:_paginator.html.twig
-        sortable: BettingSasUIBundle:Layout:_sortable_link.html.twig
+        pagination: FreeBetUIBundle:Layout:_paginator.html.twig
+        sortable: FreeBetUIBundle:Layout:_sortable_link.html.twig
 
-betting_sas_competition:
+free_bet_competition:
     mapping_events:
-        soccer: BettingSas\Bundle\SoccerBundle\Document\Match
+        soccer: FreeBet\Bundle\SoccerBundle\Document\Match

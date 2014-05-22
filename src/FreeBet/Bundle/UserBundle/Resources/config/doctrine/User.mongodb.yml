@@ -1,0 +1,22 @@
+FreeBet\Bundle\UserBundle\Document\User:
+    type: document
+    collection: users
+    repositoryClass: FreeBet\Bundle\UserBundle\Document\Repository\UserRepository
+    fields:
+        id:
+            id: true
+        slug:
+            index: true
+            type: string
+            gedmo:
+                slug:
+                    separator: -
+                    style: lower
+                    fields:
+                        - username
+    referenceOne:
+        organization:
+            targetDocument: FreeBet\Bundle\UserBundle\Document\Organization
+    embedMany:
+        widgets:
+            targetDocument: FreeBet\Bundle\StatisticBundle\Document\Widget

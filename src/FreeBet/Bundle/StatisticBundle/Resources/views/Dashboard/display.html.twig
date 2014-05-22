@@ -1,0 +1,7 @@
+{% extends "FreeBetUIBundle::layout.html.twig" %}
+
+{% block content %}
+{% for widget in widgets %}
+    {% include 'FreeBetStatisticBundle:Dashboard:_widget.html.twig' with {widget: widget} %}
+{% endfor %}
+{% endblock %}

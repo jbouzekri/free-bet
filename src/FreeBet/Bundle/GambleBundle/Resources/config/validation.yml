@@ -1,0 +1,21 @@
+FreeBet\Bundle\GambleBundle\Document\Gamble:
+    properties:
+        user:
+            - NotBlank: ~
+        bets:
+            - Count:
+                min: 1
+                minMessage: "A gamble must have at least one bet."
+    constraints:
+        - FreeBet\Bundle\GambleBundle\Validator\Constraints\GambleUniqueTypeOnEventAccrossBet: { groups: [free_bet] }
+
+FreeBet\Bundle\GambleBundle\Document\Bet:
+    properties:
+        type:
+            - NotBlank: ~
+        choice:
+            - NotBlank: ~
+        event:
+            - NotBlank: ~
+    constraints:
+        - FreeBet\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCouple: ~

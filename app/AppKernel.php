@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         );
 
-        $bettingSasBundles = array(
+        $freeBetBundles = array(
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
@@ -26,16 +26,16 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Jb\Bundle\ConfigKnpMenuBundle\JbConfigKnpMenuBundle(),
-            new BettingSas\Bundle\UIBundle\BettingSasUIBundle(),
-            new BettingSas\Bundle\UserBundle\BettingSasUserBundle(),
-            new BettingSas\Bundle\GambleBundle\BettingSasGambleBundle(),
-            new BettingSas\Bundle\CompetitionBundle\BettingSasCompetitionBundle(),
-            new BettingSas\Bundle\StatisticBundle\BettingSasStatisticBundle(),
-            new BettingSas\Bundle\SoccerBundle\BettingSasSoccerBundle(),
-            new BettingSas\Bundle\SoccerWorldCupBundle\BettingSasSoccerWorldCupBundle(),
+            new FreeBet\Bundle\UIBundle\FreeBetUIBundle(),
+            new FreeBet\Bundle\UserBundle\FreeBetUserBundle(),
+            new FreeBet\Bundle\GambleBundle\FreeBetGambleBundle(),
+            new FreeBet\Bundle\CompetitionBundle\FreeBetCompetitionBundle(),
+            new FreeBet\Bundle\StatisticBundle\FreeBetStatisticBundle(),
+            new FreeBet\Bundle\SoccerBundle\FreeBetSoccerBundle(),
+            new FreeBet\Bundle\SoccerWorldCupBundle\FreeBetSoccerWorldCupBundle(),
         );
 
-        $bundles = array_merge($bundles, $bettingSasBundles);
+        $bundles = array_merge($bundles, $freeBetBundles);
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();

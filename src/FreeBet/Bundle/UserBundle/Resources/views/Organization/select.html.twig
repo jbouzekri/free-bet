@@ -1,0 +1,85 @@
+{% extends "FreeBetUIBundle::layout.html.twig" %}
+
+{% block title %}{{ 'organization.choose.title'|trans }}{% endblock %}
+
+{% form_theme form _self %}
+
+{% block _select_organization_organization_row %}
+{% spaceless %}
+    {{ form_errors(form) }}
+    {% set label = form.vars.label %}
+    {% if label is empty %}
+        {% set label = form.vars.name|humanize %}
+    {% endif %}
+    <table class="table table-striped table-hover">
+        <tr>
+            <th></th>
+            <th {% if pagination.isSorted('slug') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, label|trans({}, form.vars.translation_domain), 'slug') }}</th>
+        </tr>
+        {{ form_widget(form) }}
+    </table>
+{% endspaceless %}
+{% endblock %}
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    {% for child in form %}
+        <tr>
+            <td class="small">
+                {{ form_widget(child) }}
+            </td>
+            <td>
+                {{ form_errors(child) }}
+                {{ form_label(child) }}
+            </td>
+        </tr>
+    {% endfor %}
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+{% block content %}
+<div class="content">
+    <h1>{{ 'organization.choose.title'|trans }}</h1>
+
+    <div class="box box-success">
+        <div class="box-header">
+            <h3 class="box-title">{{ 'organization.list.count'|transchoice(pagination.getTotalItemCount, {'%count%':pagination.getTotalItemCount}) }}</h3>
+        </div>
+        <div class="box-body">
+            {% if app.user.organization %}
+                <div class="alert flat-alert alert-warning">{{ 'organization.choose.has_organization_warning'|trans }}</div>
+            {% endif %}
+
+            <form action="" method="get" class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for="slug-filter">{{ 'organization.choose.slug'|trans }}</label>
+                    <input type="text" class="form-control" id="slug-filter" name="slug" value="{{ slug }}" placeholder="{{ 'organization.choose.slug_filter'|trans }}" />
+                </div>
+                <button type="submit" class="btn btn-default">{{ 'filter'|trans }}</button>
+            </form>
+        </div>
+        <form action="{{ path('user_account_select_group') }}" method="post">
+            <div class="box-body">
+
+                {% for flashMessage in app.session.flashbag.get('organization-success') %}
+                    <div class="alert flat-alert alert-success">{{ flashMessage }}</div>
+                {% endfor %}
+                {% for flashMessage in app.session.flashbag.get('organization-error') %}
+                    <div class="alert flat-alert alert-danger">{{ flashMessage }}</div>
+                {% endfor %}
+
+                {{ form_errors(form) }}
+
+                {{ form_row(form.organization, {'pagination':pagination}) }}
+            </div>
+            <div class="box-footer clearfix">
+                {{ form_widget(form.select, {attr:{class:'btn btn-primary'}}) }}
+                <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default">{{ 'general.back'|trans }}</a>
+                <div class="pull-right">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

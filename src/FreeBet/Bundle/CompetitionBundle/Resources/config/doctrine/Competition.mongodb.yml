@@ -1,0 +1,31 @@
+FreeBet\Bundle\CompetitionBundle\Document\Competition:
+    type: document
+    collection: competitions
+    repositoryClass: FreeBet\Bundle\CompetitionBundle\Document\Repository\CompetitionRepository
+    fields:
+        id:
+            id:  true
+        name:
+            type: string
+            unique: true
+        type:
+            type: string
+        slug:
+            index: true
+            type: string
+            gedmo:
+                slug:
+                    separator: -
+                    style: lower
+                    fields:
+                        - name
+        created:
+            type: date
+            gedmo:
+              timestampable:
+                on: create
+        updated:
+            type: date
+            gedmo:
+              timestampable:
+                on: update

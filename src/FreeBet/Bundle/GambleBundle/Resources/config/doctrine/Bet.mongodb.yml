@@ -1,0 +1,12 @@
+FreeBet\Bundle\GambleBundle\Document\Bet:
+    type: embeddedDocument
+    fields:
+        type:
+            type: string
+        choice:
+            type: string
+        winner:
+            type: boolean
+    referenceOne:
+        event:
+            targetDocument: FreeBet\Bundle\CompetitionBundle\Document\Event

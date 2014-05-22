@@ -1,0 +1,71 @@
+parameters:
+    free_bet.twig.gamble_extension.class: FreeBet\Bundle\GambleBundle\Twig\GambleExtension
+    free_bet.gamble.cart.class: FreeBet\Bundle\GambleBundle\Manager\GambleCart
+    free_bet.bet_type_chain.class: FreeBet\Bundle\GambleBundle\BetType\BetTypeChain
+    free_bet.gamble.cart.persister.class: FreeBet\Bundle\GambleBundle\Manager\Persister\SessionCartPersister
+    free_bet.gamble.processor.class: FreeBet\Bundle\GambleBundle\Gamble\GambleProcessor
+    free_bet.gamble.validator.class: FreeBet\Bundle\GambleBundle\Gamble\GambleValidator
+    free_bet.gamble.calculator.simple.class: FreeBet\Bundle\GambleBundle\Gamble\SimpleScoreCalculator
+    free_bet.gamble.repository.class: FreeBet\Bundle\GambleBundle\Document\Repository\GambleRepository
+    free_bet.gamble.repository.namespace: FreeBetGambleBundle:Gamble
+
+services:
+    free_bet.twig.gamble_extension:
+        class: %free_bet.twig.gamble_extension.class%
+        arguments:
+            - @twig
+            - @free_bet.bet_type_chain
+        tags:
+            - { name: twig.extension }
+
+    free_bet.gamble.cart:
+        class: %free_bet.gamble.cart.class%
+        arguments:
+            - @doctrine_mongodb.odm.default_document_manager
+            - @free_bet.gamble.validator
+            - @free_bet.gamble.cart.persister
+
+    free_bet.bet_type_chain:
+        class: "%free_bet.bet_type_chain.class%"
+
+    free_bet.gamble.cart.persister:
+        class: %free_bet.gamble.cart.persister.class%
+        arguments:
+            - @session
+            - @free_bet.event.repository
+
+    free_bet.gamble.processor:
+        class: %free_bet.gamble.processor.class%
+        arguments:
+            - @free_bet.bet_type_chain
+            - @free_bet.gamble.calculator.simple
+
+    free_bet.gamble.calculator.simple:
+        class: %free_bet.gamble.calculator.simple.class%
+        arguments:
+            - @free_bet.bet_type_chain
+
+    free_bet.gamble.validator:
+        class: %free_bet.gamble.validator.class%
+        arguments:
+            - @validator
+            - %free_bet.validation_group%
+
+    free_bet.gamble_process.command:
+        class: FreeBet\Bundle\GambleBundle\Command\ProcessGambleCommand
+        arguments:
+            - @doctrine_mongodb.odm.default_document_manager
+            - @free_bet.event.repository
+            - @free_bet.gamble.repository
+            - @free_bet.gamble.processor
+            - @logger
+        tags:
+            - { name: console.command }
+            - { name: monolog.logger, channel: gamble_process }
+
+    free_bet.gamble.repository:
+        class: %free_bet.gamble.repository.class%
+        arguments:
+          - %free_bet.gamble.repository.namespace%
+        factory_service: doctrine_mongodb.odm.default_document_manager
+        factory_method: getRepository

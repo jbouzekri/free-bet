@@ -1,0 +1,27 @@
+user_account_create_group:
+    path: /user/organization/new
+    defaults: { _controller: FreeBetUserBundle:Organization:new }
+    methods:  [GET, POST]
+
+user_account_select_group:
+    path: /user/organization/select
+    defaults: { _controller: FreeBetUserBundle:Organization:select }
+    methods:  [GET, POST]
+
+user_account_gambles_list:
+    path: /user/gambles/list
+    defaults: { _controller: FreeBetUserBundle:Gamble:listGamble }
+
+user_organization_manage:
+    path: /group
+    defaults: { _controller: FreeBetUserBundle:Organization:manage }
+
+user_organization_manage_remove_user:
+    path: /group/user/{id}/remove
+    defaults: { _controller: FreeBetUserBundle:User:removeFromOrganization }
+    methods:  [POST]
+
+user_organization_manage_change_role:
+    path: /group/user/{id}/role/{role}
+    defaults: { _controller: FreeBetUserBundle:User:changeRole }
+    methods:  [POST]

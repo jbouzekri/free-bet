@@ -1,7 +1,0 @@
-cart:
-    block:
-        title: Cart
-        transform: Transform
-        empty: Your cart is empty. You must bet on an event and confirm to save your gamble.
-    notice:
-        remove: Bet removed successfuly

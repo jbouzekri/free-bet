@@ -1,0 +1,31 @@
+parameters:
+    free_bet.organization.repository.class: FreeBet\Bundle\UserBundle\Document\Repository\OrganizationRepository
+    free_bet.organization.repository.namespace: FreeBetUserBundle:Organization
+    free_bet.user.repository.class: FreeBet\Bundle\UserBundle\Document\Repository\UserRepository
+    free_bet.user.repository.namespace: FreeBetUserBundle:User
+
+services:
+    free_bet.menu.main:
+        class: Knp\Menu\MenuItem
+        factory_service: jb_config.menu.builder
+        factory_method: createMenu
+        arguments:
+          - "@request"
+          - "main"
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    free_bet.organization.repository:
+        class: %free_bet.organization.repository.class%
+        arguments:
+          - %free_bet.organization.repository.namespace%
+        factory_service: doctrine_mongodb.odm.default_document_manager
+        factory_method: getRepository
+
+    free_bet.user.repository:
+        class: %free_bet.user.repository.class%
+        arguments:
+          - %free_bet.user.repository.namespace%
+        factory_service: doctrine_mongodb.odm.default_document_manager
+        factory_method: getRepository

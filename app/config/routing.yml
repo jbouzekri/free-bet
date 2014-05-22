@@ -1,10 +1,10 @@
 # Statistic routes
 statistic_routes:
-    resource: "@BettingSasStatisticBundle/Resources/config/routing.yml"
+    resource: "@FreeBetStatisticBundle/Resources/config/routing.yml"
 
 # User routes
 user_routes:
-    resource: "@BettingSasUserBundle/Resources/config/routing.yml"
+    resource: "@FreeBetUserBundle/Resources/config/routing.yml"
 
 # app/config/routing.yml
 fos_user_security:
@@ -28,10 +28,10 @@ fos_user_change_password:
 
 # Event routes
 event_routes:
-    resource: "@BettingSasCompetitionBundle/Resources/config/routing.yml"
+    resource: "@FreeBetCompetitionBundle/Resources/config/routing.yml"
 
 # Cart routes
 cart_routes:
-    resource: "@BettingSasGambleBundle/Resources/config/routing.yml"
+    resource: "@FreeBetGambleBundle/Resources/config/routing.yml"
     prefix: /cart
 

@@ -1,0 +1,10 @@
+<div class="bet-item">
+    <div class="pull-right">
+        {% include 'FreeBetGambleBundle:Cart:_delete.html.twig' with {bet: bet} %}
+    </div>
+    {% include 'FreeBetGambleBundle:Cart:_bet_name.html.twig' with {
+        bet: bet,
+        betType: betType,
+        choice: bet.getChoice()
+    } %}
+</div>

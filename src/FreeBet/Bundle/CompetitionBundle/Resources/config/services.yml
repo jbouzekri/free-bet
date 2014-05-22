@@ -1,0 +1,39 @@
+parameters:
+    free_bet.twig.string_extension.class: FreeBet\Bundle\CompetitionBundle\Twig\StringExtension
+    free_bet.competition.repository.class: FreeBet\Bundle\CompetitionBundle\Document\Repository\CompetitionRepository
+    free_bet.competition.repository.namespace: FreeBetCompetitionBundle:Competition
+    free_bet.event.repository.class: FreeBet\Bundle\CompetitionBundle\Document\Repository\EventRepository
+    free_bet.event.repository.namespace: FreeBetCompetitionBundle:Event
+
+services:
+    free_bet.event_inheritance.listener:
+        class: FreeBet\Bundle\CompetitionBundle\Document\EventListener\EventInheritanceListener
+        arguments:
+            - %free_bet.event_mapping%
+        tags:
+            - { name: doctrine_mongodb.odm.event_listener, event: loadClassMetadata }
+
+    free_bet.competition.repository:
+        class: %free_bet.competition.repository.class%
+        arguments:
+          - %free_bet.competition.repository.namespace%
+        factory_service: doctrine_mongodb.odm.default_document_manager
+        factory_method: getRepository
+
+    free_bet.event.repository:
+        class: %free_bet.event.repository.class%
+        arguments:
+          - %free_bet.event.repository.namespace%
+        factory_service: doctrine_mongodb.odm.default_document_manager
+        factory_method: getRepository
+
+    sensio_framework_extra.converter.doctrine.odm:
+        class: Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter
+        arguments: [@doctrine_mongodb]
+        tags:
+            - { name: request.param_converter }
+
+    free_bet.twig.string_extension:
+        class: %free_bet.twig.string_extension.class%
+        tags:
+            - { name: twig.extension }

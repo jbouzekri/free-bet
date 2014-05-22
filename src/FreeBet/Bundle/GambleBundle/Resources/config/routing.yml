@@ -1,0 +1,19 @@
+gamble_cart_add_bet:
+    path: /add/{id}
+    defaults: { _controller: FreeBetGambleBundle:Cart:addBet }
+    methods:  [POST]
+
+gamble_cart_remove_bet:
+    path: /remove/{id}
+    defaults: { _controller: FreeBetGambleBundle:Cart:removeBet }
+    methods:  [POST,DELETE]
+
+gamble_cart_view:
+    path: /view
+    defaults: { _controller: FreeBetGambleBundle:Cart:view }
+    methods:  [GET]
+    
+gamble_cart_transform:
+    path: /transform
+    defaults: { _controller: FreeBetGambleBundle:Cart:transform }
+    methods:  [POST]

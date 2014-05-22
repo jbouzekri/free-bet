@@ -1,0 +1,18 @@
+FreeBet\Bundle\UserBundle\Document\Organization:
+    type: document
+    collection: organizations
+    repositoryClass: FreeBet\Bundle\UserBundle\Document\Repository\OrganizationRepository
+    fields:
+        id:
+            id: true
+        name:
+            type: string
+        slug:
+            index: true
+            type: string
+            gedmo:
+                slug:
+                    separator: -
+                    style: lower
+                    fields:
+                        - name
