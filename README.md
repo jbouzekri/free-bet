@@ -1,7 +1,7 @@
 Free Bet
 ========
 
-[![Build Status](https://travis-ci.org/jbouzekri/betting-sas.png?branch=master)](https://travis-ci.org/jbouzekri/betting-sas)
+https://travis-ci.org/jbouzekri/free-bet.svg?branch=master
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jbouzekri/free-bet/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jbouzekri/free-bet/?branch=master)
 
 A simple PHP application to provide a betting system for sports events.
