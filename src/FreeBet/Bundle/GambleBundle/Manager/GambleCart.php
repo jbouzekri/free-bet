@@ -187,7 +187,7 @@ class GambleCart
     public function removeBetByType(Event $event, $type = null)
     {
         foreach ($this->getGamble()->getBets() as $bet) {
-            if ($bet->getType() == $type) {
+            if ($bet->getType() == $type && $bet->getEvent()->getId() == $event->getId()) {
                 $this->getGamble()->removeBet($bet);
             }
         }
