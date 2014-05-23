@@ -267,7 +267,7 @@ class Gamble
      */
     public function findBetsWithEvent(\FreeBet\Bundle\CompetitionBundle\Document\Event $event)
     {
-        return $this->getBets()->filter(function(Bet $bet) use ($event) {
+        return $this->getBets()->filter(function (Bet $bet) use ($event) {
             return $bet->getEvent()->getId() == $event->getId();
         });
     }
@@ -314,7 +314,7 @@ class Gamble
      */
     public function getName()
     {
-        $eventNames = $this->getBets()->map(function(Bet $bet) {
+        $eventNames = $this->getBets()->map(function (Bet $bet) {
             return $bet->getEvent()->getName();
         });
 
@@ -328,7 +328,7 @@ class Gamble
      */
     public function getWinningBets()
     {
-        return $this->getBets()->filter(function(Bet $bet) {
+        return $this->getBets()->filter(function (Bet $bet) {
             return $bet->getWinner();
         });
     }
@@ -340,7 +340,7 @@ class Gamble
      */
     public function getLosingBets()
     {
-        return $this->getBets()->filter(function(Bet $bet) {
+        return $this->getBets()->filter(function (Bet $bet) {
             return $bet->getWinner() === false;
         });
     }
