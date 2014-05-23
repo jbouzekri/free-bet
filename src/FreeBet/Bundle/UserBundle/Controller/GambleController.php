@@ -4,6 +4,7 @@ namespace FreeBet\Bundle\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FreeBet\Bundle\GambleBundle\Document\Gamble;
 
 /**
@@ -45,6 +46,13 @@ class GambleController extends Controller
      */
     public function viewAction(Gamble $gamble)
     {
-        return new \Symfony\Component\HttpFoundation\Response($gamble->getId());
+        if ($gamble->getUser()->getId() != $this->getUser()->getId()) {
+            throw new AccessDeniedException('This is not your gamble !');
+        }
+
+        return $this->render('FreeBetUserBundle:Gamble:view.html.twig', array(
+            'gamble'    => $gamble,
+            'bet_types' => $this->get('free_bet.bet_type_chain')
+        ));
     }
 }

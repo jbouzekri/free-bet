@@ -263,19 +263,13 @@ class Gamble
      *
      * @param \FreeBet\Bundle\CompetitionBundle\Document\Event $event
      *
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function findBetsWithEvent(\FreeBet\Bundle\CompetitionBundle\Document\Event $event)
     {
-        $betsWithEvent = new \Doctrine\Common\Collections\ArrayCollection();
-
-        foreach ($this->getBets() as $bet) {
-            if ($bet->getEvent()->getId() == $event->getId()) {
-                $betsWithEvent->add($bet);
-            }
-        }
-
-        return $betsWithEvent;
+        return $this->getBets()->filter(function(Bet $bet) use ($event) {
+            return $bet->getEvent()->getId() == $event->getId();
+        });
     }
 
     /**
@@ -311,5 +305,43 @@ class Gamble
         }
 
         return $this;
+    }
+
+    /**
+     * Get the name of a gamble
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        $eventNames = $this->getBets()->map(function(Bet $bet) {
+            return $bet->getEvent()->getName();
+        });
+
+        return implode(', ', $eventNames->toArray());
+    }
+
+    /**
+     * Get all winning bets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWinningBets()
+    {
+        return $this->getBets()->filter(function(Bet $bet) {
+            return $bet->getWinner();
+        });
+    }
+
+    /**
+     * Get all losing bets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLosingBets()
+    {
+        return $this->getBets()->filter(function(Bet $bet) {
+            return $bet->getWinner() === false;
+        });
     }
 }

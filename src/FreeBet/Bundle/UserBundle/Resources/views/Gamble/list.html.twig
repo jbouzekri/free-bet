@@ -47,9 +47,7 @@
                         <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">{{ gamble.created|date('H:i') }}</a>
                     </td>
                     <td>
-                        <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">
-                            {% for bet in gamble.bets %}{{ bet.event.name }}{% if not loop.last %}, {% endif %}{% endfor %}
-                        </a>
+                        <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">{{ gamble.name }}</a>
                     </td>
                     <td>
                         <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">
@@ -58,11 +56,7 @@
                     </td>
                     <td>
                         {% if gamble.processedDate %}
-                            {% if gamble.winnger %}
-                                <span class="glyphicon glyphicon-ok"></span>
-                            {% else %}
-                                <span class="glyphicon glyphicon-remove"></span>
-                            {% endif %}
+                            {% include 'FreeBetGamble::_gamble_result.html.twig' with {item: gamble} %}
                         {% endif %}
                     </td>
                 </tr>

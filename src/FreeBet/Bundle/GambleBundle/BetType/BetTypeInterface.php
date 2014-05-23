@@ -3,6 +3,7 @@
 namespace FreeBet\Bundle\GambleBundle\BetType;
 
 use FreeBet\Bundle\GambleBundle\Document\Bet;
+use FreeBet\Bundle\CompetitionBundle\Document\Event;
 
 /**
  * BetTypeInterface
@@ -65,4 +66,14 @@ interface BetTypeInterface
      * @return integer
      */
     public function getDifficulty();
+
+    /**
+     * Get the label of a specific choice of the gamble
+     *
+     * @param \FreeBet\Bundle\CompetitionBundle\Document\Event $event
+     * @param string $choice
+     *
+     * @return string
+     */
+    public function getChoiceLabel(Event $event, $choice);
 }

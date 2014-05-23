@@ -25,6 +25,11 @@ class Bet
     protected $event;
 
     /**
+     * @var boolean $winner
+     */
+    protected $winner;
+
+    /**
      * Set type
      *
      * @param string $type
@@ -89,11 +94,6 @@ class Bet
     {
         return $this->event;
     }
-    /**
-     * @var boolean $winner
-     */
-    protected $winner;
-
 
     /**
      * Set winner

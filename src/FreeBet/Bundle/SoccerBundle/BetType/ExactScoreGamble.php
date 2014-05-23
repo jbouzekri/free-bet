@@ -85,6 +85,14 @@ class ExactScoreGamble implements BetTypeInterface
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function getChoiceLabel(\FreeBet\Bundle\CompetitionBundle\Document\Event $event, $choice)
+    {
+        return $choice;
+    }
+
+    /**
      * Left team winner choices
      *
      * @var array

@@ -30,6 +30,16 @@ class Competition
     protected $type;
 
     /**
+     * @var date $created
+     */
+    protected $created;
+
+    /**
+     * @var date $updated
+     */
+    protected $updated;
+
+    /**
      * Get id
      *
      * @return id $id
@@ -104,16 +114,6 @@ class Competition
     {
         return $this->type;
     }
-    /**
-     * @var date $created
-     */
-    protected $created;
-
-    /**
-     * @var date $updated
-     */
-    protected $updated;
-
 
     /**
      * Set created

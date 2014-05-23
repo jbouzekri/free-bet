@@ -1,0 +1,77 @@
+{% extends "FreeBetUIBundle::layout.html.twig" %}
+
+{% block title %}{{ 'my_gamble.view.meta_title'|trans({'%id%':gamble.id}) }}{% endblock %}
+
+{% block content %}
+<div id="my-gamble-detail" class="grouped-list">
+    <h1>{{ 'my_gamble.view.title'|trans }}</h1>
+
+    <div class="box box-success">
+        <div class="box-body">
+            <p>{{ 'my_gamble.view.id'|trans({'%id%':gamble.id}) }}</p>
+
+            <h2>{{ 'my_gamble.view.detail'|trans }}</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>{{ 'my_gamble.view.header.sport'|trans }}</th>
+                        <th>{{ 'my_gamble.view.header.day'|trans }}</th>
+                        <th>{{ 'my_gamble.view.header.hour'|trans }}</th>
+                        <th>{{ 'my_gamble.view.header.event'|trans }}</th>
+                        <th>{{ 'my_gamble.view.header.type'|trans }}</th>
+                        <th>{{ 'my_gamble.view.header.result'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bet in gamble.bets %}
+                        <tr class="{% if gamble.processedDate %}{% if bet.winnger %}success{% else %}danger{% endif %}{% endif %}">
+                            <td>{{ ('gamble_'~bet.event.competition.type)|trans({},'gamble') }}</td>
+                            <td>{{ gamble.created|date('Y-m-d') }}</td>
+                            <td>{{ gamble.created|date('H:i') }}</td>
+                            <td>{{ bet.event.name }}</td>
+                            <td>
+                                {{ ('gamble_'~bet.type)|trans({},'gamble') }}
+                                {{ bet_types.findByEventTypeAndType(bet.event.type, bet.type).getChoiceLabel(bet.event, bet.choice) }}
+                            </td>
+                            <td>
+                                {% if gamble.processedDate %}
+                                    {% include 'FreeBetGamble::_gamble_result.html.twig' with {item: bet} %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h2>{{ 'my_gamble.view.processing.title'|trans }}</h2>
+            <dl class="dl-horizontal">
+                <dt>{{ 'my_gamble.view.processing.date'|trans }}</dt>
+                <dd>{{ gamble.processedDate|date('Y-m-d H:i') }}</dd>
+                <dt>{{ 'my_gamble.view.processing.type'|trans }}</dt>
+                <dd>{{ 'my_gamble.item.type'|transchoice(gamble.bets|length) }}</dd>
+                <dt>{{ 'my_gamble.view.processing.number'|trans }}</dd>
+                <dd>{{ gamble.bets|length }}</dt>
+                <dt>{{ 'my_gamble.view.processing.winning'|trans }}</dd>
+                <dd>{{ gamble.winningBets|length }}</dt>
+                <dt>{{ 'my_gamble.view.processing.losing'|trans }}</dd>
+                <dd>{{ gamble.losingBets|length }}</dt>
+            </dl>
+            <div class="box-footer">
+                <a class="pull-right btn btn-default btn-sm" href="{{ path('user_account_gambles_list') }}">
+                    <span class="glyphicon glyphicon-chevron-left"></span> {{ 'my_gamble.view.back'|trans }}
+                </a>
+                <dl class="dl-horizontal {% if gamble.processedDate and gamble.point > 0 %}dl-success{% elseif gamble.processedDate %}dl-danger{% endif %}">
+                    <dt>{{ 'my_gamble.view.gain'|trans }}</dt>
+                    <dd>
+                        {% if gamble.processedDate %}
+                            {{ gamble.point }}
+                        {% else %}
+                            {{ 'my_gamble.view.processing.no_result'|trans }}
+                        {% endif %}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

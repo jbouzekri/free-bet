@@ -75,3 +75,25 @@ my_gamble:
         event: Event
         type: Type
         result: Result
+    view:
+        title: Gamble Detail
+        meta_title: Gamble Detail %id%
+        id: "Identifier of the gamble : %id%"
+        detail: Detail
+        header:
+            day: Date
+            hour: Hour
+            sport: Sport
+            event: Event
+            type: Type
+            result: Result
+        processing:
+            title: Processing
+            date: Processing date
+            type: Type
+            number: Number of lines
+            winning: Number of winning lines
+            losing: Number of losing lines
+            no_result: No result yet
+        gain: Winning point
+        back: Back
