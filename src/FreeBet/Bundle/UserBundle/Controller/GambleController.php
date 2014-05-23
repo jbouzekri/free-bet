@@ -4,6 +4,7 @@ namespace FreeBet\Bundle\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use FreeBet\Bundle\GambleBundle\Document\Gamble;
 
 /**
  * Description of GambleController
@@ -19,7 +20,7 @@ class GambleController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listGambleAction(Request $request)
+    public function indexAction(Request $request)
     {
         $gamblesQb = $this->get('free_bet.gamble.repository')->getAllGambleForUserQb($this->getUser());
 
@@ -33,5 +34,17 @@ class GambleController extends Controller
             'pagination' => $pagination,
             'user' => $this->getUser()
         ));
+    }
+
+    /**
+     * View a specific gamble
+     *
+     * @param \FreeBet\Bundle\GambleBundle\Document\Gamble $gamble
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewAction(Gamble $gamble)
+    {
+        return new \Symfony\Component\HttpFoundation\Response($gamble->getId());
     }
 }

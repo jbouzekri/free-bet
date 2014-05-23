@@ -9,8 +9,14 @@ user_account_select_group:
     methods:  [GET, POST]
 
 user_account_gambles_list:
-    path: /user/gambles/list
-    defaults: { _controller: FreeBetUserBundle:Gamble:listGamble }
+    path: /user/gamble
+    defaults: { _controller: FreeBetUserBundle:Gamble:index }
+    methods:  [GET]
+
+user_account_gamble_view:
+    path: /user/gamble/{id}
+    defaults: { _controller: FreeBetUserBundle:Gamble:view }
+    methods:  [GET]
 
 user_organization_manage:
     path: /group

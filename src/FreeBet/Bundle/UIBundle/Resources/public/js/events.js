@@ -22,4 +22,11 @@ if (typeof jQuery === "undefined") { throw new Error("Event requires jQuery") }
         $(document).find('.'+toggleClass).toggle();
         $('.wrapper').trigger('resize');
     });
+
+    $('.onclicklink').click(function(event) {
+        event.preventDefault();
+        if ($(this).has('data-url')) {
+            location.href = $(this).data('url');
+        }
+    });
 }(jQuery);
