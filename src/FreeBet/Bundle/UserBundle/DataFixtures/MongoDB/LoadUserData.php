@@ -2,28 +2,25 @@
 
 namespace FreeBet\Bundle\UserBundle\DataFixtures\MongoDB;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\AbstractFixture;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use FreeBet\Bundle\UserBundle\Document\User;
+use FreeBet\Bundle\CompetitionBundle\DataFixtures\AbstractDataLoader;
 
 /**
  * Description of LoadCompetitionData
  *
  * @author jobou
  */
-class LoadUserData extends AbstractFixture implements
-    FixtureInterface,
+class LoadUserData extends AbstractDataLoader implements
     OrderedFixtureInterface,
     ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
      */
-    private $container;
+    protected $container;
 
     /**
      * {@inheritDoc}
@@ -36,56 +33,28 @@ class LoadUserData extends AbstractFixture implements
     /**
      * {@inheritDoc}
      */
-    public function load(ObjectManager $manager)
+    public function buildObject(array $data)
     {
-        $users = array(
-            array(
-                'username' => 'jobou',
-                'email' => 'jobou@smile.fr',
-                'password' => 'azerty',
-                'profil' => 'ROLE_ADMIN',
-                'organization' => 'bu-helios'
-            ),
-            array(
-                'username' => 'jobou2',
-                'email' => 'jobou2@smile.fr',
-                'password' => 'azerty'
-            ),
-            array(
-                'username' => 'manager',
-                'email' => 'manager@smile.fr',
-                'password' => 'azerty',
-                'profil' => 'ROLE_MANAGER',
-                'organization' => 'bu-helios'
-            ),
-        );
+        $entity = new User();
+        $entity->setUsername($data['username']);
+        $entity->setEmail($data['email']);
+        $entity->setEnabled(true);
 
-        foreach ($users as $user) {
-            $entity = new User();
-            $entity->setUsername($user['username']);
-            $entity->setEmail($user['email']);
-            $entity->setEnabled(true);
-
-            if (isset($user['profil'])) {
-                $entity->setRoles(array($user['profil']));
-            }
-
-            if (isset($user['organization'])) {
-                $entity->setOrganization($this->getReference('organization-'.$user['organization']));
-            }
-
-            $encoder = $this->container
-                ->get('security.encoder_factory')
-                ->getEncoder($entity)
-            ;
-            $entity->setPassword($encoder->encodePassword($user['password'], $entity->getSalt()));
-
-            $manager->persist($entity);
-
-            $this->addReference('user-'.$entity->getUsername(), $entity);
+        if (isset($data['profil'])) {
+            $entity->setRoles(array($data['profil']));
         }
 
-        $manager->flush();
+        if (isset($data['organization'])) {
+            $entity->setOrganization($this->getReference('organization-'.$data['organization']));
+        }
+
+        $encoder = $this->container
+            ->get('security.encoder_factory')
+            ->getEncoder($entity)
+        ;
+        $entity->setPassword($encoder->encodePassword($data['password'], $entity->getSalt()));
+
+        return $entity;
     }
 
     /**
@@ -94,5 +63,36 @@ class LoadUserData extends AbstractFixture implements
     public function getOrder()
     {
         return 20;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getData()
+    {
+        return array(
+            array(
+                'username' => 'jobou',
+                'email' => 'jobou@smile.fr',
+                'password' => 'azerty',
+                'profil' => 'ROLE_ADMIN',
+                'organization' => 'bu-helios',
+                'reference' => 'user-jobou'
+            ),
+            array(
+                'username' => 'jobou2',
+                'email' => 'jobou2@smile.fr',
+                'password' => 'azerty',
+                'reference' => 'user-jobou2'
+            ),
+            array(
+                'username' => 'manager',
+                'email' => 'manager@smile.fr',
+                'password' => 'azerty',
+                'profil' => 'ROLE_MANAGER',
+                'organization' => 'bu-helios',
+                'reference' => 'user-manager'
+            ),
+        );
     }
 }

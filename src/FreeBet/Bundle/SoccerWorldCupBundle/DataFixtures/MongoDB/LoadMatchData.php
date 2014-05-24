@@ -2,25 +2,56 @@
 
 namespace FreeBet\Bundle\SoccerWorldCupBundle\DataFixtures\MongoDB;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\AbstractFixture;
 use FreeBet\Bundle\SoccerBundle\Document\Match;
+use FreeBet\Bundle\CompetitionBundle\DataFixtures\AbstractDataLoader;
 
 /**
  * Description of LoadMatchData
  *
  * @author jobou
  */
-class LoadMatchData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
+class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
      */
-    public function load(ObjectManager $manager)
+    public function buildObject(array $data)
     {
-        $matchs = array(
+        $worldCup2014 = $this->getReference('world-cup-2014');
+
+        $entity = new Match();
+        $entity->setPhaseOrder($data['phase_order']);
+        $entity->setPhase($data['phase']);
+        $entity->setGroup($data['group']);
+        if (isset($data['left_name'])) {
+            $entity->setLeftName($data['left_name']);
+        }
+        if (isset($data['right_name'])) {
+            $entity->setRightName($data['right_name']);
+        }
+        $entity->setDate(\DateTime::createFromFormat('U', $data['date']));
+        //$entity->setDate(new \DateTime('-1000 seconds'));
+        $entity->setCompetition($worldCup2014);
+        $entity->setProcessed(false);
+
+        return $entity;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 10;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getData()
+    {
+        return array(
             /***********************/
             // Group A
             /***********************/
@@ -555,36 +586,5 @@ class LoadMatchData extends AbstractFixture implements FixtureInterface, Ordered
                 'date' => '1405278000'
             ),
         );
-
-        $worldCup2014 = $this->getReference('world-cup-2014');
-
-        foreach ($matchs as $match) {
-            $entity = new Match();
-            $entity->setPhaseOrder($match['phase_order']);
-            $entity->setPhase($match['phase']);
-            $entity->setGroup($match['group']);
-            if (isset($match['left_name'])) {
-                $entity->setLeftName($match['left_name']);
-            }
-            if (isset($match['right_name'])) {
-                $entity->setRightName($match['right_name']);
-            }
-            $entity->setDate(\DateTime::createFromFormat('U', $match['date']));
-            //$entity->setDate(new \DateTime('-1000 seconds'));
-            $entity->setCompetition($worldCup2014);
-            $entity->setProcessed(false);
-
-            $manager->persist($entity);
-        }
-
-        $manager->flush();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getOrder()
-    {
-        return 10;
     }
 }

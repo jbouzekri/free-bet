@@ -2,34 +2,43 @@
 
 namespace FreeBet\Bundle\UserBundle\DataFixtures\Additionnal;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\AbstractFixture;
 use FreeBet\Bundle\UserBundle\Document\Organization;
+use FreeBet\Bundle\CompetitionBundle\DataFixtures\AbstractDataLoader;
 
 /**
  * Description of LoadCompetitionData
  *
  * @author jobou
  */
-class LoadOrganizationData extends AbstractFixture implements
-    FixtureInterface,
-    OrderedFixtureInterface
+class LoadOrganizationData extends AbstractDataLoader implements OrderedFixtureInterface
 {
+    private static $key = 1;
+
     /**
      * {@inheritDoc}
      */
-    public function load(ObjectManager $manager)
+    public function buildObject(array $data)
     {
-        for ($i=1; $i<=100; $i++) {
-            $entity = new Organization();
-            $entity->setName("Organization ".$i);
+        $entity = new Organization();
+        $entity->setName("Organization ".self::$key);
 
-            $manager->persist($entity);
-        }
+        self::$key++;
 
-        $manager->flush();
+        return $entity;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getData()
+    {
+        $data = range(1, 100);
+        $data = array_map(function ($item) {
+            return array($item);
+        }, $data);
+
+        return $data;
     }
 
     /**
