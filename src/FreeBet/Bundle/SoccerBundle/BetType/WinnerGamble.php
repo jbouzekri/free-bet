@@ -101,13 +101,7 @@ class WinnerGamble implements BetTypeInterface
      */
     public function processBet(Bet $bet)
     {
-        $choice = $bet->getChoice();
-        $winner = $bet->getEvent()->getWinner();
-        if ($this->isWinner($winner, $choice)) {
-            return true;
-        }
-
-        return false;
+        return $this->isWinner($bet->getEvent()->getWinner(), $bet->getChoice());
     }
 
     /**

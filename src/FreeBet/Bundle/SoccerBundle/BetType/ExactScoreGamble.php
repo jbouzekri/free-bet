@@ -58,14 +58,9 @@ class ExactScoreGamble implements BetTypeInterface
      */
     public function processBet(Bet $bet)
     {
-        $event = $bet->getEvent();
+        $score = $bet->getEvent()->getLeftTeamRealScore().'-'.$bet->getEvent()->getRightTeamRealScore();
 
-        $score = $event->getLeftTeamRealScore().'-'.$event->getRightTeamRealScore();
-        if ($bet->getChoice() === $score) {
-            return true;
-        }
-
-        return false;
+        return $bet->getChoice() === $score;
     }
 
     /**
