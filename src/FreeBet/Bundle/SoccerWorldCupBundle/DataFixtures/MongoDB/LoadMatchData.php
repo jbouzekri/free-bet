@@ -51,6 +51,31 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
      */
     public function getData()
     {
+        return array_merge(
+            $this->getGroupAData(),
+            $this->getGroupBData(),
+            $this->getGroupCData(),
+            $this->getGroupDData(),
+            $this->getGroupEData(),
+            $this->getGroupFData(),
+            $this->getGroupGData(),
+            $this->getGroupGData(),
+            $this->getGroupHData(),
+            $this->getSixteenData(),
+            $this->getQuarterData(),
+            $this->getSemiData(),
+            $this->getFinalData()
+        );
+    }
+
+
+    /**
+     * Get group A data
+     *
+     * @return array
+     */
+    public function getGroupAData()
+    {
         return array(
             /***********************/
             // Group A
@@ -102,8 +127,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'left_name' => 'Croatia',
                 'right_name' => 'Mexico',
                 'date' => '1403553600'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get group B data
+     *
+     * @return array
+     */
+    public function getGroupBData()
+    {
+        return array(
             /***********************/
             // Group B
             /***********************/
@@ -154,8 +189,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'left_name' => 'Netherlands',
                 'right_name' => 'Chile',
                 'date' => '1403539200'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get group C data
+     *
+     * @return array
+     */
+    public function getGroupCData()
+    {
+        return array(
             /***********************/
             // Group C
             /***********************/
@@ -206,8 +251,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'left_name' => 'Greece',
                 'right_name' => 'Côte d\'Ivoire',
                 'date' => '1403640000'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get group D data
+     *
+     * @return array
+     */
+    public function getGroupDData()
+    {
+        return array(
             /***********************/
             // Group D
             /***********************/
@@ -258,8 +313,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'left_name' => 'Costa Rica',
                 'right_name' => 'England',
                 'date' => '1403625600'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get group E data
+     *
+     * @return array
+     */
+    public function getGroupEData()
+    {
+        return array(
             /***********************/
             // Group E
             /***********************/
@@ -310,9 +375,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'left_name' => 'Ecuador',
                 'right_name' => 'France',
                 'date' => '1403726400'
-            ),
+            )
+        );
+    }
 
-
+    /**
+     * Get group F data
+     *
+     * @return array
+     */
+    public function getGroupFData()
+    {
+        return array(
             /***********************/
             // Group F
             /***********************/
@@ -363,9 +437,19 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'left_name' => 'Bosnia and Herzegovina',
                 'right_name' => 'Iran',
                 'date' => '1403712000'
-            ),
+            )
+        );
+    }
 
 
+    /**
+     * Get group G data
+     *
+     * @return array
+     */
+    public function getGroupGData()
+    {
+        return array(
             /***********************/
             // Group G
             /***********************/
@@ -416,8 +500,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'left_name' => 'Portugal',
                 'right_name' => 'Ghana',
                 'date' => '1403798400'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get group H data
+     *
+     * @return array
+     */
+    public function getGroupHData()
+    {
+        return array(
             /***********************/
             // Group H
             /***********************/
@@ -468,8 +562,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'left_name' => 'Algeria',
                 'right_name' => 'Russia',
                 'date' => '1403812800'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get sixteen data
+     *
+     * @return array
+     */
+    public function getSixteenData()
+    {
+        return array(
             /***********************/
             // Sixteen
             /***********************/
@@ -520,8 +624,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'phase' => 'sixteen',
                 'group' => '8',
                 'date' => '1404244800'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get quarter data
+     *
+     * @return array
+     */
+    public function getQuarterData()
+    {
+        return array(
             /***********************/
             // Quarter
             /***********************/
@@ -548,8 +662,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'phase' => 'quarter',
                 'group' => '4',
                 'date' => '1404590400'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get semi data
+     *
+     * @return array
+     */
+    public function getSemiData()
+    {
+        return array(
             /***********************/
             // semi
             /***********************/
@@ -564,8 +688,18 @@ class LoadMatchData extends AbstractDataLoader implements OrderedFixtureInterfac
                 'phase' => 'semi',
                 'group' => '2',
                 'date' => '1404936000'
-            ),
+            )
+        );
+    }
 
+    /**
+     * Get final data
+     *
+     * @return array
+     */
+    public function getFinalData()
+    {
+        return array(
             /***********************/
             // playoff
             /***********************/
