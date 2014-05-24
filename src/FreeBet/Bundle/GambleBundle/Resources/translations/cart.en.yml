@@ -6,3 +6,6 @@ cart:
     notice:
         remove: Bet removed successfuly
         transform: Gamble saved successfuly
+    dialog:
+        remove_bet: Are you sure you want to remove this bet from your cart ?
+        transform: Are you sure you want to submit this gamble ?

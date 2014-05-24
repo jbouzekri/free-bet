@@ -17,5 +17,9 @@
     <p>{{ 'cart.block.empty'|trans({},'cart') }}</p>
 {% endfor %}
 <form action="{{ path('gamble_cart_transform') }}" method="post">
-    <button type="submit" class="btn btn-primary btn-block">{{ 'cart.block.transform'|trans({},'cart') }}</button>
+    <button type="submit"
+            class="btn btn-primary btn-block"
+            data-label="{{ 'cart.dialog.transform'|trans({}, 'cart') }}">
+        {{ 'cart.block.transform'|trans({},'cart') }}
+    </button>
 </form>
