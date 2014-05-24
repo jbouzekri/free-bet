@@ -6,6 +6,14 @@
 <div class="grouped-list">
     <h1>{{ 'my_gamble.title'|trans }}</h1>
 
+    {% for flashMessage in app.session.flashbag.get('gamble-success') %}
+        <div class="alert flat-alert alert-success">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('gamble-error') %}
+        <div class="alert flat-alert alert-danger">{{ flashMessage }}</div>
+    {% endfor %}
+
     <div class="well well-sm">
         <form class="form-inline" role="form" method="get">
             <div class="form-group">

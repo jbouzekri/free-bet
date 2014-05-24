@@ -57,9 +57,18 @@
                 <dd>{{ gamble.losingBets|length }}</dt>
             </dl>
             <div class="box-footer">
-                <a class="pull-right btn btn-default btn-sm" href="{{ path('user_account_gambles_list') }}">
-                    <span class="glyphicon glyphicon-chevron-left"></span> {{ 'my_gamble.view.back'|trans }}
-                </a>
+                <div class="pull-right">
+                    <form id="remove-form" action="{{ path('gamble_remove', {id: gamble.id}) }}" method="post">
+                        <a class="btn btn-default btn-sm" href="{{ path('user_account_gambles_list') }}">
+                            <span class="glyphicon glyphicon-chevron-left"></span> {{ 'my_gamble.view.back'|trans }}
+                        </a>
+                        <input class="confirm-dialog btn btn-danger btn-sm"
+                               data-label="{{ 'my_gamble.view.delete_modal.label'|trans }}"
+                               data-target="remove-form"
+                               type="submit"
+                               value="{{ 'my_gamble.view.delete'|trans }}" />
+                    </form>
+                </div>
                 <dl class="dl-horizontal {% if gamble.processedDate and gamble.point > 0 %}dl-success{% elseif gamble.processedDate %}dl-danger{% endif %}">
                     <dt>{{ 'my_gamble.view.gain'|trans }}</dt>
                     <dd>

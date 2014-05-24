@@ -11,6 +11,8 @@ use FOS\UserBundle\Document\User as BaseUser;
  */
 abstract class User extends BaseUser
 {
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+
     /**
      * @var array
      */
@@ -103,5 +105,15 @@ abstract class User extends BaseUser
         return $this->getOrganization()
             && $user->getOrganization()
             && $this->getOrganization()->getId() === $user->getOrganization()->getId();
+    }
+
+    /**
+     * Check if the user is an admin
+     *
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return $this->hasRole(static::ROLE_SUPER_ADMIN) || $this->hasRole(static::ROLE_ADMIN);
     }
 }

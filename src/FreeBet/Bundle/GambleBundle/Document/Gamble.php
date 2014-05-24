@@ -2,6 +2,8 @@
 
 namespace FreeBet\Bundle\GambleBundle\Document;
 
+use FreeBet\Bundle\UserBundle\Model\User;
+
 /**
  * Description of Gamble
  *
@@ -343,5 +345,33 @@ class Gamble
         return $this->getBets()->filter(function (Bet $bet) {
             return $bet->getWinner() === false;
         });
+    }
+
+    /**
+     * Check if a user can delete the gamble
+     *
+     * @param \FreeBet\Bundle\GambleBundle\Document\User $user
+     *
+     * @return boolean
+     */
+    public function canDelete(User $user)
+    {
+        if ($this->isOwner($user) || $user->isAdmin()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if the gamble is owned by the user
+     *
+     * @param \FreeBet\Bundle\UserBundle\Model\User $user
+     *
+     * @return boolean
+     */
+    public function isOwner(User $user)
+    {
+        return $user->getId() === $this->getUser()->getId();
     }
 }

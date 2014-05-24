@@ -97,3 +97,6 @@ my_gamble:
             no_result: No result yet
         gain: Winning point
         back: Back
+        delete: Delete
+        delete_modal:
+            label: Are you sure you want to delete this gamble ?

@@ -1,0 +1,4 @@
+gamble_remove:
+    path: /{id}/remove
+    defaults: { _controller: FreeBetGambleBundle:Gamble:remove }
+    methods:  [POST,DELETE]

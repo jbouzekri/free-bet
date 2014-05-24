@@ -32,6 +32,10 @@ event_routes:
 
 # Cart routes
 cart_routes:
-    resource: "@FreeBetGambleBundle/Resources/config/routing.yml"
+    resource: "@FreeBetGambleBundle/Resources/config/routing_cart.yml"
     prefix: /cart
 
+# Cart routes
+gamble_routes:
+    resource: "@FreeBetGambleBundle/Resources/config/routing_gamble.yml"
+    prefix: /gamble

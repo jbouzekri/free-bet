@@ -29,4 +29,22 @@ if (typeof jQuery === "undefined") { throw new Error("Event requires jQuery") }
             location.href = $(this).data('url');
         }
     });
+
+    $('.confirm-dialog').click(function(event){
+        event.preventDefault();
+
+        var $this = $(this);
+        bootbox.confirm($this.data('label'), function(result) {
+            if (result) {
+                $this.parents('#'+$this.data('target')).submit();
+            }
+        });
+    });
+
+    $(document).on('click', '.bootbox', function(){
+        var classname = event.target.className;
+
+        if(classname && !$('.' + classname).parents('.modal-dialog').length)
+            bootbox.hideAll();
+    });
 }(jQuery);

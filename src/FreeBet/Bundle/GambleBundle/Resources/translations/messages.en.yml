@@ -1,3 +1,7 @@
 menu:
     main:
         gambles_list: My gambles
+
+gamble:
+    notice:
+        remove: Gamble removed successfuly
