@@ -4,6 +4,7 @@ parameters:
     free_bet.competition.repository.namespace: FreeBetCompetitionBundle:Competition
     free_bet.event.repository.class: FreeBet\Bundle\CompetitionBundle\Document\Repository\EventRepository
     free_bet.event.repository.namespace: FreeBetCompetitionBundle:Event
+    free_bet.data_loader.csv_file.class: FreeBet\Bundle\CompetitionBundle\DataFixtures\FileCsvLoader
 
 services:
     free_bet.event_inheritance.listener:
@@ -37,3 +38,6 @@ services:
         class: %free_bet.twig.string_extension.class%
         tags:
             - { name: twig.extension }
+
+    free_bet.data_loader.csv_file:
+        class: %free_bet.data_loader.csv_file.class%
