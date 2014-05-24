@@ -221,16 +221,16 @@
         },
         {
             "name": "doctrine/common",
-            "version": "v2.4.1",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "ceb18cf9b0230f3ea208b6238130fd415abda0a7"
+                "reference": "5db6ab40e4c531f14dad4ca96a394dfce5d4255b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/ceb18cf9b0230f3ea208b6238130fd415abda0a7",
-                "reference": "ceb18cf9b0230f3ea208b6238130fd415abda0a7",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/5db6ab40e4c531f14dad4ca96a394dfce5d4255b",
+                "reference": "5db6ab40e4c531f14dad4ca96a394dfce5d4255b",
                 "shasum": ""
             },
             "require": {
@@ -240,6 +240,9 @@
                 "doctrine/inflector": "1.*",
                 "doctrine/lexer": "1.*",
                 "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
             },
             "type": "library",
             "extra": {
@@ -292,7 +295,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2013-09-07 10:20:34"
+            "time": "2014-05-21 19:28:51"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -816,12 +819,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMongoDBBundle.git",
-                "reference": "e022b83d429ecabd0ddd9d0efd7784b611a7420d"
+                "reference": "fe556181ef78931bf2ccfc3a96ae6e93c6dc4775"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/e022b83d429ecabd0ddd9d0efd7784b611a7420d",
-                "reference": "e022b83d429ecabd0ddd9d0efd7784b611a7420d",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/fe556181ef78931bf2ccfc3a96ae6e93c6dc4775",
+                "reference": "fe556181ef78931bf2ccfc3a96ae6e93c6dc4775",
                 "shasum": ""
             },
             "require": {
@@ -878,7 +881,7 @@
                 "persistence",
                 "symfony"
             ],
-            "time": "2014-05-16 14:56:48"
+            "time": "2014-05-19 22:47:06"
         },
         {
             "name": "doctrine/orm",
@@ -1163,12 +1166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jbouzekri/ConfigKnpMenuBundle.git",
-                "reference": "aadff998a1781c8b544e72fe993279ba0e2c362f"
+                "reference": "f7ca3e84b71712202a6e65a982245d80b7df97de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jbouzekri/ConfigKnpMenuBundle/zipball/aadff998a1781c8b544e72fe993279ba0e2c362f",
-                "reference": "aadff998a1781c8b544e72fe993279ba0e2c362f",
+                "url": "https://api.github.com/repos/jbouzekri/ConfigKnpMenuBundle/zipball/f7ca3e84b71712202a6e65a982245d80b7df97de",
+                "reference": "f7ca3e84b71712202a6e65a982245d80b7df97de",
                 "shasum": ""
             },
             "require": {
@@ -1195,7 +1198,7 @@
                 "ui",
                 "user interface"
             ],
-            "time": "2014-05-17 13:00:32"
+            "time": "2014-05-17 16:33:50"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1854,12 +1857,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
-                "reference": "7370d18f511653d39c33d75c2190caaafdebb492"
+                "reference": "3825a4a1a56805b6adcaf6df1f9ec892a653d377"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/7370d18f511653d39c33d75c2190caaafdebb492",
-                "reference": "7370d18f511653d39c33d75c2190caaafdebb492",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/3825a4a1a56805b6adcaf6df1f9ec892a653d377",
+                "reference": "3825a4a1a56805b6adcaf6df1f9ec892a653d377",
                 "shasum": ""
             },
             "require": {
@@ -1907,7 +1910,7 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2014-05-14 08:12:32"
+            "time": "2014-05-24 12:33:49"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2195,16 +2198,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.4.4",
+            "version": "v2.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "4697c33cdfb520dcf83fd6e4f7864fa26ddaebea"
+                "reference": "885b6d17447fcc3cd9c42622321e5af4283dbde1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/4697c33cdfb520dcf83fd6e4f7864fa26ddaebea",
-                "reference": "4697c33cdfb520dcf83fd6e4f7864fa26ddaebea",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/885b6d17447fcc3cd9c42622321e5af4283dbde1",
+                "reference": "885b6d17447fcc3cd9c42622321e5af4283dbde1",
                 "shasum": ""
             },
             "require": {
@@ -2306,7 +2309,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-04-27 13:39:18"
+            "time": "2014-05-22 21:04:05"
         },
         {
             "name": "twig/extensions",

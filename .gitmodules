@@ -2,5 +2,5 @@
         path = src/FreeBet/Bundle/UIBundle/Resources/public/adminlte
         url = https://github.com/jbouzekri/AdminLTE.git
 [submodule "src/FreeBet/Bundle/UIBundle/Resources/public/bootbox"]
-	path = src/FreeBet/Bundle/UIBundle/Resources/public/bootbox
-	url = https://github.com/makeusabrew/bootbox.git
+        path = src/FreeBet/Bundle/UIBundle/Resources/public/bootbox
+        url = https://github.com/makeusabrew/bootbox.git
