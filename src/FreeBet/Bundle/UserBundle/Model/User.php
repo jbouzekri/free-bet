@@ -90,4 +90,18 @@ abstract class User extends BaseUser
     {
         return $this->hasRole('ROLE_MANAGER') && $this->getOrganization();
     }
+
+    /**
+     * Check if a user has the same organization than another one
+     *
+     * @param \FreeBet\Bundle\UserBundle\Model\User $user
+     *
+     * @return bool
+     */
+    public function hasSameOrganization(User $user)
+    {
+        return $this->getOrganization()
+            && $user->getOrganization()
+            && $this->getOrganization()->getId() === $user->getOrganization()->getId();
+    }
 }

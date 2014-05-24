@@ -34,14 +34,8 @@ class UserController extends Controller
         }
 
         // You must be in the same organization than the user or an administrator
-        if (!$this->getUser()->hasRole('ROLE_ADMIN')
-            && (
-                !$user->getOrganization()
-                || !$this->getUser()->getOrganization()
-                || $user->getOrganization()->getId() !== $this->getUser()->getOrganization()->getId()
-            )
-        ) {
-            throw new AccessDeniedException();
+        if (!$this->getUser()->hasRole('ROLE_ADMIN') && !$user->hasSameOrganization($this->getUser())) {
+            throw new AccessDeniedException('This user is not in your organization');
         }
 
         return $user;
