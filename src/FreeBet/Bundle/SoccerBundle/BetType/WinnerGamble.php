@@ -103,11 +103,7 @@ class WinnerGamble implements BetTypeInterface
     {
         $choice = $bet->getChoice();
         $winner = $bet->getEvent()->getWinner();
-        if ($winner === Event::LEFT_TEAM_WIN && $choice == self::LEFT_TEAM_WIN) {
-            return true;
-        } elseif ($winner === Event::RIGHT_TEAM_WIN && $choice == self::RIGHT_TEAM_WIN) {
-            return true;
-        } elseif ($winner === Event::BOTH_EQUALS && $choice == self::BOTH_EQUALS) {
+        if ($this->isWinner($winner, $choice)) {
             return true;
         }
 
@@ -128,5 +124,59 @@ class WinnerGamble implements BetTypeInterface
     public function getDifficulty()
     {
         return 1;
+    }
+
+    /**
+     * Check if the bet left team winner is a success
+     *
+     * @param int $winner
+     * @param string $choice
+     *
+     * @return boolean
+     */
+    protected function isWinner($winner, $choice)
+    {
+        return $this->isLeftTeamWinner($winner, $choice)
+            || $this->isRightTeamWinner($winner, $choice)
+            || $this->isNoWinner($winner, $choice);
+    }
+
+    /**
+     * Check if the bet left team winner is a success
+     *
+     * @param int $winner
+     * @param string $choice
+     *
+     * @return boolean
+     */
+    protected function isLeftTeamWinner($winner, $choice)
+    {
+        return $winner === Event::LEFT_TEAM_WIN && $choice == self::LEFT_TEAM_WIN;
+    }
+
+    /**
+     * Check if the bet right team winner is a success
+     *
+     * @param int $winner
+     * @param string $choice
+     *
+     * @return boolean
+     */
+    protected function isRightTeamWinner($winner, $choice)
+    {
+        return $winner === Event::RIGHT_TEAM_WIN && $choice == self::RIGHT_TEAM_WIN;
+    }
+
+    /**
+     * Check if the bet no winner is a success
+     *
+     * @param int $winner
+     * @param string $choice
+     *
+     * @return boolean
+     */
+    protected function isNoWinner($winner, $choice)
+    {
+        return $winner === Event::BOTH_EQUALS && $choice == self::BOTH_EQUALS;
     }
 }
