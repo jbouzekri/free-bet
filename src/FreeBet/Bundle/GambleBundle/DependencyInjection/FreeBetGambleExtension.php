@@ -26,12 +26,10 @@ class FreeBetGambleExtension extends Extension
 
         foreach ($container->getParameter('kernel.bundles') as $bundle) {
             $reflection = new \ReflectionClass($bundle);
-            if (is_file($file = dirname($reflection->getFilename()) . '/Resources/config/gamble_types.yml')) {
+            $file = dirname($reflection->getFilename()) . '/Resources/config/gamble_types.yml';
+            if (is_file($file)) {
                 $bundleConfig = Yaml::parse(realpath($file));
-
-                if (is_array($gambleConfig)) {
-                    $gambleConfig = array_merge($gambleConfig, $bundleConfig);
-                }
+                $gambleConfig = array_merge($gambleConfig, $bundleConfig);
             }
         }
 
