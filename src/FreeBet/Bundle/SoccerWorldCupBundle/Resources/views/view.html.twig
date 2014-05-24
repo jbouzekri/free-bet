@@ -1,8 +1,8 @@
-{% extends '::base.html.twig' %}
+{% extends "FreeBetUIBundle::layout.html.twig" %}
 
-{% block body %}
+{% block content %}
+<div>
     <h1>{{ competition.name }}</h1>
-    <a href="{{ url("competition_list") }}">Back</a><br />
     <a href="{{ url("competition_events", {slug:competition.slug}) }}">Events list</a><br />
 
     {% set groupList = range('A', 'H') %}
@@ -25,4 +25,5 @@
                 phase: phase
         })) }}
     {% endfor %}
+</div>
 {% endblock %}

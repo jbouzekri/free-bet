@@ -13,15 +13,15 @@ use FreeBet\Bundle\CompetitionBundle\Document\Competition;
 class CompetitionController extends Controller
 {
     /**
-     * List all competition
+     * Left column menu
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listAction()
+    public function menuAction()
     {
         $competitions = $this->get('free_bet.competition.repository')->findAllOrderedByDate();
 
-        return $this->render('FreeBetCompetitionBundle:Competition:list.html.twig', array(
+        return $this->render('FreeBetCompetitionBundle:Competition:menu.html.twig', array(
             'competitions' => $competitions
         ));
     }

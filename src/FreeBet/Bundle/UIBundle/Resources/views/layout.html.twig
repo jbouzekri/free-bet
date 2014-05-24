@@ -31,6 +31,10 @@
                 <div id="cart">
                     {% render(controller('FreeBetGambleBundle:Cart:view')) %}
                 </div>
+
+                <div id="competitions">
+                    {% render(controller('FreeBetCompetitionBundle:Competition:menu')) %}
+                </div>
             {% endblock %}
         </section>
     </aside>

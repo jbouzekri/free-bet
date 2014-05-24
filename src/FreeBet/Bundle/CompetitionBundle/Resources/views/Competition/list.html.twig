@@ -1,7 +1,0 @@
-{% extends '::base.html.twig' %}
-
-{% block body %}
-    {% for competition in competitions %}
-        <a href="{{ url('competition_detail', {slug: competition.slug}) }}">{{ competition.name }}</a><br />
-    {% endfor %}
-{% endblock %}

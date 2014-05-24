@@ -1,0 +1,9 @@
+<ul class="sidebar-menu">
+    {% for competition in competitions %}
+        <li>
+            <a href="{{ path('competition_detail', {slug: competition.slug}) }}">
+                <i class="fa fa-table"></i> <span>{{ competition.name }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
