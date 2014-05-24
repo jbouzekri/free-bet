@@ -46,5 +46,4 @@ class LoadCompetitionData extends AbstractDataLoader implements OrderedFixtureIn
             )
         );
     }
-
 }

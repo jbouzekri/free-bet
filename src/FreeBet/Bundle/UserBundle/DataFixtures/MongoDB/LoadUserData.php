@@ -72,27 +72,12 @@ class LoadUserData extends AbstractDataLoader implements
     {
         return array(
             array(
-                'username' => 'jobou',
-                'email' => 'jobou@smile.fr',
-                'password' => 'azerty',
+                'username' => 'admin',
+                'email' => 'admin@freebet.com',
+                'password' => 'admin',
                 'profil' => 'ROLE_ADMIN',
-                'organization' => 'bu-helios',
-                'reference' => 'user-jobou'
-            ),
-            array(
-                'username' => 'jobou2',
-                'email' => 'jobou2@smile.fr',
-                'password' => 'azerty',
-                'reference' => 'user-jobou2'
-            ),
-            array(
-                'username' => 'manager',
-                'email' => 'manager@smile.fr',
-                'password' => 'azerty',
-                'profil' => 'ROLE_MANAGER',
-                'organization' => 'bu-helios',
-                'reference' => 'user-manager'
-            ),
+                'reference' => 'user-admin'
+            )
         );
     }
 }

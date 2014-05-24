@@ -13,17 +13,13 @@ use FreeBet\Bundle\CompetitionBundle\DataFixtures\AbstractDataLoader;
  */
 class LoadOrganizationData extends AbstractDataLoader implements OrderedFixtureInterface
 {
-    private static $key = 1;
-
     /**
      * {@inheritDoc}
      */
     public function buildObject(array $data)
     {
         $entity = new Organization();
-        $entity->setName("Organization ".self::$key);
-
-        self::$key++;
+        $entity->setName($data['name']);
 
         return $entity;
     }
@@ -33,10 +29,12 @@ class LoadOrganizationData extends AbstractDataLoader implements OrderedFixtureI
      */
     public function getData()
     {
-        $data = range(1, 100);
-        $data = array_map(function ($item) {
-            return array($item);
-        }, $data);
+        $data = array();
+        for ($i=1; $i<101; $i++) {
+            $data[] = array(
+                'name' => "Organization ".$i,
+            );
+        }
 
         return $data;
     }

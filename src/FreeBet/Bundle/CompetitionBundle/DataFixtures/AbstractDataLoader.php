@@ -36,12 +36,12 @@ abstract class AbstractDataLoader extends AbstractFixture implements FixtureInte
      *
      * @return array
      */
-    public abstract function getData();
+    abstract public function getData();
 
     /**
      * Build the object to persist
      *
      * @return mixed
      */
-    public abstract function buildObject(array $data);
+    abstract public function buildObject(array $data);
 }
