@@ -12,38 +12,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class GroupController extends Controller
 {
     /**
-     * Display the list of match in a specific group
+     * Display the list of match in a specific group/phase
      *
      * @param array $events
-     * @param string $group
+     * @param string $type
+     * @param string $name
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function matchListInGroupAction(array $events, $group)
+    public function matchListAction(array $events, $type, $name)
     {
-        $events = $this->get('free_bet.soccer.tools')->getOrderedMatchInGroup($events, $group);
+        $events = $this->get('free_bet.soccer.tools')->getOrderedMatch($events, $type, $name);
 
-        return $this->render('FreeBetSoccerWorldCupBundle:Group:matchListInGroup.html.twig', array(
+        return $this->render('FreeBetSoccerWorldCupBundle:Group:matchList.html.twig', array(
             'events' => $events,
-            'group' => $group
-        ));
-    }
-
-    /**
-     * Display the list of match in a specific phase
-     *
-     * @param array $events
-     * @param string $phase
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function matchListInPhaseAction(array $events, $phase)
-    {
-        $events = $this->get('free_bet.soccer.tools')->getOrderedMatchInPhase($events, $phase);
-
-        return $this->render('FreeBetSoccerWorldCupBundle:Group:matchListInPhase.html.twig', array(
-            'events' => $events,
-            'phase' => $phase
+            'type' => $type,
+            'name' => $name
         ));
     }
 

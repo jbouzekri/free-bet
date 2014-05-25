@@ -6,3 +6,21 @@ event:
     list:
         title: Next events list
         empty: No event scheduled
+
+team_unknown: Unknown
+
+competition:
+    group: Pool
+    final: Knock-out phase
+    view:
+        set_result: Set result
+        header:
+            day: Date
+            hour: Hour
+            result: Result
+            actions: Actions
+            team: Team
+            point: Point
+            diff: Diff
+    menu:
+        title: Competitions

@@ -1,29 +1,87 @@
 {% extends "FreeBetUIBundle::layout.html.twig" %}
 
+{% block title %}{{ competition.name }}{% endblock %}
+
 {% block content %}
-<div>
+<div id="competition-detail">
     <h1>{{ competition.name }}</h1>
-    <a href="{{ url("competition_events", {slug:competition.slug}) }}">Events list</a><br />
 
-    {% set groupList = range('A', 'H') %}
-    {% for group in groupList %}
-        {{ render(controller('FreeBetSoccerWorldCupBundle:Group:matchListInGroup', {
-                events: events,
-                group: group
-        })) }}
+    <ul class="nav nav-pills">
+        <li class="active"><a href="#group" data-toggle="tab">{{ 'competition.group'|trans }}</a></li>
+        <li><a href="#final" data-toggle="tab">{{ 'competition.final'|trans }}</a></li>
+    </ul>
 
-        {{ render(controller('FreeBetSoccerWorldCupBundle:Group:result', {
-                events: events,
-                group: group
-        })) }}
-    {% endfor %}
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="group">
+            <div class="row">
+                {% set groupList = range('A', 'H') %}
+                <div class="col-xs-12 col-md-3 hidden-xs">
+                    <div class="list-group" id="soccer-group-menu" data-spy="affix" data-offset-top="200">
+                        {% for group in groupList %}
+                            <a href="#group-{{ group }}" class="list-group-item {% if loop.first %}active{% endif %}">
+                                {{ 'soccer_group_name'|trans({'%group%': group}, "soccer")  }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-9">
+                {% for group in groupList %}
+                    <div id="soccer-group-{{ group }}" class="soccer-block">
+                        <a class="group-anchor" id="group-{{ group }}"></a>
+                        <h2>{{ 'soccer_group_name'|trans({'%group%': group}, "soccer")  }}</h2>
+                        {{ render(controller('FreeBetSoccerWorldCupBundle:Group:matchList', {
+                            events: events,
+                            type: 'group',
+                            name: group
+                        })) }}
 
-    {% set phaseList = ['sixteen','quarter','semi','playoff','final'] %}
-    {% for phase in phaseList %}
-        {{ render(controller('FreeBetSoccerWorldCupBundle:Group:matchListInPhase', {
-                events: events,
-                phase: phase
-        })) }}
-    {% endfor %}
+                        {{ render(controller('FreeBetSoccerWorldCupBundle:Group:result', {
+                            events: events,
+                            group: group
+                        })) }}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="final">
+            {% set phaseList = ['sixteen','quarter','semi','playoff','final'] %}
+            {% for phase in phaseList %}
+                <div id="soccer-phase-{{ phase }}" class="soccer-block">
+                    <h2>{{ ('soccer_phase_'~phase)|trans({}, "soccer")  }}</h2>
+                    {{ render(controller('FreeBetSoccerWorldCupBundle:Group:matchList', {
+                        events: events,
+                        type: 'phase',
+                        name: phase
+                    })) }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var anchorArray = [],
+            topRange      = 200,  // measure from the top of the viewport to X pixels down
+            edgeMargin    = 20,   // margin above the top or margin from the end of the page
+            animationTime = 1200;
+
+        $('#soccer-group-menu a').each(function(){
+            anchorArray.push( $( $(this).attr('href') ).offset().top );
+        });
+
+        $(window).scroll(function(){
+            var winTop = $(window).scrollTop(),
+            bodyHt = $(document).height(),
+            vpHt = $(window).height() + edgeMargin;  // viewport height + margin
+            $.each( anchorArray, function(i,loc){
+              if ( ( loc > winTop - edgeMargin && ( loc < winTop + topRange || ( winTop + vpHt ) >= bodyHt ) ) ){
+                $('#soccer-group-menu a').removeClass('active').eq(i).addClass('active');
+              }
+            })
+        });
+    </script>
+{% endblock javascripts %}

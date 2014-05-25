@@ -26,9 +26,10 @@
                 <td><span class="sport sport-{{ event.type }}"></span></td>
                 <td>{{ event.date|date('H:i') }}</td>
                 <td>
-                    <span class="event event-{{ event.leftName|slugify }}"></span>
-                    <a href="{{ path('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}">{{ event.name }}</a>
-                    <span class="event event-{{ event.rightName|slugify }}"></span>
+                    {% include 'FreeBetCompetitionBundle:Event:_event_name.html.twig' with {
+                        event: event,
+                        showResult: false
+                    } %}
                 </td>
                 <td>{{ render_main_bet_type(event) }}</td>
             </tr>

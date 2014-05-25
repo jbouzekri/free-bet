@@ -1,0 +1,30 @@
+{% if showResult is not defined %}
+    {% set showResult = false %}
+{% endif %}
+{% if scoreTemplate is not defined %}
+    {% set scoreTemplate = false %}
+{% endif %}
+
+<span class="event event-{{ event.leftName|slugify }}"></span>
+{% if event.leftName is not empty and event.rightName is not empty %}
+    <a href="{{ path('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}">
+{% endif %}
+        {% if event.leftName is not empty %}
+            {{ event.leftName|trans }}
+        {% else %}
+            {{ 'team_unknown'|trans }}
+        {% endif %}
+        {% if showResult and scoreTemplate is defined %}
+            {% include scoreTemplate with {match: event} %}
+        {% else %}
+            -
+        {% endif %}
+        {% if event.rightName is not empty %}
+            {{ event.rightName|trans }}
+        {% else %}
+            {{ 'team_unknown'|trans }}
+        {% endif %}
+{% if event.leftName is not empty and event.rightName is not empty %}
+    </a>
+{% endif %}
+<span class="event event-{{ event.rightName|slugify }}"></span>

@@ -74,43 +74,21 @@ class Tools
     }
 
     /**
-     * Get ordered match in a specific group
+     * Get ordered match in a specific group/phase
      *
      * @param array  $events
-     * @param string $group
+     * @param string $type
+     * @param string $name
      *
      * @return array
      */
-    public function getOrderedMatchInGroup(array $events, $group)
+    public function getOrderedMatch(array $events, $type = 'group', $name = 'A')
     {
+        $method = 'get'.ucfirst($type);
         $result = array();
 
         foreach ($events as $event) {
-            if ($event->getGroup() != $group) {
-                continue;
-            }
-            $result[] = $event;
-        }
-
-        $result = $this->sortByDate($result);
-
-        return $result;
-    }
-
-    /**
-     * Get ordered match in a specific phase
-     *
-     * @param array  $events
-     * @param string $phase
-     *
-     * @return array
-     */
-    public function getOrderedMatchInPhase(array $events, $phase)
-    {
-        $result = array();
-
-        foreach ($events as $event) {
-            if ($event->getPhase() != $phase) {
+            if ($event->$method() != $name) {
                 continue;
             }
             $result[] = $event;

@@ -1,8 +1,20 @@
-<div id="group-{{ group }}" class="group-match-list">
-    <h2>{{ 'soccer_group_name'|trans({'%group%': group}, "soccer")  }}</h2>
-    <ul>
-        {% for teamName,result in results %}
-        <li>{{ teamName }} | {{ result.point }} | {{ result.diff }}</li>
-        {% endfor %}
-    </ul>
+<div  class="group-match-list">
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>{{ 'competition.view.header.team'|trans }}</th>
+                <th>{{ 'competition.view.header.point'|trans }}</th>
+                <th>{{ 'competition.view.header.diff'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teamName,result in results %}
+                <tr>
+                    <td>{{ teamName }}</td>
+                    <td>{{ result.point }}</td>
+                    <td>{{ result.diff }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>

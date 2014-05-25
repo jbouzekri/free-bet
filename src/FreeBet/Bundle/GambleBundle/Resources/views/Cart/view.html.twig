@@ -1,4 +1,4 @@
-<h2>{{ 'cart.block.title'|trans({},'cart') }}</h2>
+<div class="menu-title">{{ 'cart.block.title'|trans({},'cart') }}</div>
 {% for flashMessage in app.session.flashbag.get('cart-success') %}
     <div class="alert flat-alert alert-success">{{ flashMessage }}</div>
 {% endfor %}

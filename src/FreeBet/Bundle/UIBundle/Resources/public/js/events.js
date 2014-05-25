@@ -47,4 +47,9 @@ if (typeof jQuery === "undefined") { throw new Error("Event requires jQuery") }
         if(classname && !$('.' + classname).parents('.modal-dialog').length)
             bootbox.hideAll();
     });
+
+    $('.nav-pills a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    });
 }(jQuery);

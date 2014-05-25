@@ -41,6 +41,13 @@ td.small {
     background-color: @primary;
     border-color: @primary;
 }
+.menu-title {
+    margin-top: 5px;
+    font-size: 2em;
+}
+.onclicklink {
+    cursor: pointer;
+}
 
 /********/
 /* Cart */
@@ -50,10 +57,6 @@ td.small {
     padding: 5px;
     border: 1px solid white;
     .border-radius(4px);
-}
-#cart h2 {
-    margin-top: 5px;
-    font-size: 2em;
 }
 #cart .bet-item {
     margin-bottom: 5px;
@@ -171,7 +174,7 @@ td.small {
     margin-top: 20px;
 }
 
-/*********************/
+/**********************/
 /* User Gamble Detail */
 /**********************/
 #my-gamble-detail dt {
@@ -185,4 +188,46 @@ td.small {
 }
 #my-gamble-detail .box-footer dl.dl-success {
     color: @primary;
+}
+
+/***********************/
+/* Competition Details */
+/***********************/
+#soccer-group-menu {
+    margin-top: 20px;
+    width: 179px;
+}
+#soccer-group-menu.affix {
+    top: 0px;
+}
+#competitions {
+    color: white;
+}
+#competitions .menu-title {
+    padding: 12px 5px 12px 15px;
+}
+#competition-detail h1 {
+    margin-bottom: 40px;
+}
+#competition-detail .nav li {
+    width: 49%;
+    text-align: center;
+}
+.soccer-block {
+    margin-bottom: 35px;
+}
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus,
+.nav.nav-pills > li.active, .nav.nav-pills > li.active > a, .nav.nav-pills > li.active > a:hover {
+    background-color: @primary;
+    border-color: @primary;
+}
+.nav.nav-pills > li.active {
+    font-size: 15px;
+    .border-radius(3px, 3px, 3px, 3px);
+    display: inline-block;
+}
+.nav.nav-pills > li.active > a, .nav.nav-pills > li.active > a:hover {
+    padding: 10px;
+    display: inline-block;
+    color: white;
 }
