@@ -6,6 +6,9 @@ event:
     list:
         title: Next events list
         empty: No event scheduled
+    edit:
+        title: Set result for %name%
+        submit: Save
 
 team_unknown: Unknown
 

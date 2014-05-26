@@ -47,7 +47,7 @@ class EventController extends Controller
 
         return $this->render('FreeBetCompetitionBundle:Event:edit.html.twig', array(
             'form' => $form->createView(),
-            'match' => $event
+            'event' => $event
         ));
     }
 

@@ -2,6 +2,8 @@
 
 namespace FreeBet\Bundle\CompetitionBundle\Document\Repository;
 
+use FreeBet\Bundle\CompetitionBundle\Document\Competition;
+
 /**
  * Description of EventRepositoryInterface
  *
@@ -12,6 +14,8 @@ interface EventRepositoryInterface
     /**
      * Find all events which has ended (the end score is known and
      * have not been processed yet)
+     *
+     * @return array
      */
     public function findAllEndedAndNotProcessedEvent();
 
@@ -20,6 +24,17 @@ interface EventRepositoryInterface
      * Ordered by date and not yet processed
      *
      * @param int $limit
+     *
+     * @return array
      */
     public function findNextEvents($limit);
+
+    /**
+     * Get all team names for choices field
+     * 
+     * @param \FreeBet\Bundle\CompetitionBundle\Document\Competition $competition
+     *
+     * @return array
+     */
+    public function getEventTeamNameChoices(Competition $competition);
 }

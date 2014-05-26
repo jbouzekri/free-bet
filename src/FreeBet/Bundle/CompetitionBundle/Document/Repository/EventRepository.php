@@ -3,6 +3,7 @@
 namespace FreeBet\Bundle\CompetitionBundle\Document\Repository;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
+use FreeBet\Bundle\CompetitionBundle\Document\Competition;
 
 /**
  * Description of CompetitionRepository
@@ -35,5 +36,31 @@ class EventRepository extends DocumentRepository implements EventRepositoryInter
             ->limit($limit);
 
         return $qb->getQuery()->execute();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEventTeamNameChoices(Competition $competition)
+    {
+        $qb = $this->createQueryBuilder()
+            ->select('leftName', 'rightName')
+            ->field('leftName')->exists(true)->notEqual(null)->notEqual('')
+            ->field('rightName')->exists(true)->notEqual(null)->notEqual('');
+
+        $result = $qb
+            ->hydrate(false)
+            ->getQuery()
+            ->execute();
+
+        $choices = array();
+        foreach ($result as $item) {
+            $choices[$item['left_name']] = $item['left_name'];
+            $choices[$item['right_name']] = $item['right_name'];
+        }
+
+        asort($choices);
+
+        return $choices;
     }
 }

@@ -8,5 +8,7 @@ services:
 
     free_bet.soccer.form.type.match:
         class: %free_bet.soccer.form.type.match.class%
+        arguments:
+            - @free_bet.event.repository
         tags:
             - { name: form.type, alias: match }

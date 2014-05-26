@@ -10,6 +10,16 @@ FreeBet\Bundle\SoccerBundle\Document\Match:
                 min: 0
                 minMessage: The minimum score is 0 goal
             - NotBlank: ~
+        leftTeamHalfTimeScore:
+            - Range:
+                min: 0
+                minMessage: The minimum score is 0 goal
+            - NotBlank: ~
+        rightTeamHalfTimeScore:
+            - Range:
+                min: 0
+                minMessage: The minimum score is 0 goal
+            - NotBlank: ~
         leftTeamAfterExtendedTimeScore:
             - Range:
                 min: 0

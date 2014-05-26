@@ -1,11 +1,24 @@
 {% extends "FreeBetUIBundle::layout.html.twig" %}
 
-{% block content %}
-    <h1>{{ match.leftName }} - {{ match.rightName }}</h1>
-    <form action="" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
+{% form_theme form 'FreeBetUIBundle:Form:form.html.twig' %}
 
-        <input type="submit" />
-    </form>
-    <a href="{{ url('competition_detail', {slug: match.competition.slug}) }}">Back</a>
+{% block title %}{{ 'event.edit.title'|trans({'%name%': event.name}) }}{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>{{ 'event.edit.title'|trans({'%name%': event.name}) }} <small>{{ event.date|date('Y-m-d H:i')}}</small></h1>
+
+    <div class="box box-success">
+        <form action="" method="post" {{ form_enctype(form) }}>
+            <div class="box-body">
+                {{ form_widget(form) }}
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">{{ 'event.edit.submit'|trans }}</button>
+                <a href="{{ url('competition_detail', {slug: event.competition.slug}) }}" class="btn btn-default">{{ 'general.back'|trans }}</a>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
