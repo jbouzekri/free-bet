@@ -31,7 +31,7 @@ class MatchType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('teamName', new TeamNameType($this->eventRepository), array(
+        $builder->add('teamName', new TeamNameType(), array(
             'label' => false
         ));
 
