@@ -33,7 +33,9 @@
                 </div>
 
                 <div id="competitions">
-                    {% render(controller('FreeBetCompetitionBundle:Competition:menu')) %}
+                    {% render(controller('FreeBetCompetitionBundle:Competition:menu', {
+                        'routeParam': app.request.attributes.get('_route_params')
+                    })) %}
                 </div>
             {% endblock %}
         </section>

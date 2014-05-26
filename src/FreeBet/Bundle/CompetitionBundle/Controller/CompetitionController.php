@@ -15,14 +15,17 @@ class CompetitionController extends Controller
     /**
      * Left column menu
      *
+     * @param array $routeParam
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function menuAction()
+    public function menuAction($routeParam = array())
     {
         $competitions = $this->get('free_bet.competition.repository')->findAllOrderedByDate();
 
         return $this->render('FreeBetCompetitionBundle:Competition:menu.html.twig', array(
-            'competitions' => $competitions
+            'competitions' => $competitions,
+            'main_request_route_param' => $routeParam
         ));
     }
 

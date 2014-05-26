@@ -1,9 +1,15 @@
 <div class="menu-title">{{ 'competition.menu.title'|trans }}</div>
 <ul class="sidebar-menu">
+    {% set slugCompetition = '' %}
+    {% if main_request_route_param.slugCompetition is defined %}
+        {% set slugCompetition = main_request_route_param.slugCompetition %}
+    {% elseif main_request_route_param.slug is defined %}
+        {% set slugCompetition = main_request_route_param.slug %}
+    {% endif %}
     {% for competition in competitions %}
-        <li>
+        <li {% if slugCompetition == competition.slug %}class="active"{% endif %}>
             <a href="{{ path('competition_detail', {slug: competition.slug}) }}">
-                <i class="fa fa-table"></i> <span>{{ competition.name }}</span>
+                <i class="fa fa-{{ competition.type }}"></i> <span>{{ competition.name }}</span>
             </a>
         </li>
     {% endfor %}
