@@ -14,7 +14,7 @@ services:
     free_bet.date_manager:
         class: %free_bet.date_manager.class%
         arguments:
-            - @security.context
+            - @free_bet.logged_in_user
             - @translator
             - %default_timezone%
 

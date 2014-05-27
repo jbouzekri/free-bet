@@ -4,6 +4,8 @@ parameters:
     free_bet.user.repository.class: FreeBet\Bundle\UserBundle\Document\Repository\UserRepository
     free_bet.user.repository.namespace: FreeBetUserBundle:User
     free_bet.profile.form.type.class: FreeBet\Bundle\UserBundle\Form\Type\ProfileType
+    free_bet.listener.locale.class: FreeBet\Bundle\UserBundle\EventListener\LocaleListener
+    free_bet.logged_in_user.class: FreeBet\Bundle\UserBundle\Services\LoggedInUser
 
 services:
     free_bet.menu.main:
@@ -38,3 +40,15 @@ services:
             - %fos_user.model.user.class%
         tags:
             - { name: form.type, alias: freebet_user_profile }
+
+    free_bet.logged_in_user:
+        class: %free_bet.logged_in_user.class%
+        arguments:
+            - @security.context
+
+    free_bet.listener.locale:
+        class: %free_bet.listener.locale.class%
+        arguments:
+            - @free_bet.logged_in_user
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

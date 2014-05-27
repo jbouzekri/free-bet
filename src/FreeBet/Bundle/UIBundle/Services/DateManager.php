@@ -2,7 +2,7 @@
 
 namespace FreeBet\Bundle\UIBundle\Services;
 
-use Symfony\Component\Security\Core\SecurityContext;
+use FreeBet\Bundle\UserBundle\Services\LoggedInUser;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
@@ -13,7 +13,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 class DateManager
 {
     /**
-     * @var \Symfony\Component\Security\Core\SecurityContext
+     * @var \FreeBet\Bundle\UserBundle\Services\LoggedInUser
      */
     protected $securityContext;
 
@@ -30,11 +30,11 @@ class DateManager
     /**
      * Constructor
      *
-     * @param \Symfony\Component\Security\Core\SecurityContext $securityContext
+     * @param \FreeBet\Bundle\UserBundle\Services\LoggedInUser $securityContext
      * @param \Symfony\Component\Translation\TranslatorInterface $translator
      * @param string $defaultTimeZone
      */
-    public function __construct(SecurityContext $securityContext, TranslatorInterface $translator, $defaultTimeZone)
+    public function __construct(LoggedInUser $securityContext, TranslatorInterface $translator, $defaultTimeZone)
     {
         $this->securityContext = $securityContext;
         $this->translator = $translator;
@@ -78,7 +78,7 @@ class DateManager
     protected function getTimeZone()
     {
         $timeZone = new \DateTimeZone($this->defaultTimeZone);
-        if ($this->getUser() !== null) {
+        if ($this->securityContext->getUser() !== null) {
 
         }
 
@@ -95,23 +95,5 @@ class DateManager
     public static function getUtcDateTime($date = "now")
     {
         return new \DateTime($date, new \DateTimeZone('UTC'));
-    }
-
-    /**
-     * Get the user from the context
-     *
-     * @return \FreeBet\Bundle\UserBundle\Model
-     */
-    protected function getUser()
-    {
-        if (null === $token = $this->securityContext->getToken()) {
-            return;
-        }
-
-        if (!is_object($user = $token->getUser())) {
-            return;
-        }
-
-        return $user;
     }
 }
