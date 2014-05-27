@@ -24,6 +24,11 @@ abstract class User extends BaseUser
     protected $organization;
 
     /**
+     * @var string
+     */
+    protected $language;
+
+    /**
      * Set Organization
      *
      * @param \FreeBet\Bundle\UserBundle\Model\Organization $organization
@@ -43,6 +48,28 @@ abstract class User extends BaseUser
     public function getOrganization()
     {
         return $this->organization;
+    }
+
+    /**
+     * Set Language
+     *
+     * @param string $language
+     * @return self
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+        return $this;
+    }
+
+    /**
+     * Get Language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 
     /**

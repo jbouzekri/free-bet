@@ -32,6 +32,14 @@
                 <p><label>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}:</label> {{ user.username }}</p>
                 <p><label>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}:</label> {{ user.email }}</p>
                 <p><label>{{ 'account.member_since'|trans({}) }}:</label> {{ user.email }}</p>
+                <p>
+                    <label>{{ 'profile.show.language'|trans({}, 'FOSUserBundle') }}:</label>
+                    {% if user.language %}
+                        {{ ('language.'~user.language)|trans }}
+                    {% else %}
+                        {{ ('language.'~default_locale)|trans }}
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>

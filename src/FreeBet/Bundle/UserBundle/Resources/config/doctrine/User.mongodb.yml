@@ -5,6 +5,8 @@ FreeBet\Bundle\UserBundle\Document\User:
     fields:
         id:
             id: true
+        language:
+            type: string
         slug:
             index: true
             type: string

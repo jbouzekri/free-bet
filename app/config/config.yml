@@ -28,6 +28,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        default_locale: "%locale%"
 
 # Assetic Configuration
 assetic:
@@ -92,6 +94,9 @@ fos_user:
     db_driver: mongodb
     firewall_name: main
     user_class: FreeBet\Bundle\UserBundle\Document\User
+    profile:
+        form:
+            type: freebet_user_profile
 
 knp_menu:
     twig:

@@ -1,2 +1,6 @@
 fos_user_change_password:
     title: Change your password
+
+profile:
+    show:
+        language: Language
