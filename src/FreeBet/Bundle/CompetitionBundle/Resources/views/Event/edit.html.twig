@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="content">
-    <h1>{{ 'event.edit.title'|trans({'%name%': event.name}) }} <small>{{ event.date|date('Y-m-d H:i')}}</small></h1>
+    <h1>{{ 'event.edit.title'|trans({'%name%': event.name}) }} <small>{{ event.date|date_format('datetime')}}</small></h1>
 
     <div class="box box-success">
         <form action="" method="post" {{ form_enctype(form) }}>

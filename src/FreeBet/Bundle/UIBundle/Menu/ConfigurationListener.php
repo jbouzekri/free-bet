@@ -3,7 +3,7 @@
 namespace FreeBet\Bundle\UIBundle\Menu;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
-use Maestro\Bundle\NavigationBundle\Event\ConfigureMenuEvent;
+use Jb\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent;
 
 /**
  * Description of ConfigurationListener

@@ -1,5 +1,7 @@
 parameters:
     free_bet.menu_configuration.listener.class: FreeBet\Bundle\UIBundle\Menu\ConfigurationListener
+    free_bet.date_manager.class: FreeBet\Bundle\UIBundle\Services\DateManager
+    free_bet.twig.date_extension.class: FreeBet\Bundle\UIBundle\Twig\DateExtension
 
 services:
     free_bet.menu_configuration.listener:
@@ -7,4 +9,18 @@ services:
         arguments:
             - @security.context
         tags:
-            - { name: kernel.event_listener, event: maestro.navigation.menu_configure, method: configureMenu }
+            - { name: kernel.event_listener, event: jb_config.navigation.menu_configure, method: configureMenu }
+
+    free_bet.date_manager:
+        class: %free_bet.date_manager.class%
+        arguments:
+            - @security.context
+            - @translator
+            - %default_timezone%
+
+    free_bet.twig.date_extension:
+        class: %free_bet.twig.date_extension.class%
+        arguments:
+            - @free_bet.date_manager
+        tags:
+            - { name: twig.extension }

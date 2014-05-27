@@ -16,12 +16,12 @@
                     <td {% if event.leftName is not empty and event.rightName is not empty %}
                         data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"
                         {% endif %}>
-                        {{ event.date|date('Y-m-d') }}
+                        {{ event.date|date_format('date') }}
                     </td>
                     <td {% if event.leftName is not empty and event.rightName is not empty %}
                         data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"
                         {% endif %}>
-                        {{ event.date|date('H:i') }}
+                        {{ event.date|date_format('hour') }}
                     </td>
                     <td {% if event.leftName is not empty and event.rightName is not empty %}
                         data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"

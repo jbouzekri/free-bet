@@ -16,3 +16,5 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    default_timezone: Europe/Paris

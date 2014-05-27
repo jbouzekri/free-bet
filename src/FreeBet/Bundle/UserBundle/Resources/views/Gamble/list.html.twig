@@ -49,10 +49,10 @@
                 <tr class="onclicklink {% if gamble.processedDate %}{% if gamble.winnger %}success{% else %}danger{% endif %}{% endif %}"
                     data-url="{{ path('user_account_gamble_view', {id: gamble.id}) }}">
                     <td>
-                        <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">{{ gamble.created|date('Y-m-d') }}</a>
+                        <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">{{ gamble.created|date_format('date') }}</a>
                     </td>
                     <td>
-                        <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">{{ gamble.created|date('H:i') }}</a>
+                        <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">{{ gamble.created|date_format('hour') }}</a>
                     </td>
                     <td>
                         <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">{{ gamble.name }}</a>

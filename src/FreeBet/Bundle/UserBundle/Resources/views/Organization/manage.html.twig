@@ -31,7 +31,7 @@
                     {% for user in pagination %}
                         <tr>
                             <td>{{ user.username }}</td>
-                            <td>{{ user.lastLogin|date('Y-m-d H:m:s') }}</td>
+                            <td>{{ user.lastLogin|date_format('datetime') }}</td>
                             <td>{% if user.hasRole('ROLE_MANAGER') %}<span class="glyphicon glyphicon-ok"></span>{% endif %}</td>
                             <td>
                                 <form action="{{ path('user_organization_manage_remove_user', {id: user.id}) }}" method="post">

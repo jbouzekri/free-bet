@@ -1,2 +1,7 @@
 general:
     back: Back
+
+date:
+    date: Y-m-d
+    hour: H:i
+    datetime: Y-m-d H:i:s

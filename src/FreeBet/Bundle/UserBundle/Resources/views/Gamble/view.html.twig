@@ -26,8 +26,8 @@
                     {% for bet in gamble.bets %}
                         <tr class="{% if gamble.processedDate %}{% if bet.winnger %}success{% else %}danger{% endif %}{% endif %}">
                             <td>{{ ('gamble_'~bet.event.competition.type)|trans({},'gamble') }}</td>
-                            <td>{{ gamble.created|date('Y-m-d') }}</td>
-                            <td>{{ gamble.created|date('H:i') }}</td>
+                            <td>{{ gamble.created|date_format('date') }}</td>
+                            <td>{{ gamble.created|date_format('hour') }}</td>
                             <td>{{ bet.event.name }}</td>
                             <td>
                                 {{ ('gamble_'~bet.type)|trans({},'gamble') }}
@@ -46,7 +46,7 @@
             <h2>{{ 'my_gamble.view.processing.title'|trans }}</h2>
             <dl class="dl-horizontal">
                 <dt>{{ 'my_gamble.view.processing.date'|trans }}</dt>
-                <dd>{{ gamble.processedDate|date('Y-m-d H:i') }}</dd>
+                <dd>{{ gamble.processedDate|date_format('datetime') }}</dd>
                 <dt>{{ 'my_gamble.view.processing.type'|trans }}</dt>
                 <dd>{{ 'my_gamble.item.type'|transchoice(gamble.bets|length) }}</dd>
                 <dt>{{ 'my_gamble.view.processing.number'|trans }}</dd>

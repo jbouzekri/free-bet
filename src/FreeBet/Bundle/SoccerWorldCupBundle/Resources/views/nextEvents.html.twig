@@ -7,10 +7,10 @@
     {% set lastDate = false %}
     {% for event in events if event.canBet %}
         {% if lastDate != event.date|date('Y-m-d') %}
-            <h2>{{ event.date|date('Y-m-d') }}</h2>
+            <h2>{{ event.date|date_format('date') }}</h2>
             {% set lastDate = event.date|date('Y-m-d') %}
         {% endif %}
-        {{ event.date|date('H:i') }} - {{ event.leftName }} {% include 'FreeBetSoccerWorldCupBundle:Match:_score.html.twig' with {match: event} %} {{ event.rightName }}<br />
+        {{ event.date|date_format('hour') }} - {{ event.leftName }} {% include 'FreeBetSoccerWorldCupBundle:Match:_score.html.twig' with {match: event} %} {{ event.rightName }}<br />
     {% else %}
         {{ 'no_more_event'|trans }}
     {% endfor %}
