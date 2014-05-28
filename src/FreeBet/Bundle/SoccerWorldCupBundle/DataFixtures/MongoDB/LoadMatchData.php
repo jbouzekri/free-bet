@@ -47,7 +47,7 @@ class LoadMatchData extends AbstractDataLoader implements
         if (!empty($data[4])) {
             $entity->setRightName($data[4]);
         }
-        $entity->setDate(\DateTime::createFromFormat('U', $data[5]));
+        $entity->setDate(\DateTime::createFromFormat('Y-m-d H:i:s', $data[5]));
         //$entity->setDate(new \DateTime('-1000 seconds'));
         $entity->setCompetition($worldCup2014);
         $entity->setProcessed(false);

@@ -1,64 +1,64 @@
-1,group,A,Brazil,Croatia,1402603200
-1,group,A,Mexico,Cameroon,1402675200
-1,group,A,Brazil,Mexico,1403031600
-1,group,A,Cameroon,Croatia,1403128800
-1,group,A,Cameroon,Brazil,1403553600
-1,group,A,Croatia,Mexico,1403553600
-1,group,B,Spain,Netherlands,1402686000
-1,group,B,Chile,Australia,1402696800
-1,group,B,Spain,Chile,1403118000
-1,group,B,Australia,Netherlands,1403107200
-1,group,B,Australia,Spain,1403539200
-1,group,B,Netherlands,Chile,1403539200
-1,group,C,Colombia,Greece,1402761600
-1,group,C,"Côte d'Ivoire",Japan,1402794000
-1,group,C,Colombia,"Côte d'Ivoire",1403193600
-1,group,C,Japan,Greece,1403215200
-1,group,C,Japan,Colombia,1403640000
-1,group,C,Greece,"Côte d'Ivoire",1403640000
-1,group,D,Uruguay,"Costa Rica",1402772400
-1,group,D,England,Italy,1402783200
-1,group,D,Uruguay,England,1403204400
-1,group,D,Italy,"Costa Rica",1403280000
-1,group,D,Italy,Uruguay,1403625600
-1,group,D,"Costa Rica",England,1403625600
-1,group,E,Switzerland,Ecuador,1402848000
-1,group,E,France,Honduras,1402858800
-1,group,E,Switzerland,France,1403290800
-1,group,E,Honduras,Ecuador,1403301600
-1,group,E,Honduras,Switzerland,1403726400
-1,group,E,Ecuador,France,1403726400
-1,group,F,Argentina,"Bosnia and Herzegovina",1402869600
-1,group,F,Iran,Nigeria,1402945200
-1,group,F,Argentina,Iran,1403366400
-1,group,F,Nigeria,"Bosnia and Herzegovina",1403388000
-1,group,F,Nigeria,Argentina,1403712000
-1,group,F,"Bosnia and Herzegovina",Iran,1403712000
-1,group,G,Germany,Portugal,1402934400
-1,group,G,Ghana,USA,1402956000
-1,group,G,Germany,Ghana,1403377200
-1,group,G,USA,Portugal,1403474400
-1,group,G,USA,Germany,1403798400
-1,group,G,Portugal,Ghana,1403798400
-1,group,H,Belgium,Algeria,1403020800
-1,group,H,Russia,"Korea Republic",1403042400
-1,group,H,Belgium,Russia,1403452800
-1,group,H,"Korea Republic",Algeria,1403463600
-1,group,H,"Korea Republic",Belgium,1403812800
-1,group,H,Algeria,Russia,1403812800
-2,sixteen,1,,,1403971200
-2,sixteen,2,,,1403985600
-2,sixteen,3,,,1404057600
-2,sixteen,4,,,1404072000
-2,sixteen,5,,,1404144000
-2,sixteen,6,,,1404158400
-2,sixteen,7,,,1404230400
-2,sixteen,8,,,1404244800
-3,quarter,1,,,1404489600
-3,quarter,2,,,1404504000
-3,quarter,3,,,1404576000
-3,quarter,4,,,1404590400
-4,semi,1,,,1404849600
-4,semi,2,,,1404936000
-5,playoff,1,,,1405195200
-6,final,1,,,1405278000
+1,group,A,Brazil,Croatia,"2014-06-12 20:00:00"
+1,group,A,Mexico,Cameroon,"2014-06-13 16:00:00"
+1,group,A,Brazil,Mexico,"2014-06-17 19:00:00"
+1,group,A,Cameroon,Croatia,"2014-06-18 22:00:00"
+1,group,A,Cameroon,Brazil,"2014-06-23 20:00:00"
+1,group,A,Croatia,Mexico,"2014-06-23 20:00:00"
+1,group,B,Spain,Netherlands,"2014-06-13 19:00:00"
+1,group,B,Chile,Australia,"2014-06-13 22:00:00"
+1,group,B,Spain,Chile,"2014-06-18 19:00:00"
+1,group,B,Australia,Netherlands,"2014-06-18 16:00:00"
+1,group,B,Australia,Spain,"2014-06-23 16:00:00"
+1,group,B,Netherlands,Chile,"2014-06-23 16:00:00"
+1,group,C,Colombia,Greece,"2014-06-14 16:00:00"
+1,group,C,"Côte d'Ivoire",Japan,"2014-06-15 01:00:00"
+1,group,C,Colombia,"Côte d'Ivoire","2014-06-19 16:00:00"
+1,group,C,Japan,Greece,"2014-06-19 22:00:00"
+1,group,C,Japan,Colombia,"2014-06-24 20:00:00"
+1,group,C,Greece,"Côte d'Ivoire","2014-06-24 20:00:00"
+1,group,D,Uruguay,"Costa Rica","2014-06-14 19:00:00"
+1,group,D,England,Italy,"2014-06-14 22:00:00"
+1,group,D,Uruguay,England,"2014-06-19 19:00:00"
+1,group,D,Italy,"Costa Rica","2014-06-20 16:00:00"
+1,group,D,Italy,Uruguay,"2014-06-24 16:00:00"
+1,group,D,"Costa Rica",England,"2014-06-24 16:00:00"
+1,group,E,Switzerland,Ecuador,"2014-06-15 16:00:00"
+1,group,E,France,Honduras,"2014-06-15 19:00:00"
+1,group,E,Switzerland,France,"2014-06-20 19:00:00"
+1,group,E,Honduras,Ecuador,"2014-06-20 22:00:00"
+1,group,E,Honduras,Switzerland,"2014-06-25 20:00:00"
+1,group,E,Ecuador,France,"2014-06-25 20:00:00"
+1,group,F,Argentina,"Bosnia and Herzegovina","2014-06-15 22:00:00"
+1,group,F,Iran,Nigeria,"2014-06-16 19:00:00"
+1,group,F,Argentina,Iran,"2014-06-21 16:00:00"
+1,group,F,Nigeria,"Bosnia and Herzegovina","2014-06-21 22:00:00"
+1,group,F,Nigeria,Argentina,"2014-06-25 16:00:00"
+1,group,F,"Bosnia and Herzegovina",Iran,"2014-06-25 16:00:00"
+1,group,G,Germany,Portugal,"2014-06-16 16:00:00"
+1,group,G,Ghana,USA,"2014-06-16 22:00:00"
+1,group,G,Germany,Ghana,"2014-06-21 19:00:00"
+1,group,G,USA,Portugal,"2014-06-22 22:00:00"
+1,group,G,USA,Germany,"2014-06-26 16:00:00"
+1,group,G,Portugal,Ghana,"2014-06-26 16:00:00"
+1,group,H,Belgium,Algeria,"2014-06-17 16:00:00"
+1,group,H,Russia,"Korea Republic","2014-06-17 22:00:00"
+1,group,H,Belgium,Russia,"2014-06-22 16:00:00"
+1,group,H,"Korea Republic",Algeria,"2014-06-22 19:00:00"
+1,group,H,"Korea Republic",Belgium,"2014-06-26 20:00:00"
+1,group,H,Algeria,Russia,"2014-06-26 20:00:00"
+2,sixteen,1,,,"2014-06-28 16:00:00"
+2,sixteen,2,,,"2014-06-28 20:00:00"
+2,sixteen,3,,,"2014-06-29 16:00:00"
+2,sixteen,4,,,"2014-06-29 20:00:00"
+2,sixteen,5,,,"2014-06-30 16:00:00"
+2,sixteen,6,,,"2014-06-30 20:00:00"
+2,sixteen,7,,,"2014-07-01 16:00:00"
+2,sixteen,8,,,"2014-07-01 20:00:00"
+3,quarter,1,,,"2014-07-04 16:00:00"
+3,quarter,2,,,"2014-07-04 20:00:00"
+3,quarter,3,,,"2014-07-05 16:00:00"
+3,quarter,4,,,"2014-07-05 20:00:00"
+4,semi,1,,,"2014-07-08 20:00:00"
+4,semi,2,,,"2014-07-09 20:00:00"
+5,playoff,1,,,"2014-07-12 20:00:00"
+6,final,1,,,"2014-07-13 19:00:00"
