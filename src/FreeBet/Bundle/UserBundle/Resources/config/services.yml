@@ -50,5 +50,6 @@ services:
         class: %free_bet.listener.locale.class%
         arguments:
             - @free_bet.logged_in_user
+            - @router
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

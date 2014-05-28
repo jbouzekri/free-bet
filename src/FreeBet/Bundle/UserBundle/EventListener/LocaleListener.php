@@ -3,6 +3,7 @@
 namespace FreeBet\Bundle\UserBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\Routing\RequestContextAwareInterface;
 use FreeBet\Bundle\UserBundle\Services\LoggedInUser;
 
 /**
@@ -18,12 +19,18 @@ class LocaleListener
     private $securityContext;
 
     /**
+     * @var \Symfony\Component\Routing\RequestContextAwareInterface
+     */
+    private $router;
+
+    /**
      *
      * @param \FreeBet\Bundle\UserBundle\Services\LoggedInUser $securityContext
      */
-    public function __construct(LoggedInUser $securityContext)
+    public function __construct(LoggedInUser $securityContext, RequestContextAwareInterface $router)
     {
         $this->securityContext = $securityContext;
+        $this->router = $router;
     }
 
     /**
@@ -47,6 +54,7 @@ class LocaleListener
 
         if ($user->getLanguage() !== null) {
             $event->getRequest()->setLocale($user->getLanguage());
+            $this->router->getContext()->setParameter('_locale', $user->getLanguage());
         }
     }
 }

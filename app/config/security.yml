@@ -18,12 +18,16 @@ security:
         secured_area:
             pattern:   ^/
             anonymous: ~
-            logout: ~
+            logout:
+                path: fos_user_security_logout
+                target: fos_user_security_login
             form_login:
                 csrf_provider: form.csrf_provider
+                login_path:    fos_user_security_login
+                check_path:    fos_user_security_check
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(en\/|fr\/)?login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/group, roles: ROLE_MANAGER }
