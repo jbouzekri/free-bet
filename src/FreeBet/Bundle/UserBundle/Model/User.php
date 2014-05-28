@@ -29,6 +29,11 @@ abstract class User extends BaseUser
     protected $language;
 
     /**
+     * @var string
+     */
+    protected $timezone;
+
+    /**
      * Set Organization
      *
      * @param \FreeBet\Bundle\UserBundle\Model\Organization $organization
@@ -70,6 +75,28 @@ abstract class User extends BaseUser
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    /**
+     * Set Timezone
+     *
+     * @param string $timezone
+     * @return self
+     */
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+        return $this;
+    }
+
+    /**
+     * Get Timezone
+     *
+     * @return string
+     */
+    public function getTimezone()
+    {
+        return $this->timezone;
     }
 
     /**

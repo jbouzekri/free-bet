@@ -78,8 +78,11 @@ class DateManager
     protected function getTimeZone()
     {
         $timeZone = new \DateTimeZone($this->defaultTimeZone);
-        if ($this->securityContext->getUser() !== null) {
 
+        // Override with user configured timezone
+        $user = $this->securityContext->getUser();
+        if ($user !== null && $user->getTimezone() !== null) {
+            $timeZone = new \DateTimeZone($user->getTimezone());
         }
 
         return $timeZone;

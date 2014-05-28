@@ -7,6 +7,8 @@ FreeBet\Bundle\UserBundle\Document\User:
             id: true
         language:
             type: string
+        timezone:
+            type: string
         slug:
             index: true
             type: string

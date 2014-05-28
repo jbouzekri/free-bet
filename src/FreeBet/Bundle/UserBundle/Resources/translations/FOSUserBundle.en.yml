@@ -4,3 +4,4 @@ fos_user_change_password:
 profile:
     show:
         language: Language
+        timezone: Timezone

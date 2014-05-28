@@ -19,13 +19,19 @@ class ProfileType extends ProfileFormType
     protected $translator;
 
     /**
+     * @var string
+     */
+    protected $defaultTimezone;
+
+    /**
      * Constructor
      *
      * @param string $class
      */
-    public function __construct(TranslatorInterface $translator, $class)
+    public function __construct(TranslatorInterface $translator, $class, $defaultTimezone)
     {
         $this->translator = $translator;
+        $this->defaultTimezone = $defaultTimezone;
 
         parent::__construct($class);
     }
@@ -44,6 +50,7 @@ class ProfileType extends ProfileFormType
 
         $builder
             ->add('language', 'choice', array('choices' => $choices))
+            ->add('timezone', 'timezone', array('preferred_choices' => array($this->defaultTimezone)))
         ;
     }
 

@@ -30,6 +30,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         default_locale: "%locale%"
+        default_timezone: "%default_timezone%"
 
 # Assetic Configuration
 assetic:

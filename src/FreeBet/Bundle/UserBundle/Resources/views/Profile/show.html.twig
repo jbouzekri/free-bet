@@ -40,6 +40,14 @@
                         {{ ('language.'~default_locale)|trans }}
                     {% endif %}
                 </p>
+                <p>
+                    <label>{{ 'profile.show.timezone'|trans({}, 'FOSUserBundle') }}:</label>
+                    {% if user.timezone %}
+                        {{ user.timezone }}
+                    {% else %}
+                        {{ default_timezone }}
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
