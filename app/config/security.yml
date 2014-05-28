@@ -28,8 +28,8 @@ security:
 
     access_control:
         - { path: ^/(en\/|fr\/)?login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(en\/|fr\/)?register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(en\/|fr\/)?resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/group, roles: ROLE_MANAGER }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/, roles: ROLE_USER }

@@ -94,6 +94,8 @@ fos_user:
     db_driver: mongodb
     firewall_name: main
     user_class: FreeBet\Bundle\UserBundle\Document\User
+    service:
+        user_manager: free_bet.user_manager
     profile:
         form:
             type: freebet_user_profile
