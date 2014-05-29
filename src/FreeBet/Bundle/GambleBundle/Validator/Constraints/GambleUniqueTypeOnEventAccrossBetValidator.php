@@ -59,7 +59,7 @@ class GambleUniqueTypeOnEventAccrossBetValidator extends ConstraintValidator
                 ->countAllGambleHavingBetsOnEventWithType($gamble->getUser(), $bet->getEvent(), $bet->getType());
             if ($count > 0 || in_array($bet->getType(), $betTypes[$eventId])) {
                 $this->context->addViolationAt(
-                    'bets.'.$position,
+                    'bets['.$position.']',
                     $constraint->message,
                     array(
                         '%type%' => $bet->getType()

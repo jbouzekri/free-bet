@@ -9,7 +9,8 @@
     <div class="alert flat-alert alert-danger">{{ error.message }}</div>
 {% endfor %}
 {% for bet in cart.gamble.bets %}
-    {% for error in cart.getBetErrors(bet) %}
+    {% set tempVar = loop.index0 %}
+    {% for error in cart.getBetErrors(bet, tempVar) %}
         <div class="alert flat-alert alert-danger">{{ error.message }}</div>
     {% endfor %}
     {{ render_cart_bet(bet) }}

@@ -125,10 +125,20 @@ class Bet
     public function canDelete()
     {
         $now = new \DateTime('now', new \DateTimeZone('UTC'));
-        if ($this->getEvent()->getDate() > $now) {
+        if ($this->isEventStarted()) {
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Check if the event has started
+     *
+     * @return boolean
+     */
+    public function isEventStarted()
+    {
+        return $this->getEvent()->isStarted();
     }
 }

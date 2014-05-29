@@ -322,4 +322,16 @@ abstract class Event
             && !empty($this->leftName)
             && !empty($this->rightName);
     }
+
+    /**
+     * Check if the event has started
+     *
+     * @return bool
+     */
+    public function isStarted()
+    {
+        $now = new \DateTime('now', new \DateTimeZone('UTC'));
+
+        return $this->getDate() > $now;
+    }
 }

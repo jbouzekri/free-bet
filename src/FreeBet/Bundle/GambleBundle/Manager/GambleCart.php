@@ -130,18 +130,23 @@ class GambleCart
     {
         $globalErrors = array();
         foreach ($this->getErrors() as $error) {
-            if (strpos($error->getPropertyPath(), 'bets.') === false) {
+            if (strpos($error->getPropertyPath(), 'bets[') === false) {
                 $globalErrors[] = $error;
             }
         }
         return $globalErrors;
     }
 
-    public function getBetErrors(Bet $bet)
+    /**
+     * Get errors on a specific gamble
+     *
+     * @return array
+     */
+    public function getBetErrors(Bet $bet, $key)
     {
         $betErrors = array();
         foreach ($this->getErrors() as $error) {
-            if ($error->getInvalidValue() == $bet) {
+            if ($error->getInvalidValue() == $bet || strpos($error->getPropertyPath(), 'bets['.$key.']') === 0) {
                 $betErrors[] = $error;
             }
         }

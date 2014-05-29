@@ -6,6 +6,7 @@ FreeBet\Bundle\GambleBundle\Document\Gamble:
             - Count:
                 min: 1
                 minMessage: "A gamble must have at least one bet."
+            - Valid: ~
     constraints:
         - FreeBet\Bundle\GambleBundle\Validator\Constraints\GambleUniqueTypeOnEventAccrossBet: { groups: [free_bet] }
 
@@ -19,3 +20,6 @@ FreeBet\Bundle\GambleBundle\Document\Bet:
             - NotBlank: ~
     constraints:
         - FreeBet\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCouple: ~
+    getters:
+        eventStarted:
+            - "True": { message: "The event has started. You cannot bet on it.", groups: [free_bet] }
