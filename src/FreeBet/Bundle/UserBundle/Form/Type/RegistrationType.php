@@ -4,7 +4,6 @@ namespace FreeBet\Bundle\UserBundle\Form\Type;
 
 use FOS\UserBundle\Form\Type\RegistrationFormType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Description of RegistrationType
@@ -13,11 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class RegistrationType extends RegistrationFormType
 {
-    /**
-     * @var string
-     */
-    private $class;
-
     /**
      * @var string
      */
@@ -31,7 +25,7 @@ class RegistrationType extends RegistrationFormType
      */
     public function __construct($class, $defaultTimezone)
     {
-        $this->class = $class;
+        parent::__construct($class);
         $this->defaultTimezone = $defaultTimezone;
     }
 
@@ -43,17 +37,6 @@ class RegistrationType extends RegistrationFormType
         parent::buildForm($builder, $options);
 
         $builder->add('timezone', 'timezone', array('preferred_choices' => array($this->defaultTimezone)));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => $this->class,
-            'intention'  => 'registration',
-        ));
     }
 
     /**
