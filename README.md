@@ -12,12 +12,49 @@ Prerequisites
 -------------
 
 A clean LAMP installation.
-Warning : Here, M stands for MongoDB. You must have it installed with the php module
-For my environment development, I followed the MongoDB installation documentation : [Read the doc](http://docs.mongodb.org/manual/installation/)
+
+**Warning : Here, M stands for MongoDB.** You must have it installed with the php module.
+
+For my environment development, I followed the MongoDB installation documentation : [Read the doc](http://docs.mongodb.org/manual/installation/).
+
+
+For Mongo, run as root :
+
+-   Import the public key used by the package management system.
 
 ```
-apt-get install php5-mongo
+apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 ```
+
+-   Create a /etc/apt/sources.list.d/mongodb.list file for MongoDB.
+
+```
+echo 'deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+```
+
+-   Reload local package database.
+
+```
+apt-get update
+```
+
+-   Install the MongoDB packages.
+
+```
+apt-get install mongodb-org
+```
+
+
+For PHP Mongo client on Debian, run as root :
+
+    echo "deb http://ftp.de.debian.org/debian wheezy-backports main" >> /etc/apt/sources.list
+    apt-get update
+    apt-get install php5-mongo
+
+
+For PHP Mongo client on Ubuntu, run as root :
+
+    apt-get install php5-mongo
 
 The VirtualHost for apache is a standard one for symfony2
 
@@ -26,37 +63,55 @@ Installation
 
 The following vhost is for apache 2.4. Adapt the Require section for old apache version.
 
-```shell
-cd /var/www
-git clone https://github.com/jbouzekri/betting-sas.git
-cd betting-sas
-php composer.phar install
-chown www-data:www-data app/{cache,logs} -R
-chmod ug+rwx app/{cache,logs} -R
-cat >/etc/apache2/site-available/betting-sas.conf <<EOL
-<VirtualHost *:80>
-    ServerName <your hostname>
+Install and configure your symfony2 app
 
-    DocumentRoot /var/www/betting-sas/web
-    <Directory /var/www/workspace/betting-sas/web>
-        # enable the .htaccess rewrites
-        AllowOverride All
-	Require all granted
-    </Directory>
+    cd /var/www
+    git clone https://github.com/jbouzekri/free-bet.git --recursive
+    cd free-bet
+    php composer.phar install
+    php app/console assetic:dump
+    chown www-data:www-data app/{cache,logs} -R
+    chmod ug+rwx app/{cache,logs} -R
+    php app/console doctrine:mongodb:schema:create --db --index --collection
+    php app/console doctrine:mongodb:fixtures:load
 
-    ErrorLog /var/log/apache2/error-betting.log
-    CustomLog /var/log/apache2/access-betting.log combined
-</VirtualHost>
-EOL
-a2ensite betting-sas
-```
+Add the virtual host
+
+    vim /etc/apache2/site-available/free-bet.conf
+
+
+    <VirtualHost *:80>
+        ServerName <your hostname>
+
+        DocumentRoot /var/www/free-bet/web
+        <Directory /var/www/workspace/free-bet/web>
+            # enable the .htaccess rewrites
+            AllowOverride All
+            Require all granted
+        </Directory>
+
+        ErrorLog /var/log/apache2/error-free-bet.log
+        CustomLog /var/log/apache2/access-free-bet.log combined
+    </VirtualHost>
+
+Enable the virtual host
+
+    /etc/apache2/sites-enabled
+    ln -s /etc/apache2/sites-available/free-bet.conf
+    service apache2 restart
+
+Go to the hostname configured.
+You can logged in as admin with the account admin/admin.
 
 Roadmap
 -------
 
-This is a work in progress so it is not finish. Comming soon :
-* Bet validation
-* Stats on events and competition : per person, and per group
-* And of course templating, style and navigation
+This is a work in progress so it is not finish. Coming soon :
+
+- Simple Dashboard
+- User grouping and bet sharing
+- Football European League : season 2014 - 215
+- Social network submission
+- Complex Stats on events and competition : per person, and per group
 
 Theoric release date : 05/2014
