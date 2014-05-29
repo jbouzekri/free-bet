@@ -124,7 +124,6 @@ class Bet
      */
     public function canDelete()
     {
-        $now = new \DateTime('now', new \DateTimeZone('UTC'));
         if ($this->isEventStarted()) {
             return true;
         }
