@@ -22,4 +22,4 @@ FreeBet\Bundle\GambleBundle\Document\Bet:
         - FreeBet\Bundle\GambleBundle\Validator\Constraints\BetTypeChoiceCouple: ~
     getters:
         eventStarted:
-            - "True": { message: "The event has started. You cannot bet on it.", groups: [free_bet] }
+            - "False": { message: "The event has started. You cannot bet on it.", groups: [free_bet] }

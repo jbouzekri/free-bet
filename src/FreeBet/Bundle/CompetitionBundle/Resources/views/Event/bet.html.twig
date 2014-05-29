@@ -4,7 +4,7 @@
 
 {% block content %}
 <div id="event-bet" class="grouped-list">
-    <h1>{{ event.name }}</h1>
+    <h1>{{ event.name }} <small>{{ event.date|date_format('datetime')}}</small></h1>
     {{ render_all_bet_types(event) }}
 </div>
 {% endblock %}

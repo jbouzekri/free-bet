@@ -13,17 +13,17 @@
         <tbody>
             {% for event in events %}
                 <tr>
-                    <td {% if event.leftName is not empty and event.rightName is not empty %}
+                    <td {% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
                         data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"
                         {% endif %}>
                         {{ event.date|date_format('date') }}
                     </td>
-                    <td {% if event.leftName is not empty and event.rightName is not empty %}
+                    <td {% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
                         data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"
                         {% endif %}>
                         {{ event.date|date_format('hour') }}
                     </td>
-                    <td {% if event.leftName is not empty and event.rightName is not empty %}
+                    <td {% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
                         data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"
                         {% endif %}>
                         {% include 'FreeBetCompetitionBundle:Event:_event_name.html.twig' with {

@@ -4,6 +4,7 @@ namespace FreeBet\Bundle\CompetitionBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FreeBet\Bundle\CompetitionBundle\Document\Event;
 
 /**
@@ -90,6 +91,10 @@ class EventController extends Controller
 
         if (!$event) {
             return $this->createNotFoundException('Match '.$slugEvent.' does not exists');
+        }
+
+        if ($event->isStarted()) {
+            throw new AccessDeniedException('The event has started. You cannot bet on it.');
         }
 
         return $this->render('FreeBetCompetitionBundle:Event:bet.html.twig', array(

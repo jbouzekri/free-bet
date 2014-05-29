@@ -6,7 +6,7 @@
 {% endif %}
 
 <span class="event event-{{ event.leftName|slugify }}"></span>
-{% if event.leftName is not empty and event.rightName is not empty %}
+{% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
     <a href="{{ path('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}">
 {% endif %}
         {% if event.leftName is not empty %}
@@ -24,7 +24,7 @@
         {% else %}
             {{ 'team_unknown'|trans }}
         {% endif %}
-{% if event.leftName is not empty and event.rightName is not empty %}
+{% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
     </a>
 {% endif %}
 <span class="event event-{{ event.rightName|slugify }}"></span>

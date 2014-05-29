@@ -146,7 +146,7 @@ class GambleCart
     {
         $betErrors = array();
         foreach ($this->getErrors() as $error) {
-            if ($error->getInvalidValue() == $bet || strpos($error->getPropertyPath(), 'bets['.$key.']') === 0) {
+            if (strpos($error->getPropertyPath(), 'bets['.$key.']') === 0) {
                 $betErrors[] = $error;
             }
         }

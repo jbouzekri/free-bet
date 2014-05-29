@@ -332,6 +332,6 @@ abstract class Event
     {
         $now = new \DateTime('now', new \DateTimeZone('UTC'));
 
-        return $this->getDate() > $now;
+        return $now > $this->getDate();
     }
 }
