@@ -91,9 +91,7 @@ class EventController extends Controller
 
         if (!$event) {
             return $this->createNotFoundException('Match '.$slugEvent.' does not exists');
-        }
-
-        if ($event->isStarted()) {
+        } elseif ($event->isStarted()) {
             throw new AccessDeniedException('The event has started. You cannot bet on it.');
         }
 

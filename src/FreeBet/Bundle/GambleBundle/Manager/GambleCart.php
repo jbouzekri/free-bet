@@ -142,7 +142,7 @@ class GambleCart
      *
      * @return array
      */
-    public function getBetErrors(Bet $bet, $key)
+    public function getBetErrors($key)
     {
         $betErrors = array();
         foreach ($this->getErrors() as $error) {
