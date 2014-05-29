@@ -1,0 +1,17 @@
+{% extends "FreeBetUIBundle::layout.html.twig" %}
+
+{% block title %}{{ 'error.403.title'|trans }}{% endblock %}
+
+{% block content %}
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-info">{{ 'error.403.code'|trans }}</h2>
+        <div class="error-content">
+            <h3><i class="fa fa-warning text-yellow"></i> {{ 'error.403.title'|trans }}</h3>
+            <p>
+                {{ 'error.403.text'|trans({'%url%':path('event_next_list')})|raw }}
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

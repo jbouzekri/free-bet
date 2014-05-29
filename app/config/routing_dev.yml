@@ -13,3 +13,5 @@ _configurator:
 _main:
     resource: routing.yml
 
+webfactory_exceptions:
+    resource: "@WebfactoryExceptionsBundle/Resources/config/routing.yml"

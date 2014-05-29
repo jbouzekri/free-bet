@@ -1,6 +1,25 @@
 general:
     back: Back
 
+error:
+    global:
+        title: Oops! An error occured.
+        text: |
+            We will fix this as soon as possible. Do not hesitate to fill an issue on <a href="https://github.com/jbouzekri/free-bet">Github</a>.
+            Meanwhile, you may <a href="%url%">return to events list</a>.
+    404:
+        code: 404
+        title: Oops! Page not found.
+        text: |
+            We could not find the page you were looking for.
+            Meanwhile, you may <a href="%url%">return to events list</a>.
+    403:
+        code: 403
+        title: Oops! You are not authorized.
+        text: |
+            You cannot access this resource or you are trying a forbidden action.
+            Meanwhile, you may <a href="%url%">return to events list</a>.
+
 date:
     date: Y-m-d
     hour: H:i

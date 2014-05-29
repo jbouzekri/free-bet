@@ -6,6 +6,9 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "require-dev" :  {
+        "webfactory/exceptions-bundle": "@stable"
+    },
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
@@ -50,6 +53,7 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
+        "symfony-assets-install": "symlink",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
