@@ -4,6 +4,7 @@ parameters:
     free_bet.user.repository.class: FreeBet\Bundle\UserBundle\Document\Repository\UserRepository
     free_bet.user.repository.namespace: FreeBetUserBundle:User
     free_bet.profile.form.type.class: FreeBet\Bundle\UserBundle\Form\Type\ProfileType
+    free_bet.registration.form.type.class: FreeBet\Bundle\UserBundle\Form\Type\RegistrationType
     free_bet.listener.locale.class: FreeBet\Bundle\UserBundle\EventListener\LocaleListener
     free_bet.logged_in_user.class: FreeBet\Bundle\UserBundle\Services\LoggedInUser
     free_bet.user_manager.class: FreeBet\Bundle\UserBundle\Services\UserManager
@@ -43,6 +44,14 @@ services:
         tags:
             - { name: form.type, alias: freebet_user_profile }
 
+    free_bet.registration.form.type:
+        class: %free_bet.registration.form.type.class%
+        arguments:
+            - %fos_user.model.user.class%
+            - %default_timezone%
+        tags:
+            - { name: form.type, alias: freebet_user_registration }
+
     free_bet.logged_in_user:
         class: %free_bet.logged_in_user.class%
         arguments:
@@ -65,3 +74,4 @@ services:
             - @fos_user.document_manager
             - %fos_user.model.user.class%
             - @request_stack
+            - %default_timezone%

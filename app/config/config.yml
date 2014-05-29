@@ -100,6 +100,9 @@ fos_user:
     profile:
         form:
             type: freebet_user_profile
+    registration:
+        form:
+            type: freebet_user_registration
 
 knp_menu:
     twig:

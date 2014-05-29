@@ -21,6 +21,11 @@ class UserManager extends BaseUserManager
     protected $request;
 
     /**
+     * @var string
+     */
+    protected $defaultTimezone;
+
+    /**
      * Constructor.
      *
      * @param \Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface $encoderFactory
@@ -36,11 +41,13 @@ class UserManager extends BaseUserManager
         CanonicalizerInterface $emailCanonicalizer,
         ObjectManager $om,
         $class,
-        RequestStack $request
+        RequestStack $request,
+        $defaultTimezone
     ) {
         parent::__construct($encoderFactory, $usernameCanonicalizer, $emailCanonicalizer, $om, $class);
 
         $this->request = $request;
+        $this->defaultTimezone = $defaultTimezone;
     }
 
     /**
@@ -55,6 +62,7 @@ class UserManager extends BaseUserManager
 
         // Set current locale when registering
         $user->setLanguage($this->request->getMasterRequest()->getLocale());
+        $user->setTimezone($this->defaultTimezone);
 
         return $user;
     }
