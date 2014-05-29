@@ -94,6 +94,7 @@ my_gamble:
         processing:
             title: Processing
             date: Processing date
+            no_date: Not yet processed
             type: Type
             number: Number of lines
             winning: Number of winning lines

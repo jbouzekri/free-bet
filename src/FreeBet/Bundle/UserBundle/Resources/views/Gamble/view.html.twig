@@ -46,7 +46,13 @@
             <h2>{{ 'my_gamble.view.processing.title'|trans }}</h2>
             <dl class="dl-horizontal">
                 <dt>{{ 'my_gamble.view.processing.date'|trans }}</dt>
-                <dd>{{ gamble.processedDate|date_format('datetime') }}</dd>
+                <dd>
+                    {% if gamble.processedDate %}
+                        {{ gamble.processedDate|date_format('datetime') }}
+                    {% else %}
+                        {{ 'my_gamble.view.processing.no_date'|trans }}
+                    {% endif %}
+                </dd>
                 <dt>{{ 'my_gamble.view.processing.type'|trans }}</dt>
                 <dd>{{ 'my_gamble.item.type'|transchoice(gamble.bets|length) }}</dd>
                 <dt>{{ 'my_gamble.view.processing.number'|trans }}</dd>
@@ -62,11 +68,13 @@
                         <a class="btn btn-default btn-sm" href="{{ path('user_account_gambles_list') }}">
                             <span class="glyphicon glyphicon-chevron-left"></span> {{ 'my_gamble.view.back'|trans }}
                         </a>
-                        <input class="confirm-dialog btn btn-danger btn-sm"
-                               data-label="{{ 'my_gamble.view.delete_modal.label'|trans }}"
-                               data-target="remove-form"
-                               type="submit"
-                               value="{{ 'my_gamble.view.delete'|trans }}" />
+                        {% if gamble.canDelete(app.user) %}
+                            <input class="confirm-dialog btn btn-danger btn-sm"
+                                   data-label="{{ 'my_gamble.view.delete_modal.label'|trans }}"
+                                   data-target="remove-form"
+                                   type="submit"
+                                   value="{{ 'my_gamble.view.delete'|trans }}" />
+                        {% endif %}
                     </form>
                 </div>
                 <dl class="dl-horizontal {% if gamble.processedDate and gamble.point > 0 %}dl-success{% elseif gamble.processedDate %}dl-danger{% endif %}">

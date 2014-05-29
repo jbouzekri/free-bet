@@ -116,4 +116,19 @@ class Bet
     {
         return $this->winner;
     }
+
+    /**
+     * Check if the bet can be removed (event not started)
+     *
+     * @return boolean
+     */
+    public function canDelete()
+    {
+        $now = new \DateTime('now', new \DateTimeZone('UTC'));
+        if ($this->getEvent()->getDate() > $now) {
+            return true;
+        }
+
+        return false;
+    }
 }

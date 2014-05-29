@@ -356,11 +356,29 @@ class Gamble
      */
     public function canDelete(User $user)
     {
-        if ($this->isOwner($user) || $user->isAdmin()) {
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        if ($this->isOwner($user) && $this->canDeleteAllBet()) {
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Check if the bets can be deleted (the event has not started)
+     *
+     * @return boolean
+     */
+    public function canDeleteAllBet()
+    {
+        $notDeletableBets = $this->getBets()->filter(function (Bet $bet) {
+            return $bet->canDelete() === false;
+        });
+
+        return $notDeletableBets->count() === 0;
     }
 
     /**
