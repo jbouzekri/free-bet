@@ -4,3 +4,6 @@
 [submodule "src/FreeBet/Bundle/UIBundle/Resources/public/bootbox"]
         path = src/FreeBet/Bundle/UIBundle/Resources/public/bootbox
         url = https://github.com/makeusabrew/bootbox.git
+[submodule "src/FreeBet/Bundle/UIBundle/Resources/public/bootstrap"]
+	path = src/FreeBet/Bundle/UIBundle/Resources/public/bootstrap
+	url = https://github.com/twbs/bootstrap.git
