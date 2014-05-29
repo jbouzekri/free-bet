@@ -1,21 +1,6 @@
 <header class="header">
     <nav class="navbar navbar-static-top" role="navigation">
         <div class="container">
-            <div class="navbar-right">
-                <ul class="nav navbar-nav">
-                    <li class="user user-menu">
-                        <a href="{{ path('fos_user_profile_show') }}">
-                            <i class="glyphicon glyphicon-user"></i>
-                            <span>{{ app.user.username }} </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fos_user_security_logout') }}">
-                            <span class="glyphicon glyphicon-off"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-right -->
 
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -25,7 +10,29 @@
             </div><!-- /.navbar-header -->
 
             <!-- Main nav links -->
-            <div class="collapse navbar-collapse">
+            <div class="navbar-collapse">
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="user user-menu">
+                            <a href="{{ path('fos_user_profile_show') }}">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>{{ app.user.username }} </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                <span class="glyphicon glyphicon-off"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-right -->
+
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
                 {{ knp_menu_render('main', {'template': 'FreeBetUIBundle:Menu:main.html.twig'}) }}
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
