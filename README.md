@@ -103,6 +103,12 @@ Enable the virtual host
 Go to the hostname configured.
 You can logged in as admin with the account admin/admin.
 
+There is a cron task to configure. This task process all ended events and their gambles to determine which are winners.
+
+    php app/console gamble:process
+
+You can launch it every hour for example
+
 Roadmap
 -------
 
