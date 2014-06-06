@@ -390,7 +390,7 @@ fieldset {
 
 /*
  * 1. Corrects color not being inherited in IE6/7/8/9
- * 2. Corrects text not wrapping in FF3 
+ * 2. Corrects text not wrapping in FF3
  * 3. Corrects alignment displayed oddly in IE6/7
  */
 legend {
@@ -577,6 +577,7 @@ h3 {
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: normal;
   color: #b6b6b6;
+  margin-top: 45px;
 }
 
 a {
@@ -712,7 +713,6 @@ dt {
   max-width: 650px;
   margin: 0 auto;
   padding: 0 10px;
-  background: blue;
   margin: 6px auto;
 }
 #header nav li {

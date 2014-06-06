@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>FreeBet par jbouzekri</title>
+    <meta name="description" content="FreeBet est une application PHP pour réaliser facilement des paris sportifs gratuits sans argent." />
+    <link rel="stylesheet" href="stylesheets/styles.css" />
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/jbouzekri/free-bet">Voir sur GitHub</a></li>
+          <li class="downloads"><a href="http://www.freebet-sport.com/"><img src="./images/eng.jpg" height="10" /> Version anglaise</a></li>
+          <li class="downloads"><a href="http://play.freebet-sport.com/">Se connecter</a></li>
+          <li class="title">Essayez le</li>
+        </nav>
+
+      </div><!-- end header -->
+
+    <div class="wrapper">
+        <section>
+            <div id="title">
+              <h1>FreeBet</h1>
+              <p>Une application web PHP pour réaliser des paris sportifs facilement et gratuitement</p>
+              <hr>
+              <span class="credits left">Projet maintenu par <a href="https://github.com/jbouzekri">jbouzekri</a></span>
+              <span class="credits right">Hébergé sur GitHub Pages &mdash; Theme par <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+            </div>
+
+            <h3>
+                <a name="what-is-freebet" class="anchor" href="#what-is-freebet">
+                    <span class="octicon octicon-link"></span>
+                </a>Qu'est ce que FreeBet ?
+            </h3>
+            <p>
+                FreeBet vous permet de tester vos capacités de parieur sportif.
+                <ul>
+                    <li>C'est totalement gratuit.</li>
+                    <li>Il n'y a pas d'argent en jeu donc vous ne pouvez rien perdre.</li>
+                    <li>Vous pouvez vous entraîner avant de passer sur des plateformes de pari à mises réelles</li>
+                    <li>C'est opensource. Vous pouvez le télécharger, l'installer (il est utilisé dans mon entreprise) et contribuer.</li>
+                </ul>
+            </p>
+
+            <h3>
+                <a name="how-does-it-work" class="anchor" href="#how-does-it-work">
+                    <span class="octicon octicon-link"></span>
+                </a>Comment ça marche ?
+            </h3>
+            <p>
+                Vous pouvez faire vos paris sur différents évènements sportifs. Pour le moment, seul la coupe du monde 2014 est couverte mais je vais rajouter rapidement les ligues de football européennes.
+                Quand un évènement est terminé, un administrateur saisit le résultat final. Une tache est exécutée pour déterminer si votre pari est gagnant ou non.
+                Vous gagnez des points pour chaque pari réussi.
+                <ul>
+                    <li>Un pari simple vous donne 1 point</li>
+                    <li>Un pari plus complexe vous donne 15 point (par exemple le score exact d'un match de footbal)</li>
+                    <li>Des paris multiples réussis multiplient le nombre total de points gagnés</li>
+                </ul>
+                Ce n'est pas encore implémenté mais les joueurs apparaîtront prochainement dans un classement mondial.
+            </p>
+
+            <h3>
+                <a name="installation" class="anchor" href="#installation">
+                    <span class="octicon octicon-link"></span>
+                </a>Installation
+            </h3>
+            <p>L'installation est documentée sur Github: <a href="https://github.com/jbouzekri/free-bet">Documentation d'installation de FeeBet</a>.
+        </section>
+    </div>
+
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-51718690-1', 'freebet-sport.com');
+        ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
