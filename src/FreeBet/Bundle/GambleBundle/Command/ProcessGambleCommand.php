@@ -103,6 +103,19 @@ class ProcessGambleCommand extends Command
         $this->getLogger()->info("Start gamble:process command");
         $this->date = \FreeBet\Bundle\UIBundle\Services\DateManager::getUtcDateTime();
 
+        $this->processEvents();
+
+        $this->getLogger()->info("End gamble:process command");
+
+        flock($fp, LOCK_UN);
+        fclose($fp);
+    }
+
+    /**
+     * Process Events
+     */
+    protected function processEvents()
+    {
         // select all events which has ended and has not already been processed
         $events = $this->eventRepository->findAllPastNotProcessedEvent($this->date);
 
@@ -125,11 +138,6 @@ class ProcessGambleCommand extends Command
             $this->om->persist($event);
             $this->om->flush();
         }
-
-        $this->getLogger()->info("End gamble:process command");
-
-        flock($fp, LOCK_UN);
-        fclose($fp);
     }
 
     /**

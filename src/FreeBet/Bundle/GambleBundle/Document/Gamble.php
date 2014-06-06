@@ -151,7 +151,7 @@ class Gamble
     /**
      * Set processedDate
      *
-     * @param date $processedDate
+     * @param \DateTime $processedDate
      * @return self
      */
     public function setProcessedDate($processedDate)
@@ -163,7 +163,7 @@ class Gamble
     /**
      * Get processedDate
      *
-     * @return date $processedDate
+     * @return \DateTime $processedDate
      */
     public function getProcessedDate()
     {
