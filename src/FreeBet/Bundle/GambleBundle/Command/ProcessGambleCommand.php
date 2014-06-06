@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 use FreeBet\Bundle\CompetitionBundle\Document\Repository\EventRepositoryInterface;
 use FreeBet\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface;
 use FreeBet\Bundle\CompetitionBundle\Document\Event;
-use FreeBet\Bundle\GambleBundle\Gamble\GambleProcessorInterface;
+use FreeBet\Bundle\GambleBundle\Gamble\GambleProcessor;
 
 /**
  * Description of ProcessGambleCommand
@@ -34,7 +34,7 @@ class ProcessGambleCommand extends Command
     protected $gambleRepository;
 
     /**
-     * @var \FreeBet\Bundle\GambleBundle\Gamble\GambleProcessorInterface
+     * @var \FreeBet\Bundle\GambleBundle\Gamble\GambleProcessor
      */
     protected $processor;
 
@@ -44,19 +44,24 @@ class ProcessGambleCommand extends Command
     protected $logger;
 
     /**
+     * @var \DateTime
+     */
+    protected $date;
+
+    /**
      * Constructor
      *
      * @param \Doctrine\Common\Persistence\ObjectManager $om
      * @param \FreeBet\Bundle\CompetitionBundle\Document\Repository\EventRepositoryInterface $eventRepository
      * @param \FreeBet\Bundle\GambleBundle\Document\Repository\GambleRepositoryInterface $gambleRepository
-     * @param \FreeBet\Bundle\GambleBundle\Gamble\GambleProcessorInterface $processor
+     * @param \FreeBet\Bundle\GambleBundle\Gamble\GambleProcessor $processor
      * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
         \Doctrine\Common\Persistence\ObjectManager $om,
         EventRepositoryInterface $eventRepository,
         GambleRepositoryInterface $gambleRepository,
-        \FreeBet\Bundle\GambleBundle\Gamble\GambleProcessorInterface $processor,
+        GambleProcessor $processor,
         LoggerInterface $logger
     ) {
         $this->om = $om;
@@ -64,6 +69,7 @@ class ProcessGambleCommand extends Command
         $this->gambleRepository = $gambleRepository;
         $this->processor = $processor;
         $this->logger = $logger;
+        $this->processor->setLogger($this->logger);
 
         parent::__construct();
     }
@@ -87,10 +93,18 @@ class ProcessGambleCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        //LOCK system
+        $fp = fopen(sys_get_temp_dir().'/gamble-process.lock', 'a+');
+        if (!flock($fp, LOCK_EX | LOCK_NB)) { //get exclusive lock
+            $this->getLogger()->info("Process already running");
+            return;
+        }
+
         $this->getLogger()->info("Start gamble:process command");
+        $this->date = \FreeBet\Bundle\UIBundle\Services\DateManager::getUtcDateTime();
 
         // select all events which has ended and has not already been processed
-        $events = $this->eventRepository->findAllEndedAndNotProcessedEvent();
+        $events = $this->eventRepository->findAllPastNotProcessedEvent($this->date);
 
         foreach ($events as $event) {
             if (!$event->hasResult()) {
@@ -112,10 +126,10 @@ class ProcessGambleCommand extends Command
             $this->om->flush();
         }
 
-        // Process all gambles with at least one wining bet
-        $this->processGambleWithWinnerBet();
-
         $this->getLogger()->info("End gamble:process command");
+
+        flock($fp, LOCK_UN);
+        fclose($fp);
     }
 
     /**
@@ -132,41 +146,16 @@ class ProcessGambleCommand extends Command
 
         foreach ($gambles as $gamble) {
             // Check if the bets are winners in the processed gamble
-            $this->processor->processGambleWithEvent($gamble, $event);
+            $this->processor->process($gamble, $event, $this->date);
 
             // TODO mass flush
             $this->om->persist($gamble);
             $this->om->flush();
 
-            $this->getLogger()->info("Gamble #".$gamble->getId()." had bet on this event");
+            $this->getLogger()->info("Gamble #".$gamble->getId()." had been processed");
         }
 
         $this->getLogger()->info("End process event ".$event->getId());
-    }
-
-    /**
-     * Process a gamble with a least a winning bet
-     */
-    protected function processGambleWithWinnerBet()
-    {
-        $this->getLogger()->info("Start process gamble with winning bet");
-
-        $gambles = $this->gambleRepository->findAllGambleWithProcessedBets();
-
-        foreach ($gambles as $gamble) {
-            if ($gamble->hasEnded()) {
-
-                $this->processor->calculateResult($gamble);
-                $gamble->setProcessedDate(new \DateTime());
-
-                $this->om->persist($gamble);
-                $this->om->flush();
-
-                $this->getLogger()->info("Gamble #".$gamble->getId()." has been processed");
-            }
-        }
-
-        $this->getLogger()->info("End process gamble with winning bet");
     }
 
     /**

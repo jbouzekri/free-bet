@@ -46,7 +46,7 @@
         </thead>
         <tbody>
             {% for gamble in pagination %}
-                <tr class="onclicklink {% if gamble.processedDate %}{% if gamble.winnger %}success{% else %}danger{% endif %}{% endif %}"
+                <tr class="onclicklink {% if gamble.processedDate %}{% if gamble.winner %}success{% else %}danger{% endif %}{% endif %}"
                     data-url="{{ path('user_account_gamble_view', {id: gamble.id}) }}">
                     <td>
                         <a href="{{ path('user_account_gamble_view', {id: gamble.id}) }}">{{ gamble.created|date_format('date') }}</a>
@@ -64,7 +64,7 @@
                     </td>
                     <td>
                         {% if gamble.processedDate %}
-                            {% include 'FreeBetGamble::_gamble_result.html.twig' with {item: gamble} %}
+                            {% include 'FreeBetGambleBundle::_gamble_result.html.twig' with {item: gamble} %}
                         {% endif %}
                     </td>
                 </tr>

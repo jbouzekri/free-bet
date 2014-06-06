@@ -15,10 +15,10 @@ class EventRepository extends DocumentRepository implements EventRepositoryInter
     /**
      * {@inheritDoc}
      */
-    public function findAllEndedAndNotProcessedEvent()
+    public function findAllPastNotProcessedEvent(\DateTime $date)
     {
         $qb = $this->createQueryBuilder()
-            ->field('date')->lt(new \DateTime())
+            ->field('date')->lt($date)
             ->field('processed')->equals(false);
 
         return $qb->getQuery()->execute();
@@ -27,10 +27,10 @@ class EventRepository extends DocumentRepository implements EventRepositoryInter
     /**
      * {@inheritDoc}
      */
-    public function findNextEvents($limit = 30)
+    public function findNextEvents(\DateTime $date, $limit = 30)
     {
         $qb = $this->createQueryBuilder()
-            ->field('date')->gte(new \DateTime())
+            ->field('date')->gte($date)
             ->field('processed')->equals(false)
             ->sort('date', 'asc')
             ->limit($limit);

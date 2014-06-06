@@ -11,7 +11,7 @@
             <p>{{ 'my_gamble.view.id'|trans({'%id%':gamble.id}) }}</p>
 
             <h2>{{ 'my_gamble.view.detail'|trans }}</h2>
-            <table class="table table-bordered">
+            <table class="bet-result table table-bordered">
                 <thead>
                     <tr>
                         <th>{{ 'my_gamble.view.header.sport'|trans }}</th>
@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                     {% for bet in gamble.bets %}
-                        <tr class="{% if gamble.processedDate %}{% if bet.winnger %}success{% else %}danger{% endif %}{% endif %}">
+                        <tr class="{% if bet.winner is not null %}{% if bet.winner %}success{% else %}danger{% endif %}{% endif %}">
                             <td>{{ ('gamble_'~bet.event.competition.type)|trans({},'gamble') }}</td>
                             <td>{{ gamble.created|date_format('date') }}</td>
                             <td>{{ gamble.created|date_format('hour') }}</td>
@@ -34,8 +34,8 @@
                                 {{ bet_types.findByEventTypeAndType(bet.event.type, bet.type).getChoiceLabel(bet.event, bet.choice) }}
                             </td>
                             <td>
-                                {% if gamble.processedDate %}
-                                    {% include 'FreeBetGamble::_gamble_result.html.twig' with {item: bet} %}
+                                {% if bet.winner is not null %}
+                                    {% include 'FreeBetGambleBundle::_gamble_result.html.twig' with {item: bet} %}
                                 {% endif %}
                             </td>
                         </tr>

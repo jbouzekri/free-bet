@@ -4,81 +4,90 @@ namespace FreeBet\Bundle\GambleBundle\Gamble;
 
 use FreeBet\Bundle\GambleBundle\Document\Gamble;
 use FreeBet\Bundle\CompetitionBundle\Document\Event;
-use FreeBet\Bundle\GambleBundle\BetType\BetTypeChain;
+use Psr\Log\LoggerInterface;
 
 /**
  * Description of GambleProcessor
  *
  * @author jobou
  */
-class GambleProcessor implements GambleProcessorInterface
+class GambleProcessor
 {
     /**
-     * @var \FreeBet\Bundle\GambleBundle\BetType\BetTypeChain
+     * @var array
      */
-    protected $betTypeChain;
+    protected $processors;
 
     /**
-     * @var \FreeBet\Bundle\GambleBundle\Gamble\ScoreCalculatorInterface
+     * @var \Psr\Log\LoggerInterface
      */
-    protected $calculator;
+    protected $logger;
 
     /**
      * Constructor
      *
-     * @param \FreeBet\Bundle\GambleBundle\BetType\BetTypeChain $betTypeChain
-     * @param \FreeBet\Bundle\GambleBundle\Gamble\ScoreCalculatorInterface $calculator
+     * @param array $processors an array of GambleProcessorInterface
      */
-    public function __construct(BetTypeChain $betTypeChain, ScoreCalculatorInterface $calculator)
+    public function __construct(array $processors)
     {
-        $this->betTypeChain = $betTypeChain;
-        $this->calculator = $calculator;
+        $this->processors = $processors;
     }
 
     /**
-     * Update a gamble with the score
+     * Apply each processor
      *
      * @param \FreeBet\Bundle\GambleBundle\Document\Gamble $gamble
      */
-    public function calculateResult(Gamble $gamble)
+    public function process(Gamble $gamble, Event $event, \DateTime $date)
     {
-        if (!$gamble->hasEnded()) {
-            return;
-        }
-
-        // Fill the winner field in the gamble according to the winner field in its bets
-        $gamble->fillWinner();
-
-
-        if (!$gamble->getWinner()) {
-            // Process the case of a losing gamble
-            $score = $this->calculator->calculateLosingGamble($gamble);
-        } elseif (count($gamble->getBets()) > 1) {
-            // Multiple bets gamble score
-            $score = $this->calculator->calculateMultipleBet($gamble);
-        } else {
-            // Single bet gamble score
-            $score = $this->calculator->calculateSingleBet($gamble->getBets()->get(0));
-        }
-        $gamble->setPoint($score);
-    }
-
-    /**
-     * Update all the bets in a gamble habing an event which has ended
-     *
-     * @param \FreeBet\Bundle\GambleBundle\Document\Gamble $gamble
-     * @param \FreeBet\Bundle\CompetitionBundle\Document\Event $event
-     */
-    public function processGambleWithEvent(Gamble $gamble, Event $event)
-    {
-        $bets = $gamble->findBetsWithEvent($event);
-        foreach ($bets as $bet) {
-            // Update the winner field in each bet
-            $betTypeEntity = $this->betTypeChain->findByEventTypeAndType($event->getType(), $bet->getType());
-            $result = $betTypeEntity->processBet($bet);
-            if (is_bool($result)) {
-                $bet->setWinner($result);
+        foreach ($this->processors as $process) {
+            if (!$process->apply($gamble)) {
+                $this->log('Gamble  #'.$gamble->getId().' : processor '.get_class($process).' not applied');
+                continue;
             }
+
+            $process->process($gamble, $event, $date);
+            $this->log(
+                'Gamble  #'.$gamble->getId()
+                .' : processor '.get_class($process)
+                .' for event '.$event->getId().' success'
+            );
         }
+    }
+
+    /**
+     * Log a message
+     *
+     * @param string $message
+     */
+    protected function log($message)
+    {
+        if ($this->getLogger()) {
+            $this->getLogger()->info($message);
+        }
+    }
+
+    /**
+     * Set the logger
+     *
+     * @param \Psr\Log\LoggerInterface $logger
+     *
+     * @return \FreeBet\Bundle\GambleBundle\Gamble\GambleProcessor
+     */
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+
+        return $this;
+    }
+
+    /**
+     * Get logger
+     *
+     * @return \Psr\Log\LoggerInterface
+     */
+    protected function getLogger()
+    {
+        return $this->logger;
     }
 }

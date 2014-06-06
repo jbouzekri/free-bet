@@ -1,0 +1,18 @@
+parameters:
+    free_bet.processor.gamble_complete.class: FreeBet\Bundle\GambleBundle\Gamble\Processor\CompleteGambleProcessor
+    free_bet.processor.gamble_event.class: FreeBet\Bundle\GambleBundle\Gamble\Processor\EventGambleProcessor
+
+services:
+    free_bet.processor.gamble_complete:
+        class: %free_bet.processor.gamble_complete.class%
+        arguments:
+            - @free_bet.gamble.calculator.simple
+        tags:
+            -  { name: free_bet.gamble_processor, order: 100 }
+
+    free_bet.processor.gamble_event:
+        class: %free_bet.processor.gamble_event.class%
+        arguments:
+            - @free_bet.bet_type_chain
+        tags:
+            -  { name: free_bet.gamble_processor, order: 10 }

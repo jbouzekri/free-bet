@@ -59,7 +59,8 @@ class EventController extends Controller
      */
     public function listNextAction()
     {
-        $events = $this->get('free_bet.event.repository')->findNextEvents();
+        $date = \FreeBet\Bundle\UIBundle\Services\DateManager::getUtcDateTime();
+        $events = $this->get('free_bet.event.repository')->findNextEvents($date);
 
         return $this->render('FreeBetCompetitionBundle:Event:listNext.html.twig', array(
             'events' => $events

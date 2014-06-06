@@ -37,8 +37,7 @@ services:
     free_bet.gamble.processor:
         class: %free_bet.gamble.processor.class%
         arguments:
-            - @free_bet.bet_type_chain
-            - @free_bet.gamble.calculator.simple
+            - [@free_bet.processor.gamble_event, @free_bet.processor.gamble_complete]
 
     free_bet.gamble.calculator.simple:
         class: %free_bet.gamble.calculator.simple.class%

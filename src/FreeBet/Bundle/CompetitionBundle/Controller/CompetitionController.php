@@ -54,7 +54,8 @@ class CompetitionController extends Controller
      */
     public function listNextEventAction(Competition $competition)
     {
-        $events = $this->get('free_bet.event.repository')->findNextEvents();
+        $date = \FreeBet\Bundle\UIBundle\Services\DateManager::getUtcDateTime();
+        $events = $this->get('free_bet.event.repository')->findNextEvents($date);
 
         return $this->competitionRender($competition, $events, 'nextEvents.html.twig');
     }

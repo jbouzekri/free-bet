@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeBet\Bundle\GambleBundle\Gamble;
+namespace FreeBet\Bundle\GambleBundle\Gamble\Processor;
 
 use FreeBet\Bundle\GambleBundle\Document\Gamble;
 use FreeBet\Bundle\CompetitionBundle\Document\Event;
@@ -14,19 +14,19 @@ use FreeBet\Bundle\CompetitionBundle\Document\Event;
 interface GambleProcessorInterface
 {
     /**
-     * Update all the bets in a gamble having an event which has ended
+     * Process the gamble
      *
      * @param \FreeBet\Bundle\GambleBundle\Document\Gamble $gamble
      * @param \FreeBet\Bundle\CompetitionBundle\Document\Event $event
+     * @param \DateTime $date
      * @return void
      */
-    public function processGambleWithEvent(Gamble $gamble, Event $event);
+    public function process(Gamble $gamble, Event $event, \DateTime $date);
 
     /**
-     * Update a gamble with the score
+     * Check if the process can be apply to this gamble
      *
-     * @param \FreeBet\Bundle\GambleBundle\Document\Gamble $gamble
-     * @return void
+     * @return bool
      */
-    public function calculateResult(Gamble $gamble);
+    public function apply(Gamble $gamble);
 }
