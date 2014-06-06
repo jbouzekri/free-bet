@@ -84,7 +84,7 @@ Add the virtual host
         ServerName <your hostname>
 
         DocumentRoot /var/www/free-bet/web
-        <Directory /var/www/workspace/free-bet/web>
+        <Directory /var/www/free-bet/web>
             # enable the .htaccess rewrites
             AllowOverride All
             Require all granted
