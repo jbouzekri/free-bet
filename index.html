@@ -8,7 +8,9 @@
     <meta name="description" content="FreeBet is a PHP application providing fun and free sport bet." />
     <link rel="stylesheet" href="stylesheets/styles.css" />
     <link rel="stylesheet" href="stylesheets/pygment_trac.css" />
+    <link rel="stylesheet" href="stylesheets/responsiveslides.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/responsiveslides.min.js"></script>
     <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -22,17 +24,18 @@
       <div id="header">
         <nav>
           <li class="fork"><a href="http://www.freebet-sport.com/fr.html"><img src="./images/fr.gif" height="10" /> Français</a></li>
-          <li class="downloads"><a href="http://play.freebet-sport.com/en/login">Log In</a></li>
-          <li class="downloads">Try It</li>
+          <!-- <li class="downloads"><a href="http://play.freebet-sport.com/en/login">Log In</a></li>
+          <li class="downloads">Try It</li> -->
         </nav>
-      </div><!-- end header -->
-
-      <a href="https://github.com/jbouzekri/free-bet" title="Fork me on Github">
+        <a href="https://github.com/jbouzekri/free-bet" title="Fork me on Github">
           <img style="position: absolute; top: 0; right: 0; border: 0;"
                src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
                alt="Fork me on GitHub"
                data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
-      </a>
+        </a>
+      </div><!-- end header -->
+
+
     <div class="wrapper">
         <section>
             <div id="title">
@@ -57,6 +60,12 @@
                     <li>FreeBet is an open source software. You can download it, install it (it is running in my company) and contribute to it.</li>
                 </ul>
             </p>
+
+            <ul class="rslides">
+                <li><img src="images/screen1.png" alt=""></li>
+                <li><img src="images/screen2.png" alt=""></li>
+                <li><img src="images/screen3.png" alt=""></li>
+            </ul>
 
             <h3>
                 <a name="how-does-it-work" class="anchor" href="#how-does-it-work">
@@ -86,6 +95,11 @@
     </div>
 
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script>
+        $(function() {
+          $(".rslides").responsiveSlides();
+        });
+      </script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

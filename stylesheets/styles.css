@@ -696,6 +696,7 @@ dt {
 }
 
 #header {
+    z-index: 100;
   left: 0;
   top: 0px;
   height: 60px;
