@@ -32,3 +32,4 @@ resetting:
 
 fos_user_registration_confirmed.title: Register New Membership
 fos_user_resetting_send_email.title: Resetting password
+fos_user_resetting_check_email.title: Email sent
