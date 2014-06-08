@@ -14,6 +14,7 @@ registration:
     title: Créer un compte
     submit: Enregistrer
     has_account: Retour à l'écran de connexion
+    start_betting: Commencer à parier
 
 "Bad credentials": Login ou mot de passe invalide
 
@@ -33,3 +34,6 @@ resetting:
 fos_user_registration_confirmed.title: Créer un compte
 fos_user_resetting_send_email.title: Mot de passe oublié
 fos_user_resetting_check_email.title: Email envoyé
+fos_user_resetting_reset.title: Mot de passe oublié
+reset.title: Mot de passe oublié
+reset.request.submit: Enregistrer

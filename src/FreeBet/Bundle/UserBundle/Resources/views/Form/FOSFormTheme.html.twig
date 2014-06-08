@@ -1,0 +1,32 @@
+{% block form_widget_compound %}
+{% spaceless %}
+    <div class="body bg-gray">
+        {% if form.parent is empty %}
+            {{ form_errors(form) }}
+        {% endif %}
+        {{ block('form_rows') }}
+        {{ form_rest(form) }}
+    </div>
+{% endspaceless %}
+{% endblock form_widget_compound %}
+
+{% block form_row %}
+{% spaceless %}
+    <div class="form-group">
+        {{ form_errors(form) }}
+        {{ form_widget(form, { 'attr': {'class': 'form-control', 'placeholder': form.vars.label|trans({},'security') } }) }}
+    </div>
+{% endspaceless %}
+{% endblock %}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+    <div class="alert flat-alert alert-danger">
+        {% for error in errors %}
+            <p>{{ error.message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}

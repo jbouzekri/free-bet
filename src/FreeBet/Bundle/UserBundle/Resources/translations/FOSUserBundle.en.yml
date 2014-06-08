@@ -5,3 +5,7 @@ profile:
     show:
         language: Language
         timezone: Timezone
+
+form:
+    new_password: New password
+    new_password_confirmation: Confirm new password

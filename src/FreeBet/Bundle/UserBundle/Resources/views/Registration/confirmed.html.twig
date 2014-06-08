@@ -1,0 +1,9 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+
+    <a href="{{ path('event_next_list') }}" class="btn btn-primary btn-block">
+        {{ "registration.start_betting"|trans({},'security') }}
+    </a>
+{% endblock fos_user_content %}

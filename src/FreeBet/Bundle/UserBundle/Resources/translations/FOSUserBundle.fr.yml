@@ -5,3 +5,7 @@ profile:
     show:
         language: Langue
         timezone: Fuseau horaire
+
+form:
+    new_password: Nouveau mot de passe
+    new_password_confirmation: Confirmation nouveau mot de passe

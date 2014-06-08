@@ -1,0 +1,26 @@
+{% extends "FreeBetUserBundle::layout.html.twig" %}
+
+{% block htmlclass %} class="bg-black"{% endblock %}
+{% block bodyclass %}bg-black{% endblock %}
+
+{% block title %}{{ 'reset.title'|trans({}, 'security') }}{% endblock %}
+
+{% form_theme form "FreeBetUserBundle:Form:FOSFormTheme.html.twig" %}
+
+{% block body %}
+<div class="form-box" id="login-box">
+    <div class="header">{{ 'reset.title'|trans({}, 'security') }}</div>
+        <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" method="POST">
+            <div class="body bg-gray">
+                {{ form_widget(form) }}
+            </div>
+            <div class="footer">
+                <button type="submit" value="{{ 'reset.request.submit'|trans({}, 'security') }}" class="btn bg-olive btn-block">
+                    {{ 'reset.request.submit'|trans({}, 'security') }}
+                </button>
+                <a href="{{ path('fos_user_security_login') }}" class="text-center">{{ 'login.back'|trans({}, 'security') }}</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -14,6 +14,7 @@ registration:
     title: Register New Membership
     submit: Sign me up
     has_account: I already have a membership
+    start_betting: Start Betting
 
 "Bad credentials": Invalid login or password
 
@@ -33,3 +34,6 @@ resetting:
 fos_user_registration_confirmed.title: Register New Membership
 fos_user_resetting_send_email.title: Resetting password
 fos_user_resetting_check_email.title: Email sent
+fos_user_resetting_reset.title: Forgot password
+reset.title: Forgot password
+reset.request.submit: Save
