@@ -1,0 +1,35 @@
+login:
+    title: Authentification
+    username: Login
+    password: Mot de passe
+    remember_me: Se souvenir de moi
+    submit: Connexion
+    register: Créer un compte
+    forgot_password: Mot de passe oublié
+    back: Retour à l'écran de connexion
+
+logout: Déconnexion
+
+registration:
+    title: Créer un compte
+    submit: Enregistrer
+    has_account: Retour à l'écran de connexion
+
+"Bad credentials": Login ou mot de passe invalide
+
+form:
+    username: "Login"
+    email: "Email"
+    password: "Mot de passe"
+    password_confirmation: "Confirmation mot de passe"
+
+resetting:
+    title: Mot de passe oublié
+    request:
+        invalid_username: Le login ou l'email "%username%" est inconnu.
+        username: "Login ou email"
+        submit: Envoyer
+
+fos_user_registration_confirmed.title: Créer un compte
+fos_user_resetting_send_email.title: Mot de passe oublié
+fos_user_resetting_check_email.title: Email envoyé

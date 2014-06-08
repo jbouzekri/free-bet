@@ -1,0 +1,11 @@
+cart:
+    block:
+        title: Panier
+        transform: Transformer
+        empty: Votre panier est vide. Vous devez parier sur au moins un évènement.
+    notice:
+        remove: Pari supprimé avec succès
+        transform: Panier enregistré avec succès
+    dialog:
+        remove_bet: Etes vous sûr de vouloir supprimer ce pari ?
+        transform: Etes vous sûr de vouloir enregistrer ce panier ?

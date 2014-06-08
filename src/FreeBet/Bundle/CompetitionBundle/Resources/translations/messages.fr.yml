@@ -1,0 +1,29 @@
+menu:
+    main:
+        next_events: A venir
+
+event:
+    list:
+        title: A venir
+        empty: Aucun évènement à venir
+    edit:
+        title: Saisir résultat de %name%
+        submit: Enregistrer
+
+team_unknown: Inconnu
+
+competition:
+    group: Phase de groupe
+    final: Phase finale
+    view:
+        set_result: Saisir résultat
+        header:
+            day: Date
+            hour: Heure
+            result: Résultat
+            actions: Actions
+            team: Equipe
+            point: Point
+            diff: Diff
+    menu:
+        title: Compétitions

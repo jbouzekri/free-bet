@@ -1,0 +1,7 @@
+menu:
+    main:
+        gambles_list: Mes paris
+
+gamble:
+    notice:
+        remove: Pari supprimé avec succès

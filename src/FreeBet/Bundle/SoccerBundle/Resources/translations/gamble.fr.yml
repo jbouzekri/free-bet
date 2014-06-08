@@ -1,0 +1,9 @@
+gamble_winner: 1N2
+gamble_winner_N: "nul"
+
+gamble_exact_score: Score exact
+
+gamble:
+    winner:
+        show_more: Plus de choix
+        show_less: Moins de choix

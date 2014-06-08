@@ -1,0 +1,107 @@
+language:
+    en: Anglais
+    fr: Français
+
+filter: Filtrer
+
+account:
+    title: Mon compte
+    info: Compte
+    member_since: Membre depuis
+    password:
+        modify: Modifier mon mot de passe
+    profile:
+        edit: Editer mes informations
+    organization:
+        info: Mon groupe
+        join_date: Rejoint le %date%
+        name: Nom
+        none: Vous êtes membre d'aucun groupe. Rejoins en un pour partager tes succès avec tes amis.
+        manage: Gestion du groupe
+        select: Rejoindre un groupe existant
+        create: Créer un nouveau groupe
+
+account_edit:
+    title: Editer mmes informations
+
+profile:
+    flash:
+        updated: Informations personnelles mises à jour avec succès.
+
+change_password:
+    flash:
+        success: Mot de passe modifié avec succès.
+
+organization:
+    is_manager: Est le manager
+    new:
+        title: Créer un nouveau groupe
+        create: Créer
+        has_organization_warning: Attention, vous êtes en train de créer un nouveau groupe. A la fin de la procédure, vous ne serez plus membre de votre groupe actuel mais vous serez le gestionnaire du groupe nouvelle créé.
+        new_organization_info: Attention, vous êtes en train de créer un nouveau groupe. Vous serez automatiquement ajouté à ce groupe en tant que gestionnaire.
+        success: Le nouveau groupe a été créé avec succès. Vous êtes son gestionnaire.
+    item:
+        count: "{0} Aucun membre|{1} Un membre|]1,Inf] %count% membres"
+    list:
+        count: "{0} Aucun groupe|{1} Un groupe|]1,Inf] %count% groupes"
+    manage:
+        title: Gestion du groupe %name%
+        remove_user_success: Utilisateur supprimé du groupe avec succès.
+        remove_user_error: Une erreur est survenue lors de la tentative de suppression de l'utilisateur du groupe. Essayez ultérieurement ou contacter un administrateur.
+        change_role_success: Le statut de l'utilisateur a été mis à jour avec succès.
+        change_role_validation_error: Le profil de l'utilisateur est incomplet. Impossible de changer son statut.
+        change_role_error: Une erreur est survenue lors de la tentative de changement de statut de l'utilisateur. Essayez ultérieurement ou contacter un administrateur.
+    user:
+        remove: Supprimer
+        downgrade: Supprimer comme gestionnaire
+        upgrade: Ajouter comme gestionnaire
+    choose:
+        title: Sélectionner un groupe
+        has_organization_warning: >
+          Vous êtes sur le point de rejoindre ce groupe.
+          Vous ne serez plus membre de votre groupe actuel.
+          Vos paris actuels resteront assignés à votre groupe actuel. Les prochains iront à votre nouveau groupe.
+        change_group_success: Vous avez changé de groupe avec succès.
+        change_group_error: Une erreur est survenue lors de la tentative de changement de groupe. Essayez ultérieurement ou contacter un administrateur.
+        slug_filter: Saisir nom
+        slug: nom
+
+my_gamble:
+    title: Mes paris
+    submit_date: Soumis le %date%
+    item:
+        count: "{0} Aucun pari|{1} Un pari|]1,Inf] %count% paris"
+        type: "{1} Simple|{2} Double|{3} Triple|{4} Quatro|]4,Inf] Multiple"
+        none: Aucun pari
+    header:
+        day: Date
+        hour: Heure
+        event: Evènement
+        type: Type
+        result: Résultat
+    view:
+        title: Détail du pari
+        meta_title: Détail du pari %id%
+        id: "Identifiant du pari : %id%"
+        detail: Détails
+        header:
+            day: Date
+            hour: Heure
+            sport: Sport
+            event: Evènement
+            type: Type
+            result: Résultat
+        processing:
+            title: Traitement
+            date: Date de traitement
+            no_date: Pas encore traité
+            type: Type
+            number: Nombre de lignes
+            winning: Nombre de lignes gagnantes
+            losing: Nombre de lignes perdantes
+            no_result: Résultat encore inconnu
+        gain: Gain
+        back: Retour
+        delete: Supprimer
+        delete_modal:
+            label: Etes vous sûr de vouloir supprimer ce pari ?

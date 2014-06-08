@@ -1,0 +1,7 @@
+fos_user_change_password:
+    title: Modifier votre mot de passe
+
+profile:
+    show:
+        language: Langue
+        timezone: Fuseau horaire

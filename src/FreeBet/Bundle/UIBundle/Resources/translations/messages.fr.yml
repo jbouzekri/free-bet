@@ -1,0 +1,26 @@
+general:
+    back: Retour
+
+error:
+    global:
+        title: Oops! Une erreur est survenue.
+        text: |
+            Elle sera corrigée le plus tôt possible. N'hésitez pas à soumettre un rapport sur <a href="https://github.com/jbouzekri/free-bet">Github</a>.
+            En attendant, vous pouvez retourner à la <a href="%url%">liste des évènements à venir</a>.
+    404:
+        code: 404
+        title: Oops! Cette page n'existe pas.
+        text: |
+            Nous n'avons pas trouvé la page recherchée.
+            En attendant, vous pouvez retourner à la <a href="%url%">liste des évènements à venir</a>.
+    403:
+        code: 403
+        title: Oops! Vous n'êtes pas autorisé.
+        text: |
+            Vous n'avez pas à accès à cette ressource ou vous avez essayé une action interdite.
+            En attendant, vous pouvez retourner à la <a href="%url%">liste des évènements à venir</a>.
+
+date:
+    date: d/m/Y
+    hour: H:i
+    datetime: d/m/Y H:i
