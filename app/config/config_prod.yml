@@ -1,9 +1,14 @@
 imports:
     - { resource: config.yml }
 
-#framework:
-#    validation:
-#        cache: apc
+framework:
+    validation:
+        cache: apc
+
+doctrine_mongodb:
+    document_managers:
+        default:
+            metadata_cache_driver: apc
 
 #doctrine:
 #    orm:
