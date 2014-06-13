@@ -50,19 +50,8 @@ class LoadMatchData extends AbstractDataLoader implements
         $entity->setDate(\DateTime::createFromFormat('Y-m-d H:i:s', $data[5]));
         //$entity->setDate(new \DateTime('-1000 seconds'));
 
-        if (isset($data[6]) && isset($data[7]) && isset($data[8]) && isset($data[9])) {
-            if (!empty($data[6]) || $data[6] === "0") {
-                $entity->setLeftTeamHalfTimeScore($data[6]);
-            }
-            if (!empty($data[7]) || $data[7] === "0") {
-                $entity->setRightTeamHalfTimeScore($data[7]);
-            }
-            if (!empty($data[8]) || $data[8] === "0") {
-                $entity->setLeftTeamScore($data[8]);
-            }
-            if (!empty($data[9]) || $data[9] === "0") {
-                $entity->setRightTeamScore($data[9]);
-            }
+        if (count($data) == 10) {
+            $this->addScore($entity, $data);
         }
 
         $entity->setCompetition($worldCup2014);
@@ -90,5 +79,29 @@ class LoadMatchData extends AbstractDataLoader implements
         return $this->container
             ->get('free_bet.data_loader.csv_file')
             ->readFile($file);
+    }
+
+    /**
+     * Add match score data
+     *
+     * @param \FreeBet\Bundle\SoccerBundle\Document\Match $match
+     * @param array $data
+     *
+     * @return void
+     */
+    protected function addScore(Match $match, $data)
+    {
+        if (!empty($data[6]) || $data[6] === "0") {
+            $match->setLeftTeamHalfTimeScore($data[6]);
+        }
+        if (!empty($data[7]) || $data[7] === "0") {
+            $match->setRightTeamHalfTimeScore($data[7]);
+        }
+        if (!empty($data[8]) || $data[8] === "0") {
+            $match->setLeftTeamScore($data[8]);
+        }
+        if (!empty($data[9]) || $data[9] === "0") {
+            $match->setRightTeamScore($data[9]);
+        }
     }
 }
