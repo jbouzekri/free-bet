@@ -49,6 +49,22 @@ class LoadMatchData extends AbstractDataLoader implements
         }
         $entity->setDate(\DateTime::createFromFormat('Y-m-d H:i:s', $data[5]));
         //$entity->setDate(new \DateTime('-1000 seconds'));
+
+        if (isset($data[6]) && isset($data[7]) && isset($data[8]) && isset($data[9])) {
+            if (!empty($data[6]) || $data[6] === "0") {
+                $entity->setLeftTeamHalfTimeScore($data[6]);
+            }
+            if (!empty($data[7]) || $data[7] === "0") {
+                $entity->setRightTeamHalfTimeScore($data[7]);
+            }
+            if (!empty($data[8]) || $data[8] === "0") {
+                $entity->setLeftTeamScore($data[8]);
+            }
+            if (!empty($data[9]) || $data[9] === "0") {
+                $entity->setRightTeamScore($data[9]);
+            }
+        }
+
         $entity->setCompetition($worldCup2014);
         $entity->setProcessed(false);
 
