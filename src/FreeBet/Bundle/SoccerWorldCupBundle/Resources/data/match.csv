@@ -11,7 +11,7 @@
 1,group,B,Australia,Spain,"2014-06-23 16:00:00"
 1,group,B,Netherlands,Chile,"2014-06-23 16:00:00"
 1,group,C,Colombia,Greece,"2014-06-14 16:00:00",1,0,3,0
-1,group,C,"Côte d'Ivoire",Japan,"2014-06-15 01:00:00"
+1,group,C,"Côte d'Ivoire",Japan,"2014-06-15 01:00:00",0,1,2,1
 1,group,C,Colombia,"Côte d'Ivoire","2014-06-19 16:00:00"
 1,group,C,Japan,Greece,"2014-06-19 22:00:00"
 1,group,C,Japan,Colombia,"2014-06-24 20:00:00"
@@ -22,8 +22,8 @@
 1,group,D,Italy,"Costa Rica","2014-06-20 16:00:00"
 1,group,D,Italy,Uruguay,"2014-06-24 16:00:00"
 1,group,D,"Costa Rica",England,"2014-06-24 16:00:00"
-1,group,E,Switzerland,Ecuador,"2014-06-15 16:00:00"
-1,group,E,France,Honduras,"2014-06-15 19:00:00"
+1,group,E,Switzerland,Ecuador,"2014-06-15 16:00:00",0,1,2,1
+1,group,E,France,Honduras,"2014-06-15 19:00:00",1,0,3,0
 1,group,E,Switzerland,France,"2014-06-20 19:00:00"
 1,group,E,Honduras,Ecuador,"2014-06-20 22:00:00"
 1,group,E,Honduras,Switzerland,"2014-06-25 20:00:00"
