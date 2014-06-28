@@ -103,5 +103,17 @@ class LoadMatchData extends AbstractDataLoader implements
         if (!empty($data[9]) || $data[9] === "0") {
             $match->setRightTeamScore($data[9]);
         }
+        if (!empty($data[10]) || $data[10] === "0") {
+            $match->setLeftTeamAfterExtendedTimeScore($data[10]);
+        }
+        if (!empty($data[11]) || $data[11] === "0") {
+            $match->setRightTeamAfterExtendedTimeScore($data[11]);
+        }
+        if (!empty($data[12]) || $data[12] === "0") {
+            $match->setLeftTeamPenaltyScore($data[12]);
+        }
+        if (!empty($data[13]) || $data[13] === "0") {
+            $match->setRightTeamPenaltyScore($data[13]);
+        }
     }
 }

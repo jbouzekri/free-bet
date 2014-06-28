@@ -113,11 +113,13 @@ class Match extends Event
      */
     public function getLeftTeamRealScore()
     {
-        if (is_null($this->getLeftTeamScore())) {
-            return null;
+        if (!is_null($this->getLeftTeamAfterExtendedTimeScore())) {
+            return $this->getLeftTeamAfterExtendedTimeScore();
+        } elseif (!is_null($this->getLeftTeamScore())) {
+            return $this->getLeftTeamScore();
         }
 
-        return $this->getLeftTeamScore() + $this->getLeftTeamAfterExtendedTimeScore();
+        return null;
     }
 
     /**
@@ -127,11 +129,13 @@ class Match extends Event
      */
     public function getRightTeamRealScore()
     {
-        if (is_null($this->getRightTeamScore())) {
-            return null;
+        if (!is_null($this->getRightTeamAfterExtendedTimeScore())) {
+            return $this->getRightTeamAfterExtendedTimeScore();
+        } elseif (!is_null($this->getRightTeamScore())) {
+            return $this->getRightTeamScore();
         }
 
-        return $this->getRightTeamScore() + $this->getRightTeamAfterExtendedTimeScore();
+        return null;
     }
 
     /**
