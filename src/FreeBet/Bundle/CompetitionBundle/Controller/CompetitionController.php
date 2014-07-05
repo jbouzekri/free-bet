@@ -46,21 +46,6 @@ class CompetitionController extends Controller
     }
 
     /**
-     * View the next events in list format
-     *
-     * @param \FreeBet\Bundle\CompetitionBundle\Document\Competition $competition
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function listNextEventAction(Competition $competition)
-    {
-        $date = \FreeBet\Bundle\UIBundle\Services\DateManager::getUtcDateTime();
-        $events = $this->get('free_bet.event.repository')->findNextEvents($date);
-
-        return $this->competitionRender($competition, $events, 'nextEvents.html.twig');
-    }
-
-    /**
      * Render a specific template according to the type of the competition
      *
      * @param \FreeBet\Bundle\CompetitionBundle\Document\Competition $competition

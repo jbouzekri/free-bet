@@ -3,11 +3,6 @@ event_next_list:
     defaults: { _controller: FreeBetCompetitionBundle:Event:listNext }
     methods:  [GET]
 
-competition_events:
-    path: /{slug}/events
-    defaults: { _controller: FreeBetCompetitionBundle:Competition:listNextEvent }
-    methods:  [GET]
-
 competition_detail:
     path: /{slug}
     defaults: { _controller: FreeBetCompetitionBundle:Competition:view }

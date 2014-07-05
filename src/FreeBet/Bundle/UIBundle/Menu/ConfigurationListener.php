@@ -42,7 +42,7 @@ class ConfigurationListener
             return;
         }
 
-        if (!$this->securityContext->isGranted('ROLE_MANAGER')) {
+        if ($this->securityContext->getToken() === null || !$this->securityContext->isGranted('ROLE_MANAGER')) {
             $menu->removeChild('organization_item');
         }
     }

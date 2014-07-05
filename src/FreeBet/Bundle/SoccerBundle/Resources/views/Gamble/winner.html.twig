@@ -6,15 +6,19 @@
 </div>
 <div class="bet-type bet-body">
     <ul>
-        {% for choice in betType.getChoices %}
-            <li {% if loop.index0 > 17 %}style="display: none;"{% endif %}>
-                {% include 'FreeBetGambleBundle::_bet_type_choice.html.twig' with {
-                    'betType': betType,
-                    'event': event,
-                    'label': betType.getChoiceLabel(event, choice),
-                    'choice': choice
-                } %}
-            </li>
-        {% endfor %}
+        {% if event.leftName == null or event.rightName == null %}
+            {{ 'gamble.unavailable'|trans({}, 'gamble') }}
+        {% else %}
+            {% for choice in betType.getChoices %}
+                <li {% if loop.index0 > 17 %}style="display: none;"{% endif %}>
+                    {% include 'FreeBetGambleBundle::_bet_type_choice.html.twig' with {
+                        'betType': betType,
+                        'event': event,
+                        'label': betType.getChoiceLabel(event, choice),
+                        'choice': choice
+                    } %}
+                </li>
+            {% endfor %}
+        {% endif %}
     </ul>
 </div>
