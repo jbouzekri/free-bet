@@ -73,10 +73,16 @@ class LoadUserData extends AbstractDataLoader implements
         return array(
             array(
                 'username' => 'admin',
-                'email' => 'admin@freebet.com',
+                'email' => 'admin@freebet-sport.com',
                 'password' => 'admin',
                 'profil' => 'ROLE_ADMIN',
                 'reference' => 'user-admin'
+            ),
+            array(
+                'username' => 'user',
+                'email' => 'user@freebet-sport.com',
+                'password' => 'user',
+                'reference' => 'user-user'
             )
         );
     }

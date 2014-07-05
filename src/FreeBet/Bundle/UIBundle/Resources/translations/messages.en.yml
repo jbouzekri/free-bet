@@ -1,3 +1,9 @@
+data_reset: The software data will be reset every 2 hours at 15 minutes.
+auth_info: |
+    Authentification :<br />
+    <strong>Webmaster : </strong>admin/admin
+    <strong>User : </strong>user/user
+
 general:
     back: Back
 

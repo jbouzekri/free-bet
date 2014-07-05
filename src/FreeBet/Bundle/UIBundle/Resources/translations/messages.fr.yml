@@ -1,3 +1,9 @@
+data_reset: L'application est réinitialisée toutes les 2 heures à 15 minutes.
+auth_info: |
+    Authentification :<br />
+    <strong>Administrateur : </strong>admin/admin
+    <strong>Utilisateur : </strong>user/user
+
 general:
     back: Retour
 
