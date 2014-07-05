@@ -91,28 +91,28 @@ class LoadMatchData extends AbstractDataLoader implements
      */
     protected function addScore(Match $match, $data)
     {
-        if (!empty($data[6]) || $data[6] === "0") {
+        if (isset($data[6]) && (!empty($data[6]) || $data[6] === "0")) {
             $match->setLeftTeamHalfTimeScore($data[6]);
         }
-        if (!empty($data[7]) || $data[7] === "0") {
+        if (isset($data[7]) && (!empty($data[7]) || $data[7] === "0")) {
             $match->setRightTeamHalfTimeScore($data[7]);
         }
-        if (!empty($data[8]) || $data[8] === "0") {
+        if (isset($data[8]) && (!empty($data[8]) || $data[8] === "0")) {
             $match->setLeftTeamScore($data[8]);
         }
-        if (!empty($data[9]) || $data[9] === "0") {
+        if (isset($data[9]) && (!empty($data[9]) || $data[9] === "0")) {
             $match->setRightTeamScore($data[9]);
         }
-        if (!empty($data[10]) || $data[10] === "0") {
+        if (isset($data[10]) && (!empty($data[10]) || $data[10] === "0")) {
             $match->setLeftTeamAfterExtendedTimeScore($data[10]);
         }
-        if (!empty($data[11]) || $data[11] === "0") {
+        if (isset($data[11]) && (!empty($data[11]) || $data[11] === "0")) {
             $match->setRightTeamAfterExtendedTimeScore($data[11]);
         }
-        if (!empty($data[12]) || $data[12] === "0") {
+        if (isset($data[12]) && (!empty($data[12]) || $data[12] === "0")) {
             $match->setLeftTeamPenaltyScore($data[12]);
         }
-        if (!empty($data[13]) || $data[13] === "0") {
+        if (isset($data[13]) && (!empty($data[13]) || $data[13] === "0")) {
             $match->setRightTeamPenaltyScore($data[13]);
         }
     }
