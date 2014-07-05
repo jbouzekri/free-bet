@@ -50,7 +50,7 @@ class LoadMatchData extends AbstractDataLoader implements
         $entity->setDate(\DateTime::createFromFormat('Y-m-d H:i:s', $data[5]));
         //$entity->setDate(new \DateTime('-1000 seconds'));
 
-        if (count($data) == 10) {
+        if (count($data) > 6) {
             $this->addScore($entity, $data);
         }
 
@@ -91,29 +91,21 @@ class LoadMatchData extends AbstractDataLoader implements
      */
     protected function addScore(Match $match, $data)
     {
-        if (isset($data[6]) && (!empty($data[6]) || $data[6] === "0")) {
-            $match->setLeftTeamHalfTimeScore($data[6]);
-        }
-        if (isset($data[7]) && (!empty($data[7]) || $data[7] === "0")) {
-            $match->setRightTeamHalfTimeScore($data[7]);
-        }
-        if (isset($data[8]) && (!empty($data[8]) || $data[8] === "0")) {
-            $match->setLeftTeamScore($data[8]);
-        }
-        if (isset($data[9]) && (!empty($data[9]) || $data[9] === "0")) {
-            $match->setRightTeamScore($data[9]);
-        }
-        if (isset($data[10]) && (!empty($data[10]) || $data[10] === "0")) {
-            $match->setLeftTeamAfterExtendedTimeScore($data[10]);
-        }
-        if (isset($data[11]) && (!empty($data[11]) || $data[11] === "0")) {
-            $match->setRightTeamAfterExtendedTimeScore($data[11]);
-        }
-        if (isset($data[12]) && (!empty($data[12]) || $data[12] === "0")) {
-            $match->setLeftTeamPenaltyScore($data[12]);
-        }
-        if (isset($data[13]) && (!empty($data[13]) || $data[13] === "0")) {
-            $match->setRightTeamPenaltyScore($data[13]);
+        $scoreResult = array(
+            6 => "setLeftTeamHalfTimeScore",
+            7 => "setRightTeamHalfTimeScore",
+            8 => "setLeftTeamScore",
+            9 => "setRightTeamScore",
+            10 => "setLeftTeamAfterExtendedTimeScore",
+            11 => "setRightTeamAfterExtendedTimeScore",
+            12 => "setLeftTeamPenaltyScore",
+            13 => "setRightTeamPenaltyScore"
+        );
+
+        foreach ($scoreResult as $key => $method) {
+            if (isset($data[$key]) && (!empty($data[$key]) || $data[$key] === "0")) {
+                $match->$method($data[$key]);
+            }
         }
     }
 }
