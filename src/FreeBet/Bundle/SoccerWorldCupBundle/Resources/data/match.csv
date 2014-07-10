@@ -56,9 +56,9 @@
 2,sixteen,8,Belgium,USA,"2014-07-01 20:00:00",0,0,0,0,2,1
 3,quarter,1,France,Germany,"2014-07-04 16:00:00",0,1,0,1
 3,quarter,2,Brazil,Colombia,"2014-07-04 20:00:00",1,0,2,1
-3,quarter,3,Argentina,Belgium,"2014-07-05 16:00:00"
-3,quarter,4,Netherlands,"Costa Rica","2014-07-05 20:00:00"
-4,semi,1,Brazil,Germany,"2014-07-08 20:00:00"
-4,semi,2,,,"2014-07-09 20:00:00"
-5,playoff,1,,,"2014-07-12 20:00:00"
-6,final,1,,,"2014-07-13 19:00:00"
+3,quarter,3,Argentina,Belgium,"2014-07-05 16:00:00",1,0,1,0
+3,quarter,4,Netherlands,"Costa Rica","2014-07-05 20:00:00",0,0,0,0,0,0,4,3
+4,semi,1,Brazil,Germany,"2014-07-08 20:00:00",0,5,1,7
+4,semi,2,Netherlands,Argentina,"2014-07-09 20:00:00",0,0,0,0,0,0,2,4
+5,playoff,1,Brazil,Netherlands,"2014-07-12 20:00:00"
+6,final,1,Germany,Argentina,"2014-07-13 19:00:00"
