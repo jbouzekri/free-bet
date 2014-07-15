@@ -60,5 +60,5 @@
 3,quarter,4,Netherlands,"Costa Rica","2014-07-05 20:00:00",0,0,0,0,0,0,4,3
 4,semi,1,Brazil,Germany,"2014-07-08 20:00:00",0,5,1,7
 4,semi,2,Netherlands,Argentina,"2014-07-09 20:00:00",0,0,0,0,0,0,2,4
-5,playoff,1,Brazil,Netherlands,"2014-07-12 20:00:00"
-6,final,1,Germany,Argentina,"2014-07-13 19:00:00"
+5,playoff,1,Brazil,Netherlands,"2014-07-12 20:00:00",0,2,0,3
+6,final,1,Germany,Argentina,"2014-07-13 19:00:00",0,0,0,0,1,0
