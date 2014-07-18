@@ -350,7 +350,7 @@ class Gamble
     /**
      * Check if a user can delete the gamble
      *
-     * @param \FreeBet\Bundle\GambleBundle\Document\User|mixed $user
+     * @param \FreeBet\Bundle\UserBundle\Model\User $user
      *
      * @return boolean
      */

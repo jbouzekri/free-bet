@@ -15,7 +15,7 @@ abstract class AbstractCompetitionLoader extends AbstractDataLoader implements O
     /**
      * {@inheritDoc}
      */
-    public abstract function getOrder();
+    abstract public function getOrder();
 
     /**
      * {@inheritDoc}

@@ -150,7 +150,7 @@ class Competition
     /**
      * Set endDate
      *
-     * @param date $endDate
+     * @param \DateTime $endDate
      * @return self
      */
     public function setEndDate($endDate)
@@ -162,7 +162,7 @@ class Competition
     /**
      * Get endDate
      *
-     * @return date $created
+     * @return \DateTime $created
      */
     public function getEndDate()
     {

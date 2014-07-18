@@ -140,7 +140,7 @@ abstract class User extends BaseUser
     /**
      * Check if a user is the manager of its organization
      *
-     * @return true
+     * @return boolean
      */
     public function isManager()
     {

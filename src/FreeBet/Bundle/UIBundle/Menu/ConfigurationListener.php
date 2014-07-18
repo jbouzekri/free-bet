@@ -32,7 +32,7 @@ class ConfigurationListener
     /**
      * Executed on maestro.navigation.menu_configure event
      *
-     * @param \Maestro\Bundle\NavigationBundle\Event\ConfigureMenuEvent $eventMenu
+     * @param \Jb\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent $eventMenu
      */
     public function configureMenu(ConfigureMenuEvent $eventMenu)
     {

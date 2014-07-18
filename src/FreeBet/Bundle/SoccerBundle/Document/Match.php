@@ -169,7 +169,7 @@ class Match extends Event
     }
 
     /**
-     * @return mixed
+     * @return integer|null
      *
      * true : left team win
      * 0 : match null
