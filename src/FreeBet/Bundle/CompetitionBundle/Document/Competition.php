@@ -30,6 +30,16 @@ class Competition
     protected $type;
 
     /**
+     * @var string $subType
+     */
+    protected $subType;
+
+    /**
+     * @var date $endDate
+     */
+    protected $endDate;
+
+    /**
      * @var date $created
      */
     protected $created;
@@ -113,6 +123,50 @@ class Competition
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set subtype
+     *
+     * @param string $subType
+     * @return self
+     */
+    public function setSubType($subType)
+    {
+        $this->subType = $subType;
+        return $this;
+    }
+
+    /**
+     * Get subtype
+     *
+     * @return string $subType
+     */
+    public function getSubType()
+    {
+        return $this->subType;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param date $endDate
+     * @return self
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return date $created
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
     }
 
     /**

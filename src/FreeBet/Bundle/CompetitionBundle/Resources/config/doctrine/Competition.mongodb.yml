@@ -10,6 +10,12 @@ FreeBet\Bundle\CompetitionBundle\Document\Competition:
             unique: true
         type:
             type: string
+        subType:
+            type: string
+            name: sub_type
+        endDate:
+            type: date
+            name: end_date
         slug:
             index: true
             type: string
