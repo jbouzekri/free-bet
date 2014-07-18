@@ -21,7 +21,7 @@ class CompetitionController extends Controller
      */
     public function menuAction($routeParam = array())
     {
-        $competitions = $this->get('free_bet.competition.repository')->findAllOrderedByDate();
+        $competitions = $this->get('free_bet.competition.repository')->findCurrentOrderedByDate();
 
         return $this->render('FreeBetCompetitionBundle:Competition:menu.html.twig', array(
             'competitions' => $competitions,

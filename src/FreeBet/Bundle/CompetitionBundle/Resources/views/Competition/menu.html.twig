@@ -9,7 +9,12 @@
     {% for competition in competitions %}
         <li {% if slugCompetition == competition.slug %}class="active"{% endif %}>
             <a href="{{ path('competition_detail', {slug: competition.slug}) }}">
-                <i class="fa fa-{{ competition.type }}"></i> <span>{{ competition.name }}</span>
+                {% if competition.subType %}
+                    <i class="event event-{{ competition.subType }}"></i>
+                {% else %}
+                    <i class="fa fa-{{ competition.type }}"></i>
+                {% endif %}
+                <span>{{ competition.name }}</span>
             </a>
         </li>
     {% endfor %}

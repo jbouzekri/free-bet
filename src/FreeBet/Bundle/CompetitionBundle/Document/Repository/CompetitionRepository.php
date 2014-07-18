@@ -14,9 +14,10 @@ class CompetitionRepository extends DocumentRepository implements CompetitionRep
     /**
      * @return array
      */
-    public function findAllOrderedByDate()
+    public function findCurrentOrderedByDate()
     {
         return $this->createQueryBuilder()
+            ->field('endDate')->gte(new \DateTime())
             ->sort('name', 'ASC')
             ->getQuery()
             ->execute();

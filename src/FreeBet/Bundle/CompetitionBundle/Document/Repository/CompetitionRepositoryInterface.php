@@ -13,5 +13,5 @@ interface CompetitionRepositoryInterface
      *
      * @return array
      */
-    public function findAllOrderedByDate();
+    public function findCurrentOrderedByDate();
 }
