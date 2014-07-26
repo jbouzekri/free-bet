@@ -1,0 +1,10 @@
+parameters:
+    free_bet.soccer.leage.scraper.lequipe.class: FreeBet\Bundle\SoccerLeagueBundle\Scraper\LequipeScraper
+
+services:
+    free_bet.soccer.leage.scraper.lequipe:
+        class: %free_bet.soccer.leage.scraper.lequipe.class%
+        arguments:
+            - %free_bet.scraper.lequipe.url%
+        tags:
+            -  { name: free_bet.web_scraper, alias: lequipe }

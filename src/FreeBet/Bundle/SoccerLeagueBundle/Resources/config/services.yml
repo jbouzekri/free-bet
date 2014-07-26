@@ -1,0 +1,15 @@
+parameters:
+    free_bet.soccer.leage.generate_match.command.class: FreeBet\Bundle\SoccerLeagueBundle\Command\GenerateMatchCommand
+    free_bet.soccer.leage.scraper_chain.class: FreeBet\Bundle\SoccerLeagueBundle\Scraper\WebScraperChain
+
+services:
+    free_bet.soccer.leage.generate_match.command:
+        class: %free_bet.soccer.leage.generate_match.command.class%
+        arguments:
+            - @free_bet.competition.repository
+            - @free_bet.soccer.leage.scraper_chain
+        tags:
+            -  { name: console.command }
+
+    free_bet.soccer.leage.scraper_chain:
+        class: "%free_bet.soccer.leage.scraper_chain.class%"

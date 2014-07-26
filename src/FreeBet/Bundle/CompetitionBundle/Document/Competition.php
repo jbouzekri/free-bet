@@ -35,7 +35,7 @@ class Competition
     protected $subType;
 
     /**
-     * @var date $endDate
+     * @var \DateTime $endDate
      */
     protected $endDate;
 
@@ -162,7 +162,7 @@ class Competition
     /**
      * Get endDate
      *
-     * @return \DateTime $created
+     * @return \DateTime
      */
     public function getEndDate()
     {

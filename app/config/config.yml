@@ -116,3 +116,8 @@ knp_paginator:
 free_bet_competition:
     mapping_events:
         soccer: FreeBet\Bundle\SoccerBundle\Document\Match
+
+free_bet_soccer_league:
+    scrapers:
+        lequipe:
+            url: http://www.lequipe.fr/Football/FootballResultat47991.html

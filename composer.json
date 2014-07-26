@@ -28,8 +28,9 @@
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "knplabs/knp-paginator-bundle": "~2.4",
         "friendsofsymfony/user-bundle": "~1.3",
-        "jbouzekri/config-knp-menu-bundle": "@dev",
-        "leafo/lessphp": "dev-master"
+        "jbouzekri/config-knp-menu-bundle": "1.0.1",
+        "leafo/lessphp": "dev-master",
+        "misd/guzzle-bundle": "1.1.4"
     },
     "scripts": {
         "post-install-cmd": [
