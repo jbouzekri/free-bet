@@ -180,6 +180,14 @@ class LequipeScraper implements ScraperInterface
             $text = $matches[1];
         }
 
+        // Hotfix for some team names
+        if ($text == 'Paris') {
+            $text = 'Paris-SG';
+        }
+        if ($text == 'Evian') {
+            $text = 'Evian-TG';
+        }
+
         return $text;
     }
 
