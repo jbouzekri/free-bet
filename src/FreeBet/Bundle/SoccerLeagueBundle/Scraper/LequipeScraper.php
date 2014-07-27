@@ -117,11 +117,11 @@ class LequipeScraper implements ScraperInterface
         $day = $crawler->filter(self::$selectors['DAY'])->eq(0)->text();
         $day = (int) trim($day);
 
+        $date = null;
         foreach ($crawler->filter(self::$selectors['LINES']) as $key => $item) {
             $itemCrawler = new Crawler($item);
             if ($itemCrawler->getNode(0)->tagName == self::$selectors['DATE_TAG']) {
-                $date = trim($itemCrawler->text());
-                $date = $this->transformDateToDateTime($date);
+                $date = $this->transformDateToDateTime($itemCrawler->text());
             } else {
                 $leftTeam = $this->cleanText($itemCrawler->filter(self::$selectors['LEFT_TEAM'])->text());
                 $rightTeam = $this->cleanText($itemCrawler->filter(self::$selectors['RIGHT_TEAM'])->text());
@@ -200,6 +200,7 @@ class LequipeScraper implements ScraperInterface
      */
     protected function transformDateToDateTime($date)
     {
+        $date = trim($date);
         preg_match('/^.*\ ([0-9]{1,2}.*[0-9]{4})$/', $date, $matches);
         $date = $matches[1] . " 00:00:00";
         $date = str_replace(

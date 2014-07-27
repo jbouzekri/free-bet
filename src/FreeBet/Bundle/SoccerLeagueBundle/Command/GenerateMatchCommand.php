@@ -64,7 +64,7 @@ class GenerateMatchCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $leagueSlug = $input->getArgument('league-slug');
-        $competition = $this->competitionRepository->findOneBySlug($leagueSlug);
+        $competition = $this->competitionRepository->findOneBy(array('slug' => $leagueSlug));
         if (!$competition) {
             $output->writeln('<error>competition '.$leagueSlug.' does not exist</error>');
             exit(1);
