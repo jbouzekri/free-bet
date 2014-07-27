@@ -79,10 +79,10 @@ class GenerateMatchCommand extends Command
 
         $file = $input->getOption('file');
         if (!$file) {
-            $file = dirname(__FILE__).'/../Resources/data/'.$leagueSlug.'.yml';
+            $file = dirname(__FILE__).'/../Resources/data/'.$leagueSlug.'.csv';
         }
 
-        $content = $dataLoader->refreshMatchData();
+        $content = $dataLoader->refreshData();
         file_put_contents($file, $content);
         $output->writeln('Write content to file '.$file);
     }

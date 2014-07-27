@@ -5,6 +5,7 @@ parameters:
     free_bet.event.repository.class: FreeBet\Bundle\CompetitionBundle\Document\Repository\EventRepository
     free_bet.event.repository.namespace: FreeBetCompetitionBundle:Event
     free_bet.data_loader.csv_file.class: FreeBet\Bundle\CompetitionBundle\DataFixtures\FileCsvLoader
+    free_bet.event.factory.class: FreeBet\Bundle\CompetitionBundle\Model\EventFactory
 
 services:
     free_bet.event_inheritance.listener:
@@ -27,6 +28,11 @@ services:
           - %free_bet.event.repository.namespace%
         factory_service: doctrine_mongodb.odm.default_document_manager
         factory_method: getRepository
+
+    free_bet.event.factory:
+        class: %free_bet.event.factory.class%
+        arguments:
+          - %free_bet.event_mapping%
 
     sensio_framework_extra.converter.doctrine.odm:
         class: Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter

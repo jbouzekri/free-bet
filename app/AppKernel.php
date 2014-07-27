@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Jb\Bundle\ConfigKnpMenuBundle\JbConfigKnpMenuBundle(),
+            new \Misd\GuzzleBundle\MisdGuzzleBundle(),
             new FreeBet\Bundle\UIBundle\FreeBetUIBundle(),
             new FreeBet\Bundle\UserBundle\FreeBetUserBundle(),
             new FreeBet\Bundle\GambleBundle\FreeBetGambleBundle(),

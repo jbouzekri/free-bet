@@ -1,10 +1,19 @@
 parameters:
     free_bet.soccer.leage.scraper.lequipe.class: FreeBet\Bundle\SoccerLeagueBundle\Scraper\LequipeScraper
+    free_bet.soccer.leage.scraper.match_writer.class: FreeBet\Bundle\SoccerLeagueBundle\Scraper\MatchWriter
 
 services:
+    free_bet.soccer.leage.scraper.match_writer:
+        class: %free_bet.soccer.leage.scraper.match_writer.class%
+        arguments:
+            - @twig
+
     free_bet.soccer.leage.scraper.lequipe:
         class: %free_bet.soccer.leage.scraper.lequipe.class%
         arguments:
+            - @guzzle.client
             - %free_bet.scraper.lequipe.url%
+            - @free_bet.event.factory
+            - @free_bet.soccer.leage.scraper.match_writer
         tags:
             -  { name: free_bet.web_scraper, alias: lequipe }

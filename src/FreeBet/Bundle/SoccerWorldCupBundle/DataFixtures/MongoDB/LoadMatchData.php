@@ -35,29 +35,7 @@ class LoadMatchData extends AbstractDataLoader implements
      */
     public function buildObject(array $data)
     {
-        $worldCup2014 = $this->getReference('world-cup-2014');
-
-        $entity = new Match();
-        $entity->setPhaseOrder($data[0]);
-        $entity->setPhase($data[1]);
-        $entity->setGroup($data[2]);
-        if (!empty($data[3])) {
-            $entity->setLeftName($data[3]);
-        }
-        if (!empty($data[4])) {
-            $entity->setRightName($data[4]);
-        }
-        $entity->setDate(\DateTime::createFromFormat('Y-m-d H:i:s', $data[5]));
-        //$entity->setDate(new \DateTime('-1000 seconds'));
-
-        if (count($data) > 6) {
-            $this->addScore($entity, $data);
-        }
-
-        $entity->setCompetition($worldCup2014);
-        $entity->setProcessed(false);
-
-        return $entity;
+        return $this->createMatch($data, 'world-cup-2014');
     }
 
     /**
@@ -79,6 +57,40 @@ class LoadMatchData extends AbstractDataLoader implements
         return $this->container
             ->get('free_bet.data_loader.csv_file')
             ->readFile($file);
+    }
+
+    /**
+     * Create a Match from data
+     *
+     * @param array $data
+     * @param string $competitionReference
+     *
+     * @return \FreeBet\Bundle\SoccerBundle\Document\Match
+     */
+    protected function createMatch(array $data, $competitionReference)
+    {
+        $worldCup2014 = $this->getReference($competitionReference);
+
+        $entity = new Match();
+        $entity->setPhaseOrder($data[0]);
+        $entity->setPhase($data[1]);
+        $entity->setGroup($data[2]);
+        if (!empty($data[3])) {
+            $entity->setLeftName($data[3]);
+        }
+        if (!empty($data[4])) {
+            $entity->setRightName($data[4]);
+        }
+        $entity->setDate(\DateTime::createFromFormat('Y-m-d H:i:s', $data[5]));
+
+        if (count($data) > 6) {
+            $this->addScore($entity, $data);
+        }
+
+        $entity->setCompetition($worldCup2014);
+        $entity->setProcessed(false);
+
+        return $entity;
     }
 
     /**
