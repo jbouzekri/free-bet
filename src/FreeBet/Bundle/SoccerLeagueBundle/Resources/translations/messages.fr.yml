@@ -1,0 +1,4 @@
+league:
+    navigator:
+        label: Sélectionnez
+        day: "{1} 1ère journée|]1,Inf[ %day%ème journée"

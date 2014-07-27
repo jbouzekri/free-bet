@@ -6,5 +6,10 @@
 <div id="competition-detail">
     <h1>{{ competition.name }}</h1>
 
+    {% render(controller('FreeBetSoccerLeagueBundle:League:navigation', {
+        'competition': competition,
+        'matches': events,
+        'day': app.request.query.get('day',"1")
+    })) %}
 </div>
 {% endblock %}

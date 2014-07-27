@@ -1,0 +1,17 @@
+<div id="league-navigator">
+    <form method="get" action="" class="form-inline">
+        <div class="form-group">
+            <label for="day-selector">{{ 'league.navigator.label'|trans }}</label>
+            <select class="form-control" id="day-selector" name="day">
+                {% for day in days %}
+                    <option value="{{ day }}" {% if day == currentDay %}selected="selected"{% endif %}>
+                        {{ 'league.navigator.day'|transchoice(day, {'%day%': day}) }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+    </form>
+</div>
