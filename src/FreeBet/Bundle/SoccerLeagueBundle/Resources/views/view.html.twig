@@ -8,7 +8,7 @@
 
     <ul class="nav nav-pills">
         <li class="active"><a href="#results" data-toggle="tab">{{ 'league.results'|trans }}</a></li>
-        <li><a href="#classement" data-toggle="tab">{{ 'league.classement'|trans }}</a></li>
+        <li><a href="#ranking" data-toggle="tab">{{ 'league.ranking'|trans }}</a></li>
     </ul>
 
     <div class="tab-content">
@@ -27,8 +27,15 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="classement">
-
+        <div class="tab-pane fade" id="ranking">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% render(controller('FreeBetSoccerWorldCupBundle:Group:result', {
+                        events: events,
+                        group: null
+                    })) %}
+                </div>
+            </div>
         </div>
     </div>
 </div>

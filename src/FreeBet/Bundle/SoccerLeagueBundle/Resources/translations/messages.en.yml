@@ -1,6 +1,6 @@
 league:
     results: Results
-    classement: Classement
+    ranking: Ranking
     navigator:
         label: Select
         day: "{1} 1st day|{2} 2nd day|{3} 3rd day|]3,Inf[ %day%th day"

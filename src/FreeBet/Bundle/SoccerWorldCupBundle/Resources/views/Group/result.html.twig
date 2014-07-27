@@ -8,11 +8,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for teamName,result in results %}
+            {% for ranking in results %}
                 <tr>
-                    <td>{{ teamName }}</td>
-                    <td>{{ result.point }}</td>
-                    <td>{{ result.diff }}</td>
+                    <td>{{ ranking.name }}</td>
+                    <td>{{ ranking.point }}</td>
+                    <td>{{ ranking.diff }}</td>
                 </tr>
             {% endfor %}
         </tbody>

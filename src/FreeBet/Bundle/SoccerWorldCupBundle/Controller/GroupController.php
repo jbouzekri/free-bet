@@ -20,7 +20,7 @@ class GroupController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function matchListAction(array $events, $type, $name)
+    public function matchListAction($events, $type, $name)
     {
         $events = $this->get('free_bet.soccer.tools')->getOrderedMatch($events, $type, $name);
 
@@ -32,16 +32,16 @@ class GroupController extends Controller
     }
 
     /**
-     * Display the classement in a group
+     * Display the ranking in a group
      *
      * @param array $events
      * @param string $group
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function resultAction(array $events, $group)
+    public function resultAction($events, $group)
     {
-        $results = $this->get('free_bet.soccer.tools')->getResultInGroup($events, $group);
+        $results = $this->get('free_bet.soccer.tools')->getSortedResults($events, $group);
 
         return $this->render('FreeBetSoccerWorldCupBundle:Group:result.html.twig', array(
             'results' => $results,

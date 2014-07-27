@@ -12,65 +12,28 @@ use FreeBet\Bundle\CompetitionBundle\Document\Event;
 class Tools
 {
     /**
-     * Get the team result in a group ordered by score
+     * Get the team result ordered by score
+     * Can be filtered by group
      *
      * @param array  $events list of matches
      * @param string $group  the group name
      *
      * @return array
      */
-    public function getResultInGroup(array $events, $group)
+    public function getSortedResults($events, $group = null)
     {
-        $result = array();
-
+        $ranking = new RankingCollection();
         foreach ($events as $event) {
-            if ($event->getGroup() != $group) {
+            if (!is_null($group) && $event->getGroup() != $group) {
                 continue;
             }
 
-            if (!isset($result[$event->getLeftName()])) {
-                $result[$event->getLeftName()] = array('point'=>0,'diff'=>0);
-            }
-            if (!isset($result[$event->getRightName()])) {
-                $result[$event->getRightName()] = array('point'=>0,'diff'=>0);
-            }
-
-            $winner = $event->getWinner();
-            if ($winner === Event::LEFT_TEAM_WIN) {
-                $result[$event->getLeftName()]['point'] += 3;
-                $result[$event->getLeftName()]['diff'] +=
-                    $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
-                $result[$event->getRightName()]['diff'] +=
-                    $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
-            } elseif ($winner === Event::RIGHT_TEAM_WIN) {
-                $result[$event->getRightName()]['point'] += 3;
-                $result[$event->getRightName()]['diff'] +=
-                    $event->getRightTeamRealScore() - $event->getLeftTeamRealScore();
-                $result[$event->getLeftName()]['diff'] +=
-                    $event->getLeftTeamRealScore() - $event->getRightTeamRealScore();
-            } elseif ($winner === Event::BOTH_EQUALS) {
-                $result[$event->getRightName()]['point'] += 1;
-                $result[$event->getLeftName()]['point'] += 1;
-            }
+            $ranking->processEvent($event);
         }
 
-        // TODO : sort according to direct match result
-        uasort($result, function ($team1, $team2) {
-            // sort according to point
-            if ($team1['point'] == $team2['point']) {
+        $ranking->sort();
 
-                // if point equals, sort according to diff
-                if ($team1['diff'] == $team2['diff']) {
-                    return 0;
-                }
-
-                return ($team1['diff'] < $team2['diff']) ? 1 : -1;
-            }
-
-            return ($team1['point'] < $team2['point']) ? 1 : -1;
-        });
-
-        return $result;
+        return $ranking;
     }
 
     /**
@@ -82,7 +45,7 @@ class Tools
      *
      * @return array
      */
-    public function getOrderedMatch(array $events, $type = 'group', $name = 'A')
+    public function getOrderedMatch($events, $type = 'group', $name = 'A')
     {
         $method = 'get'.ucfirst($type);
         $result = array();

@@ -1,6 +1,6 @@
 league:
     results: Résultats
-    classement: Classement
+    ranking: Classement
     navigator:
         label: Sélectionnez
         day: "{1} 1ère journée|]1,Inf[ %day%ème journée"
