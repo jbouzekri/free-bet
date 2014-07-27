@@ -5,7 +5,11 @@
     {% set scoreTemplate = false %}
 {% endif %}
 
-<span class="event event-{{ event.leftName|slugify }}"></span>
+{% if event.competition.type == "soccer-world-cup" %}
+    <span class="event event-{{ event.leftName|slugify }}"></span>
+{% else %}
+    <span class="team team-{{ event.leftName|slugify }}"></span>
+{% endif %}
 {% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
     <a href="{{ path('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}">
 {% endif %}
@@ -27,4 +31,8 @@
 {% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
     </a>
 {% endif %}
-<span class="event event-{{ event.rightName|slugify }}"></span>
+{% if event.competition.type == "soccer-world-cup" %}
+    <span class="event event-{{ event.rightName|slugify }}"></span>
+{% else %}
+    <span class="team team-{{ event.rightName|slugify }}"></span>
+{% endif %}

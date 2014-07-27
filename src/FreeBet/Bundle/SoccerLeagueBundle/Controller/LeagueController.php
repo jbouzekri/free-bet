@@ -12,7 +12,15 @@ use FreeBet\Bundle\CompetitionBundle\Document\Competition;
  */
 class LeagueController extends Controller
 {
-    public function navigationAction(Competition $competition, array $matches, $day)
+    /**
+     * Show navigation in a league (switch between day)
+     *
+     * @param array $matches
+     * @param string $day
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function navigationAction($matches, $day)
     {
         $days = array();
         foreach ($matches as $match) {
@@ -25,6 +33,29 @@ class LeagueController extends Controller
 
         return $this->render('FreeBetSoccerLeagueBundle::navigation.html.twig', array(
             'days' => $days,
+            'currentDay' => $day
+        ));
+    }
+
+    /**
+     * Show results in a day
+     *
+     * @param array $matches
+     * @param string $day
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function resultsDayAction($matches, $day)
+    {
+        $matchesInDay = array();
+        foreach ($matches as $match) {
+            if ($match->getPhase() == $day) {
+                $matchesInDay[] = $match;
+            }
+        }
+
+        return $this->render('FreeBetSoccerLeagueBundle::resultsDay.html.twig', array(
+            'matches' => $matchesInDay,
             'currentDay' => $day
         ));
     }

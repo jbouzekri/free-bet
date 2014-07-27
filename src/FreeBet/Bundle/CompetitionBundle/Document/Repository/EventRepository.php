@@ -45,6 +45,7 @@ class EventRepository extends DocumentRepository implements EventRepositoryInter
     {
         $qb = $this->createQueryBuilder()
             ->select('leftName', 'rightName')
+            ->field('competition.id')->equals($competition->getId())
             ->field('leftName')->exists(true)->notEqual(null)->notEqual('')
             ->field('rightName')->exists(true)->notEqual(null)->notEqual('');
 
@@ -62,5 +63,17 @@ class EventRepository extends DocumentRepository implements EventRepositoryInter
         asort($choices);
 
         return $choices;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function findAllOrderedEvent(Competition $competition)
+    {
+        $qb = $this->createQueryBuilder()
+            ->field('competition.id')->equals($competition->getId())
+            ->sort('date', 'asc');
+
+        return $qb->getQuery()->execute();
     }
 }

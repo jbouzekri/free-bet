@@ -40,7 +40,7 @@ class CompetitionController extends Controller
     {
         // Load all events of the competition
         // We suppose that the number of event is always small so it does not cost much to manage all at once
-        $events = $this->get('free_bet.event.repository')->findBy(array('competition.id'=>$competition->getId()));
+        $events = $this->get('free_bet.event.repository')->findAllOrderedEvent($competition);
 
         return $this->competitionRender($competition, $events, 'view.html.twig');
     }

@@ -6,10 +6,39 @@
 <div id="competition-detail">
     <h1>{{ competition.name }}</h1>
 
-    {% render(controller('FreeBetSoccerLeagueBundle:League:navigation', {
-        'competition': competition,
-        'matches': events,
-        'day': app.request.query.get('day',"1")
-    })) %}
+    <ul class="nav nav-pills">
+        <li class="active"><a href="#results" data-toggle="tab">{{ 'league.results'|trans }}</a></li>
+        <li><a href="#classement" data-toggle="tab">{{ 'league.classement'|trans }}</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="results">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% render(controller('FreeBetSoccerLeagueBundle:League:navigation', {
+                        'matches': events,
+                        'day': app.request.query.get('day',"1")
+                    })) %}
+
+                    {% render(controller('FreeBetSoccerLeagueBundle:League:resultsDay', {
+                        'matches': events,
+                        'day': app.request.query.get('day',"1")
+                    })) %}
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="classement">
+
+        </div>
+    </div>
 </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $('#league-navigator form select').change(function(event){
+            $(this).parents('form').submit();
+        });
+    </script>
+{% endblock javascripts %}

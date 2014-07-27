@@ -22,6 +22,15 @@ interface EventRepositoryInterface
     public function findAllPastNotProcessedEvent(\DateTime $date);
 
     /**
+     * Find all events on a competition ordered by date
+     *
+     * @param \FreeBet\Bundle\CompetitionBundle\Document\Competition $competition
+     *
+     * @return array
+     */
+    public function findAllOrderedEvent(Competition $competition);
+
+    /**
      * Return the next events of a competition
      * Ordered by date and not yet processed
      *

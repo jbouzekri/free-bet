@@ -1,7 +1,6 @@
-<div id="league-navigator">
+<div id="league-navigator" class="well well-sm">
     <form method="get" action="" class="form-inline">
         <div class="form-group">
-            <label for="day-selector">{{ 'league.navigator.label'|trans }}</label>
             <select class="form-control" id="day-selector" name="day">
                 {% for day in days %}
                     <option value="{{ day }}" {% if day == currentDay %}selected="selected"{% endif %}>

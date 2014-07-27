@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for event in events %}
+            {% for event in matches %}
                 {% include 'FreeBetSoccerBundle:Match:_results_line.html.twig' with { event: event } %}
             {% endfor %}
         </tbody>

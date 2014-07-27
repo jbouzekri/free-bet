@@ -1,0 +1,28 @@
+<tr>
+    <td {% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
+        data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"
+        {% endif %}>
+        {{ event.date|date_format('date') }}
+    </td>
+    <td {% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
+        data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"
+        {% endif %}>
+        {{ event.date|date_format('hour') }}
+    </td>
+    <td {% if event.leftName is not empty and event.rightName is not empty and not event.isStarted %}
+        data-url="{{ url('event_bet', {slugCompetition: event.competition.slug, slugEvent: event.slug}) }}" class="onclicklink"
+        {% endif %}>
+        {% include 'FreeBetCompetitionBundle:Event:_event_name.html.twig' with {
+            event: event,
+            showResult: true,
+            scoreTemplate: 'FreeBetSoccerWorldCupBundle:Match:_score.html.twig'
+        } %}
+    </td>
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+    <td>
+        <a href="{{ url('event_set_result', {id: event.id}) }}" class="btn btn-danger btn-xs">
+            {{ 'competition.view.set_result'|trans }}
+        </a>
+    </td>
+    {% endif %}
+</tr>

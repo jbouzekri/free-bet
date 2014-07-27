@@ -1,0 +1,27 @@
+.team {
+    width: 20px;
+    height: 20px;
+    background:url(../img/team.png) no-repeat top left;
+    display: inline-block;
+    vertical-align: middle;
+}
+.team.team-bastia { background-position: 0px 0px; }
+.team.team-bordeaux { background-position: -20px 0px; }
+.team.team-caen { background-position: -40px 0px; }
+.team.team-evian-tg { background-position: -60px 0px; }
+.team.team-guingamp { background-position: -80px 0px; }
+.team.team-lens { background-position: -100px 0px; }
+.team.team-lille { background-position: -120px 0px; }
+.team.team-lorient { background-position: -140px 0px; }
+.team.team-lyon { background-position: -160px 0px; }
+.team.team-marseille { background-position: -180px 0px; }
+.team.team-metz { background-position: -200px 0px; }
+.team.team-monaco { background-position: -220px 0px; }
+.team.team-montpellier { background-position: -240px 0px; }
+.team.team-nantes { background-position: -260px 0px; }
+.team.team-nice { background-position: -280px 0px; }
+.team.team-paris-sg { background-position: -300px 0px; }
+.team.team-reims { background-position: -320px 0px; }
+.team.team-rennes { background-position: -340px 0px; }
+.team.team-saint-e-tienne { background-position: -360px 0px; }
+.team.team-toulouse { background-position: -380px 0px; }
