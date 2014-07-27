@@ -52,8 +52,7 @@ class MatchWriter
     public function dumpArray(array $matches, $type = "csv")
     {
         $result = "";
-        foreach ($matches as $match)
-        {
+        foreach ($matches as $match) {
             $result .= $this->dump($match, $type);
         }
 

@@ -77,8 +77,7 @@ class LequipeScraper implements ScraperInterface
     public function refreshData()
     {
         $content = "";
-        foreach ($this->getDates() as $url)
-        {
+        foreach ($this->getDates() as $url) {
             $matches = $this->getMatches($url);
             $content .= $this->writer->dumpArray($matches, "csv");
         }
