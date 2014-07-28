@@ -82,7 +82,7 @@ class GenerateMatchCommand extends Command
             $file = dirname(__FILE__).'/../Resources/data/'.$leagueSlug.'.csv';
         }
 
-        $content = $dataLoader->refreshData();
+        $content = $dataLoader->refreshData($leagueSlug);
         file_put_contents($file, $content);
         $output->writeln('Write content to file '.$file);
     }

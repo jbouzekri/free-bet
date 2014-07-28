@@ -120,4 +120,6 @@ free_bet_competition:
 free_bet_soccer_league:
     scrapers:
         lequipe:
-            url: http://www.lequipe.fr/Football/FootballResultat47991.html
+            configuration:
+                - { name: ligue-1-2014, url: http://www.lequipe.fr/Football/FootballResultat47991.html }
+                - { name: premiere-league-2014, url: http://www.lequipe.fr/Football/FootballResultat48386.html }

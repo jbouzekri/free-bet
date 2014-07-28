@@ -3,17 +3,17 @@
 namespace FreeBet\Bundle\SoccerLeagueBundle\DataFixtures\MongoDB;
 
 /**
- * LoadLigue12014Data
+ * LoadPremiereLeague2014Data
  *
  * @author jobou
  */
-class LoadLigue12014Data extends AbstractLeagueData
+class LoadPremiereLeague2014Data extends AbstractLeagueData
 {
     /**
      * {@inheritDoc}
      */
     protected function getCompetitionReference()
     {
-        return "ligue-1-2014";
+        return "premiere-league-2014";
     }
 }

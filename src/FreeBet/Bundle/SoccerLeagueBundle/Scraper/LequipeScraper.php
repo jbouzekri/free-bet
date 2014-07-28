@@ -5,6 +5,7 @@ namespace FreeBet\Bundle\SoccerLeagueBundle\Scraper;
 use Guzzle\Service\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use FreeBet\Bundle\CompetitionBundle\Model\EventFactory;
+use FreeBet\Bundle\SoccerLeagueBundle\Exception\WebScraperException;
 
 /**
  * LequipeScraper
@@ -34,7 +35,7 @@ class LequipeScraper implements ScraperInterface
     );
 
     /**
-     * @var string
+     * @var array
      */
     private $url;
 
@@ -72,12 +73,14 @@ class LequipeScraper implements ScraperInterface
     /**
      * Refresh all matches data
      *
+     * @param string $competitionSlug
+     *
      * @return string
      */
-    public function refreshData()
+    public function refreshData($competitionSlug)
     {
         $content = "";
-        foreach ($this->getDates() as $url) {
+        foreach ($this->getDates($this->getUrl($competitionSlug)) as $url) {
             $matches = $this->getMatches($url);
             $content .= $this->writer->dumpArray($matches, "csv");
         }
@@ -88,13 +91,15 @@ class LequipeScraper implements ScraperInterface
     /**
      * Get all dates page url
      *
+     * @param string $url
+     *
      * @return array
      */
-    public function getDates()
+    public function getDates($url)
     {
         $dates = array();
 
-        $crawler = $this->loadContentInCrawlerFromUrl($this->url);
+        $crawler = $this->loadContentInCrawlerFromUrl($url);
         $crawler->filter(self::$selectors['DAY_URLS'])->eq(0)->filter('option')->each(function ($item) use (&$dates) {
             $dates[] = self::BASE_URL . $item->attr('value');
         });
@@ -244,5 +249,25 @@ class LequipeScraper implements ScraperInterface
         $response = $this->client->send($request);
 
         return new Crawler((string) $response->getBody());
+    }
+
+        /**
+     * Get the url for the competition
+     *
+     * @param string $competitionSlug
+     *
+     * @return string
+     *
+     * @throws \FreeBet\Bundle\SoccerLeagueBundle\Exception\WebScraperException
+     */
+    protected function getUrl($competitionSlug)
+    {
+        foreach ($this->url as $availableUrl) {
+            if ($availableUrl['name'] == $competitionSlug) {
+                return $availableUrl['url'];
+            }
+        }
+
+        throw new WebScraperException('No lequipe scraper configured for '.$competitionSlug);
     }
 }

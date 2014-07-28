@@ -12,7 +12,7 @@ services:
         class: %free_bet.soccer.leage.scraper.lequipe.class%
         arguments:
             - @guzzle.client
-            - %free_bet.scraper.lequipe.url%
+            - %free_bet.scraper.lequipe.configuration%
             - @free_bet.event.factory
             - @free_bet.soccer.leage.scraper.match_writer
         tags:

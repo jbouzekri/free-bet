@@ -32,13 +32,13 @@ class LoadCompetitionData extends AbstractCompetitionLoader
                 'reference' => 'ligue-1-2014',
                 'endDate' => "2015-05-24"
             ),
-//            array(
-//                'name' => 'Liga 2014',
-//                'type' => 'soccer-league',
-//                'subType' => 'spain',
-//                'reference' => 'liga-2014',
-//                'endDate' => "2014-05-24"
-//            )
+            array(
+                'name' => 'Premiere league 2014',
+                'type' => 'soccer-league',
+                'subType' => 'england',
+                'reference' => 'premiere-league-2014',
+                'endDate' => "2015-05-25"
+            )
         );
     }
 }
