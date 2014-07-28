@@ -9,9 +9,16 @@ namespace FreeBet\Bundle\CompetitionBundle\Document\Repository;
 interface CompetitionRepositoryInterface
 {
     /**
-     * Return all competition ordered by date
+     * Return all competition ordered by name
      *
      * @return array
      */
-    public function findCurrentOrderedByDate();
+    public function findCurrentOrderedByName();
+
+    /**
+     * Return all ended competition ordered by data
+     *
+     * @return array
+     */
+    public function findEndedOrderedByEndDate();
 }

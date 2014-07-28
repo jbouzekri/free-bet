@@ -21,7 +21,7 @@ class CompetitionController extends Controller
      */
     public function menuAction($routeParam = array())
     {
-        $competitions = $this->get('free_bet.competition.repository')->findCurrentOrderedByDate();
+        $competitions = $this->get('free_bet.competition.repository')->findCurrentOrderedByName();
 
         return $this->render('FreeBetCompetitionBundle:Competition:menu.html.twig', array(
             'competitions' => $competitions,
@@ -43,6 +43,20 @@ class CompetitionController extends Controller
         $events = $this->get('free_bet.event.repository')->findAllOrderedEvent($competition);
 
         return $this->competitionRender($competition, $events, 'view.html.twig');
+    }
+
+    /**
+     * List ended competitions
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function archivesAction()
+    {
+        $competitions = $this->get('free_bet.competition.repository')->findEndedOrderedByEndDate();
+
+        return $this->render('FreeBetCompetitionBundle:Competition:archives.html.twig', array(
+            'competitions' => $competitions
+        ));
     }
 
     /**

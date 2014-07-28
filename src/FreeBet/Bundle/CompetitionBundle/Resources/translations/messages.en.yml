@@ -27,3 +27,7 @@ competition:
             diff: Diff
     menu:
         title: Competitions
+        archives: Archives
+    archive:
+        title: Archives
+        ended: "Ended : %date%"

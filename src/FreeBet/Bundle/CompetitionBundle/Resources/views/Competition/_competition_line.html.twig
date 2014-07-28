@@ -1,0 +1,8 @@
+<a href="{{ path('competition_detail', {slug: competition.slug}) }}">
+    {% if competition.subType %}
+        <i class="event event-{{ competition.subType }}"></i>
+    {% else %}
+        <i class="fa fa-{{ competition.type }}"></i>
+    {% endif %}
+    <span>{{ competition.name }}</span>
+</a>

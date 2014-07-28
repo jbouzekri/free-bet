@@ -1,0 +1,20 @@
+{% extends "FreeBetUIBundle::layout.html.twig" %}
+
+{% block title %}{{ 'competition.archive.title'|trans }}{% endblock %}
+
+{% block content %}
+<div id="competition-archives">
+    <h1>{{ 'competition.archive.title'|trans }}</h1>
+
+    {% for competition in competitions %}
+        <div class="well well-sm">
+            {% include 'FreeBetCompetitionBundle:Competition:_competition_line.html.twig' with {
+                competition: competition
+            } %}
+            <div class="pull-right">
+                {{ 'competition.archive.ended'|trans({'%date%': competition.endDate|date('date.date'|trans)}) }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
