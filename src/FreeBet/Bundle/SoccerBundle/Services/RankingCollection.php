@@ -24,6 +24,11 @@ class RankingCollection implements \Iterator
     protected $rankings = array();
 
     /**
+     * @var \FreeBet\Bundle\CompetitionBundle\Document\Competition
+     */
+    protected $competition = null;
+
+    /**
      * Get a team ranking
      *
      * @param string $name
@@ -39,12 +44,26 @@ class RankingCollection implements \Iterator
     }
 
     /**
+     * Get competition
+     *
+     * @return \FreeBet\Bundle\CompetitionBundle\Document\Competition
+     */
+    public function getCompetition()
+    {
+        return $this->competition;
+    }
+
+    /**
      * Process an event
      *
      * @param \FreeBet\Bundle\SoccerBundle\Document\Match $match
      */
     public function processEvent(Match $match)
     {
+        if (!$this->competition) {
+            $this->competition = $match->getCompetition();
+        }
+
         $leftTeamRanking = $this->getTeam($match->getLeftName());
         $rightTeamRanking = $this->getTeam($match->getRightName());
 

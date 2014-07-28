@@ -176,17 +176,11 @@ class LequipeScraper implements ScraperInterface
     protected function cleanText($text)
     {
         $text = trim($text);
-        if (preg_match('/(\w+).*\(\d+\)/', $text, $matches)) {
+        if (preg_match('/(\w+.*)\(\d+\)/', $text, $matches)) {
             $text = $matches[1];
         }
 
-        // Hotfix for some team names
-        if ($text == 'Paris') {
-            $text = 'Paris-SG';
-        }
-        if ($text == 'Evian') {
-            $text = 'Evian-TG';
-        }
+        $text = trim(rtrim($text, chr(0xC2).chr(0xA0)));
 
         return $text;
     }

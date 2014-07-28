@@ -10,7 +10,13 @@
         <tbody>
             {% for ranking in results %}
                 <tr>
-                    <td>{{ ranking.name }}</td>
+                    <td>
+                        {% include 'FreeBetCompetitionBundle:Event:_event_logo.html.twig' with {
+                            competition: results.competition,
+                            eventName: ranking.name
+                        } %}
+                        {{ ranking.name }}
+                    </td>
                     <td>{{ ranking.point }}</td>
                     <td>{{ ranking.diff }}</td>
                 </tr>
