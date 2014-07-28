@@ -16,7 +16,7 @@ abstract class AbstractLeagueData extends LoadMatchData
      *
      * @return string
      */
-    protected abstract function getCompetitionReference();
+    abstract protected function getCompetitionReference();
 
     /**
      * {@inheritDoc}
