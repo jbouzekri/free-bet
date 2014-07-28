@@ -58,7 +58,7 @@ class LequipeScraper implements ScraperInterface
      * Constructor
      *
      * @param \Guzzle\Service\Client $restClient
-     * @param string $url
+     * @param array $url
      * @param \FreeBet\Bundle\CompetitionBundle\Model\EventFactory $factory
      * @param \FreeBet\Bundle\SoccerLeagueBundle\Scraper\MatchWriter $writer
      */

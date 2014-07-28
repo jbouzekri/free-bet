@@ -224,7 +224,7 @@ abstract class Event
     /**
      * Get competition
      *
-     * @return FreeBet\Bundle\CompetitionBundle\Document\Competition $competition
+     * @return \FreeBet\Bundle\CompetitionBundle\Document\Competition $competition
      */
     public function getCompetition()
     {
