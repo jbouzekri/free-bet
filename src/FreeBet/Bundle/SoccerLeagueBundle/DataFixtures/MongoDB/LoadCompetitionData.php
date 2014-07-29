@@ -45,6 +45,20 @@ class LoadCompetitionData extends AbstractCompetitionLoader
                 'subType' => 'spain',
                 'reference' => 'liga-2014',
                 'endDate' => "2015-05-24"
+            ),
+            array(
+                'name' => 'Serie A 2014',
+                'type' => 'soccer-league',
+                'subType' => 'italy',
+                'reference' => 'serie-a-2014',
+                'endDate' => "2015-06-01"
+            ),
+            array(
+                'name' => 'Bundesliga 2014',
+                'type' => 'soccer-league',
+                'subType' => 'germany',
+                'reference' => 'bundesliga-2014',
+                'endDate' => "2015-05-24"
             )
         );
     }
