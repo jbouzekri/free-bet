@@ -47,4 +47,17 @@ interface GambleRepositoryInterface
      * @return \Doctrine\ODM\MongoDB\Query\Builder
      */
     public function getAllGambleForUserQb(User $user, $onlyWinner = null);
+
+    /**
+     * Get stats of gamble
+     *
+     * @param \FreeBet\Bundle\UserBundle\Document\User $user
+     *
+     * @return array(
+     *   "unprocessed" => 0,
+     *   "winner" => 0,
+     *   "loser" => 0
+     * )
+     */
+    public function getGambleProcessedStats(User $user);
 }

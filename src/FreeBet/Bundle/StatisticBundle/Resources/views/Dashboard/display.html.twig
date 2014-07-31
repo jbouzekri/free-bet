@@ -1,7 +1,64 @@
 {% extends "FreeBetUIBundle::layout.html.twig" %}
 
+{% block title %}{{ 'dashboard.title'|trans }}{% endblock %}
+
 {% block content %}
-{% for widget in widgets %}
-    {% include 'FreeBetStatisticBundle:Dashboard:_widget.html.twig' with {widget: widget} %}
-{% endfor %}
+<div id="dashboard">
+    <div class="row">
+        <div class="col-lg-4 col-xs-6">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>
+                        {{ stats.winner }}
+                    </h3>
+                    <p>
+                        {{ 'dashboard.winner'|transchoice(stats.winner) }}
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{{ path('user_account_gambles_list') }}" class="small-box-footer">
+                    {{ 'dashboard.link'|trans }} <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-6">
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>
+                        {{ stats.unprocessed }}
+                    </h3>
+                    <p>
+                        {{ 'dashboard.unprocessed'|transchoice(stats.unprocessed) }}
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{{ path('user_account_gambles_list') }}" class="small-box-footer">
+                    {{ 'dashboard.link'|trans }} <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-6">
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>
+                        {{ stats.loser }}
+                    </h3>
+                    <p>
+                        {{ 'dashboard.loser'|transchoice(stats.loser) }}
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="{{ path('user_account_gambles_list') }}" class="small-box-footer">
+                    {{ 'dashboard.link'|trans }} <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

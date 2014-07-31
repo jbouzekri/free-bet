@@ -1,0 +1,8 @@
+dashboard:
+    title: Statistiques
+    link: Voir les paris
+    winner: "{0} winner|{1} winner|]1,+Inf[ winners"
+
+menu:
+    main:
+        dashboard: Statistiques

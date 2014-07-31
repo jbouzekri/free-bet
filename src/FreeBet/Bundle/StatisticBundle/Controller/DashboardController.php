@@ -18,13 +18,10 @@ class DashboardController extends Controller
      */
     public function displayAction()
     {
-        $widgets = $this->getUser()->getWidgets();
-        if (count($widgets) == 0) {
-            $widgets = $this->container->getParameter('free_bet.default_widgets');
-        }
+        $stats = $this->get('free_bet.gamble.repository')->getGambleProcessedStats($this->getUser());
 
         return $this->render('FreeBetStatisticBundle:Dashboard:display.html.twig', array(
-            'widgets' => $widgets
+            'stats' => $stats
         ));
     }
 }

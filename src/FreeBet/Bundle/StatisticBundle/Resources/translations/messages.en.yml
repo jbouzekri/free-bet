@@ -1,0 +1,10 @@
+dashboard:
+    title: Statistics
+    link: View gambles
+    winner: "{0} Win|{1} Win|]1,+Inf[ Wins"
+    unprocessed: "{0} Unprocessed|{1} Unprocessed|]1,+Inf[ Unprocessed"
+    loser: "{0} Loss|{1} Loss|]1,+Inf[ Losses"
+
+menu:
+    main:
+        dashboard: Statistics

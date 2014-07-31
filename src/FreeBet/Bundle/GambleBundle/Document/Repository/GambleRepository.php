@@ -5,6 +5,7 @@ namespace FreeBet\Bundle\GambleBundle\Document\Repository;
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use FreeBet\Bundle\CompetitionBundle\Document\Event;
 use FreeBet\Bundle\UserBundle\Document\User;
+use Doctrine\MongoDB\Exception\ResultException;
 
 /**
  * Description of GambleRepository
@@ -82,5 +83,47 @@ class GambleRepository extends DocumentRepository implements GambleRepositoryInt
         }
 
         return $qb;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getGambleProcessedStats(User $user)
+    {
+        $results = array(
+            "unprocessed" => 0,
+            "winner" => 0,
+            "loser" => 0
+        );
+
+        $qb = $this->createQueryBuilder()
+            ->map('function() {
+                if (typeof this.processedDate == "undefined") {
+                    emit("unprocessed", 1);
+                } else if (this.winner === true) {
+                    emit("winner", 1);
+                } else if (this.winner === false) {
+                    emit("loser", 1);
+                }
+            }')
+            ->reduce('function(k, vals) {
+                var sum = 0;
+                for (var i in vals) {
+                    sum += vals[i];
+                }
+                return sum;
+            }');
+
+        try {
+            $mapResults = $qb->getQuery()->execute();
+        } catch (ResultException $e) {
+            $mapResults = array();
+        }
+
+        foreach ($mapResults as $value) {
+            $results[$value["_id"]] = $value["value"];
+        }
+
+        return $results;
     }
 }
