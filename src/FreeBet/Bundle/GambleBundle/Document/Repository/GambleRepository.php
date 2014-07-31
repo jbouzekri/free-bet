@@ -98,22 +98,26 @@ class GambleRepository extends DocumentRepository implements GambleRepositoryInt
 
         $qb = $this->createQueryBuilder()
             ->field('user.id')->equals($user->getId())
-            ->map('function() {
-                if (typeof this.processedDate == "undefined") {
-                    emit("unprocessed", 1);
-                } else if (this.winner === true) {
-                    emit("winner", 1);
-                } else if (this.winner === false) {
-                    emit("loser", 1);
-                }
-            }')
-            ->reduce('function(k, vals) {
-                var sum = 0;
-                for (var i in vals) {
-                    sum += vals[i];
-                }
-                return sum;
-            }');
+            ->map(
+                'function() {
+                    if (typeof this.processedDate == "undefined") {
+                        emit("unprocessed", 1);
+                    } else if (this.winner === true) {
+                        emit("winner", 1);
+                    } else if (this.winner === false) {
+                        emit("loser", 1);
+                    }
+                }'
+            )
+            ->reduce(
+                'function(k, vals) {
+                    var sum = 0;
+                    for (var i in vals) {
+                        sum += vals[i];
+                    }
+                    return sum;
+                }'
+            );
 
         try {
             $mapResults = $qb->getQuery()->execute();
