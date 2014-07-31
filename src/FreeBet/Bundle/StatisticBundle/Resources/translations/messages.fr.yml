@@ -1,7 +1,12 @@
 dashboard:
     title: Statistiques
     link: Voir les paris
-    winner: "{0} winner|{1} winner|]1,+Inf[ winners"
+    winner: "{0} Gagnant|{1} Gagnant|]1,+Inf[ Gagnants"
+    unprocessed: "{0} A venir|{1} A venir|]1,+Inf[ A venir"
+    loser: "{0} Perdant|{1} Perdant|]1,+Inf[ Perdants"
+    point:
+        number: "{0} 0 Point|{1} 1 Point|]1,+Inf[ %count% Points"
+        gamble: "{0} sur 0 pari depuis le %date%|{1} sur 1 pari depuis le %date%|]1,+Inf[ sur %count% paris depuis le %date%"
 
 menu:
     main:

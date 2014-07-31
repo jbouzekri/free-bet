@@ -18,6 +18,16 @@ FreeBet\Bundle\UserBundle\Document\User:
                     style: lower
                     fields:
                         - username
+        created:
+            type: date
+            gedmo:
+              timestampable:
+                on: create
+        updated:
+            type: date
+            gedmo:
+              timestampable:
+                on: update
     referenceOne:
         organization:
             targetDocument: FreeBet\Bundle\UserBundle\Document\Organization

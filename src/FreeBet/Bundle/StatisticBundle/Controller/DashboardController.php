@@ -19,9 +19,12 @@ class DashboardController extends Controller
     public function displayAction()
     {
         $stats = $this->get('free_bet.gamble.repository')->getGambleProcessedStats($this->getUser());
+        $points = $this->get('free_bet.gamble.repository')->getGambleResultStats($this->getUser());
 
         return $this->render('FreeBetStatisticBundle:Dashboard:display.html.twig', array(
-            'stats' => $stats
+            'stats' => $stats,
+            'point' => $points['total_point'],
+            'count' => $points['total_gamble']
         ));
     }
 }

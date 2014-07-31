@@ -4,6 +4,9 @@ dashboard:
     winner: "{0} Win|{1} Win|]1,+Inf[ Wins"
     unprocessed: "{0} Unprocessed|{1} Unprocessed|]1,+Inf[ Unprocessed"
     loser: "{0} Loss|{1} Loss|]1,+Inf[ Losses"
+    point:
+        number: "{0} 0 Point|{1} 1 Point|]1,+Inf[ %count% Points"
+        gamble: "{0} over 0 gamble since the %date%|{1} over 1 gamble since the %date%|]1,+Inf[ over %count% gambles since the %date%"
 
 menu:
     main:

@@ -56,7 +56,7 @@ abstract class Event
      */
     protected $competition;
 
-        /**
+    /**
      * @var date $created
      */
     protected $created;

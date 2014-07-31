@@ -97,6 +97,7 @@ class GambleRepository extends DocumentRepository implements GambleRepositoryInt
         );
 
         $qb = $this->createQueryBuilder()
+            ->field('user.id')->equals($user->getId())
             ->map('function() {
                 if (typeof this.processedDate == "undefined") {
                     emit("unprocessed", 1);
@@ -125,5 +126,38 @@ class GambleRepository extends DocumentRepository implements GambleRepositoryInt
         }
 
         return $results;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getGambleResultStats(User $user)
+    {
+        $collection = $this->getDocumentManager()->getDocumentCollection($this->getClassName());
+        $db = $collection->getDatabase();
+
+        $result = $db->command(array(
+            'aggregate' => $collection->getName(),
+            'pipeline'  => array(
+                array('$match' => array(
+                    'user.$id' => new \MongoId($user->getId())
+                )),
+                array('$group'  => array(
+                    '_id' => null,
+                    'total_gamble' => array('$sum' => 1),
+                    'total_point' => array('$sum' => '$point'),
+                ))
+            ),
+        ));
+
+        $groupResult = array(
+            'total_gamble' => 0,
+            'total_point' => 0
+        );
+        if (isset($result['ok']) && isset($result['result'][0])) {
+            $groupResult = $result['result'][0];
+        }
+
+        return $groupResult;
     }
 }

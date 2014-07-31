@@ -60,4 +60,16 @@ interface GambleRepositoryInterface
      * )
      */
     public function getGambleProcessedStats(User $user);
+
+    /**
+     * Get results stats of gambles
+     *
+     * @param \FreeBet\Bundle\UserBundle\Document\User $user
+     *
+     * @return array(
+     *   "total_gamble" => 0,
+     *   "total_point" => 0
+     * )
+     */
+    public function getGambleResultStats(User $user);
 }

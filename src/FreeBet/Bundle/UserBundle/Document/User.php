@@ -22,6 +22,16 @@ class User extends BaseUser
     protected $slug;
 
     /**
+     * @var date $created
+     */
+    protected $created;
+
+    /**
+     * @var date $updated
+     */
+    protected $updated;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -59,5 +69,49 @@ class User extends BaseUser
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set created
+     *
+     * @param date $created
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return date $created
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param date $updated
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return date $updated
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }
