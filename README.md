@@ -6,7 +6,9 @@ Free Bet
 
 A simple PHP application to provide a betting system for sports events.
 You can easily install it in your company to have fun and see who is the best forecaster.
-For now, it focus on the 2014 World Cup
+For now, it focus on the 5 major european soccer league.
+
+You can see a running demo on [free-bet.bouzekri.net french version](http://free-bet.bouzekri.net/fr/login) or [free-bet.bouzekri.net english version](http://free-bet.bouzekri.net/en/login)
 
 Prerequisites
 -------------
@@ -114,10 +116,6 @@ Roadmap
 
 This is a work in progress so it is not finish. Coming soon :
 
-- Simple Dashboard
 - User grouping and bet sharing
-- Football European League : season 2014 - 215
 - Social network submission
 - Complex Stats on events and competition : per person, and per group
-
-Theoric release date : 05/2014
