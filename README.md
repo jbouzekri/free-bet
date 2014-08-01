@@ -8,7 +8,7 @@ A simple PHP application to provide a betting system for sports events.
 You can easily install it in your company to have fun and see who is the best forecaster.
 For now, it focus on the 5 major european soccer league.
 
-You can see a running demo on [free-bet.bouzekri.net french version](http://free-bet.bouzekri.net/fr/login) or [free-bet.bouzekri.net english version](http://free-bet.bouzekri.net/en/login)
+You can see a running demo on [free-bet.bouzekri.net english version](http://free-bet.bouzekri.net/en/login). The french translation is also available.
 
 Prerequisites
 -------------
