@@ -5,7 +5,7 @@ php:
   - 5.5
 
 before_script: 
-  - pecl install -f mongo-1.5.7
+  - yes '' | pecl install -f mongo-1.5.7
   - pear install pear/PHP_CodeSniffer
   - composer install -n
   - phpenv rehash
