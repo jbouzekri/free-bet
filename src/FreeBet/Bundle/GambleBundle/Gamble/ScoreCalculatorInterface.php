@@ -30,7 +30,7 @@ interface ScoreCalculatorInterface
      * Score for a losing gamble (in case you want to do a negative one
      *
      * @param \FreeBet\Bundle\GambleBundle\Document\Gamble $gamble
-     * 
+     *
      * @return int
      */
     public function calculateLosingGamble(Gamble $gamble);

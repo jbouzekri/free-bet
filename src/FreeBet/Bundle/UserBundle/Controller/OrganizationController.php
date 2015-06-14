@@ -118,7 +118,6 @@ class OrganizationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
             $user = $this->getUser();
             $user->addRole('ROLE_MANAGER');
             $user->setOrganization($organization);
